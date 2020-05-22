@@ -73,7 +73,7 @@
 - belongs_to :user
 - has_one :order
 - belongs_to :category
-- has_many :images dependent: :destroy
+- has_many :item_images dependent: :destroy
 - has_many :comments dependent: :destroy
 - has_many :likes dependent: :destroy
 - belongs_to_active_hash :condition
@@ -83,7 +83,7 @@
 ### remarks
 - condition,postage,prefecture,shipping_area,shipping_days は ActiveHash を使って選択可能なデータを管理
 
-## imagesテーブル
+## item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|text|null: false|
