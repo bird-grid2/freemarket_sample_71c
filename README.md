@@ -32,8 +32,8 @@
 |post_code|integer|null: false|
 |prefecture|string|null:false|
 |city|string|null:false|
-|adress1|string|null:false|
-|adress2|string||
+|block|string|null:false|
+|building|string||
 |phone_number|integer||
 |user|references|null: false, foreign_key: true|
 ### Association
