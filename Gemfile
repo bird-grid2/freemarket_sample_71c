@@ -65,4 +65,7 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+gem 'devise'
+gem 'bcrypt'
+gem 'active_hash'
 gem 'haml-rails'
