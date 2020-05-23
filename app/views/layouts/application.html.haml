@@ -9,48 +9,48 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = yield
-  %aside.app-banner
-    .app-banner__inner
-      %h1.app-banner__inner__title
+  %aside.appBanner
+    .appBanner__inner
+      %h2.appBanner__inner__title
         だれでもかんたん、人生を変えるフリマアプリ
-      %p.app-banner__inner__text
+      %p.appBanner__inner__text
         今すぐ無料ダウンロード！
-      .app-banner__inner__icon
+      .appBanner__inner__icon
         %figure
-          = link_to '#', class: 'abtn'
+          = link_to '#', class: "LinkIcon aBtn"
         %figure
-          = link_to '#', class: 'gbtn'
-  %footer
+          = link_to '#', class: "LinkIcon gBtn"
+  .footer
     %ul.contents
       %li.content
         %h2.content__head
           FURIMAについて
         %ul
-          %li 会社概要(運営会社)
-            = link_to '#'
-          %li プライバシーポリシー
-            = link_to '#'
-          %li FURIMA利用規約
-            = link_to '#'
-          %li ポイントに関する特約
-            = link_to '#'
+          %li  
+            = link_to '会社概要(運営会社)', '#'
+          %li 
+            = link_to 'プライバシーポリシー', '#'
+          %li
+            = link_to 'FURIMA利用規約', '#'
+          %li 
+            = link_to 'ポイントに関する特約', '#'
       %li.content
         %h2.content__head
           FURIMAを見る
         %ul
-          %li カテゴリー一覧
-            = link_to '#'
-          %li ブランド一覧
-            = link_to '#'
+          %li
+            = link_to 'カテゴリー一覧', '#'
+          %li 
+            = link_to 'ブランド一覧', '#'
       %li.content
         %h2.content__head
           ヘルプ&ガイド
         %ul
-          %li FURIMAガイド
-            = link_to '#'
-          %li FURIMAロゴ利用
-            = link_to '#'
-          %li ガイドライン
-            = link_to '#'
-          %li お知らせ
-            = link_to '#'
+          %li 
+            = link_to 'FURIMAガイド', '#'
+          %li 
+            = link_to 'FURIMAロゴ利用', '#'
+          %li 
+            = link_to 'ガイドライン', '#'
+          %li 
+            = link_to 'お知らせ', '#'

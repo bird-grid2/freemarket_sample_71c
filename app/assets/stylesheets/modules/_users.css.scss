@@ -1,0 +1,75 @@
+*{
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+}
+
+li a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 32px;
+}
+
+.appBanner{
+  background: image-url('bg-appBanner-pict.jpg');
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 40px;
+  &__inner {
+    color: #fff;
+    text-align: center;
+    &__title {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text{
+      font-size: 35px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    &__icon{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      .aBtn{
+        display: block;
+        width: 180px;
+        background: image-url('app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg')
+      }
+      .gBtn{
+        display: block;
+        width: 180px;
+        background: image-url('google-play-badge.png')
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 60px 0;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+  .contents{
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    width: calc(1 / 3 * 100%);
+    margin: 0 2% 0 0;
+    &__head{
+      margin: 0 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+}
+  
