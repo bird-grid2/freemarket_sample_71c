@@ -3,12 +3,17 @@
   list-style: none;
   text-decoration: none;
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  vertical-align: bottom;
 }
 
 li a {
   color: #fff;
   font-size: 12px;
   line-height: 32px;
+}
+
+.footer p {
+  font-size: 14px;
 }
 
 .appBanner{
@@ -29,21 +34,21 @@ li a {
     &__text{
       font-size: 35px;
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      padding: 1rem;
     }
     &__icon{
       width: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
       margin: 20px auto 0;
       .aBtn{
         display: block;
-        width: 180px;
-        background: image-url('app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg')
+        width: 150px;
       }
       .gBtn{
         display: block;
         width: 180px;
-        background: image-url('google-play-badge.png')
       }
     }
   }
@@ -70,6 +75,10 @@ li a {
       font-weight: bold;
     }
   }
-
+  &__logo {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
   

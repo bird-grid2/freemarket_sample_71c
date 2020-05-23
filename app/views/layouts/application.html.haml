@@ -17,9 +17,11 @@
         今すぐ無料ダウンロード！
       .appBanner__inner__icon
         %figure
-          = link_to '#', class: "LinkIcon aBtn"
+          = link_to '#' do
+            = image_tag 'Download_on_the_App_Store_Badge_JP_blk_100317.png', class: "LinkIcon aBtn"
         %figure
-          = link_to '#', class: "LinkIcon gBtn"
+          = link_to '#' do
+            = image_tag 'google-play-badge.png', class: "LinkIcon gBtn"
   .footer
     %ul.contents
       %li.content
@@ -54,3 +56,7 @@
             = link_to 'ガイドライン', '#'
           %li 
             = link_to 'お知らせ', '#'
+    .footer__logo
+      = link_to root_path do
+        = image_tag 'logo-white.png', height: '46.34', width: '160'
+    %p  ©️ FURIMA
