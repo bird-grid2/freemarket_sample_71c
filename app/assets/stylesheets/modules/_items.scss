@@ -1,54 +1,60 @@
 .contents {
+  height: 100vh;
+  width: 100vw;
   .item{
     .item__images{
-
+      height: 100px;
     }
     .item__name{
-
+      height: 100px;
     }
     .item__explain{
-
+      height: 100px;
     }
     .item__category{
-
+      height: 100px;
     }
     .item__brand{
-
+      height: 100px;
     }
     .item__status{
-
+      height: 100px;
     }
   }
   .delivery{
+    background-color: yellow;
     .delivery__fee{
-
+      height: 100px;
     }
     .delivery__area{
-
+      height: 100px;
     }
     .delivery__days{
-
+      height: 100px;
     }
   }
   .selling{
+    background-color: green;
     .selling__price{
-
+      height: 100px;
     }
     .selling__commission{
-
+      height: 100px;
     }
     .sellin__profits{
-
+      height: 100px;
     }
   }
   .exhibit{
+    background-color: blue;
     .exhibit__button{
-
+      height: 100px;
     }
   }
   .return{
+    background-color: gray;
     .return__button{
-      
+      height: 100px;
     }
   }
 }
