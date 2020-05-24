@@ -1,58 +1,142 @@
 .contents {
   height: 100vh;
-  width: 100vw;
+
   .item{
+    width: 400px;
+    margin: auto;
+
     .item__images{
+      padding-top: 100px;
       height: 100px;
+ 
+      .images__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .images__img {
+        input[type='file'] {
+              width: 400px;
+              height: 100px;
+              background-color: #DCDCDC;
+        }
+      }
     }
     .item__name{
       height: 100px;
+
+      .name__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .name__form {
+
+      }
     }
     .item__explain{
       height: 100px;
+      
+      .explain__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .item__category{
       height: 100px;
+
+      .category__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .item__brand{
       height: 100px;
+
+      .brand__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .item__status{
       height: 100px;
+
+      .status__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
   }
   .delivery{
-    background-color: yellow;
+    width: 400px;
+    margin: auto;
+
     .delivery__fee{
       height: 100px;
+
+      .fee__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .delivery__area{
       height: 100px;
+
+      .area__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .delivery__days{
       height: 100px;
+
+      .days__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
   }
   .selling{
-    background-color: green;
+    width: 400px;
+    margin: auto;
+
     .selling__price{
       height: 100px;
+
+      .price__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
     .selling__commission{
       height: 100px;
+
+      .commission__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
-    .sellin__profits{
+    .selling__profits{
       height: 100px;
+
+      .profits__title {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
     }
   }
   .exhibit{
-    background-color: blue;
+    width: 100px;
+    margin: auto;
+
     .exhibit__button{
       height: 100px;
+      font-size: 20px;
     }
   }
   .return{
-    background-color: gray;
+    width: 100px;
+    margin: auto;
+    font-size: 20px;
+
     .return__button{
       height: 100px;
     }

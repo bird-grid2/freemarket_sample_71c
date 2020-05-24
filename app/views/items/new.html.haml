@@ -1,20 +1,76 @@
 .contents
   .item
     .item__images
+      .images__title
+        1. 出品画像 
+      .images__form
+      = form_with model: @image do |f|
+        = f.file_field :img
     .item__name
+      .name__title
+        2. 商品名
+      .name__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .item__explain
+      .explain__title
+        3. 商品の説明
+      .explain__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .item__category
+      .category__title
+        4. カテゴリー
+      .category__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .item__brand
+      .brand__title
+        5. ブランド
+      .brand__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .item__status
+      .status__title
+        6. 商品の状態
+      .status__form
+      = form_with model: @item do |f|
+        = f.text_field :name
   .delivery
     .delivery__fee
+      .fee__title
+        7. 配送料の負担
+      .fee__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .delivery__area
+      .area__title
+        8. 発送元の地域
+      .area__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .delivery__days
+      .days__title
+        9. 発送までの日数
+      .days__form
+      = form_with model: @item do |f|
+        = f.text_field :name
   .selling
     .selling__price
+      .price__title
+        10. 販売価格
+      .price__form
+      = form_with model: @item do |f|
+        = f.text_field :name
     .selling__commission
-    .sellin__profits
+      .commission__title
+        販売手数料（10％）
+    .selling__profits
+      .profits__title
+        販売利益
   .exhibit
     .exhibit__button
+      出品する
   .return
     .return__button
+      戻る
