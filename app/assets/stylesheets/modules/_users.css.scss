@@ -2,22 +2,12 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
   vertical-align: bottom;
-}
-
-
-
-.footer p {
-  font-size: 14px;
-}
-
-img:hover {
-  opacity: 0.5;
 }
 
 a:hover {
   text-decoration: underline;
+  opacity: 0.5;
 }
 
 .appBanner{
@@ -89,6 +79,9 @@ a:hover {
     font-size: 12px;
     line-height: 32px;
   }
+  p {
+    font-size: 14px;
+  }
 }
   
 .main_container {
@@ -101,7 +94,7 @@ a:hover {
       width: 280px;
       margin: 0 40px 0 0;
       &__nav__head {
-        margin: 0 0 8px;
+        margin: 40px 0 8px;
         padding: 0 8px 8px;
         font-size: 16px;
         font-weight: bold;
@@ -149,6 +142,14 @@ a:hover {
           font-size: 16px;
         }
       }
+    }
+    .mypage-tab-container {
+      margin: 0;
+      background: #fff;
+    }
+    .mypage-tab-container__goods {
+      margin: 0;
+      background: #fff;
     }
   }
 }

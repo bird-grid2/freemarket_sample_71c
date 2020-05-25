@@ -61,8 +61,63 @@
               %span
                 106
       %section.mypage-tab-container
-        
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              = link_to 'お知らせ', '#', data: {toggle: 'tab'} 
+          %li
+            %h3
+              = link_to 'やることリスト', '#', data: {toggle: 'tab'}
+        .mypage-tab-content
+          %ul.mypage-tab-content__item-list
+            %li
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
+                .mypage-tab-content__item-body
+                  .mypage-tab-content__item-text
+                    %time
+                      %i.icon-time <span>1日前</span>
+                %i.icon-arrow-right
+            %li
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
+                .mypage-tab-content__item-body
+                  .mypage-tab-content__item-text
+                    ページ更新しました。
+                    %time
+                      %i.icon-time <span>3日前</span>
+                %i.icon-arrow-right
+            %li
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
+                .mypage-tab-content__item-body
+                  .mypage-tab-content__item-text
+                    サービススタートしました。
+                    %time
+                      %i.icon-time <span>7日前</span>
+                %i.icon-arrow-right
+            %li
+              =link_to '一覧を見る' ,'#', class: 'mypage-view-content'
+          %ul.mypage-tab-content__item-list
+            %li.mypage-tab-content__not-found
+              現在、やることリストはありません
 
+      %section.mypage-tab-container__goods
+        %h2.mypage-tab-head
+          購入した商品
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              = link_to '取引中', '#', data: {toggle: 'tab'} 
+          %li
+            %h3
+              = link_to '過去の取引', '#', data: {toggle: 'tab'}  
+        .mypage-tab-content
+          %ul.mypage-tab-content__item-list
+            %li.mypage-tab-content__not-found
+              取引中の商品がありません
+          %ul.mypage-tab-content__item-list
+            %li.mypage-tab-content__not-found
+              過去に取引した商品がありません
+            
+        
    
 
 
