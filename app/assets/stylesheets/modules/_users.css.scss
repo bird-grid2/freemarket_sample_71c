@@ -6,7 +6,6 @@
 }
 
 a:hover {
-  text-decoration: underline;
   opacity: 0.5;
 }
 
@@ -88,7 +87,8 @@ a:hover {
   background-color: #f8f8f8;
   .mypage-container {
     margin: 40px auto 0;
-    width: 1020px;
+    padding: 0 0 40px;
+    width: 700px;
     display: flex;
     .mypage-side {
       width: 280px;
@@ -109,22 +109,38 @@ a:hover {
           font-size: 14px;
           color: #333;
           padding: 16px;
+          border-bottom: 1px solid #eee;
+          .icon-arrow-right {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            color: #ccc;
+            transform: translate(0, -50%);
+            transition: all ease-out .2s;
+          }
+        }
+        .active {
+          background: #eee;
+          font-weight: 600;
         }
       }
     }
   }
   .mypage-content {
     width : 100%;
-    a {
-      display: block;
-      text-align: center;
-      margin-top:  25px;
-      color: #3333;
-    }
+    
     .mypage-user-icon {
-      height: 200px;
+      height: 160px;
       padding: 20px;
-      border: solid 1px #000;
+      background: image-url('icon_image.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      a {
+        display: block;
+        text-align: center;
+        margin-top:  25px;
+        color: #3333;
+      }
       &__name {
         margin: 8px 0 0;
         font-size: 14px;
@@ -143,13 +159,140 @@ a:hover {
         }
       }
     }
+    section {
+      display: block;
+    }
     .mypage-tab-container {
       margin: 0;
       background: #fff;
+      .mypage-tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        li {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
+        h3 {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        .active {
+          background-color: #fff;
+          border-top: 2px solid #ea352d;
+        }
+      }
+      .mypage-tab-content {
+        li { border-bottom: 1px solid #eee; }
+        &__item-link {
+          display: block;
+          min-height: 80px;
+          padding: 16px;
+          &__body{
+            margin: 0 40px 0 68px;
+            &--text {
+              color: #333;
+              overflow: hidden;
+              display: block;
+              max-height: 4.4em;
+              text-overflow: ellipsis;
+              line-height: 1.5;
+              time {
+                display: inline-block;
+                color: #888;
+                .icon-time::before {
+                  margin: 0 8px 0 0;
+                  
+                  span {
+                  vertical-align: middle;
+                  }
+                }
+              }
+            }
+            .icon-arrow-right {
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              transform: translate(0, -50%);
+            }
+          }
+        }
+        .mypage-view-content {
+          padding: 16px;
+          a {
+            display: block;
+            height: 56px;
+            margin: 0 auto;
+            background-color: #eee;
+            color: #333;
+            line-height: 56px;
+            text-align: center;
+          }
+        }
+        &__not-found {
+          padding: 160px 0 60px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+          display: none;
+        }
+      }
     }
     .mypage-tab-container__goods {
-      margin: 0;
-      background: #fff;
+      margin: 40px 0 0;
+      background-color: #fff;
+      .mypage-tab-head {
+        padding: 0 16px;
+        background-color: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      .mypage-tabs {
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        li {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;
+        }
+        h3 {
+          position: relative;
+          display: block;
+          color: #333;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        .active {
+          background-color: #fff;
+          border-top: 2px solid #ea352d;
+        }
+      }
+      .mypage-tab-content {
+        &__item-left {
+          &__not-found {
+            padding: 160px 0 60px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+          }
+        }
+        &__item-right {
+          display: none;
+          &__not-found {
+            padding: 160px 0 60px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+          }
+        }
+      }
     }
   }
 }

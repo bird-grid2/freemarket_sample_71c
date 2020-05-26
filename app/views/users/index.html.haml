@@ -2,49 +2,85 @@
   %main.mypage-container
     .mypage-side
       %nav.mypage-side__nav
-        %h2.mypage-side__nav__head
-          マイメニュー
         %ul.mypage-side__nav__list
           %li
-            = link_to 'お知らせ', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item active' do
+              マイメニュー
+              %i.icon-arrow-right
           %li
-            = link_to 'いいね一覧', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              お知らせ
+              %i.icon-arrow-right
           %li
-            = link_to '商品を出品する', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              いいね一覧
+              %i.icon-arrow-right
           %li
-            = link_to '取引中の商品', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              商品を出品する
+              %i.icon-arrow-right
           %li
-            = link_to '出品した商品', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              取引中の商品
+              %i.icon-arrow-right
           %li
-            = link_to '商品を購入する', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              出品した商品
+              %i.icon-arrow-right
           %li
-            = link_to '取引中の商品', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              商品を購入する
+              %i.icon-arrow-right
           %li
-            = link_to '購入した商品', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              取引中の商品
+              %i.icon-arrow-right
+          %li
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              購入した商品
+              %i.icon-arrow-right
         %h2.mypage-side__nav__head
-          ラクマペイ
+          FURIMAPay
         %ul.mypage-side__nav__list
           %li
-            = link_to '残高・振込申請', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              残高・振込申請
+              %i.icon-arrow-right
           %li
-            = link_to 'ポイント', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              ポイント
+              %i.icon-arrow-right
         %h2.mypage-side__nav__head
           設定
         %ul.mypage-side__nav__list
           %li
-            = link_to 'プロフィール', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              プロフィール
+              %i.icon-arrow-right
           %li
-            = link_to '発送元・お届け先住所変更', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              発送元・お届け先住所変更
+              %i.icon-arrow-right
           %li
-            = link_to '支払い方法', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              支払い方法
+              %i.icon-arrow-right
           %li
-            = link_to 'メール/パスワード', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              メール/パスワード
+              %i.icon-arrow-right
           %li
-            = link_to '本人情報', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              本人情報
+              %i.icon-arrow-right
           %li
-            = link_to '電話番号の確認', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              電話番号の確認
+              %i.icon-arrow-right
           %li
-            = link_to 'ログアウト', '#', class: 'mypage-side__nav__list--item'
+            = link_to '#', class: 'mypage-side__nav__list--item' do
+              ログアウト
+              %i.icon-arrow-right
     .mypage-content
       %section.mypage-user-icon
         = link_to '#' do
@@ -72,29 +108,30 @@
           %ul.mypage-tab-content__item-list
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-body
-                  .mypage-tab-content__item-text
-                    %time
-                      %i.icon-time <span>1日前</span>
+                .mypage-tab-content__item-link__body
+                  .mypage-tab-content__item-link__body--text
+                    新機能実装しました。
+                  %time
+                    %i.icon-time <span>1日前</span>
                 %i.icon-arrow-right
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-body
-                  .mypage-tab-content__item-text
+                .mypage-tab-content__item-link__body
+                  .mypage-tab-content__item-link__body--text
                     ページ更新しました。
-                    %time
-                      %i.icon-time <span>3日前</span>
+                  %time
+                    %i.icon-time <span>3日前</span>
                 %i.icon-arrow-right
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-body
-                  .mypage-tab-content__item-text
+                .mypage-tab-content__item-link__body
+                  .mypage-tab-content__item-link__body--text
                     サービススタートしました。
-                    %time
-                      %i.icon-time <span>7日前</span>
+                  %time
+                    %i.icon-time <span>7日前</span>
                 %i.icon-arrow-right
-            %li
-              =link_to '一覧を見る' ,'#', class: 'mypage-view-content'
+            %li.mypage-view-content
+              =link_to '一覧を見る' , '#'
           %ul.mypage-tab-content__item-list
             %li.mypage-tab-content__not-found
               現在、やることリストはありません
@@ -110,11 +147,11 @@
             %h3
               = link_to '過去の取引', '#', data: {toggle: 'tab'}  
         .mypage-tab-content
-          %ul.mypage-tab-content__item-list
-            %li.mypage-tab-content__not-found
+          %ul.mypage-tab-content__item-left
+            %li.mypage-tab-content__item-left__not-found
               取引中の商品がありません
-          %ul.mypage-tab-content__item-list
-            %li.mypage-tab-content__not-found
+          %ul.mypage-tab-content__item-right
+            %li.mypage-tab-content__item-right__not-found
               過去に取引した商品がありません
             
         
