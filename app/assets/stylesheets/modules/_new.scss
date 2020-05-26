@@ -1,0 +1,286 @@
+body {
+  background-color: #eeffff;
+}
+
+.header{
+  img {
+    padding: 20px;
+  }
+}
+.contents {
+  height: 100%;
+  width: 700px;
+  background-color: #ffffff;
+  margin: auto;
+  padding-top: 10px;
+  
+  span{
+    color: red;
+  }
+
+  .item__infomation{
+    width: 400px;
+    margin: auto;
+    font-size: 17px;
+
+    .images{
+      padding-top: 20px;
+      height: 100px;
+ 
+      &__title {
+        margin-bottom: 10px;
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__img {
+        input[type='file'] {
+              width: 400px;
+              height: 100px;
+              background-color: #DCDCDC;
+        }
+      }
+    }
+    .name{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .description{
+      height: 400px;
+      
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 300px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .category{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .brand{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .condition{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+  }
+  .delivery{
+    width: 400px;
+    margin: auto;
+    font-size: 17px;
+
+    .fee{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .area{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .days{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+  }
+  .selling{
+    width: 400px;
+    margin: auto;
+    font-size: 17px;
+
+    .price{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .commission{
+      height: 50px;
+      font-size: 15px;
+      color: gray;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .profits{
+      height: 50px;
+      font-size: 15px;
+      color: gray;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+  .exhibit{
+    width: 300px;
+    margin: auto;
+
+    .btn {
+      width: 100%;
+      margin-bottom: 20px;
+      display       : inline-block;
+      border-radius : 50%;
+      font-size     : 20pt;
+      text-align    : center;
+      cursor        : pointer;
+      padding       : 10px 10px; 
+      background    : #ccff99;
+      color         : #000000;
+      line-height   : 1em;
+      transition    : .3s;
+      box-shadow    : 3px 3px 3px #666666;
+      border        : 2px solid #ccff99;
+      &:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+        color         : #ccff99;     /* 背景色     */
+        background    : #000000;     /* 文字色     */
+      }
+    }
+  }
+  .return{
+    width: 50px;
+    margin: auto;
+    font-size: 15px;
+    padding-bottom: 20px;
+
+  }
+}
+
+.footer {
+  height: 50px;
+}

@@ -1,85 +1,88 @@
 .header
   %img{alt:'', height: '50', src: "/assets/logo.png"}
 .contents
-  .item
-    .item__images
+  .contents__note
+    <span>※</span>が付いたものは必須項目です。
+
+  .item__infomation
+    .images
       .images__title
-        出品画像 
-      .images__form
+        出品画像
+        %b
+          ※
       = form_with model: @image do |f|
+        .images__form
         = f.file_field :img
-    .item__name
+
+    .name
       .name__title
         商品名
-      .name__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .item__explain
-      .explain__title
+        %b
+          ※
+      %input.name__form{:name => 'name', :value => '', :placeholder => '15文字以内で入力', :type => 'name'}/
+
+    .description
+      .description__title
         商品の説明
-      .explain__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .item__category
+        %b
+          ※
+        %input.description__form{:name => 'description', :value => '', :placeholder => '商品の詳細について（200文字以内）', :type => 'description'}/
+    .category
       .category__title
         カテゴリー
-      .category__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .item__brand
+        %b
+          ※
+      %input.category__form{:name => 'category', :value => '', :placeholder => '10文字以内で入力', :type => 'category'}/
+    .brand
       .brand__title
         ブランド
-      .brand__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .item__status
-      .status__title
+      %input.brand__form{:name => 'brand', :value => '', :placeholder => '10文字以内で入力', :type => 'brand'}/
+    .condition
+      .condition__title
         商品の状態
-      .status__form
-      = form_with model: @item do |f|
-        = f.text_field :name
+        %b
+          ※
+      %input.condition__form{:name => 'condition', :value => '', :placeholder => '20文字以内で入力', :type => 'condition'}/
   .delivery
-    .delivery__fee
+    .fee
       .fee__title
         配送料の負担
-      .fee__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .delivery__area
+        %b
+          ※
+      %input.fee__form{:name => 'fee', :value => '', :placeholder => '', :type => 'fee'}/
+    .area
       .area__title
         発送元の地域
-      .area__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .delivery__days
+        %b
+          ※
+      %input.area__form{:name => 'area', :value => '', :placeholder => '', :type => 'area'}/
+    .days
       .days__title
         発送までの日数
-      .days__form
-      = form_with model: @item do |f|
-        = f.text_field :name
+        %b
+          ※
+      %input.days__form{:name => 'days', :value => '', :placeholder => '', :type => 'days'}/
   .selling
-    .selling__price
+    .price
       .price__title
         販売価格
-      .price__form
-      = form_with model: @item do |f|
-        = f.text_field :name
-    .selling__commission
+        %b
+          ※
+      %input.price__form{:name => 'price', :value => '', :placeholder => '', :type => 'price'}/
+    .commission
       %ul
         %li
           販売手数料（10％）
         %li
           _______
-    .selling__profits
+    .profits
       %ul
         %li
           販売利益
         %li
           _______
   .exhibit
-    .exhibit__button
-      出品する
+    %input{type: 'submit', value:"登録する", class: 'btn'}
   .return
-    .return__button
-      戻る
+    = link_to '戻る', "#", class: 'return__button'
 .footer
