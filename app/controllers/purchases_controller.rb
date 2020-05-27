@@ -9,4 +9,7 @@ class PurchasesController < ApplicationController
   def create
     
   end
+
+  private
+
 end

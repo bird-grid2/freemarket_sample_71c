@@ -12,8 +12,8 @@
   background-color: cyan;
   width: 80%;
   text-align: center;
+  margin: 0 auto;
   &__container{
-    margin: 0 auto;
     &__top{
       height: 80px;
       width: 50%;
@@ -121,14 +121,17 @@
       top: 30px;
       position: relative;
       &__btn{
-        top: 20px;
-        font-weight: bold;
-        color: white;
-        background-color: gray;
-        height: 50px;
-        width: 200px;
-        margin: 0 auto;
-        line-height: 50px;
+        &--send{
+          top: 20px;
+          font-weight: bold;
+          font-size: large;
+          color: white;
+          background-color: gray;
+          height: 50px;
+          width: 200px;
+          margin: 0 auto;
+          line-height: 50px;
+        }
       }
     }
   }
