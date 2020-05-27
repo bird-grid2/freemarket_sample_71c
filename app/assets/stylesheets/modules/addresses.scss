@@ -1,0 +1,62 @@
+.index{
+  &__middle{
+    margin: 0 auto;
+    width: 60%;
+    &__name{
+      display: flex;
+      height: 50px;
+      line-height: 50px;
+      &__family{
+        width: 100px;
+      }
+      &__first{
+        width: 100px;
+      }
+    }
+    &__name-kana{
+      height: 50px;
+      line-height: 50px;
+      display: flex;
+      &__family{
+        width: 100px;
+      }
+      &__first{
+        width: 100px;
+      }
+    }
+    &__post-code{
+      height: 50px;
+      line-height: 50px;
+
+    }
+    &__post-prefecture{
+      height: 50px;
+      line-height: 50px;
+
+    }
+    &__post-city{
+      height: 50px;
+      line-height: 50px;
+
+    }
+    &__address1{
+      height: 50px;
+      line-height: 50px;
+
+    }
+    &__address2{
+      height: 50px;
+      line-height: 50px;
+
+    }
+    &__phone{
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+  &__bottom{
+    &__btn{
+
+    }
+  }
+}

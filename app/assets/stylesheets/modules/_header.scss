@@ -1,0 +1,7 @@
+.header{
+  text-align: center;
+  &__img{
+    width: 30%;
+    filter: invert(88%) sepia(100%) saturate(2929%) hue-rotate(104deg) brightness(99%) contrast(104%);
+  }
+}
