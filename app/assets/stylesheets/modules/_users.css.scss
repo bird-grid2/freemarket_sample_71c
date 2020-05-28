@@ -100,8 +100,8 @@ a:hover {
         font-weight: bold;
       }
       &__nav__list {
-        display: block;
         &--item {
+          position: relative;
           display: block;
           min-height: 48px;
           padding: 16px;
@@ -110,7 +110,7 @@ a:hover {
           color: #333;
           padding: 16px;
           border-bottom: 1px solid #eee;
-          .icon-arrow-right {
+          .fa-angle-right {
             position: absolute;
             top: 50%;
             right: 16px;
@@ -122,14 +122,28 @@ a:hover {
         .active {
           background: #eee;
           font-weight: 600;
+          color: #333;
         }
       }
     }
   }
   .mypage-content {
     width : 100%;
-    
+    .logout-btn {
+      display: block;
+      width: 100%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: all ease-out .3s;
+      cursor: pointer;
+      text-align: center;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff
+    }
     .mypage-user-icon {
+      position: relative;
       height: 160px;
       padding: 20px;
       background: image-url('icon_image.jpg');
@@ -137,13 +151,26 @@ a:hover {
       background-size: cover;
       a {
         display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: #333;
         text-align: center;
-        margin-top:  25px;
-        color: #3333;
+      }
+      figure {
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
       }
       &__name {
         margin: 8px 0 0;
         font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
       }
       &__number {
         margin: 8px 0 0;
@@ -190,13 +217,14 @@ a:hover {
       .mypage-tab-content {
         li { border-bottom: 1px solid #eee; }
         &__item-link {
+          position: relative;
           display: block;
           min-height: 80px;
           padding: 16px;
+          color: #333;
           &__body{
             margin: 0 40px 0 68px;
-            &--text {
-              color: #333;
+            &--text {        
               overflow: hidden;
               display: block;
               max-height: 4.4em;
@@ -205,21 +233,21 @@ a:hover {
               time {
                 display: inline-block;
                 color: #888;
-                .icon-time::before {
-                  margin: 0 8px 0 0;
-                  
+                .fa-clock {
+                  font-size: 16px;
+                  vertical-align: middle;
                   span {
                   vertical-align: middle;
                   }
                 }
               }
             }
-            .icon-arrow-right {
-              position: absolute;
-              top: 50%;
-              right: 16px;
-              transform: translate(0, -50%);
-            }
+          }
+          .fa-angle-right {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translate(0, -50%);
           }
         }
         .mypage-view-content {
