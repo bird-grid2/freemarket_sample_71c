@@ -129,18 +129,23 @@ a:hover {
   }
   .mypage-content {
     width : 100%;
-    .logout-btn {
-      display: block;
-      width: 100%;
-      line-height: 48px;
-      font-size: 14px;
-      border: 1px solid transparent;
-      transition: all ease-out .3s;
-      cursor: pointer;
-      text-align: center;
-      background: #ea352d;
-      border: 1px solid #ea352d;
-      color: #fff
+    .mypage-logout-content {
+      background-color: #fff;
+      border-top: 1px solid #f5f5f5;
+      padding: 40px;
+      .logout-btn {
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff
+      }
     }
     .mypage-user-icon {
       position: relative;
