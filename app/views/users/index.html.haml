@@ -9,7 +9,7 @@
         新規会員登録
       .single-main_container_register
         .single-main_container_register_step1
-          =link_to "#", class: "btn-def--mail" do
+          =link_to new_user_path, class: "btn-def--mail" do
             %i.far.fa-envelope
             メールアドレスで登録する
           =link_to "#", class: "btn-def--facebook" do
@@ -18,4 +18,4 @@
           =link_to "#", class: "btn-def--google" do
             %i.fab.fa-google
             Googleで登録する
-  = render "footer"
+= render "shared/footer"
