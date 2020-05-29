@@ -3,81 +3,88 @@ body {
 }
 
 .header{
+  background-color: white;
+
   img {
     padding: 20px;
+
   }
 }
 .contents {
-  height: 100%;
   width: 700px;
   background-color: #ffffff;
   margin: auto;
-  padding-top: 10px;
-  
+  padding: 20px;
+  color: darkblue;
+  margin-top: 20px;
+
   span{
     color: red;
+    font-size: small;
   }
 
-  .item__infomation{
+  .item-infomation{
     width: 400px;
     margin: auto;
-    font-size: 17px;
+    padding-top: 30px;
 
     .images{
       padding-top: 20px;
-      height: 100px;
+      height: 230px;
  
       &__title {
-        margin-bottom: 10px;
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
+        .p{
+          font-size: 12px;
+          margin: 5px;
         }
       }
-      &__img {
-        input[type='file'] {
-              width: 400px;
-              height: 100px;
-              background-color: #DCDCDC;
+      &__form {
+        font-size: 10px;
+        padding: 5px;
+        display: block;
+
+        .upload-images{
+          display: block;
+          width: 400px;
+          height: 150px;
+          background-color: #BBBBBB;
+          position: absolute;
+          img{
+            position: relative;
+            margin-top: 15%;
+            margin-left: 45%;
+          }
         }
       }
     }
+
     .name{
       height: 100px;
+      padding-top: 10px;
 
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
+
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
     .description{
-      height: 400px;
+      height: 270px;
       
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
-        height: 300px;
+        height: 200px;
         width: 400px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
@@ -86,17 +93,12 @@ body {
 
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
@@ -105,17 +107,12 @@ body {
 
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
@@ -124,103 +121,78 @@ body {
 
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+        padding: 5px;
       }
     }
   }
   .delivery{
     width: 400px;
     margin: auto;
-    font-size: 17px;
 
-    .fee{
+    .postage {
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
-
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
-        width: 400px;
+        width: 300px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
-    .area{
+    .prefectures{
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
         
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
-        width: 400px;
+        width: 300px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
-    .days{
+    .shipping_days{
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
         
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
-        width: 400px;
+        width: 300px;
         font-size: 15px;
+        padding: 5px;
       }
     }
   }
   .selling{
     width: 400px;
     margin: auto;
-    font-size: 17px;
 
     .price{
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
-        
-        b{
-          padding: 5px;
-          font-size: 10px;
-          color: red;
-        }
       }
       &__form {
         height: 30px;
-        width: 400px;
+        width: 300px;
         font-size: 15px;
+        padding: 5px;
       }
     }
 
@@ -228,6 +200,7 @@ body {
       height: 50px;
       font-size: 15px;
       color: gray;
+      margin: 30px;
 
       ul {
         display: flex;
@@ -239,6 +212,7 @@ body {
       height: 50px;
       font-size: 15px;
       color: gray;
+      margin: 30px;
 
       ul {
         display: flex;
@@ -247,40 +221,43 @@ body {
     }
   }
   .exhibit{
-    width: 300px;
+    width: 500px;
     margin: auto;
+    padding: 20px;
 
     .btn {
       width: 100%;
-      margin-bottom: 20px;
+      height: 60px;
+      margin: auto;
       display       : inline-block;
-      border-radius : 50%;
-      font-size     : 20pt;
+      font-size     : 17pt;
       text-align    : center;
       cursor        : pointer;
       padding       : 10px 10px; 
-      background    : #ccff99;
-      color         : #000000;
+      background    : #00ccff;
+      color         : white;
+      font-style: normal;
+      font-weight: bold;
       line-height   : 1em;
       transition    : .3s;
-      box-shadow    : 3px 3px 3px #666666;
-      border        : 2px solid #ccff99;
+      box-shadow    : 4px 4px 4px #DDDDDD;
+      border        : 2px solid #DDDDDD;
       &:hover {
-        box-shadow    : none;        /* カーソル時の影消去 */
-        color         : #ccff99;     /* 背景色     */
-        background    : #000000;     /* 文字色     */
+        box-shadow    : none; 
+        color         : #ccff99;
+        background    : #BBBBBB;
       }
     }
   }
   .return{
-    width: 50px;
+    width: 30px;
+    height: 50px;
     margin: auto;
     font-size: 15px;
-    padding-bottom: 20px;
-
+    padding: 50px;
   }
 }
 
 .footer {
-  height: 50px;
+  height: 200px;
 }

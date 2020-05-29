@@ -1,88 +1,99 @@
 .header
   %img{alt:'', height: '50', src: "/assets/logo.png"}
+
 .contents
+
   .contents__note
     <span>※</span>が付いたものは必須項目です。
-
-  .item__infomation
+  .item-infomation
     .images
       .images__title
-        出品画像
-        %b
-          ※
-      = form_with model: @image do |f|
-        .images__form
-        = f.file_field :img
-
+        出品画像<span>※</span>
+        .p 最大5枚までアップロードできます
+      .images__form
+        .images__prev
+        .images__label
+          .hidden-content
+          = form_with model:@item, local:true do |form|
+            = form.fields_for :images do |f|
+              %label{for: "item_image", class:'upload-images'}
+                = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
+                %img{alt:'', height: '25', src: "/assets/icon_camera.png"}
+                
     .name
       .name__title
-        商品名
-        %b
-          ※
-      %input.name__form{:name => 'name', :value => '', :placeholder => '15文字以内で入力', :type => 'name'}/
+        商品名<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :name, :placeholder => '15文字以内で入力してください', :class => 'name__form', :size => '60'
 
     .description
       .description__title
-        商品の説明
-        %b
-          ※
-        %input.description__form{:name => 'description', :value => '', :placeholder => '商品の詳細について（200文字以内）', :type => 'description'}/
+        商品の説明<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                      （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
+
     .category
       .category__title
-        カテゴリー
-        %b
-          ※
-      %input.category__form{:name => 'category', :value => '', :placeholder => '10文字以内で入力', :type => 'category'}/
+        カテゴリー<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :category, :placeholder => '10文字以内で入力してください', :class => 'category__form', :size => '60'
+
     .brand
       .brand__title
         ブランド
-      %input.brand__form{:name => 'brand', :value => '', :placeholder => '10文字以内で入力', :type => 'brand'}/
+      = form_with model: @item do |form|
+        = form.text_field :brand, :placeholder => '10文字以内で入力してください', :class => 'brand__form', :size => '60'
+
     .condition
       .condition__title
-        商品の状態
-        %b
-          ※
-      %input.condition__form{:name => 'condition', :value => '', :placeholder => '20文字以内で入力', :type => 'condition'}/
+        商品の状態<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
+
   .delivery
-    .fee
-      .fee__title
-        配送料の負担
-        %b
-          ※
-      %input.fee__form{:name => 'fee', :value => '', :placeholder => '', :type => 'fee'}/
-    .area
-      .area__title
-        発送元の地域
-        %b
-          ※
-      %input.area__form{:name => 'area', :value => '', :placeholder => '', :type => 'area'}/
-    .days
-      .days__title
-        発送までの日数
-        %b
-          ※
-      %input.days__form{:name => 'days', :value => '', :placeholder => '', :type => 'days'}/
+    .postage
+      .postage__title
+        配送料の負担<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
+
+    .prefectures
+      .prefectures__title
+        発送元の地域<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
+
+    .shipping_days
+      .shipping_days__title
+        発送までの日数<span>※</span>
+      = form_with model: @item do |form|
+        = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
+
   .selling
     .price
       .price__title
-        販売価格
-        %b
-          ※
-      %input.price__form{:name => 'price', :value => '', :placeholder => '', :type => 'price'}/
+        販売価格（円）<span>※</span>
+      = form_with model: @item do |form|
+        = form.number_field :price, :placeholder => '数字で入力してください', :class => 'price__form', :size => '60'
+
     .commission
       %ul
         %li
           販売手数料（10％）
         %li
           _______
+
     .profits
       %ul
         %li
           販売利益
         %li
           _______
+
   .exhibit
-    %input{type: 'submit', value:"登録する", class: 'btn'}
+    %input{type: 'submit', value:"出品する", class: 'btn'}
+
   .return
     = link_to '戻る', "#", class: 'return__button'
+    
 .footer
