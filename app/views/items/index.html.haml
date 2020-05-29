@@ -1,0 +1,135 @@
+%header
+  = render 'header'
+.main-contents
+  %section.top-visual
+    .top-visual__container
+      %h2.top-visual__container__headline <br>人生を変えるフリマアプリ
+      %p.top-visual__container__text FURIMAは誰でも簡単に出品・購入できる<br>フリマアプリです
+      .downloard-app
+        = link_to '#', class: 'downloard-app__btn' do
+          = image_tag 'download/app-store.svg'
+        = link_to '#', class: 'downloard-app__btn' do
+          = image_tag 'download/google-play.svg'
+  %section.reasons-for-selected
+    %h2.reasons-for-selected__title FURIMAが選ばれる3つの理由
+    %ul.reasons
+      %li.reason
+        = image_tag 'pict/pict-reason-01.jpg', class: 'reason__image'
+        %span.index 1
+        %h3.reason__headline <span>3分</span> ですぐに出品
+        %p.reason__text スマホで入力するだけで簡単に出品できる！
+      %li.reason
+        = image_tag 'pict/pict-reason-02.jpg', class: 'reason__image'
+        %span.index 2
+        %h3.reason__headline <span>シンプル</span> で使いやすい
+        %p.reason__text めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.reason.cheap
+        = image_tag 'pict/pict-reason-03.jpg', class: 'reason__image'
+        %span.index 3
+        %h3.reason__headline 手数料 <span>業界最安</span>
+        %p.reason__text 最大3%でお得に出品&購入！
+  %section.middle-visual
+    .middle-visual__container
+      %h2.middle-visual__container__headline 会員数日本一位
+      %p.middle-visual__container__text FURIMAは、フリマアプリで最も人気。<br>出品・購入回数も業界最多です！<br>ほしかったあの商品に出会えるかもしれません。
+      .downloard-app
+        = link_to '#', class: 'downloard-app__btn' do
+          = image_tag 'download/app-store.svg'
+        = link_to '#', class: 'downloard-app__btn' do
+          = image_tag 'download/google-play.svg'
+  %section.helpful-functions
+    %h2.helpful-functions__title FURIMAの特徴
+    .functions
+      .function
+        %figure.function__image
+          = image_tag 'icon/icon-01.png'
+        %h3.function__title 簡単に売り買いできる
+        %p.function__text スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .function
+        %figure.function__image
+          = image_tag 'icon/icon-03.png'
+        %h3.function__title 売上金は即日振込みに対応
+        %p.function__text 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      .function
+        %figure.function__image
+          = image_tag 'icon/icon-04.png'
+        %h3.function__title 様々な支払いに対応
+        %p.function__text お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  %section.pickup
+    %h2.pickup__headline ピックアップカテゴリー
+    .pickup__contaner
+      = link_to '#', class: 'topic' do
+        %h3 新規投稿商品
+      .products
+        .product
+          = link_to '#' do
+            = image_tag 'product/product3'
+            .product__info
+              %h3.product__info__name puroduct3
+              .product__info__details
+                %ul
+                  %li 3000円
+                  %li.likes 0
+                %p （税込）
+        .product
+          = link_to '#' do
+            = image_tag 'product/product2'
+            .product__info
+              %h3.product__info__name puroduct2
+              .product__info__details
+                %ul
+                  %li 2000円
+                  %li.likes 0
+                %p （税込）
+        .product
+          = link_to '#' do
+            = image_tag 'product/product1'
+            .product__info
+              %h3.product__info__name puroduct1
+              .product__info__details
+                %ul
+                  %li 1000円
+                  %li.likes 0
+                %p （税込）
+  %section.pickup
+    %h2.pickup__headline ピックアップブランド
+    .pickup__contaner
+      = link_to '#', class: 'topic' do
+        %h3 アーカイバ
+      .products
+        .product
+          = link_to '#' do
+            = image_tag 'product/product3'
+            .product__info
+              %h3.product__info__name puroduct3
+              .product__info__details
+                %ul
+                  %li 3000円
+                  %li.likes 0
+                %p （税込）
+        .product
+          = link_to '#' do
+            = image_tag 'product/product2'
+            .product__info
+              %h3.product__info__name puroduct2
+              .product__info__details
+                %ul
+                  %li 2000円
+                  %li.likes 0
+                %p （税込）
+        .product
+          = link_to '#' do
+            = image_tag 'product/product1'
+            .product__info
+              %h3.product__info__name puroduct1
+              .product__info__details
+                %ul
+                  %li 1000円
+                  %li.likes 0
+                %p （税込）
+.appBanner
+.footer
+= link_to '#', class: 'publish-btn' do
+  .publish-btn__frame
+    %p 出品する
+    = image_tag 'icon/icon_camera.png'
