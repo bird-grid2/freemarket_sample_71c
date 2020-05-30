@@ -1,0 +1,7 @@
+.main_container
+  %main.mypage-container
+    = render 'side-bar'
+    .mypage-content
+      .mypage-logout-content
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-btn"
+= render 'layouts/footer'
