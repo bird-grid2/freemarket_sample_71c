@@ -78,4 +78,3 @@ gem 'devise'
 gem 'bcrypt'
 gem 'active_hash'
 gem 'haml-rails'
-
