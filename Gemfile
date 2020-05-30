@@ -75,8 +75,8 @@ end
 
 gem 'haml-rails'
 gem 'erb2haml'
-gem 'font-awesome-sass'
 gem 'devise'
 gem 'bcrypt'
 gem 'active_hash'
 gem 'haml-rails'
+gem 'font-awesome-sass'
