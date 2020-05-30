@@ -26,7 +26,7 @@ time, mark, audio, video {
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+	display: block;
 }
 
 html {
@@ -34,7 +34,7 @@ html {
 }
 
 body {
-  line-height: 1;
+	line-height: 1;
 	/* 付け足した */
 	font-size: 1.4rem;
 }
@@ -50,6 +50,6 @@ q:before, q:after {
 	content: none;
 }
 table {
-  border-collapse: collapse;
+	border-collapse: collapse;
 	border-spacing: 0;
 }
