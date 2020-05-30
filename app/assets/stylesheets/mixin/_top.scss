@@ -1,0 +1,37 @@
+@mixin visualStyle(){
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+@mixin downloadApp(){
+  margin-top: 24px;
+  &__btn{
+    margin-right: 10px;
+    img{
+      width: 180px;
+    }
+  }
+}
+
+@mixin titleStyle(){
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  padding-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  position: relative;
+  &:after{
+    content: "";
+    width: 70px;
+    height: 4px;
+    background-color: $mainColor;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
