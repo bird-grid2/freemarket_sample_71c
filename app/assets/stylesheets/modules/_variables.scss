@@ -1,14 +1,37 @@
-@mixin purchase-wrapper{
-  width: 100vw;
-  height: 100vh;
+@mixin header-rogo{
+  height: 10%;
+  width: 15%;
 }
+
+@mixin arbitrary{
+  margin: 0 0 0 8px;
+  width: 40px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+
+@mixin address-middle{
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+@mixin border-top{
+  border-top: 1px solid $border-color;
+}
+
 
 @mixin address-wrapper{
   width: 100vw;
 }
 
 @mixin bottom{
-  height: 100px;
+  height: 10%;
   position: relative;
 }
 
@@ -21,11 +44,12 @@
   width: 200px;
   margin: 0 auto;
   line-height: 50px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 @mixin container{
-  height: 95%;
+  margin-top: 10px;
+  height: 80%;
   margin: 0 auto;
   background-color: white;
   width: 50%;
@@ -43,12 +67,20 @@
 $border-color: #c0c0c0;
 
 @mixin index{
-  height: 90%;
+  height: 100%;
+  position: relative;
   text-align: center;
-  background-color: cyan;
+  background-color: #11FFFF;
 }
 
-
+@mixin address-top{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 60%;
+}
 
 @mixin top{
   margin: 0 auto;
@@ -70,16 +102,6 @@ $border-color: #c0c0c0;
   font-weight: bold;
 }
 
-@mixin address-middle{
-  margin: 0 auto;
-  font-weight: bold;
-}
-
-
-
-@mixin border-top{
-  border-top: 1px solid $border-color;
-}
 
 @mixin upper{
   display: flex;
@@ -106,14 +128,9 @@ $border-color: #c0c0c0;
   margin-top: 10px;
 }
 
-@mixin arbitrary{
-  margin: 0 0 0 8px;
-  width: 40px;
-  padding: 2px 4px;
-  border-radius: 2px;
-  color: #fff;
-  font-size: 12px;
-  vertical-align: top;
-  background-color: #ccc;
-  margin-top: 10px;
+
+
+@mixin purchase-wrapper{
+  width: 100vw;
+  height: 100vh;
 }
