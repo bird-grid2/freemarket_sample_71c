@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :family_name_kana
       t.string :first_name_kana
-      t.string :birthday
+      t.date :birthday
 
       t.timestamps
     end

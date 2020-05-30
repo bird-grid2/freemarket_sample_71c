@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_29_171737) do
     t.string "first_name"
     t.string "family_name_kana"
     t.string "first_name_kana"
-    t.string "birthday"
+    t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
