@@ -5,6 +5,14 @@ lock '3.14.0'
 # Capistranoのログの表示に利用する
 set :application, 'freemarket_sample_71c'
 
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  basic_auth_id: ENV["BASIC_AUTH_USER"], 
+  basic_auth_password: ENV["BASIC_AUTH_PASSWORD"]
+}
+
+
 # どのリポジトリからアプリをpullするかを指定する
 set :repo_url,  'git@github.com:bird-grid2/freemarket_sample_71c.git'
 
@@ -31,4 +39,16 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+
+  desc 'upload secrets.yml'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+    end
+  end
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
 end
