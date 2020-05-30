@@ -1,4 +1,8 @@
-@import "modules/reset";
+@import 'reset';
+@import "modules/variable";
+@import "mixin/top";
+@import "modules/header";
+@import "modules/top";
 @import "modules/items";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
