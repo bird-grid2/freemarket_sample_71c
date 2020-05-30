@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.2'
@@ -70,6 +73,9 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'font-awesome-sass'
 gem 'devise'
 gem 'bcrypt'
 gem 'active_hash'
