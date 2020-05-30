@@ -1,62 +1,147 @@
+@import "variables.scss";
+
+.wrapper-a{
+  @include address-wrapper;
+}
 .index{
-  &__middle{
-    margin: 0 auto;
-    width: 60%;
-    &__name{
-      display: flex;
-      height: 50px;
-      line-height: 50px;
-      &__family{
-        width: 100px;
-      }
-      &__first{
-        width: 100px;
+  @include index;
+  &__container{
+    @include container;
+    &__top{
+      @include top;
+      &__title{
+        @include title;
       }
     }
-    &__name-kana{
-      height: 50px;
-      line-height: 50px;
-      display: flex;
-      &__family{
-        width: 100px;
+    &__middle{
+      @include address-middle;
+      width: 60%;
+      border-top: 1px solid $border-color;
+      &__name{
+        &__upper{
+          @include upper;
+          display: flex;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require
+          }
+        }
+        &__family{
+          @include name-box;
+        }
+        &__first{
+          @include name-box;
+        }
       }
-      &__first{
-        width: 100px;
+      &__name-kana{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__family{
+          @include name-box;
+        }
+        &__first{
+          @include name-box;
+        }
+      }
+      &__post-code{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+
+      }
+      &__prefecture{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__city{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__address1{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__address2{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include arbitrary;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__phone{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include arbitrary;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
       }
     }
-    &__post-code{
-      height: 50px;
-      line-height: 50px;
-
-    }
-    &__post-prefecture{
-      height: 50px;
-      line-height: 50px;
-
-    }
-    &__post-city{
-      height: 50px;
-      line-height: 50px;
-
-    }
-    &__address1{
-      height: 50px;
-      line-height: 50px;
-
-    }
-    &__address2{
-      height: 50px;
-      line-height: 50px;
-
-    }
-    &__phone{
-      height: 50px;
-      line-height: 50px;
-    }
-  }
-  &__bottom{
-    &__btn{
-
+    &__bottom{
+      &__btn{
+        @include btn;
+      }
     }
   }
 }
