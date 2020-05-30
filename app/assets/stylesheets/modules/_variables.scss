@@ -1,5 +1,7 @@
+$header-rogo-height: 10%;
+
 @mixin header-rogo{
-  height: 10%;
+  height: $header-rogo-height;
   width: 15%;
 }
 
@@ -47,10 +49,17 @@
   margin-top: 20px;
 }
 
+@mixin purchase-container{
+  margin-top: 10px;
+  height: 90%;
+  margin: 0 auto;
+  background-color: white;
+  width: 50%;
+}
+
 @mixin container{
   margin-top: 10px;
-  height: 80%;
-  margin: 0 auto;
+  height: 100%;
   background-color: white;
   width: 50%;
 }
@@ -67,8 +76,7 @@
 $border-color: #c0c0c0;
 
 @mixin index{
-  height: 100%;
-  position: relative;
+  height: calc(100% - #{$header-rogo-height});
   text-align: center;
   background-color: #11FFFF;
 }
@@ -133,4 +141,8 @@ $border-color: #c0c0c0;
 @mixin purchase-wrapper{
   width: 100vw;
   height: 100vh;
+}
+
+@mixin purchase-width{
+  width: 60%;
 }

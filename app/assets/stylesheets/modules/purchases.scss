@@ -12,7 +12,7 @@
 .index{
   @include index;
   &__container{
-    @include container;
+    @include purchase-container;
     &__top{
       @include top;
       &__title{
@@ -28,23 +28,21 @@
         justify-content: center;
         margin: 0 auto;
         height: 40%;
-        width: 60%;
+        @include purchase-width;
         &__all{
           display: flex;
+          @include purchase-width;
           margin: 0 auto;
           &__img{
-            background-color: blue;
-            width: 30%;
+            width: 40%;
           }
           &__right-content{
 
             width: 70%;
             &__name{
-              background-color: red;
               height: 50%;
             }
             &__price{
-              background-color: green;
               height: 50%;
             }
           }
@@ -54,50 +52,81 @@
         @include border-top;
         position: relative;
         height: 20%;
-        width: 60%;
+        @include purchase-width;
         margin: 0 auto;
-        &__upper{
-          display: flex;
-          &--left{
+        &__all{
+          position: absolute;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          left: 15%;
+          &__upper{
+            margin: 0 auto;
+            display: flex;
+            &--left{
+            }
+            &--right{
+              margin: 0 0 0 auto;
+              font-size: x-large;
+            }
           }
-          &--right{
-            margin: 0 0 0 auto;
-            font-size: x-large;
+          &--bottom{
           }
-        }
-        &--bottom{
-          background-color: green;
         }
       }
       &__method{
         height: 20%;
-        width: 60%;
+        @include purchase-width;
         display: flex;
         margin: 0 auto;
         position: relative;
         @include border-top;
-        &--upper{
-
-        }
-        &--lower{
-          margin: 0 0 0 auto;
+        &__all{
+          display: flex;
+          position: absolute;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          left: 15%;
+          &--upper{
+            text-align: left;
+            @include purchase-width;
+          }
+          &--lower{
+            margin: 0 0 0 auto;
+          }
         }
       }
       &__address{
         @include border-top;
         height: 20%;
-        width: 60%;
+        @include purchase-width;
         margin: 0 auto;
-        position: relative;
-        &--upper{
-          position: absolute;
-          left:20px;
-          top: 20px;
-        }
-        &--lower{
-          position: absolute;
-          left: 20px;
-          top: 50px;
+        &__all{
+          vertical-align: middle;
+          margin: 0 auto;
+          display: flex;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          &--upper{
+            padding: 30px 0 0 0;
+            vertical-align: middle;
+            text-align: left;
+            top: 20px;
+            height:100px;
+            width: 30%;
+          }
+          &--lower{
+            padding: 30px 0 0 0;
+            vertical-align: middle;
+            text-align: left;
+            top: 20px;
+            height:100px;
+            width: 70%;
+            left: 20px;
+            top: 50px;
+          }
         }
       }
     }
