@@ -73,8 +73,8 @@ group :production do
   gem 'unicorn', '5.4.1'
 end
 gem 'erb2haml'
-gem 'font-awesome-sass'
 gem 'devise'
 gem 'bcrypt'
 gem 'active_hash'
 gem 'haml-rails'
+gem 'font-awesome-sass'

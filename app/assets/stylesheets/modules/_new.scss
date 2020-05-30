@@ -1,0 +1,266 @@
+body {
+  background-color: #eeffff;
+}
+
+.header{
+  background-color: white;
+
+  img {
+    padding: 20px;
+
+  }
+}
+.contents {
+  width: 700px;
+  background-color: #ffffff;
+  margin: auto;
+  padding: 20px;
+  color: darkblue;
+  margin-top: 20px;
+
+  span{
+    color: red;
+    font-size: small;
+  }
+
+  .item-infomation{
+    width: 400px;
+    margin: auto;
+    padding-top: 30px;
+
+    .images{
+      padding-top: 20px;
+      height: 230px;
+ 
+      &__title {
+        p{
+          font-size: 12px;
+          margin: 5px;
+        }
+      }
+      &__form {
+        font-size: 10px;
+        padding: 5px;
+        display: block;
+
+        .upload-images{
+          display: block;
+          width: 400px;
+          height: 150px;
+          background-color: #BBBBBB;
+          background-image:
+          radial-gradient(black 30%, transparent 30%);
+          background-size: 3px 3px;
+          position: absolute;
+          img{
+            position: relative;
+            margin-top: 15%;
+            margin-left: 45%;
+          }
+        }
+      }
+    }
+
+    .name{
+      height: 100px;
+      padding-top: 10px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .description{
+      height: 270px;
+      
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 200px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .category{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .brand{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .condition{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+  }
+  .delivery{
+    width: 400px;
+    margin: auto;
+
+    .postage {
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 30px;
+        width: 300px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .prefectures{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+      }
+      &__form {
+        height: 30px;
+        width: 300px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .shipping_days{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+      }
+      &__form {
+        height: 30px;
+        width: 300px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+  }
+  .selling{
+    width: 400px;
+    margin: auto;
+
+    .price{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+      }
+      &__form {
+        height: 30px;
+        width: 300px;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+
+    .commission{
+      height: 50px;
+      font-size: 15px;
+      color: gray;
+      margin: 30px;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .profits{
+      height: 50px;
+      font-size: 15px;
+      color: gray;
+      margin: 30px;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+  .exhibit{
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+
+    .btn {
+      width: 100%;
+      height: 60px;
+      margin: auto;
+      display       : inline-block;
+      font-size     : 17pt;
+      text-align    : center;
+      cursor        : pointer;
+      padding       : 10px 10px; 
+      background    : #00ccff;
+      color         : white;
+      font-style: normal;
+      font-weight: bold;
+      line-height   : 1em;
+      transition    : .3s;
+      box-shadow    : 4px 4px 4px #DDDDDD;
+      border        : 2px solid #DDDDDD;
+      &:hover {
+        box-shadow    : none; 
+        color         : #ccff99;
+        background    : #BBBBBB;
+      }
+    }
+  }
+  .return{
+    width: 30px;
+    height: 50px;
+    margin: auto;
+    font-size: 15px;
+    padding: 50px;
+  }
+}
+
+.footer {
+  height: 200px;
+}
