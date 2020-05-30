@@ -224,9 +224,12 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+
+
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -270,8 +273,10 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+
   devise
   erb2haml
+
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.5)
