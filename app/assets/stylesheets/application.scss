@@ -1,4 +1,6 @@
 @import 'reset';
+@import "modules/variables";
+@import "mixin/purchase";
 @import 'modules/purchases';
-@import 'modules/header';
+@import 'modules/purchase-header';
 @import 'modules/addresses';
