@@ -3,6 +3,7 @@ body {
 }
 
 .header{
+<<<<<<< HEAD
   background-color: white;
 
   img {
@@ -69,15 +70,73 @@ body {
         margin-bottom: 10px;
       }
 
+=======
+  img {
+    padding: 20px;
+  }
+}
+.contents {
+  height: 100%;
+  width: 700px;
+  background-color: #ffffff;
+  margin: auto;
+  padding-top: 10px;
+  
+  span{
+    color: red;
+  }
+
+  .item__infomation{
+    width: 400px;
+    margin: auto;
+    font-size: 17px;
+
+    .images{
+      padding-top: 20px;
+      height: 100px;
+ 
+      &__title {
+        margin-bottom: 10px;
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__img {
+        input[type='file'] {
+              width: 400px;
+              height: 100px;
+              background-color: #DCDCDC;
+        }
+      }
+    }
+    .name{
+      height: 100px;
+
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+>>>>>>> c544bdb... span ok
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+<<<<<<< HEAD
         padding: 5px;
+=======
+>>>>>>> c544bdb... span ok
       }
     }
 
     .description{
+<<<<<<< HEAD
       height: 270px;
       
       &__title {
@@ -88,6 +147,23 @@ body {
         width: 400px;
         font-size: 15px;
         padding: 5px;
+=======
+      height: 400px;
+      
+      &__title {
+        margin-bottom: 10px;
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 300px;
+        width: 400px;
+        font-size: 15px;
+>>>>>>> c544bdb... span ok
       }
     }
 
@@ -96,12 +172,24 @@ body {
 
       &__title {
         margin-bottom: 10px;
+<<<<<<< HEAD
+=======
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+>>>>>>> c544bdb... span ok
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+<<<<<<< HEAD
         padding: 5px;
+=======
+>>>>>>> c544bdb... span ok
       }
     }
 
@@ -110,12 +198,24 @@ body {
 
       &__title {
         margin-bottom: 10px;
+<<<<<<< HEAD
+=======
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+>>>>>>> c544bdb... span ok
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+<<<<<<< HEAD
         padding: 5px;
+=======
+>>>>>>> c544bdb... span ok
       }
     }
 
@@ -124,24 +224,43 @@ body {
 
       &__title {
         margin-bottom: 10px;
+<<<<<<< HEAD
+=======
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+>>>>>>> c544bdb... span ok
       }
       &__form {
         height: 30px;
         width: 400px;
         font-size: 15px;
+<<<<<<< HEAD
         padding: 5px;
+=======
+>>>>>>> c544bdb... span ok
       }
     }
   }
   .delivery{
     width: 400px;
     margin: auto;
+<<<<<<< HEAD
 
     .postage {
+=======
+    font-size: 17px;
+
+    .fee{
+>>>>>>> c544bdb... span ok
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
+<<<<<<< HEAD
       }
       &__form {
         height: 30px;
@@ -152,11 +271,29 @@ body {
     }
 
     .prefectures{
+=======
+
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .area{
+>>>>>>> c544bdb... span ok
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
         
+<<<<<<< HEAD
       }
       &__form {
         height: 30px;
@@ -167,35 +304,82 @@ body {
     }
 
     .shipping_days{
+=======
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+      }
+    }
+
+    .days{
+>>>>>>> c544bdb... span ok
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
         
+<<<<<<< HEAD
       }
       &__form {
         height: 30px;
         width: 300px;
         font-size: 15px;
         padding: 5px;
+=======
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+>>>>>>> c544bdb... span ok
       }
     }
   }
   .selling{
     width: 400px;
     margin: auto;
+<<<<<<< HEAD
+=======
+    font-size: 17px;
+>>>>>>> c544bdb... span ok
 
     .price{
       height: 100px;
 
       &__title {
         margin-bottom: 10px;
+<<<<<<< HEAD
       }
       &__form {
         height: 30px;
         width: 300px;
         font-size: 15px;
         padding: 5px;
+=======
+        
+        b{
+          padding: 5px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+      &__form {
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+>>>>>>> c544bdb... span ok
       }
     }
 
@@ -203,7 +387,10 @@ body {
       height: 50px;
       font-size: 15px;
       color: gray;
+<<<<<<< HEAD
       margin: 30px;
+=======
+>>>>>>> c544bdb... span ok
 
       ul {
         display: flex;
@@ -215,7 +402,10 @@ body {
       height: 50px;
       font-size: 15px;
       color: gray;
+<<<<<<< HEAD
       margin: 30px;
+=======
+>>>>>>> c544bdb... span ok
 
       ul {
         display: flex;
@@ -224,6 +414,7 @@ body {
     }
   }
   .exhibit{
+<<<<<<< HEAD
     width: 500px;
     margin: auto;
     padding: 20px;
@@ -249,18 +440,54 @@ body {
         box-shadow    : none; 
         color         : #ccff99;
         background    : #BBBBBB;
+=======
+    width: 300px;
+    margin: auto;
+
+    .btn {
+      width: 100%;
+      margin-bottom: 20px;
+      display       : inline-block;
+      border-radius : 50%;
+      font-size     : 20pt;
+      text-align    : center;
+      cursor        : pointer;
+      padding       : 10px 10px; 
+      background    : #ccff99;
+      color         : #000000;
+      line-height   : 1em;
+      transition    : .3s;
+      box-shadow    : 3px 3px 3px #666666;
+      border        : 2px solid #ccff99;
+      &:hover {
+        box-shadow    : none;        /* カーソル時の影消去 */
+        color         : #ccff99;     /* 背景色     */
+        background    : #000000;     /* 文字色     */
+>>>>>>> c544bdb... span ok
       }
     }
   }
   .return{
+<<<<<<< HEAD
     width: 30px;
     height: 50px;
     margin: auto;
     font-size: 15px;
     padding: 50px;
+=======
+    width: 50px;
+    margin: auto;
+    font-size: 15px;
+    padding-bottom: 20px;
+
+>>>>>>> c544bdb... span ok
   }
 }
 
 .footer {
+<<<<<<< HEAD
   height: 200px;
+=======
+  height: 50px;
+>>>>>>> c544bdb... span ok
 }
