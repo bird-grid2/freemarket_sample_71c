@@ -10,7 +10,7 @@ a:hover {
 }
 
 .appBanner{
-  background: image-url('bg-appBanner-pict.jpg');
+  background-image: url('bg-appBanner-pict.jpg');
   position: relative;
   background-size: cover;
   background-position: center;
@@ -151,7 +151,7 @@ a:hover {
       position: relative;
       height: 160px;
       padding: 20px;
-      background: image-url('icon_image.jpg');
+      background-image: url('icon_image.jpg');
       background-repeat: no-repeat;
       background-size: cover;
       a {

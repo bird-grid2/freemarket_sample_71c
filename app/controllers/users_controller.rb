@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   def index
   end
 
-  def edit
+  def show
   end
 
-  def destroy
+  def edit
   end
 
   private
