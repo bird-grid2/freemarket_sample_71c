@@ -26,7 +26,7 @@
           .index__container__payment-info__method__all--upper
             支払方法
           .index__container__payment-info__method__all--lower
-            = form_with url: orders_index_path do
+            = form_with url: orders_path do
               :plain
                 <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
       .index__container__payment-info__address
