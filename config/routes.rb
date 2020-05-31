@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'purchases/index'
- root 'items#index'
+  get 'addresses/index'
+  get 'orders/index'
+ root 'orders#index'
 
  resources :items, only: [ :index, :show , :new ]
  resources :users, only: [ :index, :edit, :update, :show ]
-
+ resources :orders, only: [ :index]
 end
 
