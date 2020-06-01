@@ -6,9 +6,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-  end
-
   def show
   end
 
