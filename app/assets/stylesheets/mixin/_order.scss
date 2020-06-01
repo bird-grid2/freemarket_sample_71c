@@ -1,9 +1,4 @@
 
-@mixin header-rogo{
-  height: $header-rogo-height;
-  width: 15%;
-}
-
 @mixin arbitrary{
   margin: 0 0 0 8px;
   width: 40px;
@@ -16,19 +11,8 @@
   margin-top: 10px;
 }
 
-
-@mixin address-middle{
-  margin: 0 auto;
-  font-weight: bold;
-}
-
 @mixin border-top{
   border-top: 1px solid $border-color;
-}
-
-
-@mixin address-wrapper{
-  width: 100vw;
 }
 
 @mixin bottom{
@@ -48,21 +32,6 @@
   margin-top: 10px;
 }
 
-@mixin purchase-container{
-  margin-top: 10px;
-  height: 90%;
-  margin: 0 auto;
-  background-color: white;
-  width: 50%;
-}
-
-@mixin container{
-  margin-top: 10px;
-  height: 100%;
-  background-color: white;
-  width: 50%;
-}
-
 @mixin name-box{
   width: 70%;
   height: 40px;
@@ -72,43 +41,16 @@
   margin-top: 10px;
 }
 
-$border-color: #c0c0c0;
-
 @mixin index{
   height: calc(100% - #{$header-rogo-height});
   text-align: center;
   background-color: #11FFFF;
 }
 
-@mixin address-top{
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  width: 60%;
-}
-
-@mixin top{
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10%;
-  width: 60%;
-}
-
 @mixin title{
   font-size: 150%;
   font-weight: bold;
 }
-
-@mixin purchase-middle{
-  height: 80%;
-  margin: 0 auto;
-  font-weight: bold;
-}
-
 
 @mixin upper{
   display: flex;
@@ -133,13 +75,6 @@ $border-color: #c0c0c0;
   vertical-align: top;
   background-color: red;
   margin-top: 10px;
-}
-
-
-
-@mixin purchase-wrapper{
-  width: 100vw;
-  height: 100vh;
 }
 
 @mixin purchase-width{

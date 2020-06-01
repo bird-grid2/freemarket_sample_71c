@@ -1,18 +1,27 @@
 .wrapper-a{
-  @include address-wrapper;
+  width: 100vw;
 }
 .index{
   @include index;
   &__container{
-    @include container;
+    margin-top: 10px;
+    height: 100%;
+    background-color: white;
+    width: 50%;
     &__top{
-      @include address-top;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 60%;
       &__title{
         @include title;
       }
     }
     &__middle{
-      @include address-middle;
+      margin: 0 auto;
+      font-weight: bold;
       width: 60%;
       border-top: 1px solid $border-color;
       &__name{

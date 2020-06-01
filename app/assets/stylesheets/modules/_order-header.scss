@@ -1,6 +1,7 @@
 .header{
   text-align: center;
   &__img{
-    @include header-rogo;
+    height: $header-rogo-height;
+    width: 15%;
    }
 }

@@ -3,20 +3,32 @@
 }
 
 .wrapper{
-  @include purchase-wrapper;
+  width: 100vw;
+  height: 100vh;
 }
 .index{
   @include index;
   &__container{
-    @include purchase-container;
+    margin-top: 10px;
+    height: 90%;
+    margin: 0 auto;
+    background-color: white;
+    width: 50%;
     &__top{
-      @include top;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 10%;
+      width: 60%;
       &__title{
         @include title;
       }
     }
     &__payment-info{
-      @include purchase-middle;
+      height: 80%;
+      margin: 0 auto;
+      font-weight: bold;
       &__item{
         @include border-top;
         display: flex;
@@ -67,6 +79,7 @@
             }
           }
           &--bottom{
+            text-align: left;
           }
         }
       }
@@ -115,13 +128,9 @@
           }
           &--lower{
             padding: 30px 0 0 0;
-            vertical-align: middle;
-            text-align: left;
-            top: 20px;
+            text-align: right;
             height:100px;
             width: 70%;
-            left: 20px;
-            top: 50px;
           }
         }
       }
