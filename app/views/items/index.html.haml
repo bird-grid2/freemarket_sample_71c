@@ -1,5 +1,5 @@
 %header
-  = render 'header'
+  = render 'layouts/search-box'
 .main-contents
   %section.top-visual
     .top-visual__container
@@ -127,10 +127,6 @@
                   %li 1000円
                   %li.likes 0
                 %p （税込）
-.appBanner
-.footer
-= link_to '/items/new', class: 'publish-btn' do
-  .publish-btn__frame
-    %p 出品する
-    = image_tag 'icon/icon_camera.png'
+= render 'layouts/app-banner'
 = render 'layouts/footer'
+= render 'layouts/publish-btn'

@@ -1,8 +1,5 @@
 .single-container
-  %header.single-header
-    %h1.single-header_logo
-      = link_to root_path do
-        =image_tag("furima.svg")
+  = render "layouts/header"
   %main.single-main
     %section.single-main_container
       %h2.single-main_container_title
@@ -18,4 +15,4 @@
           =link_to "#", class: "btn-def--google" do
             %i.fab.fa-google
             Googleで登録する
-= render "shared/footer"
+= render "layouts/footer"

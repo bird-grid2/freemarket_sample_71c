@@ -1,4 +1,5 @@
-= header 'items/header'
+%header
+  = render 'layouts/search-box'
 .main_container
   %main.mypage-container
     = render 'side-bar'
@@ -74,4 +75,6 @@
           %ul.mypage-tab-content__item-right
             %li.mypage-tab-content__item-right__not-found
               過去に取引した商品がありません
+= render 'layouts/app-banner'
 = render 'layouts/footer'
+= render 'layouts/publish-btn'
