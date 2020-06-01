@@ -1,5 +1,5 @@
-.header
-  %img{alt:'', height: '90', src: "/assets/logo.png"}
+%header
+  = render "layouts/header"
 
 .contents
 
@@ -95,4 +95,4 @@
   .return
     = link_to '戻る', "#", class: 'return__button'
     
-.footer
+= render 'layouts/footer'
