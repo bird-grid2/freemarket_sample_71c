@@ -42,7 +42,7 @@
 }
 
 @mixin index{
-  height: calc(100% - #{$header-rogo-height});
+  height: 90%;
   text-align: center;
   background-color: #11FFFF;
 }
