@@ -5,4 +5,6 @@ Rails.application.routes.draw do
  resources :items, only: [ :show , :new ]
  resources :users, only: [ :index, :edit, :update, :show]
 
+ get 'addresses', to: 'users#new_address'
+
 end

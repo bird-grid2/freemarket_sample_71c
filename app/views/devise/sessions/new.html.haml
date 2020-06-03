@@ -1,17 +1,26 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%header
+  = render "layouts/header"
+%main.single-main-login
+  .login-panel
+    .login-no-account
+      %p アカウントをお持ちでない方はこちら
+      =link_to users_path, class: "btn-def--login" do
+        新規会員登録
+    .login-form-inner
+      =link_to "#", class: "btn-def--facebook" do
+        %i.fab.fa-facebook-square
+        %span<>
+        Facebookでログイン
+      = link_to "#", class: "btn-def--google" do
+        %i.fab.fa-google
+        %span<>
+        Googleでログイン
+    .login-form-inner
+      = form_with model: @user do |form|
+        .form-group
+          = form.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:'form-group__input'}
+        .form-group
+          = form.password_field :password,{autocomplete: "current-password",placeholder: "パスワード",class:'form-group__input',id:"password"}
+        .form-group
+          = form.submit 'ログイン', class: "btn-default btn-red", url: "root_path"
+= render "layouts/footer"

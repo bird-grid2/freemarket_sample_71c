@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def new_address
+  end
+
+  def create
+  end
+
   def show
   end
 

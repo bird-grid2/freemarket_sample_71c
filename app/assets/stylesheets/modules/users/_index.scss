@@ -14,6 +14,7 @@ h2 {
 
 .single-main{
   &_container{
+    height: 100%;
     width: 700px;
     margin: 0 auto;
     background-color: #ffffff;
@@ -122,6 +123,21 @@ h2 {
       font-size: 20px;
     }
   }
+  &--login{
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    margin: 16px 0 0;
+    color: #fff;
+    background-color: #0099e8;
+  }
 }
 
 .single-footer{
@@ -164,4 +180,66 @@ h2 {
     margin: 8px 0 0;
     font-size: 13px;
   }
+}
+
+.single-main-login{
+  display: block;
+}
+
+.login-panel{
+  width: 456px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.login-no-account{
+  padding: 40px 64px;
+  text-align: center;
+}
+
+.login-form-inner{
+  padding: 32px 64px;
+  border-top: 1px solid #eee;
+}
+
+.form-group{
+  margin-top: 32px;
+  & label{
+    font-weight: 600;
+    display: inline-block;
+    touch-action: manipulation;
+  }
+
+  &__input{
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+}
+
+.btn-default {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.btn-red{
+  margin-top: 24px;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
 }
