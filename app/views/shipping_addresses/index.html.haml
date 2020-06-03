@@ -1,0 +1,69 @@
+.wrapper-a
+  = render "layouts/header"
+
+.index
+  .index__container
+    .index__container__top
+      .index__container__top__title
+        発送元・お届け先住所入力
+    .index__container__middle
+      .index__container__middle__name
+        .index__container__middle__name__upper
+          .index__container__middle__name__upper--label
+            お名前
+          .index__container__middle__name__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__name__family", placeholder: "山田"}
+        %input{type: "text_field", class: "index__container__middle__name__first", placeholder: "太郎"}
+      .index__container__middle__name-kana
+        .index__container__middle__name-kana__upper
+          .index__container__middle__name-kana__upper--label
+            お名前カナ
+          .index__container__middle__name-kana__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__name-kana__family", placeholder: "ヤマダ"}
+        %input{type: "text_field", class: "index__container__middle__name-kana__first", placeholder: "タロウ"}
+      .index__container__middle__post-code
+        .index__container__middle__post-code__upper
+          .index__container__middle__post-code__upper--label
+            郵便番号
+          .index__container__middle__post-code__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__post-code__input", placeholder: "000-0000"}
+      .index__container__middle__prefecture
+        .index__container__middle__prefecture__upper
+          .index__container__middle__prefecture__upper--label
+            都道府県
+          .index__container__middle__prefecture__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__prefecture__input", placeholder: "東京都"}
+      .index__container__middle__city
+        .index__container__middle__city__upper
+          .index__container__middle__city__upper--label
+            市区町村
+          .index__container__middle__city__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__city__input", placeholder: "国立市"}
+      .index__container__middle__address1
+        .index__container__middle__address1__upper
+          .index__container__middle__address1__upper--label
+            住所1
+          .index__container__middle__address1__upper--require
+            必須
+        %input{type: "text_field", class: "index__container__middle__address1__input", placeholder: "富士見町"}
+      .index__container__middle__address2
+        .index__container__middle__address2__upper
+          .index__container__middle__address2__upper--label
+            住所２
+          .index__container__middle__address2__upper--require
+            任意
+        %input{type: "text_field", class: "index__container__middle__address2__input", placeholder: "１−１−１"}
+      .index__container__middle__phone
+        .index__container__middle__phone__upper
+          .index__container__middle__phone__upper--label
+            電話番号
+          .index__container__middle__phone__upper--require
+            任意
+        %input{type: "text_field", class: "index__container__middle__phone__input", placeholder: "000-0000-0000"}
+    .index__container__bottom
+      %input{type: "submit", value: "登録する", class: "index__container__bottom__btn"}
