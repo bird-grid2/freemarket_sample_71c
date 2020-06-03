@@ -1,0 +1,81 @@
+
+@mixin arbitrary{
+  margin: 0 0 0 8px;
+  width: 40px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background-color: #ccc;
+  margin-top: 10px;
+}
+
+@mixin border-top{
+  border-top: 1px solid $border-color;
+}
+
+@mixin bottom{
+  height: 10%;
+  position: relative;
+}
+
+@mixin btn{
+  font-weight: bold;
+  font-size: large;
+  color: white;
+  background-color: gray;
+  height: 50px;
+  width: 200px;
+  margin: 0 auto;
+  line-height: 50px;
+  margin-top: 10px;
+}
+
+@mixin name-box{
+  width: 70%;
+  height: 40px;
+  border: 1px solid $border-color;
+  text-align: left;
+  vertical-align: middle;
+  margin-top: 10px;
+}
+
+@mixin index{
+  height: 90%;
+  text-align: center;
+  background-color: #11FFFF;
+}
+
+@mixin title{
+  font-size: 150%;
+  font-weight: bold;
+}
+
+@mixin upper{
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+@mixin label{
+  text-align: left;
+  width: 80px;
+  margin-top: 10px;
+}
+
+@mixin require{
+  margin: 0 0 0 8px;
+  width: 40px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  background-color: red;
+  margin-top: 10px;
+}
+
+@mixin purchase-width{
+  width: 60%;
+}
