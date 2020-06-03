@@ -2,14 +2,14 @@
   box-sizing: border-box;
 }
 
-.wrapper{
+.wrapper-o{
   width: 100vw;
   height: 100vh;
 }
 .index{
   @include index;
   &__container{
-    height: 90%;
+    height: 100%;
     margin: 0 auto;
     background-color: white;
     width: 50%;
@@ -18,7 +18,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 10%;
+      height: 60px;
       width: 60%;
       &__title{
         @include title;
