@@ -13,8 +13,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 50px;
-      width: 60%;
       &__title{
         @include title;
       }
