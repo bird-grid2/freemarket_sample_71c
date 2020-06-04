@@ -12,6 +12,10 @@ class ItemsController < ApplicationController
     @parent_categories = Category.where(ancestry: nil)
   end
 
+  def get_children_categories
+    @children_categories = Category.find(params[:parent_id]).children
+  end
+
   end
 
 end
