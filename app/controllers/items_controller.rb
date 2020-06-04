@@ -16,6 +16,8 @@ class ItemsController < ApplicationController
     @children_categories = Category.find(params[:parent_id]).children
   end
 
+  def get_grandchildren_categories
+    @grandchildren_categories = Category.find(params[:child_id]).children
   end
 
 end
