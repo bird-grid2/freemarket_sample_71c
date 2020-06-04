@@ -9,6 +9,9 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @parent_categories = Category.where(ancestry: nil)
+  end
+
   end
 
 end
