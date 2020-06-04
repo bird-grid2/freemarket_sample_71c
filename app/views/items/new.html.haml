@@ -1,24 +1,19 @@
 %header
   = render "layouts/header"
 
-.contents
-
-  .contents__note
-    <span>※</span>が付いたものは必須項目です。
-  .item-infomation
+= form_with model:@item, local:true do |form|
+  .contents
+    .contents__note
+      <span>※</span>が付いたものは必須項目です。
     .images
       .images__title
         出品画像<span>※</span>
         %p 最大5枚までアップロードできます
       .images__form
-        .images__prev
-        .images__label
-          .hidden-content
-          = form_with model:@item, local:true do |form|
-            = form.fields_for :images do |f|
-              %label{for: "item_image", class:'upload-images'}
-                = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
-                %img{alt:'', height: '25', src: "/assets/icon_camera.png"}
+        .hidden-content
+          = form.fields_for :images do |f|
+            %label{for: "item_image", class:'upload-images'}
+            = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
                 
     .name
       .name__title
@@ -50,7 +45,6 @@
       = form_with model: @item do |form|
         = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
 
-  .delivery
     .postage
       .postage__title
         配送料の負担<span>※</span>
@@ -69,7 +63,6 @@
       = form_with model: @item do |form|
         = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
 
-  .selling
     .price
       .price__title
         販売価格（円）<span>※</span>
@@ -89,10 +82,10 @@
         %li
           _______
 
-  .exhibit
-    %input{type: 'submit', value:"出品する", class: 'btn'}
+    .exhibit
+      %input{type: 'submit', value:"出品する", class: 'btn'}
 
-  .return
-    = link_to '戻る', "#", class: 'return__button'
-    
+    .return
+      = link_to 'もどる', "#", class: 'return__button'
+      
 = render 'layouts/footer'
