@@ -74,7 +74,7 @@ group :production do
 end
 gem 'erb2haml'
 gem 'devise'
-gem 'bcrypt'
+# gem 'bcrypt'
 gem 'active_hash'
 gem 'haml-rails'
 gem 'font-awesome-sass'
