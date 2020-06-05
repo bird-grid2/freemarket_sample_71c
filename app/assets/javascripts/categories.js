@@ -25,5 +25,32 @@ $(function() {
                             </div>`;
     $('.category__form').append(grandchildSelectHtml);
   }
+
+  $('.category__form--parent').on('change', function() {
+    var parent_category_id = document.getElementById('parent_id').value;
+    if (parent_category_id != ""){ 
+      $.ajax({
+        url: '/items/category/get_children_categories',
+        type: 'GET',
+        data: { parent_id: parent_category_id },
+        dataType: 'json'
+      })
+      .done(function(children){
+        $('#children_options').remove(); 
+        $('#grandchildren_options').remove();
+        var insertHTML = '';
+        children.forEach(function(child){
+          insertHTML += appendOption(child);
+        });
+        appendChidrenBox(insertHTML);
+      })
+      .fail(function(){
+        alert('カテゴリー取得に失敗しました');
+      })
+    }else{
+      $('#children_options').remove(); 
+      $('#grandchildren_options').remove();
+    }
+  });
 });
 
