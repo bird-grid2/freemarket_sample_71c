@@ -10,16 +10,28 @@
         %ul.mypage-tabs
           %li.active
             %h3
-              = link_to '出品中', in_progress_user_path
+              = link_to '出品中', '#tab-progress'
           %li
             %h3
-              = link_to '売却済み', completed_user_path
+              = link_to '売却済み', '#tab-completed'
         .tab-content
-          %ul.tab-content__item-list.tab-pane.active
-            %li.tab-content__not-found
-              取引中の商品がありません
+          %ul#tab-progress.tab-content__item-list.tab-pane.active
+            %li
+              =link_to '/users/items', class: 'tab-content__item-link' do
+                %figure
+                  = image_tag @image.image.to_s, size: '48x48', class: ''
+                .tab-content__item-link__body
+                  .tab-content__item-link__body--text
+                    = @item.name
+                  %div
+                    %span.listing-item-count
+                      %i.far.fa-clock 
+                      %span 0
+                    %span.listing-item-count
+                      %i.far.fa-clock 
+                      %span 0
                 
-          %ul.tab-content__item-list.tab-pane
+          %ul#tab-completed.tab-content__item-list.tab-pane
             %li.tab-content__not-found
               過去に取引した商品がありません
       %ul.mypage-pager 
@@ -32,11 +44,3 @@
           
 
 = render 'layouts/footer'
-
-
--#.tab-content__item-link__body
-  -#.tab-content__item-link__body--text
-    -#新機能実装しました。
-  -#%time
-    -#%i.far.fa-clock <span> 1日前</span>
-  -#= icon( "fas", "angle-right")

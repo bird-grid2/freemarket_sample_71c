@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def items
     @item = Item.find[:id]
+    @image = Item_image.find[image_parms]
   end
 
   private
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:image)
+      params.require(:image).permit(:image, :item_id)
     end
 
 end
