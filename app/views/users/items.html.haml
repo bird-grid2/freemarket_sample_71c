@@ -1,0 +1,111 @@
+%header
+  = render 'layouts/search-box'
+%section.item-container
+  .item-name
+    = @item.name[:item_id]
+  .item-content.clearfix
+    .item-content__photo
+      .item-content__photo--top
+            
+      .item-content__photo--bottom
+       
+    %table.item-content__table
+      %tr
+        %th
+          出品者
+        %td
+          hoge
+          .rating
+            .item-user-ratings
+              %i.fas.fa-smile
+              %span 2
+            .item-user-ratings
+              %i.fas.fa-meh
+              %span 2
+            .item-user-ratings
+              %i.fas.fa-frown
+              %span 5
+      %tr
+        %th
+          カテゴリー
+        %td
+         
+      %tr
+        %th
+          ブランド
+        %td
+       
+      %tr
+        %th
+          商品の状態
+        %td
+
+      %tr
+        %th
+          配送料の負担
+        %td
+
+      %tr
+        %th
+          配送の方法
+        %td
+
+      %tr
+        %th
+          発送元地域
+        %td
+
+      %tr
+        %th
+          発送日の目安
+        %td
+
+  .item-price 
+    %span.item-price--yen
+      ¥3000
+    %span.item-price--tax 
+      (税込)
+    %span.item-price--fee 
+      送料込み
+
+  .item-detail
+    %p.item-detail__inner
+      = @item.description[:item_id]
+  
+.listing-item-buttons.clearfix
+  = link_to '商品情報の編集', '#', class: 'item-btn-red'
+  %p.center or
+  = link_to '出品を一旦停止する', '' , class: 'item-btn-gray'
+  = link_to ''
+
+  = form_with model: @item do |form|
+    = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
+
+
+
+.item-comments
+  .item-comments__content
+    .item-comments__content__form.clearfix
+    .item-comments__content__form
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.item-comments__content__form--box
+      %button.submit
+        %span コメントする
+
+
+.move-link.clearfix
+  .move-link--prev < 前の商品
+  .move-link--next 次の商品 >
+
+.sns-list
+  %ul.sns-list__boxes
+    %li
+      %i.fab.fa-facebook-square
+    %li
+      %i.fab.fa-twitter
+    %li
+      %i.fab.fa-line
+    %li
+      %i.fab.fa-pinterest
+= render 'layouts/app-banner'
+= render 'layouts/footer'

@@ -1,0 +1,26 @@
+@mixin tab-default {
+  border: 0;
+  background: #eee;
+  font-size: 0;
+  font-weight: 600;
+  li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  a {
+    position: relative;
+    display: block;
+    color: #333;
+    font-size: 16px;
+    line-height: 72px;
+  }
+  .active {
+    background-color: #fff;
+    border-top: 2px solid #ea352d;
+  }
+}

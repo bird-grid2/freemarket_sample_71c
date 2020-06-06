@@ -22,58 +22,58 @@
         %ul.mypage-tabs
           %li.active
             %h3
-              = link_to 'お知らせ', '#', data: {toggle: 'tab'} 
+              = link_to 'お知らせ', '#tab-notification', data: {toggle: 'tab'}
           %li
             %h3
-              = link_to 'やることリスト', '#', data: {toggle: 'tab'}
-        .mypage-tab-content
-          %ul.mypage-tab-content__item-list
+              = link_to 'やることリスト', '#tab-todo', data: {toggle: 'tab'}
+        .tab-content
+          %ul#tab-notification.tab-content__item-list.tab-pane.active
             %li
-              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-link__body
-                  .mypage-tab-content__item-link__body--text
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
+                .tab-content__item-link__body
+                  .tab-content__item-link__body--text
                     新機能実装しました。
                   %time
                     %i.far.fa-clock <span> 1日前</span>
                 = icon( "fas", "angle-right")
             %li
-              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-link__body
-                  .mypage-tab-content__item-link__body--text
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
+                .tab-content__item-link__body
+                  .tab-content__item-link__body--text
                     ページ更新しました。
                   %time
                     %i.far.fa-clock <span> 3日前</span>
                 = icon( "fas", "angle-right")
             %li
-              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'mypage-tab-content__item-link' do
-                .mypage-tab-content__item-link__body
-                  .mypage-tab-content__item-link__body--text
+              =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
+                .tab-content__item-link__body
+                  .tab-content__item-link__body--text
                     サービススタートしました。
                   %time
                     %i.far.fa-clock <span> 7日前</span>
                 = icon( "fas", "angle-right")
             %li.mypage-view-content
               =link_to '一覧を見る' , '#'
-          %ul.mypage-tab-content__item-list
-            %li.mypage-tab-content__not-found
+          %ul#tab-todo.tab-content__item-list.tab-pane
+            %li.tab-content__not-found
               現在、やることリストはありません
 
       %section.mypage-tab-container__goods
         %h2.mypage-tab-head
           購入した商品
-        %ul.mypage-tabs
+        %ul.mypage-tab-goods
           %li.active
             %h3
-              = link_to '取引中', '#', data: {toggle: 'tab'} 
+              = link_to '取引中', '#tab-trade', data: {toggle: 'tab'} 
           %li
             %h3
-              = link_to '過去の取引', '#', data: {toggle: 'tab'}  
-        .mypage-tab-content
-          %ul.mypage-tab-content__item-left
-            %li.mypage-tab-content__item-left__not-found
+              = link_to '過去の取引', '#tab-log', data: {toggle: 'tab'}  
+        .tab-content
+          %ul#tab-trade.tab-content__item.tab-pane.active
+            %li.tab-content__not-found
               取引中の商品がありません
-          %ul.mypage-tab-content__item-right
-            %li.mypage-tab-content__item-right__not-found
+          %ul#tab-log.tab-content__item.tab-pane
+            %li.tab-content__not-found
               過去に取引した商品がありません
 = render 'layouts/app-banner'
 = render 'layouts/footer'
