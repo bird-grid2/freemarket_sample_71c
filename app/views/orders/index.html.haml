@@ -29,7 +29,7 @@
             .index__container__payment-info__method__all--upper
               支払方法
             .index__container__payment-info__method__all--lower
-              = form_with url: orders_path do
+              = form_with url: "https://checkout.pay.jp" do
                 :plain
                   <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
         .index__container__payment-info__address
@@ -38,5 +38,8 @@
               配送先
             .index__container__payment-info__address__all--lower
               = link_to "+登録してください", shipping_addresses_path
+              = link_to "card", new_card_path
       .index__container__bottom
         %input{type: "submit", value: "購入する", class: "index__container__bottom__btn"}
+
+  = render "layouts/footer"

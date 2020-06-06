@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_31_033315) do
+ActiveRecord::Schema.define(version: 2020_06_03_225449) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_token", null: false
@@ -20,8 +20,46 @@ ActiveRecord::Schema.define(version: 2020_05_31_033315) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "desctiption", null: false
+    t.string "brand"
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shipping_adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "post_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "address1", null: false
+    t.string "address2"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shipping_adresses_on_user_id"
+  end
+
+  create_table "user_tentatives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.date "birthday", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,4 +83,5 @@ ActiveRecord::Schema.define(version: 2020_05_31_033315) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "shipping_adresses", "users"
 end
