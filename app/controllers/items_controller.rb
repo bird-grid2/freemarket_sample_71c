@@ -21,7 +21,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
+
+    if @item.save
+      redirect_to user_path(current_user.id), notice: '出品が完了しました！'
+    else
+      render :new
+    end
   end
 
   private
