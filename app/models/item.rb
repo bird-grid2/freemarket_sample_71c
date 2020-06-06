@@ -10,4 +10,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :preparation_period
 
+  belongs_to :category
+  validates :category_id, presence: true
 end
