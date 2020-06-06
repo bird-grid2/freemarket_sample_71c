@@ -1,0 +1,34 @@
+%header
+  = render 'layouts/search-box'
+.main_container
+  %main.mypage-container
+    = render 'side-bar'
+    .mypage-content
+      %section.mypage-tab-container
+        %h2.mypage-tab-head
+          購入した商品
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              = link_to '取引中', purchase_user_path
+          %li
+            %h3
+              = link_to '購入済み', parchased_user_path
+        .tab-content
+          %ul.tab-content__item-list.tab-pane.active
+            %li.tab-content__not-found
+              取引中の商品がありません
+                
+          %ul.tab-content__item-list.tab-pane
+            %li.tab-content__not-found
+              過去に取引した商品がありません
+
+= render 'layouts/footer'
+
+
+-#.tab-content__item-link__body
+  -#.tab-content__item-link__body--text
+    -#新機能実装しました。
+  -#%time
+    -#%i.far.fa-clock <span> 1日前</span>
+  -#= icon( "fas", "angle-right")

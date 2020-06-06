@@ -1,4 +1,18 @@
 $(function()  {
+  let tabs = $("mypage-side__nav__list--item");
+
+  function tabSwitch() {
+
+    const index = tabs.index(this);
+    
+    tabs.removeClass("active").eq(index).addClass("active");
+  }
+
+  tabs.click(tabSwitch);   
+});
+
+
+$(function()  {
   let tabs = $(".mypage-tabs").find("li");
   let links = tabs.find("a")
   let contents = $(".mypage-tab-container").find("tab-content").find("ul");
