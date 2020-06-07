@@ -1,0 +1,152 @@
+.wrapper-a{
+  width: 100vw;
+}
+.index{
+  @include index;
+  &__container{
+    margin-top: 10px;
+    height: 100%;
+    background-color: white;
+    width: 50%;
+    &__top{
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &__title{
+        @include title;
+      }
+    }
+    &__middle{
+      margin: 0 auto;
+      font-weight: bold;
+      width: 60%;
+      border-top: 1px solid $border-color;
+      &__name{
+        &__upper{
+          @include upper;
+          display: flex;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require
+          }
+        }
+        &__family{
+          @include name-box;
+        }
+        &__first{
+          @include name-box;
+        }
+      }
+      &__name-kana{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__family{
+          @include name-box;
+        }
+        &__first{
+          @include name-box;
+        }
+      }
+      &__post-code{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+
+      }
+      &__prefecture{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__city{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__address1{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include require;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__address2{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include arbitrary;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+      &__phone{
+        &__upper{
+          @include upper;
+          &--label{
+            @include label;
+          }
+          &--require{
+            @include arbitrary;
+          }
+        }
+        &__input{
+          @include name-box;
+        }
+      }
+    }
+    &__bottom{
+      &__btn{
+        @include btn;
+      }
+    }
+  }
+}

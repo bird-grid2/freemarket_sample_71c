@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
   add_foreign_key "cards", "users"
