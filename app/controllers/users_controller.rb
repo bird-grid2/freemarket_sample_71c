@@ -14,9 +14,30 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def items
+  def notification
+  end
+
+  def todo
+  end
+
+  def like
+  end
+
+  def in_progress
     @item = Item.find[:id]
     @image = Item_image.find[image_parms]
+  end
+
+  def completed
+  end
+
+  def purchase
+  end
+
+  def parchased
+  end
+
+  def log_out
   end
 
   private

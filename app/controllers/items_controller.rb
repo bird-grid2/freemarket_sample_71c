@@ -30,9 +30,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(item_parms)
+  end
+
+  def detail
+  end
+
   private
   def item_params
-    params.require(:item).permit(:category_id)
+    params.require(:item).permit(:category_id, :name, :description, :price)
   end
 
   def destroy
