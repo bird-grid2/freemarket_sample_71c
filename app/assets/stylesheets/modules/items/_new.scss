@@ -74,18 +74,33 @@
   }
 
   .category{
-    height: 100px;
-
+    margin-bottom: 40px;
+    
     &__title {
       margin-bottom: 10px;
     }
     &__form {
-      height: 30px;
-      width: 400px;
-      font-size: 15px;
-      padding: 5px;
+      &--parent{
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+      &--child{
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
+      &--grandchild{
+        height: 30px;
+        width: 400px;
+        font-size: 15px;
+        padding: 5px;
+      }
     }
   }
+  
 
   .brand{
     height: 100px;
