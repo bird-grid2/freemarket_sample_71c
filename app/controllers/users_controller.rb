@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
- 
+  # before_action :authenticate_user!
   
+
   def index
   end
 
@@ -9,9 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-  end
-
-  def edit
   end
 
   def notification
@@ -24,8 +22,6 @@ class UsersController < ApplicationController
   end
 
   def in_progress
-    @item = Item.find[:id]
-    @image = Item_image.find[image_parms]
   end
 
   def completed
@@ -44,14 +40,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:nickname, :email)
-    end
-
-    def item_params
-      params.require(:item).permit(:name, :description)
-    end
-
-    def image_params
-      params.require(:image).permit(:image, :item_id)
     end
 
 end

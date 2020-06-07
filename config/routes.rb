@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       get :detail
     end
+    resources :item_images, except: [ :show, :index]
   end
 
   resources :users, only: [ :index, :edit, :update, :show ] do
