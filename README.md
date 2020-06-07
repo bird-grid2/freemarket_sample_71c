@@ -1,5 +1,26 @@
 * Database creation
-
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|password_digest|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthday|date|null: false|
+### Association
+- has_one :shiping_address, dependent: :destroy
+- has_one :card, optional: true, dependent: :destroy
+- has_many :sns_credentials, dependent: :destroy
+- has_many :items, dependent: :destroy
+- has_many :orders, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+### remarks
+- password は bcrypt gem を使って暗号化する
+- birthday は date_select を使ってフォーム作成するため date型のカラムを作成
 
 ## shiping_addressesテーブル
 |Column|Type|Options|
@@ -106,3 +127,9 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+11
+12
+13
+14
+15
