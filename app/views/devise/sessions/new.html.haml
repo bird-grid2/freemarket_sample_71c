@@ -16,11 +16,11 @@
         %span<>
         Googleでログイン
     .login-form-inner
-      = form_with model: @user do |form|
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-group
-          = form.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:'form-group__input'}
+          = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "メールアドレス",class:'form-group__input'}
         .form-group
-          = form.password_field :password,{autocomplete: "current-password",placeholder: "パスワード",class:'form-group__input',id:"password"}
+          = f.password_field :password,{autocomplete: "current-password",placeholder: "パスワード",class:'form-group__input',id:"password"}
         .form-group
-          = form.submit 'ログイン', class: "btn-default btn-red", url: "root_path"
+          = f.submit 'ログイン', class: "btn-default btn-red", url: "root_path"
 = render "layouts/footer"
