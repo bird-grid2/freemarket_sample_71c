@@ -2,40 +2,40 @@
   %nav.mypage-side__nav
     %ul.mypage-side__nav__list
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item active' do
+        = link_to user_path, class: 'mypage-side__nav__list--item active' do
           マイメニュー
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to notificartion_user_path, class: 'mypage-side__nav__list--item' do
           お知らせ
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to like_user_path, class: 'mypage-side__nav__list--item' do
           いいね一覧
           = icon( "fas", "angle-right")
       %li
-        = link_to '/items/new', class: 'mypage-side__nav__list--item' do
+        = link_to new_item_path, class: 'mypage-side__nav__list--item' do
           商品を出品する
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to in_progress_user_path, class: 'mypage-side__nav__list--item' do
           商品を出品する-取引中-
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to completed_user_path, class: 'mypage-side__nav__list--item' do
           商品を出品する-売却済み-
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to item_path, class: 'mypage-side__nav__list--item' do
           商品を購入する
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
+        = link_to purchase_user_path, class: 'mypage-side__nav__list--item' do
           商品を購入する-取引中-
           = icon( "fas", "angle-right")
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item' do
-           商品を購入する-購入済み-
+        = link_to purchased_user_path, class: 'mypage-side__nav__list--item' do
+          商品を購入する-購入済み-
           = icon( "fas", "angle-right")
     %h2.mypage-side__nav__head
       FURIMAPay
@@ -76,6 +76,6 @@
           電話番号の確認
           = icon( "fas", "angle-right")
       %li
-        = link_to '/users/edit', class: 'mypage-side__nav__list--item' do
+        = link_to log_out_user_path, class: 'mypage-side__nav__list--item' do
           ログアウト
           = icon( "fas", "angle-right")

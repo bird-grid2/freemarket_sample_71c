@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :index]
   resources :shipping_addresses, only: [ :index]
-  resources :items, only: [ :show , :new, :create] do
+  resources :items, only: [ :show, :new, :create, :edit, :update] do
     collection do
       get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }

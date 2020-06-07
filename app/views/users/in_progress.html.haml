@@ -17,10 +17,10 @@
         .tab-content
           %ul#tab-progress.tab-content__item-list.tab-pane.active
             %li
-              - @items.users.each do |item|
+              - @items.users_id.each do |item|
                 =link_to detail_item_path, class: 'tab-content__item-link' do
                   %figure
-                    = image_tag @image.image.to_s, size: '48x48', class: ''
+                    = image_tag @image.item_id.to_s, size: '48x48', class: 'tab-content__item-link--image'
                   .tab-content__item-link__body
                     .tab-content__item-link__body--text
                       = item.name
