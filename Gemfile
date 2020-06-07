@@ -79,10 +79,7 @@ gem 'active_hash'
 gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'slider'
-<<<<<<< HEAD
 gem 'active_hash'
-=======
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'pry-rails'
->>>>>>> master

@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :user, foreign_key: true
+  belongs_to :user, foreign_key: 'user_id'
   has_one :order
   belongs_to :category
   has_many :item_images dependent: :destroy
