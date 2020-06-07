@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "brand"
+    t.integer "price", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shiping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
@@ -56,5 +73,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "item_images", "items"
   add_foreign_key "shiping_addresses", "users"
 end
