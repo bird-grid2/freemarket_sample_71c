@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :index, :edit, :update, :show ] do
     member do
-      get :notifictaion
+      get :notification
       get :todo
       get :like
       get :in_progress
