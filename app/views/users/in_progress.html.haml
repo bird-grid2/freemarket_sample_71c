@@ -17,20 +17,21 @@
         .tab-content
           %ul#tab-progress.tab-content__item-list.tab-pane.active
             %li
-              =link_to '/users/items', class: 'tab-content__item-link' do
-                %figure
-                  = image_tag @image.image.to_s, size: '48x48', class: ''
-                .tab-content__item-link__body
-                  .tab-content__item-link__body--text
-                    = @item.name
-                  %div
-                    %span.listing-item-count
-                      %i.far.fa-clock 
-                      %span 0
-                    %span.listing-item-count
-                      %i.far.fa-clock 
-                      %span 0
-                
+              - @items.users.each do |item|
+                =link_to '/users/items', class: 'tab-content__item-link' do
+                  %figure
+                    = image_tag @image.image.to_s, size: '48x48', class: ''
+                  .tab-content__item-link__body
+                    .tab-content__item-link__body--text
+                      = item.name
+                    %div
+                      %span.listing-item-count
+                        %i.far.fa-clock 
+                        %span 0
+                      %span.listing-item-count
+                        %i.far.fa-clock 
+                        %span 0
+
           %ul#tab-completed.tab-content__item-list.tab-pane
             %li.tab-content__not-found
               過去に取引した商品がありません

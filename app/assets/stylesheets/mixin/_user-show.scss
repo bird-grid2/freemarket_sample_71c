@@ -24,3 +24,31 @@
     border-top: 2px solid #ea352d;
   }
 }
+
+@mixin red-btn {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  background-color: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff
+}
+
+@mixin gray-btn {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  color: #fff
+}
