@@ -47,6 +47,8 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'payjp'
+  gem 'jquery-rails'
 end
 
 group :development do
@@ -79,3 +81,4 @@ gem 'active_hash'
 gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'slider'
+gem 'pry-rails'

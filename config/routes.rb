@@ -8,9 +8,9 @@ Rails.application.routes.draw do
  resources :shipping_addresses, only: [ :index]
  resources :cards, only: [ :show , :new ] do
   collection do
-    post 'show', to: 'card#show'
-    post 'pay', to: 'card#pay'
-    post 'delete', to: 'card#delete'
+    post 'show', to: 'cards#show'
+    post 'pay', to: 'cards#pay'
+    post 'delete', to: 'cards#delete'
   end
  end
 end
