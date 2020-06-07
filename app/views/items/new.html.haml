@@ -28,13 +28,9 @@
     .category
       .category__title
         カテゴリー<span>※</span>
-<<<<<<< HEAD
-      = form.text_field :category, :placeholder => '10文字以内で入力してください', :class => 'category__form', :size => '60'
-=======
       = form_with model: @item do |form|
         .category__form
           = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
->>>>>>> master
 
     .brand
       .brand__title

@@ -11,4 +11,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :preparation_period
   belongs_to_active_hash :shipping_method 
   validates :category_id, presence: true
+  validates :condition_id, presence: true
+  validates :postage_id, presence: true
+  validates :prefecture_id, presence: true
+  validates :preparation_period_id, presence: true
+  validates :shipping_method_id, presence: true
 end
