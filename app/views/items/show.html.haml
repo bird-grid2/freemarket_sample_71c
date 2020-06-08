@@ -2,13 +2,12 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    name
+    = @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
             
       .item-content__photo--bottom
-
        
     %table.item-content__table
       %tr
@@ -58,14 +57,15 @@
 
   .item-price 
     %span.item-price--yen
-      ¥3000
+      ="¥#{@item.price}"
     %span.item-price--tax 
       (税込)
     %span.item-price--fee 
       送料込み
 
   .item-buy-btn
-    購入画面に進む
+    - unless user_signed_in? && current_user.id == @item.user_id
+      = link_to "購入画面に進む", "#", class: "buy-btn"
 
   .item-description
     %p.item-description__inner
@@ -84,19 +84,17 @@
         %span 不適切な内容の報告
     .item-buttons--right
       %i.fas.fa-lock
-      %span あんしん・あんぜんへの取り組み
+        %span あんしん・あんぜんへの取り組み
 
   .items_line
 
   .items__box
-
     .items__box--btn
-     
-      .items__red
-        編集
-          
-      .items__gray
-        削除
+      - if user_signed_in? && current_user.id == @item.user_id
+        .items__red
+          = link_to "編集", "#"
+        .items__gray
+          = link_to "削除", "#"
 
 .item-comments
   .item-comments__content
