@@ -6,7 +6,7 @@
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
-        
+
       .item-content__photo--bottom
        
     %table.item-content__table
@@ -92,9 +92,9 @@
     .items__box--btn
       - if user_signed_in? && current_user.id == @item.user_id
         .items__red
-          = link_to "編集", "#"
+          = link_to "編集", edit_item_path(@item)
         .items__gray
-          = link_to "削除", "#"
+          = link_to "削除", item_path(@item), method: :delete
 
 .item-comments
   .item-comments__content
