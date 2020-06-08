@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(item_parms)
+    @item = Item.find(params[:id])
   end
 
   def detail

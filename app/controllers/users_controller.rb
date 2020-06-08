@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   
 
   def index
@@ -7,6 +7,16 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to user_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -40,6 +50,10 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:nickname, :email)
+    end
+
+    def set_items
+      @item = Item.find_by(params[:user_id])
     end
 
 end

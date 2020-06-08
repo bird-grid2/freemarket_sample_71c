@@ -14,68 +14,60 @@
         .images__prev
         .images__label
           .hidden-content
-          = form_with model:@item, local:true do |form|
+          = form_with model:@item do |form|
             = form.fields_for :images do |f|
               %label{for: "item_image", class:'upload-images'}
                 = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
                 %img{alt:'', height: '25', src: "/assets/icon_camera.png"}
                 
+  = form_with model: @item do |form|
     .name
       .name__title
         商品名<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_field :name, :placeholder => '15文字以内で入力してください', :class => 'name__form', :size => '60'
+      = form.text_field :name, :placeholder => '15文字以内で入力してください', :class => 'name__form', :size => '60'
 
     .description
       .description__title
         商品の説明<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                      （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
+      = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                      （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
 
     .category
       .category__title
         カテゴリー<span>※</span>
-      = form_with model: @item do |form|
         .category__form
           = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
     .brand
       .brand__title
         ブランド
-      = form_with model: @item do |form|
-        = form.text_field :brand, :placeholder => '10文字以内で入力してください', :class => 'brand__form', :size => '60'
+      = form.text_field :brand, :placeholder => '10文字以内で入力してください', :class => 'brand__form', :size => '60'
 
     .condition
       .condition__title
         商品の状態<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
+      = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
 
   .delivery
     .postage
       .postage__title
         配送料の負担<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
+      = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
 
     .prefectures
       .prefectures__title
         発送元の地域<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
+      = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
 
     .shipping_days
       .shipping_days__title
         発送までの日数<span>※</span>
-      = form_with model: @item do |form|
-        = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
+      = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
 
   .selling
     .price
       .price__title
         販売価格（円）<span>※</span>
-      = form_with model: @item do |form|
-        = form.number_field :price, :placeholder => '数字で入力してください', :class => 'price__form', :size => '60'
+      = form.number_field :price, :placeholder => '数字で入力してください', :class => 'price__form', :size => '60'
 
     .commission
       %ul
@@ -91,7 +83,7 @@
           _______
 
   .exhibit
-    %input{type: 'submit', value:"出品する", class: 'btn'}
+    = form.submit, value:"出品する", class: 'btn'
 
   .return
     = link_to '戻る', "#", class: 'return__button'
