@@ -28,9 +28,8 @@
     .category
       .category__title
         カテゴリー<span>※</span>
-      = form_with model: @item do |form|
-        .category__form
-          = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+      .category__form
+        = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
     .brand
       .brand__title
@@ -40,27 +39,31 @@
     .condition
       .condition__title
         商品の状態<span>※</span>
-      = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
+      .condition__form
+      = form.collection_select :condition, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .postage
       .postage__title
         配送料の負担<span>※</span>
-      = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
+      .pastage__form
+      = form.collection_select :postage_id, Postage.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .prefectures
       .prefectures__title
         発送元の地域<span>※</span>
-      = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
+      .prefectures__form
+      = form.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
 
-    .shipping_days
-      .shipping_days__title
+    .preparation_period
+      .preparation_period__title
         発送までの日数<span>※</span>
-      = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
+      .preparation_period__form
+      = form.collection_select :preparation_period, PreparationPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .price
       .price__title
         販売価格（円）<span>※</span>
-      = form.number_field :price, :placeholder => '数字で入力してください', :class => 'price__form', :size => '60'
+      = form.text_field :price, :placeholder => '数字で入力（半角記号なし）', :class => 'price__form', :size => '60'
 
     .commission
       %ul
@@ -79,6 +82,6 @@
       %input{type: 'submit', value:"出品する", class: 'btn'}
 
     .return
-      = link_to 'もどる', "#", class: 'return__button'
+      = link_to '戻る', root_path, class: 'return__button'
       
 = render 'layouts/footer'
