@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @item.item_images.new
     @parent_categories = Category.where(ancestry: nil)
   end
 
@@ -44,6 +46,6 @@ class ItemsController < ApplicationController
   private
     
     def item_params
-      params.require(:item).permit(:category_id, :name, :description, :price).merge(user_id: current_user.id)
+      params.require(:item).permit(:category_id, :name, :description, :price, images_attributes: [:src]).merge(user_id: current_user.id)
     end
 end

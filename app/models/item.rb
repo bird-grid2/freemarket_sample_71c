@@ -12,4 +12,5 @@ class Item < ApplicationRecord
 
   belongs_to :category
   validates :category_id, presence: true
+  accepts_nested_attributes_for :item_images, allow_destroy: true
 end

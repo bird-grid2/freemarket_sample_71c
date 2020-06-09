@@ -1,14 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :set_items
+  
   def index
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.create(user_params)
   end
 
   def show
@@ -45,7 +38,7 @@ class UsersController < ApplicationController
     end
 
     def set_items
-      @item = Item.find_by(params[:user_id])
+      @item = Item.where(params[:user_id])
     end
 
 end
