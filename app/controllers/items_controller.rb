@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @images = @item.images.build
 
     if @item.save
       redirect_to user_path(current_user.id), notice: '出品が完了しました！'
@@ -32,7 +33,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:category_id)
+    params.require(:item).permit(:name, :description, :category_id)
   end
 
 end

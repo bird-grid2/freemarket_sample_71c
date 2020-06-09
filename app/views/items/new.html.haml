@@ -10,10 +10,17 @@
         出品画像<span>※</span>
         %p 最大5枚までアップロードできます
       .images__form
+        .prev-content
+        .label-content
+          %label{for: "item_images_0", class: "label-box", id: "label-box--0"}
+            %pre.label-box__text-visible クリックしてファイルをアップロード
         .hidden-content
           = form.fields_for :images do |f|
-            %label{for: "item_image", class:'upload-images'}
-            = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
+            = f.file_field :images, class: "hidden-field", id: 'item_images_0'
+            %input{class:"hidden-field", type: "file", name: "item[1][image]", id: "item_images_1" }
+            %input{class:"hidden-field", type: "file", name: "item[2][image]", id: "item_images_2" }
+            %input{class:"hidden-field", type: "file", name: "item[3][image]", id: "item_images_3" }
+            %input{class:"hidden-field", type: "file", name: "item[4][image]", id: "item_images_4" }
                 
     .name
       .name__title
@@ -70,18 +77,25 @@
         %li
           販売手数料（10％）
         %li
-          _______
+          ¥200
     .profits
       %ul
         %li
           販売利益
         %li
-          _______
+          ¥1800
 
     .exhibit
-      %input{type: 'submit', value:"出品する", class: 'btn'}
+      %input{type: 'submit', value: "出品する", class: 'btn'}
 
     .return
       = link_to '戻る', root_path, class: 'return__button'
+    
+-# - else
+-#   %p.not-log-in
+-#     %b.title - Attention! -</br>
+-#     %b 商品を出品するには会員登録が必要です</br>
+-#     %b （登録済みの方はログインをお願いします）
+  
       
 = render 'layouts/footer'
