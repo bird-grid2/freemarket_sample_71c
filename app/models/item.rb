@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :user, foreign_key: 'user_id'
-  has_one :order
   belongs_to :category
   has_many :item_images, dependent: :destroy, inverse_of: :item
   accepts_nested_attributes_for :item_images, allow_destroy: true
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  belongs_to :saler, class_name: "User", :foreign_key => 'saler_id'
+  belongs_to :buyer, class_name: "User", :foreign_key => 'buyer_id'
   belongs_to_active_hash :condition
   belongs_to_active_hash :postage
   belongs_to_active_hash :prefecture
