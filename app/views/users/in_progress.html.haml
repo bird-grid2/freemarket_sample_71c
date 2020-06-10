@@ -25,7 +25,7 @@
                 - @item.each do |item|
                   =link_to detail_item_url, class: 'tab-content__item-link' do
                     %figure
-                      = image_tag @image.item_id.to_s, size: '48x48', class: 'tab-content__item-link--image'
+                      = image_tag @image.image.url, size: '48x48', class: 'tab-content__item-link--image'
                     .tab-content__item-link__body
                       .tab-content__item-link__body--text
                         = item.name

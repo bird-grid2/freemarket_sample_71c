@@ -15,11 +15,5 @@ class ItemImagesController < ApplicationController
   
   def update
   end
-  
-  private
-
-  def set_items
-    @item = Item.find(params[:item_id])
-  end
 
 end

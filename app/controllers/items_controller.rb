@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_image
 
   def index
   end
@@ -48,4 +49,9 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:category_id, :name, :description, :price, images_attributes: [:src]).merge(user_id: current_user.id)
     end
+
+    def set_image
+      @image = ItemImage.where(params[:Item_id])
+    end
+
 end

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def notification
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def in_progress
+    @image = ItemImage.find_by(params[:item_id])
   end
 
   def completed

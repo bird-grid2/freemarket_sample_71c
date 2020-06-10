@@ -8,7 +8,8 @@
         = link_to '#' do
           %figure
             = image_tag 'member_photo_noimage_thumb.png' , size: '60x60'
-          %h2.mypage-user-icon__name group_c
+          %h2.mypage-user-icon__name 
+            = @user.nickname
           .mypage-user-icon__number
             %div
               評価
@@ -17,7 +18,7 @@
             %div
               出品数
               %span
-                106
+                = @item.count
       %section.mypage-tab-container
         %ul.mypage-tabs
           %li.active
