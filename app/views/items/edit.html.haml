@@ -45,23 +45,23 @@
     .condition
       .condition__title
         商品の状態<span>※</span>
-      = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
+      -# = form.text_field :condition, :placeholder => '選択してください', :class => 'condition__form', :size => '60'
 
   .delivery
     .postage
       .postage__title
         配送料の負担<span>※</span>
-      = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
+      -# = form.text_field :postage, :placeholder => '選択してください', :class => 'postage__form', :size => '60'
 
     .prefectures
       .prefectures__title
         発送元の地域<span>※</span>
-      = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
+      -# = form.text_field :prefectures, :placeholder => '選択してください', :class => 'prefectures__form', :size => '60'
 
     .shipping_days
       .shipping_days__title
         発送までの日数<span>※</span>
-      = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
+      -# = form.text_field :shipping_days, :placeholder => '選択してください', :class => 'shipping_days__form', :size => '60'
 
   .selling
     .price
@@ -83,7 +83,7 @@
           _______
 
   .exhibit
-    = form.submit, value:"出品する", class: 'btn'
+    = form.submit "出品する", class: 'btn'
 
   .return
     = link_to '戻る', "#", class: 'return__button'

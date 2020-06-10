@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_image
+  before_action :set_user
 
   def index
   end
@@ -38,20 +39,26 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @parent_categories = Category.where(ancestry: nil)
   end
 
   def detail
+    @item = Item.find(params[:id])
   end
 
 
   private
     
     def item_params
-      params.require(:item).permit(:category_id, :name, :description, :price, images_attributes: [:src]).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :description, :price).merge(user_id: current_user.id)
     end
 
     def set_image
       @image = ItemImage.where(params[:Item_id])
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 
 end

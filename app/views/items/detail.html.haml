@@ -2,7 +2,7 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    = @item.name[:item_id]
+    = @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
@@ -14,7 +14,7 @@
         %th
           出品者
         %td
-          = @user.name[:item_id]
+          = @user.nickname
           .rating
             .item-user-ratings
               %i.fas.fa-smile
@@ -29,7 +29,7 @@
         %th
           カテゴリー
         %td
-         
+          = @item.brand
       %tr
         %th
           ブランド
@@ -70,15 +70,17 @@
 
   .item-detail
     %p.item-detail__inner
-      = @item.description[:item_id]
-  
-.listing-item-buttons.clearfix
-  = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
-  %p.center or
-  = link_to '出品を一旦停止する', '#', class: 'item-btn-gray'
-  = link_to '出品を再開する', '#', class: 'item-btn-red'
-  = form_with model: @item do |form|
-    = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
+      = @item.description
+
+- if current_user
+  %section.item-container-edit
+    .listing-item-buttons
+      = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
+      %p.center or
+      = link_to '出品を一旦停止する', '#', class: 'item-btn-gray'
+      = link_to '出品を再開する', '#', class: 'item-btn-red'
+      = form_with model: @item do |form|
+        = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
 
 .item-comments
   .item-comments__content

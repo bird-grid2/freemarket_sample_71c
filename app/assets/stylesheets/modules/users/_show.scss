@@ -16,6 +16,22 @@ a:hover {
   @include gray-btn;
 }
   
+.item-container-edit{
+  width: 620px;
+  padding: 24px 40px 40px;
+  margin: 24px auto;
+  background-color: white;
+  .listing-item-buttons {
+    background-color: #fff;
+    padding: 8px 16px 8px 16px;
+    text-align: center;
+    p {
+      font-size: 16px; 
+      margin: 16px 0;
+    }
+  }
+}
+
 .main_container {
   background-color: #f8f8f8;
   .mypage-container {
@@ -27,7 +43,7 @@ a:hover {
       width: 280px;
       margin: 0 40px 0 0;
       &__nav__head {
-        margin: 40px 0 8px;
+        margin: 40px 0 0;
         padding: 0 8px 8px;
         font-size: 16px;
         font-weight: bold;
@@ -115,11 +131,24 @@ a:hover {
     .mypage-tab-container {
       margin: 0;
       background: #fff;
+      .mypage-tab-head {
+        padding: 0 16px;
+        background-color: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
       .mypage-tabs {
         @include tab-default;
       }
       .tab-content {
         li { border-bottom: 1px solid #eee; }
+        figure {
+          position: relative;
+          overflow: hidden;
+          float: left;
+          width: 48px;
+          height: 48px;
+        }
         &__item-link {
           position: relative;
           display: block;
@@ -136,13 +165,27 @@ a:hover {
               time {
                 display: inline-block;
                 color: #888;
-                .fa-clock {
-                  font-size: 16px;
+                .far {
                   vertical-align: middle;
-                  span {
-                  vertical-align: middle;
-                  }
+                  margin: 0 8px 0 0;
                 }
+                span {
+                  vertical-align: middle;
+                }
+              }  
+            }
+            .listing-item-count {
+              vertical-align: 2px;
+              margin: 0 6px 0 0;
+              i {
+                vertical-align: middle;
+                color: #ccc;
+              }
+              span {
+                vertical-align: middle;
+                margin: 0 0 0 2px;
+                font-size: 16px;
+                color: #888;
               }
             }
           }
