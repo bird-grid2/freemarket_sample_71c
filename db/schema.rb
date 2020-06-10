@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shiping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_shiping_addresses_on_user_id"
+    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,5 +69,5 @@ ActiveRecord::Schema.define(version: 2020_06_03_184944) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "shiping_addresses", "users"
+  add_foreign_key "shipping_addresses", "users"
 end

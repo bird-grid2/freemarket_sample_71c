@@ -35,7 +35,7 @@ ja:
         block: 番地
         post_code: 郵便番号
         phone_number: 電話番号
-      shiping_address:
+      shipping_address:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -71,7 +71,7 @@ ja:
         phone_number: 電話番号
     models:
       user: ユーザ
-      shiping_address: 住所登録
+      shipping_address: 住所登録
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

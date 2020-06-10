@@ -16,18 +16,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_shiping_address
+    @address = @user.build_shipping_address
     render :new_address
   end
 
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
-    @address = ShipingAddress.new(address_params)
+    @address = ShippingAddress.new(address_params)
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
-    @user.build_shiping_address(@address.attributes)
+    @user.build_shipping_address(@address.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
@@ -93,6 +93,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def address_params
-    params.require(:shiping_address).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :post_code, :prefecture, :city, :block, :building, :phone_number)
+    params.require(:shipping_address).permit(:family_name, :first_name, :family_name_kana, :first_name_kana, :post_code, :prefecture, :city, :block, :building, :phone_number)
   end
 end

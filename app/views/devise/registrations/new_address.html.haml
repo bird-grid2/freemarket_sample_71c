@@ -42,7 +42,7 @@
           %span.signup-main__require
             必須
           %br
-          = form.select :prefecture, ShipingAddress.prefectures.keys, {}, {class: "signup-main__field"}
+          = form.select :prefecture, ShippingAddress.prefectures.keys, {}, {class: "signup-main__field"}
         .add_address_prefecture_id.add_all
 
         .signup-main__form-group
@@ -70,8 +70,8 @@
 
         .signup-main__form-group
           = form.label :phone,"電話番号", class: "signup-main__label"
-          %span.signup-main__require
-            必須
+          %span.signup-main__any
+            任意
           %br
           = form.text_field :phone_number, placeholder: "例) 090-1234-5678", class: "signup-main__field"
 

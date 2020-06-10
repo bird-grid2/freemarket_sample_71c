@@ -1,4 +1,4 @@
-class ShipingAddress < ApplicationRecord
+class ShippingAddress < ApplicationRecord
   belongs_to :user, optional: true
   validates :prefecture, :city, :block, presence: true
 
