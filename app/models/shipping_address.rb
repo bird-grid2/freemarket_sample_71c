@@ -11,7 +11,7 @@ class ShippingAddress < ApplicationRecord
   validates :post_code, presence: true,
   format: { with: /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/, message: "ハイフンを入れて下さい"}
   
-  validates :phone_number, presence: true,
+  validates :phone_number,
   format: { with: /\A\d{2,5}-\d{1,4}-\d{4}\z/, message: "ハイフンを入れて下さい"}
 
   enum prefecture:{
