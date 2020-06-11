@@ -72,7 +72,7 @@
     %p.item-detail__inner
       = @item.description
 
-- if current_user
+- if @item.user_id == @user.id
   %section.item-container-edit
     .listing-item-buttons
       = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'

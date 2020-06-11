@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_image
-  before_action :set_user
+  before_action :set_user, except: :index
 
   def index
   end
@@ -28,13 +28,22 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to user_path(current_user.id), notice: '出品が完了しました！'
+      redirect_to detail_item_path, notice: '商品情報を変更しました！'
     else
       render :new
     end
   end
 
   def destroy
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to group_messages_path(@group), notice: 'グループを更新しました'
+   else
+     render :edit
+   end
   end
 
   def edit
