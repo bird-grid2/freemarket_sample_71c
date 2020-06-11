@@ -65,7 +65,7 @@
         - @items.each do |item|
           .product
             = link_to item_path(item.id), method: :get do
-              -# = image_tag item.item_images[0].image.url
+              -# = image_tag item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
               = image_tag 'product/product1.png' 
               .product__info
                 %h3.product__info__name
@@ -85,7 +85,7 @@
         - @items.each do |item|
           .product
             = link_to item_path(item.id), method: :get do
-              -# = image_tag item.item_images[0].image.url
+              -# = image_tag item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
               = image_tag 'product/product2.png' 
               .product__info
                 %h3.product__info__name

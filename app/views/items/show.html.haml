@@ -6,12 +6,13 @@
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
-        -# = image_tag @item.item_images[0].image.url
+        -# = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
         = image_tag 'product/product1.png' , size: "300x300"
       .item-content__photo--bottom
         - @item.item_images.each do |image|
           .item-content__photo--bottom__pic
-            -#= image_tag image.image.url, class:"mini_image"
+            -#= image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+            = image_tag 'product/product1.png'
     %table.item-content__table
       %tr
         %th
