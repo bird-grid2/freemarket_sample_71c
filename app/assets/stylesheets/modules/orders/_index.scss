@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+.wrapper-o{
+  width: 100vw;
+  height: 100vh;
+}
+.index{
+  @include index;
+  &__container{
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    width: 50%;
+    &__top{
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      width: 60%;
+      &__title{
+        @include title;
+      }
+    }
+    &__payment-info{
+      height: 80%;
+      margin: 0 auto;
+      font-weight: bold;
+      &__item{
+        @include border-top;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        height: 40%;
+        @include purchase-width;
+        &__all{
+          display: flex;
+          @include purchase-width;
+          margin: 0 auto;
+          &__img{
+            width: 40%;
+          }
+          &__right-content{
+
+            width: 70%;
+            &__name{
+              height: 50%;
+            }
+            &__price{
+              height: 50%;
+            }
+          }
+        }
+      }
+      &__price{
+        @include border-top;
+        position: relative;
+        height: 20%;
+        @include purchase-width;
+        margin: 0 auto;
+        &__all{
+          position: absolute;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          left: 15%;
+          &__upper{
+            margin: 0 auto;
+            display: flex;
+            &--right{
+              margin: 0 0 0 auto;
+              font-size: x-large;
+            }
+          }
+          &--bottom{
+            text-align: left;
+          }
+        }
+      }
+      &__method{
+        height: 20%;
+        @include purchase-width;
+        display: flex;
+        margin: 0 auto;
+        position: relative;
+        @include border-top;
+        &__all{
+          display: flex;
+          position: absolute;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          left: 15%;
+          &--upper{
+            text-align: left;
+            @include purchase-width;
+          }
+          &--lower{
+            margin: 0 0 0 auto;
+          }
+        }
+      }
+      &__address{
+        @include border-top;
+        height: 20%;
+        @include purchase-width;
+        margin: 0 auto;
+        &__all{
+          vertical-align: middle;
+          margin: 0 auto;
+          display: flex;
+          top: 20%;
+          height: 70%;
+          width: 70%;
+          &--upper{
+            padding: 30px 0 0 0;
+            vertical-align: middle;
+            text-align: left;
+            top: 20px;
+            height:100px;
+            width: 30%;
+          }
+          &--lower{
+            padding: 30px 0 0 0;
+            text-align: right;
+            height:100px;
+            width: 70%;
+          }
+        }
+      }
+    }
+    &__bottom{
+      @include bottom;
+      &__btn{
+        @include btn;
+      }
+    }
+  }
+}
