@@ -10,9 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_08_070042) do
 
 ActiveRecord::Schema.define(version: 2020_06_02_134314) do
+ActiveRecord::Schema.define(version: 2020_06_03_184944) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_token", null: false
@@ -47,20 +49,35 @@ ActiveRecord::Schema.define(version: 2020_06_02_134314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "post_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
+    t.string "block", null: false
+    t.string "building"
+    t.string "phone_number"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
 
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
-    t.string "password_digest", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "family_name"
     t.string "first_name"
     t.string "family_name_kana"
@@ -75,8 +92,10 @@ ActiveRecord::Schema.define(version: 2020_06_02_134314) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "shipping_addresses", "users"
 
 end
