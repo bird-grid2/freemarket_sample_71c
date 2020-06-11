@@ -27,11 +27,6 @@ describe ShippingAddress do
       shippingaddress.valid?
       expect(shippingaddress.errors[:block]).to include("を入力してください")
     end
-    it "phone_numberにハイフンがない場合NG" do
-      shippingaddress = build(:shipping_address, phone_number: "08012345678")
-      shippingaddress.valid?
-      expect(shippingaddress.errors[:phone_number]).to include("ハイフンを入れて下さい")
-    end
     it "first_nameが空ならNG" do
       shippingaddress = build(:shipping_address, first_name: nil)
       shippingaddress.valid?
