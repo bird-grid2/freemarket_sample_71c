@@ -40,6 +40,7 @@
               = link_to "+登録してください", shipping_addresses_path
               = link_to "card", new_card_path
       .index__container__bottom
-        %input{type: "submit", value: "購入する", class: "index__container__bottom__btn"}
+        = link_to confirm_orders_path do
+          %input{type: "submit", value: "購入する", class: "index__container__bottom__btn"}
 
   = render "layouts/footer"

@@ -4,7 +4,13 @@ Rails.application.routes.draw do
 
  resources :items, only: [ :show , :new ]
  resources :users, only: [ :index, :edit, :update, :show ]
- resources :orders, only: [ :index]
+ resources :orders, only: [ :index] do
+  collection do
+    get 'confirm', to: 'orders#confirm'
+    post 'pay', to: 'orders#pay'
+    get 'done', to: 'orders#done'
+  end
+ end
  resources :shipping_addresses, only: [ :index]
  resources :cards, only: [ :show , :new ] do
   collection do
