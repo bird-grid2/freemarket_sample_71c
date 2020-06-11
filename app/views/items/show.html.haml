@@ -11,7 +11,7 @@
       .item-content__photo--bottom
         - @item.item_images.each do |image|
           .item-content__photo--bottom__pic
-            -#= image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+            -# = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
             = image_tag 'product/product1.png'
     %table.item-content__table
       %tr
@@ -96,6 +96,7 @@
       - if user_signed_in? && current_user.id == @item.user_id
         .items__red
           = link_to "編集", edit_item_path(@item)
+
         .items__gray
           = link_to "削除", item_path(@item), method: :delete
 
