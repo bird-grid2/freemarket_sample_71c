@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
 
   def index
+    @items = Item.all.includes([:item_images, :category]).where(buyer: nil).order('created_at DESC')
+    @ladies = @items.where(category_id: 1..199).limit(3)
+    @mens = @items.where(category_id: 200..345).limit(3)
+    @appliances = @items.where(category_id: 898..983).limit(3)
+    @toys =  @items.where(category_id: 685..797).limit(3)
+    @chanel = @items.where(brand: 'シャネル').limit(3)
+    @vuitton = @items.where(brand: 'ルイヴィトン').limit(3)
+    @supreme = @items.where(brand: 'シュプリーム').limit(3)
+    @nike = @items.where(brand: 'ナイキ').limit(3)
   end
   
   def show
