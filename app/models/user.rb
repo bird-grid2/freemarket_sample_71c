@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :birthday, presence: true
   validates :nickname, presence: true, uniqueness: true
-  validates :password, length: { minimum: 8 }
   
   validates :family_name, :first_name, presence: true,
   format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "全角で入力して下さい"}
