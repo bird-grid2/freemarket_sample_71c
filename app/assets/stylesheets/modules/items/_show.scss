@@ -40,7 +40,6 @@ tr {
       padding-bottom:20px;
       &--top{
         box-sizing: border-box;
-        position: relative;
         width: 300px;
         height: 300px;
       }
@@ -53,6 +52,15 @@ tr {
           height: 60px;
           display: inline-block;
           background-color:#fff;
+          .mini_image{
+            width:100%;
+            height:100%;
+            background-color:transparent;
+            opacity:0.6;
+          }
+          .mini_image:hover{
+            opacity:1;
+          }
         }
       }
     }

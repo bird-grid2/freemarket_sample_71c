@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-
+    @items = Item.all
   end
   
   def show
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).premit(:name, :description, :brand, :price).merge(user_id: current_user.id)
+    params.require(:item).premit(:name, :description, :brand, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end

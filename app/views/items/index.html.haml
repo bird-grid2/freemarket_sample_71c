@@ -1,3 +1,4 @@
+- console
 %header
   = render 'layouts/search-box'
 .main-contents
@@ -61,74 +62,41 @@
       = link_to '#', class: 'topic' do
         %h3 新規投稿商品
       .products
-        .product
-          = link_to item_path(3) do
-            = image_tag 'product/product3.png'
-            .product__info
-              %h3.product__info__name 
-                puroduct3
-              .product__info__details
-                %ul
-                  %li 3000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to item_path(2) do
-            = image_tag 'product/product2.png'
-            .product__info
-              %h3.product__info__name puroduct2
-              .product__info__details
-                %ul
-                  %li 2000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to item_path(1) do
-            = image_tag 'product/product1.png'
-            .product__info
-              %h3.product__info__name puroduct1
-              .product__info__details
-                %ul
-                  %li 1000円
-                  %li.likes 0
-                %p （税込）
+        - @items.each do |item|
+          .product
+            = link_to item_path(item.id), method: :get do
+              -# = image_tag item.item_images[0].image.url
+              = image_tag 'product/product1.png' 
+              .product__info
+                %h3.product__info__name
+                  = item.name
+                .product__info__details
+                  %ul
+                    %li
+                      = item.price
+                    %li.likes 0
+                  %p (税込)
   %section.pickup
     %h2.pickup__headline ピックアップブランド
     .pickup__contaner
       = link_to '#', class: 'topic' do
         %h3 アーカイバ
       .products
-        .product
-          = link_to item_path(3) do
-            = image_tag 'product/product3.png'
-            .product__info
-              %h3.product__info__name 
-                puroduct3
-              .product__info__details
-                %ul
-                  %li 3000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to item_path(2) do
-            = image_tag 'product/product2.png'
-            .product__info
-              %h3.product__info__name puroduct2
-              .product__info__details
-                %ul
-                  %li 2000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to item_path(1) do
-            = image_tag 'product/product1.png'
-            .product__info
-              %h3.product__info__name puroduct1
-              .product__info__details
-                %ul
-                  %li 1000円
-                  %li.likes 0
-                %p （税込）
+        - @items.each do |item|
+          .product
+            = link_to item_path(item.id), method: :get do
+              -# = image_tag item.item_images[0].image.url
+              = image_tag 'product/product2.png' 
+              .product__info
+                %h3.product__info__name
+                  = item.name
+                .product__info__details
+                  %ul
+                    %li
+                      = item.price
+                    %li.likes 0
+                  %p (税込)
+        
 = render 'layouts/app-banner'
 = render 'layouts/footer'
 = render 'layouts/publish-btn'

@@ -6,9 +6,12 @@
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
-
+        -# = image_tag @item.item_images[0].image.url
+        = image_tag 'product/product1.png' , size: "300x300"
       .item-content__photo--bottom
-       
+        - @item.item_images.each do |image|
+          .item-content__photo--bottom__pic
+            -#= image_tag image.image.url, class:"mini_image"
     %table.item-content__table
       %tr
         %th
@@ -69,8 +72,7 @@
 
   .item-description
     %p.item-description__inner
-      汚れ、傷はありません。
-      ほぼ未使用品
+      = @item.description
   
   .item-buttons.clearfix
     .item-buttons--left
@@ -107,8 +109,10 @@
 
 
 .move-link.clearfix
-  .move-link--prev < 前の商品
-  .move-link--next 次の商品 >
+  .move-link--prev
+    = link_to "< 前の商品", "#"
+  .move-link--next
+    = link_to "次の商品 >", "#"
 
 .sns-list
   %ul.sns-list__boxes
