@@ -15,9 +15,18 @@
           .images__label
             .hidden-content        
               = form.fields_for :item_images do |f|
-                %label{for: "item_image", class:'upload-images'}
-                  = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
-                  %img{alt:'', height: '25', src: "/assets/images/icon/icon_camera.png"}
+                %label{for: "item_image", class:'upload-images', id: 'image-box'}
+                  .js-file_group{ data: { index: "#{f.index}"}}
+                    = f.file_field :image, class: 'js-file'
+                    %br
+                    %span.js-remove 削除
+                  - if @item.persisted? 
+                    = image.check_box :_destroy, data: { index: f.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .js-file_group{ data: { index: "#{@item.item_images.count}"}}
+                  = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+                  .js-remove 削除
+
       .name
         .name__title
           商品名<span>※</span>

@@ -15,16 +15,12 @@
           .images__label
             .hidden-content
               = form.fields_for :item_images do |f|
-                %label{for: "item_image", class:'upload-images'}
+                %label{for: "item_image", class:'upload-images', id: 'image-box'}
                   .js-file_group{ data: { index: "#{f.index}"}}
-                  = f.file_field :image, class: 'js-file'
-                  %span.js-remove 削除
+                    = f.file_field :image, class: 'js-file'
+                    %br
+                    %span.js-remove 削除
                   
-                 
-                 
-                 
-                 
-              
                   
       .name
         .name__title
@@ -40,7 +36,7 @@
         .category__title
           カテゴリー<span>※</span>
           .category__form
-            -# = form.collection_select :parent_category_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+            = form.collection_select :category_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
       .brand
         .brand__title

@@ -28,22 +28,24 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to user_path(current_user.id), notice: '出品が完了しました！'
+      redirect_to root_path, notice: '出品が完了しました！'
     else
       render :new
     end
   end
 
   def destroy
+    @item.destroy
+    redirect_to root_path
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path, notice: '商品情報を更新しました'
-   else
-     render :edit
-   end
+    else
+      render :edit
+    end
   end
 
   def edit
@@ -54,7 +56,7 @@ class ItemsController < ApplicationController
   private
     
     def item_params
-      params.require(:item).permit(:name, :description, :price, item_images_attributes: [:image])
+      params.require(:item).permit(:name, :description, :category_id, :brand, :price, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
     end
 
     def set_image
