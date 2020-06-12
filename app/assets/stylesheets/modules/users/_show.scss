@@ -15,6 +15,12 @@ a:hover {
 .item-btn-gray {
   @include gray-btn;
 }
+
+#previews {
+  width: 100px;
+  height: 100px;
+  text-align: start;
+}
   
 .item-container-edit{
   width: 620px;
