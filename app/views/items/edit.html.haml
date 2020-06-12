@@ -32,7 +32,7 @@
         .category__title
           カテゴリー<span>※</span>
           .category__form
-            = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+            -# = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
       .brand
         .brand__title
@@ -83,6 +83,6 @@
       = form.submit "変更する", class: 'btn'
 
     .return
-      = link_to 'キャンセル', detail_item_path, class: 'return__btn'
+      = link_to 'キャンセル', item_path, class: 'return__btn'
     
 = render 'layouts/footer'
