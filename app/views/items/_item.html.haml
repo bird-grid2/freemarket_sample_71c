@@ -1,8 +1,8 @@
 .item
   = link_to item_path(item.id) do
-    - item.item_images.each_with_index do |image, i|
+    - item.item_images.each_with_index do |item_image, i|
       - if i == 0
-        = image_tag image.image.url
+        = image_tag item_image.image.url
     .item__info
       %h3.item__info__name
         = item.name
