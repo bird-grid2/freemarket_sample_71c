@@ -2,7 +2,7 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    name
+    = @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
@@ -14,7 +14,7 @@
         %th
           出品者
         %td
-          hoge
+          = @user.nickname
           .rating
             .item-user-ratings
               %i.fas.fa-smile
@@ -44,6 +44,7 @@
         %th
           ブランド
         %td
+          = @item.brand
        
       %tr
         %th
@@ -72,19 +73,19 @@
 
   .item-price 
     %span.item-price--yen
-      ¥3000
+      = @item.price
     %span.item-price--tax 
       (税込)
     %span.item-price--fee 
       送料込み
 
-  .item-buy-btn
-    購入画面に進む
+  - unless @item.user_id == @user.id
+    .item-buy-btn
+      購入画面に進む
 
   .item-detail
     %p.item-detail__inner
-      汚れ、傷はありません。
-      ほぼ未使用品
+      = @item.description
   
   .item-buttons.clearfix
     .item-buttons--left
@@ -99,6 +100,16 @@
     .item-buttons--right
       %i.fas.fa-lock
       %span あんしん・あんぜんへの取り組み
+
+- if @item.user_id == @user.id
+  %section.item-container-edit
+    .listing-item-buttons
+      = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
+      %p.center or
+      = link_to '出品を一旦停止する', '#', class: 'item-btn-gray'
+      = link_to '出品を再開する', '#', class: 'item-btn-red'
+      = form_with model: @item do |form|
+        = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
 
 .item-comments
   .item-comments__content

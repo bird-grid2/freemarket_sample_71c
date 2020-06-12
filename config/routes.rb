@@ -4,13 +4,10 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :index]
   resources :shipping_addresses, only: [ :index]
-  resources :items, only: [ :show, :new, :create, :edit, :update] do
+  resources :items, only: [ :show, :new, :create, :edit, :update], shallow: true do
     collection do
       get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
-    end
-    member do
-      get :detail
     end
     resources :item_images, except: [ :show, :index]
   end

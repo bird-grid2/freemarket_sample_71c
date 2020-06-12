@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_image
-  before_action :set_user, except: :index
 
   def index
   end
@@ -8,6 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @category = @item.category
+    @user = User.find(@item.user_id)
   end
 
   def new
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
    end
   end
 
-  def edit detail
+  def edit
     @item = Item.find(params[:id])
   end
 
@@ -54,15 +54,10 @@ class ItemsController < ApplicationController
   private
     
     def item_params
-      params.require(:item).permit(:name, :description, :price, images_attributes: [:image]).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :description, :category_id, :price, images_attributes: [:image])
     end
 
     def set_image
       @image = ItemImage.where(params[:Item_id])
     end
-
-    def set_user
-      @user = User.find(params[:id])
-    end
-
 end
