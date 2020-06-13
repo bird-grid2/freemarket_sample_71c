@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all.includes([:item_images, :category]).where(buyer: nil).order('created_at DESC')
+    @items = Item.includes([:item_images, :category]).where(buyer: nil).order('created_at DESC')
     @ladies = @items.where(category_id: 1..199).limit(3)
     @mens = @items.where(category_id: 200..345).limit(3)
     @appliances = @items.where(category_id: 898..983).limit(3)
