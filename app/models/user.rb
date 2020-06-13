@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true,  uniqueness: true
 
   has_many :items, dependent: :destroy
-end
+
   validates :birthday, presence: true
   validates :nickname, presence: true, uniqueness: true
   

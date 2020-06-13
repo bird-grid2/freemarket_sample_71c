@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-
     @category = @item.category
 
   end
@@ -37,21 +36,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:category_id)
-  end
-
-  def destroy
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-private
-  def item_params
-    params.require(:item).premit(:name, :description, :brand, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).premit(:name, :description, :brand, :price, :category_id,item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end

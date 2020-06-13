@@ -105,10 +105,10 @@
     .items__box--btn
       - if user_signed_in? && current_user.id == @item.user_id
         .items__red
-          = link_to "編集", edit_item_path(@item)
+          = link_to "編集", "#"
 
         .items__gray
-          = link_to "削除", item_path(@item), method: :delete
+          = link_to "削除", "#"
 
 .item-comments
   .item-comments__content
