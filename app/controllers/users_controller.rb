@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(configure_permitted_parameters)
     if @user.save
-      redirect_to '/devise/registrations/new_address'
+      redirect_to addresses_path
     else
       reder :new      
     end
