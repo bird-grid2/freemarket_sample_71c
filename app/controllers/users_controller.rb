@@ -13,10 +13,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(configure_sign_up_params)
-    unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
-      render :new and return
+    @user = User.new(configure_permitted_parameters)
+    if @user.save
+      redirect_to '/devise/registrations/new_address'
+    else
+      reder :new      
     end
   end
 
