@@ -39,11 +39,13 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
+    t.bigint "category_id", null: false
     t.string "brand"
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -68,14 +70,14 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.string "family_name"
     t.string "first_name"
     t.string "family_name_kana"
     t.string "first_name_kana"
     t.date "birthday"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
 
   add_foreign_key "cards", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "shipping_addresses", "users"
 end
