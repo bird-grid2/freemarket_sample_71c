@@ -11,7 +11,7 @@
 |first_name_kana|string|null: false|
 |birthday|date|null: false|
 ### Association
-- has_one :shiping_address, dependent: :destroy
+- has_one :shipping_address, dependent: :destroy
 - has_one :card, optional: true, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
 - has_many :items, dependent: :destroy
@@ -22,7 +22,7 @@
 - password は bcrypt gem を使って暗号化する
 - birthday は date_select を使ってフォーム作成するため date型のカラムを作成
 
-## shiping_addressesテーブル
+## shipping_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
