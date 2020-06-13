@@ -4,10 +4,11 @@
   .signup-main__contents
     %h2.signup-main__head
       会員情報入力
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form|
+    = form_with( model: @user, url: user_registration_path, local: true) do |form|
+      = render "devise/shared/error_messages", resource: @user
       .signup-main__input
         .signup-main__form-group
-          = form.label :nickname,"ニックネーム", class: "signup-main__label"
+          = form.label :nickname,"ニックネーム", class: "signup-main__label" 
           %span.signup-main__require
             必須
           %br
@@ -27,7 +28,7 @@
           %span.signup-main__require
             必須
           %br
-          = form.password_field :password, placeholder: "7文字以上", class: "signup-main__field"
+          = form.password_field :password, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
           .add_password.add-all
 
           .signup-main__form-group
@@ -35,7 +36,7 @@
           %span.signup-main__require
             必須
           %br
-          = form.password_field :password_confirmation, placeholder: "7文字以上", class: "signup-main__field"
+          = form.password_field :password_confirmation, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
           .add_password-confirmation.add-all
 
         .signup-main__form-group
@@ -45,7 +46,7 @@
             安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 
         .signup-main__form-group
-          = form.label :family_name,"お名前(全角)", class: "signup-main__label"
+          = form.label :name,"お名前(全角)", class: "signup-main__label"
           %span.signup-main__require
             必須
           %br
@@ -55,7 +56,7 @@
           .add_last_name.add-all
           .add_first_name.add-all
         .signup-main__form-group
-          = form.label :family_name_kana,"お名前カナ(全角)", class: "signup-main__label"
+          = form.label :name_kana,"お名前カナ(全角)", class: "signup-main__label"
           %span.signup-main__require
             必須
           %br
@@ -72,6 +73,5 @@
           %br
           != sprintf(form.date_select(:birthday,with_css_classes:'signup-main__birthday', prompt:"--",use_month_numbers:true,class: 'signup-main__birthday', start_year:Time.now.year, end_year:1920, date_separator:'%s'),'年','月')+"日"
         .add-all.add_user-3.add_user-2.add_user-1
-          = form.submit "次へ進む", class: "signup-main__submit"
-
-  = render "layouts/footer"
+          = form.submit "次へ進む", class: "signup-main__submit", url: "/devise/registrations/new_address"
+= render "layouts/footer"
