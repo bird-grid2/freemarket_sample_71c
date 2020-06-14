@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
+  
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"
@@ -10,7 +10,6 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
 
-   // プレビュー用のimgタグを生成する関数
    const buildImg = (index, url)=> {
     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;

@@ -14,22 +14,22 @@
           .images__prev
           .images__label
             .hidden-content
-              %label{for: "item_image", class:'upload-images', id: 'image-box'}        
-                #previews
-                  -if @item.persisted?
-                    - @item.item_images.each_with_index do |item_image, i|
-                      = image_tag item_image.image.url, data: { index: i }, width: "100", height: '100'              
-                = form.fields_for :item_images do |f|
-                  .js-file_group{ data:{ index: "#{f.index}"} }  
-                    = f.file_field :image, class: 'js-file'
-                    %br
-                    %span.js-remove 削除
-                  - if @item.persisted? 
-                    = f.check_box :_destroy, data: { index: "#{f.index}" }, class: 'hidden-destroy'
-              - if @item.persisted?
-                .js-file_group{ data: { index: "#{@item.item_images.count}"}}
-                  = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
-                  .js-remove 削除
+          %label{for: "item_image", class:'upload-images', id: 'image-box'}        
+            #previews
+              -if @item.persisted?
+                - @item.item_images.each_with_index do |item_image, i|
+                  = image_tag item_image.image.url, data: { index: i }, width: "100", height: '100', class: "img-thumbnail"
+            = form.fields_for :item_images do |f|
+              .js-file_group{ data:{ index: "#{f.index}"} }  
+                = f.file_field :image, class: 'js-file', style: 'display: none'
+                %br
+                %span.js-remove 削除
+              - if @item.persisted? 
+                = f.check_box :_destroy, data: { index: "#{f.index}" }, class: 'hidden-destroy'
+            - if @item.persisted?
+              .js-file_group{ data: { index: "#{@item.item_images.count}"}}
+                = file_field_tag :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file'
+                .js-remove 削除
 
       .name
         .name__title

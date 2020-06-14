@@ -16,10 +16,18 @@ a:hover {
   @include gray-btn;
 }
 
-#previews {
-  width: 100px;
-  height: 100px;
-  text-align: start;
+.image-box{
+  #previews {
+    width: 100%;
+    height: 80%;
+    image {
+      margin: 5px 5px;
+      width: 20%;
+    }
+  }
+  .js-file{
+    display: none;
+  }
 }
   
 .item-container-edit{

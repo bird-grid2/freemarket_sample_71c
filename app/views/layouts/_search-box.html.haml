@@ -14,7 +14,7 @@
       = link_to 'ブランド', '#', class: 'header-nav__left-box--brand'
     .header-nav__right-box
       -if user_signed_in?
-        = link_to 'マイページ', '/users/show', class: 'header-nav__right-box--login'
+        = link_to 'マイページ', user_path(current_user), class: 'header-nav__right-box--login'
       - else
         = link_to 'ログイン', new_user_session_path, class: 'header-nav__right-box--login'
         = link_to '新規会員登録', users_path, class: 'header-nav__right-box--signup'
