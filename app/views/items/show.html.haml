@@ -2,13 +2,17 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    name
+    = @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
-            
+        -# = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+        = image_tag 'product/product1.png' , size: "300x300"
       .item-content__photo--bottom
-       
+        - @item.item_images.each do |image|
+          .item-content__photo--bottom__pic
+            -# = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+            = image_tag 'product/product1.png'
     %table.item-content__table
       %tr
         %th
@@ -57,11 +61,6 @@
 
       %tr
         %th
-          配送の方法
-        %td
-
-      %tr
-        %th
           発送元地域
         %td
 
@@ -72,19 +71,19 @@
 
   .item-price 
     %span.item-price--yen
-      ¥3000
+      ="¥#{@item.price}"
     %span.item-price--tax 
       (税込)
     %span.item-price--fee 
       送料込み
 
   .item-buy-btn
-    = link_to '購入画面に進む', '/orders', class:'item-buy-btn'
+    - unless user_signed_in? && current_user.id == @item.user_id
+      = link_to "購入画面に進む", "#", class: "buy-btn"
 
-  .item-detail
-    %p.item-detail__inner
-      汚れ、傷はありません。
-      ほぼ未使用品
+  .item-description
+    %p.item-description__inner
+      = @item.description
   
   .item-buttons.clearfix
     .item-buttons--left
@@ -98,7 +97,18 @@
         %span 不適切な内容の報告
     .item-buttons--right
       %i.fas.fa-lock
-      %span あんしん・あんぜんへの取り組み
+        %span あんしん・あんぜんへの取り組み
+
+  .items_line
+
+  .items__box
+    .items__box--btn
+      - if user_signed_in? && current_user.id == @item.user_id
+        .items__red
+          = link_to "編集", "#"
+
+        .items__gray
+          = link_to "削除", "#"
 
 .item-comments
   .item-comments__content
@@ -111,8 +121,10 @@
 
 
 .move-link.clearfix
-  .move-link--prev < 前の商品
-  .move-link--next 次の商品 >
+  .move-link--prev
+    = link_to "< 前の商品", "#"
+  .move-link--next
+    = link_to "次の商品 >", "#"
 
 .sns-list
   %ul.sns-list__boxes
