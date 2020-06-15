@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_225449) do
+ActiveRecord::Schema.define(version: 2020_06_03_225403) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_token", null: false
     t.bigint "user_id"
-    t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
@@ -26,16 +25,20 @@ ActiveRecord::Schema.define(version: 2020_06_03_225449) do
     t.text "desctiption", null: false
     t.string "brand"
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "shipping_adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
@@ -49,20 +52,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_225449) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_shipping_adresses_on_user_id"
-  end
-
-  create_table "user_tentatives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nickname", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.date "birthday", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,5 +74,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_225449) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "shipping_adresses", "users"
+  add_foreign_key "items", "users"
+  add_foreign_key "shipping_addresses", "users"
 end

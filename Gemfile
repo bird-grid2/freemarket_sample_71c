@@ -49,6 +49,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'payjp'
   gem 'jquery-rails'
+  gem 'active_hash'
 end
 
 group :development do

@@ -16,7 +16,7 @@ class CardsController < ApplicationController
       description: '登録テスト', #なくてもOK
       card: params['payjp-token']
       )
-      @card = Card.new(user_id: 1, customer_token: customer.id, card_id: customer.default_card)
+      @card = Card.new(user_id: 1, customer_token: customer.id)
       if @card.save
         redirect_to action: "show"
       else
