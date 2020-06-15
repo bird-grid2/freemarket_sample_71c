@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   background-color: #eeffff;
 }
@@ -31,6 +35,7 @@ body {
     .images{
       padding-top: 20px;
       height: 230px;
+      max-width: 400px;
  
       &__title {
         p{
@@ -52,10 +57,10 @@ body {
           radial-gradient(black 30%, transparent 30%);
           background-size: 3px 3px;
           position: absolute;
-          #img{  
+          img{  
             position: relative;
-            margin-top: 15%;
-            margin-left: 45%;
+            top: 50%;
+            left: 50%;
             height: 25px;
           }
         }
