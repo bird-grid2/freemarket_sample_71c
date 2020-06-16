@@ -55,3 +55,64 @@ $(document).on("click", '.item-image__operation--delete', ()=> {
   $('#image-box__container').show()
   $('#image-box__container').attr('class', `item-num-${num}`)
 })
+
+
+
+
+window.onload = function(e){
+
+  var dropArea = document.getElementById("image-box");
+
+  dropArea.addEventListener("dragover", function(e){
+    e.preventDefault();
+
+    $(this).children('#image-box__container').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
+  },false);
+
+  dropArea.addEventListener("dragleave", function(e){
+    e.preventDefault();
+
+    $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'})      
+  },false);
+
+  dropArea.addEventListener("drop", function(e) {
+    e.preventDefault();
+    $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'});
+    var files = e.dataTransfer.files;
+
+    $.each(files, function(i,file){
+
+      var fileReader = new FileReader();
+
+      dataBox.items.add(file)
+      file_field.files = dataBox.files
+
+      var num = $('.item-image').length + i + 1
+
+      fileReader.readAsDataURL(file);
+
+      if (num==5){
+        $('#image-box__container').css('display', 'none')   
+      }
+
+      fileReader.onload = function() {
+
+        var src = fileReader.result
+        var html =`<div class='item-image' data-image="${file.name}">
+                    <div class=' item-image__content'>
+                      <div class='item-image__content--icon'>
+                        <img src=${src} width="114" height="80" >
+                      </div>
+                    </div>
+                    <div class='item-image__operation'>
+                      <div class='item-image__operation--delete'>削除</div>
+                    </div>
+                  </div>`
+
+      $('#image-box__container').before(html);
+      };
+
+      $('#image-box__container').attr('class', `item-num-${num}`)
+    })
+  })
+}
