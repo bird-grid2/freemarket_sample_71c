@@ -27,7 +27,7 @@ $(document).on('turbolinks:load',()=> {
   };
 });
 
-$(document).on("click", '.item-image__operetion--delete', ()=> {
+$(document).on("click", '.item-image__operation--delete', ()=> {
 
   var target_image = $(this).parent().parent()
 
