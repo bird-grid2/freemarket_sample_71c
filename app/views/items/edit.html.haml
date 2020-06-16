@@ -11,16 +11,17 @@
           出品画像<span>※</span>
           %p 最大5枚までアップロードできます
         .images__form
-          .images__prev
-          .images__label
-            .label-content
-              .item-num-0#image-box__container
+          #image-box
+            - if @item.persisted?
+              - @item.item_images.each_with_index do |item_image, i|
+                = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70'
+              #image-box__container
                 = form.fields_for :item_images do |f|
                   .upload-images
+                    = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                     %label{for: "img-file"}
-                      = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                       = image_tag 'icon/icon_camera.png'
-                  
+                      
            
             
       .name
