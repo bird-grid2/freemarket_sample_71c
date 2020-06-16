@@ -69,7 +69,8 @@
       送料込み
 
   .item-buy-btn
-    購入画面に進む
+    = link_to purchase_item_path do
+      %input{type: "submit", value: "購入画面に進む", class: "item-buy-btn"}
 
   .item-detail
     %p.item-detail__inner

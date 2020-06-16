@@ -15,16 +15,19 @@
             = image_tag( "pict/bag.jpg", class: "index__container__payment-info__item__all__img")
             .index__container__payment-info__item__all__right-content
               .index__container__payment-info__item__all__right-content__name
-                ★送料込み ビジネスバッグ ブラウン
+                = @item.name
               .index__container__payment-info__item__all__right-content__price
-                ¥4,300 （税込）送料込み
+                ¥
+                = @item.price
+                （税込）送料込み
         .index__container__payment-info__price
           .index__container__payment-info__price__all
             .index__container__payment-info__price__all__upper
               .index__container__payment-info__price__all__upper--left
                 支払金額
               .index__container__payment-info__price__all__upper--right
-                ¥1,300
+                ¥
+                = @amount
             .index__container__payment-info__price__all--bottom
               ポイントを使用 (所持ポイント: P0)
         .index__container__payment-info__method
@@ -33,7 +36,8 @@
               支払方法
             .index__container__payment-info__method__all--lower
               - if @card.blank?
-                = form_with url: "https://checkout.pay.jp" do
+                = link_to "card", new_card_path
+                -#= form_with url: "https://checkout.pay.jp" do
                   :plain
                     <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
               - else
@@ -56,7 +60,6 @@
                 - else
                   = link_to "変更する", shipping_addresses_path
             .index__container__payment-info__address__all--lower
-              -#  = link_to "card", new_card_path
               - if @shipping_address.blank?
               - else
                 %br
@@ -65,9 +68,9 @@
                 %br
                   = @shipping_address.prefecture
                   = @shipping_address.city
-                  = @shipping_address.address1
+                  = @shipping_address.block
                 %br
-                  = @shipping_address.address2
+                  = @shipping_address.building
                 %br
                   = @shipping_address.user.family_name
                   = @shipping_address.user.first_name
@@ -77,7 +80,7 @@
                 -#= link_to "変更する", shipping_addresses_path
                 
       .index__container__bottom
-        = link_to confirm_orders_path do
+        = link_to confirm_item_path do
           - if @condition
             %input{type: "submit", value: "購入する", class: "index__container__bottom__btn--disabled", disabled: "disabled"}
           - else 
