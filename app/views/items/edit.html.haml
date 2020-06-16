@@ -14,13 +14,12 @@
           #image-box
             - if @item.persisted?
               - @item.item_images.each_with_index do |item_image, i|
-                = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70'
-              #image-box__container
+                = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70', style: "display:none"
+              .item-num-0#image-box__container
                 = form.fields_for :item_images do |f|
-                  .upload-images
-                    = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
-                    %label{for: "img-file"}
-                      = image_tag 'icon/icon_camera.png'
+                  = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    = image_tag 'icon/icon_camera.png'
                       
            
             

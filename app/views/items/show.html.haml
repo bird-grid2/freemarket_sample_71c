@@ -104,10 +104,8 @@
 - if @item.user_id == @user.id
   %section.item-container-edit
     .listing-item-buttons
-      = link_to '商品情報の編集', edit_item_path, class: 'item-buy-red'
+      = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
       %p.center or
-      = link_to '出品を一旦停止する', '#', class: 'item-btn-gray'
-      = link_to '出品を再開する', '#', class: 'item-btn-red'
       = form_with model: @item do |form|
         = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
 

@@ -1,4 +1,4 @@
-$(()=> {
+$(document).on('turbolinks:load',()=> {
 
   let num = ($('#image-box').find('img').length - 1); 
 
@@ -14,8 +14,8 @@ $(()=> {
                         <img src=${src} width="70" height="70" >
                       </div>
                     </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>削除</div>
+                    <div class='item-image__operation'>
+                      <div class='item-image__operation--delete'>削除</div>
                     </div>
                   </div>`
 

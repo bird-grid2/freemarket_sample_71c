@@ -53,3 +53,21 @@
   color: #fff;
   margin: 16px 0;
 }
+
+@mixin label {
+  height: 150px;
+  background-color: #BBBBBB;
+  background-image: radial-gradient(black 30%, transparent 30%);
+  background-size: 3px 3px;
+  margin: auto auto;
+  img {
+    display: block;
+    margin: 60px auto;
+    height: 30px;
+  }
+  label {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+  }
+}
