@@ -73,5 +73,5 @@
           %br
           != sprintf(form.date_select(:birthday,with_css_classes:'signup-main__birthday', prompt:"--",use_month_numbers:true,class: 'signup-main__birthday', start_year:Time.now.year, end_year:1920, date_separator:'%s'),'年','月')+"日"
         .add-all.add_user-3.add_user-2.add_user-1
-          = form.submit "次へ進む", class: "signup-main__submit"
+          = form.submit "次へ進む", class: "signup-main__submit", url: "/devise/registrations/new_address"
 = render "layouts/footer"
