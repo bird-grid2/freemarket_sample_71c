@@ -11,11 +11,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :preparation_period
-  belongs_to_active_hash :shipping_method 
+  belongs_to_active_hash :shipping_method
   validates :category, presence: true
-  validates :condition, presence: true
-  validates :postage, presence: true
-  validates :prefecture, presence: true
-  validates :preparation_period, presence: true
-  validates :shipping_method, presence: true
 end

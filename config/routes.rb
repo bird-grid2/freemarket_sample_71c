@@ -8,8 +8,7 @@ Rails.application.routes.draw do
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
     end
   end
- resources :users, only: [ :index, :edit, :update, :show]
- resources :orders, only: [ :index]
- resources :shipping_addresses, only: [ :index]
+  resources :users, only: [ :index, :edit, :update, :show]
+  resources :shipping_addresses, only: [ :index]
 
 end

@@ -1,4 +1,4 @@
-%header
+.header
   = render "layouts/header"
 
 = form_with model: @item, local:true do |form|
@@ -8,12 +8,11 @@
     .images
       .images__title
         出品画像<span>※</span>
-        %p 最大5枚まで登録できます
       .images__form
         .prev-content
         .label-content
           %label{for: "item_images_0", class: "label-box", id: "label-box--0"}
-            %pre.label-box__text-visible クリックして画像を選択
+            %pre.label-box__text-visible クリックして画像を選択（最大５枚まで登録可能）
         .hidden-content
           = form.fields_for :item_images do |f|
             = f.file_field :src, class: "hidden-field", id: 'item_images_0'
@@ -30,7 +29,7 @@
     .description
       .description__title
         商品の説明<span>※</span>
-      = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                      （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
+      = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                                        （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
 
     .category
       .category__title
@@ -47,30 +46,30 @@
       .condition__title
         商品の状態<span>※</span>
       .condition__form
-      = form.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
+        = form.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .postage
       .postage__title
         配送料の負担<span>※</span>
-      .pastage__form
-      = form.collection_select :postage_id, Postage.all, :id, :name, prompt: "選択してください", class: 'input'
+      .postage__form
+        = form.collection_select :postage_id, Postage.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .prefectures
       .prefectures__title
         発送元の地域<span>※</span>
       .prefectures__form
-      = form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
+        = form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .preparation_period
       .preparation_period__title
         発送までの日数<span>※</span>
       .preparation_period__form
-      = form.collection_select :preparation_period_id, PreparationPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
+        = form.collection_select :preparation_period_id, PreparationPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
     .price
       .price__title
         販売価格（円）<span>※</span>
-      = form.text_field :price, :placeholder => '数字で入力（半角記号なし）', :class => 'price__form', :size => '60'
+      = form.text_field :price, :placeholder => '数字で入力（半角記号なし）', :class => 'price__form' 
 
     .commission
       %ul
@@ -86,7 +85,7 @@
           ¥1800
 
     .exhibit
-      %input{type: 'submit', value: "出品する", class: 'btn'}
+      = form.submit "出品する", :class => 'btn'
 
     .return
       = link_to '戻る', root_path, class: 'return__button'
@@ -97,5 +96,5 @@
 -#     %b 商品を出品するには会員登録が必要です</br>
 -#     %b （登録済みの方はログインをお願いします）
   
-      
-= render 'layouts/footer'
+.footer
+  = render 'layouts/footer'

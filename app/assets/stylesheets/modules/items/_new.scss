@@ -2,9 +2,11 @@
   width: 700px;
   background-color: #ffffff;
   margin: auto;
-  padding: 20px;
+  padding: 30px;
   color: darkblue;
   margin-top: 20px;
+  margin-bottom: 40px;
+  font-weight: bold;
 
   span{
     color: red;
@@ -12,13 +14,11 @@
   }
   .images{
     padding-top: 20px;
-    height: 230px;
+    height: 290px;
 
     &__title {
-      p{
-        font-size: 12px;
-        margin: 5px;
-      }
+      margin-top: 20px;
+      margin-bottom: 10px;
     }
     &__form {
       display: block;
@@ -96,7 +96,7 @@
   }
 
   .name{
-    height: 100px;
+    height: 150px;
     padding-top: 10px;
 
     &__title {
@@ -104,87 +104,97 @@
     }
 
     &__form {
-      height: 30px;
-      width: 400px;
+      height: 40px;
+      width: 600px;
       font-size: 15px;
       padding: 5px;
+
     }
   }
 
   .description{
-    height: 270px;
+    height: 290px;
     
     &__title {
       margin-bottom: 10px;
     }
     &__form {
       height: 200px;
-      width: 400px;
+      width: 600px;
       font-size: 15px;
       padding: 5px;
     }
   }
 
   .category{
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     
     &__title {
       margin-bottom: 10px;
     }
     &__form {
       &--parent{
-        height: 30px;
-        width: 400px;
+        height: 40px;
+        width: 600px;
         font-size: 15px;
         padding: 5px;
       }
       &--child{
-        height: 30px;
-        width: 400px;
+        height: 40px;
+        width: 600px;
         font-size: 15px;
         padding: 5px;
+        margin-left: -10px;
       }
       &--grandchild{
-        height: 30px;
-        width: 400px;
+        height: 40px;
+        width: 600px;
         font-size: 15px;
         padding: 5px;
+        margin-left: -15px;
       }
     }
   }
   
 
   .brand{
-    height: 100px;
+    height: 150px;
 
     &__title {
       margin-bottom: 10px;
     }
     &__form {
-      height: 30px;
-      width: 400px;
+      height: 40px;
+      width: 600px;
       font-size: 15px;
       padding: 5px;
     }
   }
 
   .condition{
-    height: 100px;
+    height: 150px;
 
     &__title {
       margin-bottom: 10px;
     }
 
     &__form {
-      height: 30px;
-      width: 400px;
+      height: 50px;
+      width: 600px;
       font-size: 15px;
       padding: 5px;
+      select{
+        border: 1px solid gray;
+        font-size: 15px;
+        padding: 5px;
+        width: 600px;
+        height: 40px;
+      }
     }
   }
 
   .postage {
-    height: 100px;
+    height: 150px;
 
     &__title {
       margin-bottom: 10px;
@@ -194,11 +204,18 @@
       width: 300px;
       font-size: 15px;
       padding: 5px;
+      select{
+        border: 1px solid gray;
+        font-size: 15px;
+        padding: 5px;
+        width: 600px;
+        height: 40px;
+      }
     }
   }
 
   .prefectures{
-    height: 100px;
+    height: 150px;
 
     &__title {
       margin-bottom: 10px;
@@ -209,11 +226,18 @@
       width: 300px;
       font-size: 15px;
       padding: 5px;
+      select{
+        border: 1px solid gray;
+        font-size: 15px;
+        padding: 5px;
+        width: 600px;
+        height: 40px;
+      }
     }
   }
 
   .preparation_period{
-    height: 100px;
+    height: 150px;
 
     &__title {
       margin-bottom: 10px;
@@ -224,27 +248,35 @@
       width: 300px;
       font-size: 15px;
       padding: 5px;
+      select{
+        border: 1px solid gray;
+        font-size: 15px;
+        padding: 5px;
+        width: 600px;
+        height: 40px;
+      }
     }
   }
 
   .price{
-    height: 100px;
 
     &__title {
-      margin-bottom: 10px;
+      margin: 10px;
     }
     &__form {
-      height: 30px;
-      width: 300px;
+      height: 40px;
+      width: 250px;
       font-size: 15px;
       padding: 5px;
+      margin: 10px;
     }
   }
 
   .commission{
     height: 50px;
+    width: 200px;
     font-size: 15px;
-    color: gray;
+    color: silver;
     margin: 30px;
 
     ul {
@@ -254,9 +286,10 @@
   }
 
   .profits{
-    height: 50px;
+    height: 80px;
+    width: 200px;
     font-size: 15px;
-    color: gray;
+    color: silver;
     margin: 30px;
 
     ul {
@@ -264,35 +297,39 @@
       justify-content: space-between;
     }
   }
- 
-  .btn {
-    width: 100%;
-    height: 60px;
+  .exhibit{
+    width: 600px;
     margin: auto;
-    display       : inline-block;
-    font-size     : 17pt;
-    text-align    : center;
-    cursor        : pointer;
-    padding       : 10px 10px; 
-    background    : #00ccff;
-    color         : white;
-    font-style: normal;
-    font-weight: bold;
-    line-height   : 1em;
-    transition    : .3s;
-    box-shadow    : 4px 4px 4px #DDDDDD;
-    border        : 2px solid #DDDDDD;
-    &:hover {
-      box-shadow    : none; 
-      color         : #ccff99;
-      background    : #BBBBBB;
+    .btn {
+      width: 100%;
+      height: 70px;
+      margin: auto;
+      display       : inline-block;
+      font-size     : 17pt;
+      text-align    : center;
+      cursor        : pointer;
+      padding       : 10px 10px; 
+      background    : #00ccff;
+      color         : white;
+      font-style: normal;
+      font-weight: bold;
+      line-height   : 1em;
+      transition    : .3s;
+      box-shadow    : 4px 4px 4px #DDDDDD;
+      border        : 2px solid #DDDDDD;
+      &:hover {
+        box-shadow    : none; 
+        color         : #ccff99;
+        background    : #BBBBBB;
+      }
     }
   }
   .return{
     width: 200px;
     height: 100px;
     margin: auto;
-    padding: 70px;
+    padding-left: 70px;
+    padding-top: 50px;
     font-size: large;
   }
 }

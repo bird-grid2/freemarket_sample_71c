@@ -53,10 +53,20 @@ ActiveRecord::Schema.define(version: 2020_06_05_123520) do
     t.integer "price", null: false
     t.bigint "saler_id", null: false
     t.bigint "buyer_id"
+    t.bigint "condition_id", null: false
+    t.bigint "postage_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.bigint "preparation_period_id", null: false
+    t.bigint "shipping_method_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["condition_id"], name: "index_items_on_condition_id"
+    t.index ["postage_id"], name: "index_items_on_postage_id"
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
+    t.index ["preparation_period_id"], name: "index_items_on_preparation_period_id"
     t.index ["saler_id"], name: "index_items_on_saler_id"
+    t.index ["shipping_method_id"], name: "index_items_on_shipping_method_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,15 +76,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_123520) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_likes_on_item_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "buyer_id"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
-    t.index ["item_id"], name: "index_orders_on_item_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -103,6 +104,4 @@ ActiveRecord::Schema.define(version: 2020_06_05_123520) do
   add_foreign_key "items", "users", column: "saler_id"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
-  add_foreign_key "orders", "items"
-  add_foreign_key "orders", "users", column: "buyer_id"
 end
