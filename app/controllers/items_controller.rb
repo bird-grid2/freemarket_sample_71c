@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
 
   def index
+
+    @items = Item.all
+
   end
   
   def update
@@ -13,8 +16,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+
     @item = Item.find(params[:id])
     @category = @item.category
+
   end
 
   def new
