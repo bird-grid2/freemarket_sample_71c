@@ -28,7 +28,7 @@ a:hover {
     &__content {
       margin: 5px auto 20px;
     }
-    &__operation {
+    &__edit &__operation {
       text-align: center;
       font-size: 20px;
       background-color: $mainColor;

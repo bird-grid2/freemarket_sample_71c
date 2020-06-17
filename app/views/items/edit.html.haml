@@ -14,7 +14,15 @@
           #image-box
             - if @item.persisted?
               - @item.item_images.each_with_index do |item_image, i|
-                = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70', style: "display:none"
+                .item-image
+                  .item-image__content
+                    .item-image__content--icon
+                      = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70'
+                    .item-image__edit
+                      .item-image__edit--delete 削除
+                - if @item.persisted?
+                  = item_image.check_box :_destroy, data:{ index: item_image.index }, class: 'hidden-destroy'
+
               .item-num-0#image-box__container
                 = form.fields_for :item_images do |f|
                   = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
