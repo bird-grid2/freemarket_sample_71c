@@ -84,3 +84,6 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'ancestry'
 gem 'jquery-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
