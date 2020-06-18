@@ -1,11 +1,16 @@
 class ItemsController < ApplicationController
 
   def index
+
+    @items = Item.all
+
   end
   
   def show
-    # @item = Item.find(params[:id])
-    # @category = @item.category
+
+    @item = Item.find(params[:id])
+    @category = @item.category
+
   end
 
   def new
@@ -32,7 +37,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:category_id)
+    params.require(:item).premit(:name, :description, :brand, :price, :category_id,item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
 end

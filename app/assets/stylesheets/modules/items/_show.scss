@@ -12,7 +12,7 @@
 body{
   font-family:  "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
   color: rgb(51, 51, 51);
-  background-color: #f5f5f5;
+  background-color: $body_back;
 }
 tr {
   display: table-row;
@@ -25,18 +25,17 @@ tr {
   width: 700px;
   padding: 24px 40px 40px;
   margin: 40px auto 0;
-  background-color: white;
+  background-color: $white ;
   .item-content{
     margin: 16px 0 0;
     &__photo{
       float: left;
       width: 300px;
       height: 100%;
-      background-color: #f5f5f5;
+      background-color: $body_back;
       padding-bottom:20px;
       &--top{
         box-sizing: border-box;
-        position: relative;
         width: 300px;
         height: 300px;
       }
@@ -48,7 +47,16 @@ tr {
           width: 60px;
           height: 60px;
           display: inline-block;
-          background-color:#fff;
+          background-color: $white ;
+          .mini_image{
+            width:100%;
+            height:100%;
+            background-color:transparent;
+            opacity:0.6;
+          }
+          .mini_image:hover{
+            opacity:1;
+          }
         }
       }
     }
@@ -62,14 +70,14 @@ tr {
         th{
           background-color: #eee;
           border-collapse: collapse;
-          border: 1px solid #f5f5f5;
+          border: 1px solid $body_back;
           padding: 8px;
           
         }
         td{
-          background-color: #fff;
+          background-color: $white ;
           border-collapse: collapse;
-          border: 1px solid #f5f5f5;
+          border: 1px solid $body_back;
           padding: 8px;
           .rating{
             display: flex;
@@ -123,11 +131,12 @@ tr {
     background: #ea352d;
     font-size: 24px;
     line-height: 60px;
-    color: #fff;
+    color: $white ;
     text-align: center;
+    cursor: pointer;
   }
 
-  .item-detail{
+  .item-description{
     padding: 32px 0;
     line-height: 1.5;
     font-size: 18px;
@@ -214,13 +223,14 @@ tr {
         padding: 8px 16px;
         border-radius: 40px;
         color: #333;
-        border: 1px solid #f5f5f5;
-        background: #f5f5f5;
+        border: 1px solid $body_back;
+        background: $body_back;
         margin-left: 16px;
         display: flex;
         align-items: center;
         span{
           margin: 1px 0 0 8px;
+          cursor: pointer;
         }
       }     
     }
@@ -228,9 +238,9 @@ tr {
       margin: 8px 0 0;
       float: right;
       display: inline-block;
-     
       span{
         font-size: 14px;
+        cursor: pointer;
       }
     }
   }
@@ -240,13 +250,54 @@ tr {
   font-size: 24px;
   line-height: 1.4;
 }
+
+.items_line{
+  background-color: $body_back;
+  height: 10px;
+  margin-top: 30px;
+  width: 113%;
+  margin-left: -40px;
+
+}
+
+.items__box{
+  margin: 24px 0 24px 0;
+  background: $white ;
+  padding: 8px 16px 8px 16px;
+  &--btn{
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    .items__red{
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: $white ;
+      margin: 16px 0 16px 0;
+      line-height: 48px;
+
+    }
+    .items__gray{
+      line-height: 48px;
+      background: #aaa;
+      border: 1px solid #aaa;
+      margin: 16px 0 16px 0;
+      color: $white ;
+
+    }
+  }
+}
 .item-comments{
   width: 700px;
   margin: 8px auto;
 }
 .item-comments__content{
   padding: 24px;
-  background: #fff;
+  background: $white ;
 
 
   p{
@@ -263,7 +314,7 @@ tr {
     max-width: 100%;
     min-height: 104px;
     border: 1px solid #ccc;
-    background: #fff;
+    background: $white ;
     font-size: 16px;
     line-height: 1.5;
 
@@ -279,7 +330,7 @@ tr {
     line-height: 48px;
     transition: all ease-out .3s;
     cursor: pointer;
-    color: #fff;
+    color: $white ;
     span{
       font-size: 14px;
       vertical-align: middle;
@@ -302,7 +353,7 @@ tr {
   margin: 24px auto;
   padding: 32px 0 24px;
   width: 700px;
-  background-color: white;
+  background-color: $white ;
   &__boxes{
     margin: 16px 0 0;
     text-align: center;
@@ -319,23 +370,23 @@ tr {
         font-size: 44px;
       }
       .fa-facebook-square{
-        color: #fff;
+        color: $white ;
         background: #385185;
         font-size: 28px;
       }
       
       .fa-twitter{
-        color: #fff;
+        color: $white ;
         background: #5d9dc9;
         font-size: 26px;
       }
       .fa-line{
-        color: #fff;
+        color: $white ;
         background: #00c137;
         font-size: 22px;
       }
       .fa-pinterest{
-        color: #fff;
+        color: $white ;
         background: #aa262a;
         font-size: 18px;
       }

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :likes, only: :index
   end
 
-  resources :orders, only: [ :index]
-  resources :shipping_addresses, only: [ :index]
+ resources :orders, only: [ :index]
+ resources :shipping_addresses, only: [ :index]
 
 end
