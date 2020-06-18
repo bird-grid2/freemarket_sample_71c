@@ -36,6 +36,7 @@ header{
           width: 36px;
           height: 36px;
           padding: 8px;
+          border: none;
           background-color: $mainColor;
           vertical-align: top;
           .serch-icon{
@@ -66,6 +67,10 @@ header{
           font-size: 13px;
           text-decoration: none;
           padding-left: 16px;
+          .icon{
+            margin-right: 10px;
+            color: #777;
+          }
         }
       }
     }
