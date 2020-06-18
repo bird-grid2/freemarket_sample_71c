@@ -11,22 +11,17 @@
           出品画像<span>※</span>
           %p 最大5枚までアップロードできます
         .images__form
-          #image-box
-            - if @item.persisted?
-              - @item.item_images.each_with_index do |item_image, i|
-                .item-image
-                  .item-image__content
-                    .item-image__content--icon
-                      = image_tag item_image.image.url, data: { index: i }, width: "70", height: '70'
-                  .item-image__edit
-                    .item-image__edit--delete 削除
+           = f.fields_for :item_images, @item.item_images.first do |image|
+            .item__img__dropzone.clearfix
+              #preview
+              .item__img__dropzone__input
+                = image.label :image, for: "upload-image" do
+                  .input-area
+                    = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
                  
               .item-num-0#image-box__container
-                = form.fields_for :item_images do |f|
-                  = f.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"", style: "display:none", id:"img-file"
-                  %label{for: "img-file"}
-                    = image_tag 'icon/icon_camera.png'
-                  = f.check_box:_destroy, data:{ index: f.index }, class: 'hidden-destroy', style: "display:none"
+                %label{for: "upload-image"}
+                  = image_tag 'icon/icon_camera.png'
                   
                       
            

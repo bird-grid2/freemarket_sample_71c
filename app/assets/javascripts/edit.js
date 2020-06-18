@@ -1,178 +1,188 @@
-$(document).on('turbolinks:load',()=> {
-
-  let num = ($('#image-box').find('img').length - 1); 
-
-  for ( let i = 0; i < num; i++){
-
-    $('#image-box__container').attr('class', `item-num-${num}`)
-    
-  };
-});
-
-$(function(){
+$(window).on("turbolinks:load", function() {
+  var dropzone = $(".item__img__dropzone__input");
+  var input_area = $(".input-area");
+  var preview = $("#preview");
   
-  var dataBox = new DataTransfer();
-  
-  var file_field = document.querySelector('input[type=file]');
+  // 登録済画像と新規追加画像を全て格納する配列（ビュー用）
+  var images = [];
+  // 登録済画像データだけの配列（DB用）
+  var registered_images_ids =[]
+  // 新規追加画像データだけの配列（DB用）
+  var new_image_files = [];
 
-  var files = $('input[type="file"]').prop('files')[0];
-  
-  $('#img-file').change(function(){
-    
-    $.each(this.files, function(i, file){
-  
-      var fileReader = new FileReader();
 
-      dataBox.items.add(file)
-      
-      file_field.files = dataBox.files
+  // 登録済画像のプレビュー表示
+  gon.item_images.forEach(function(image, index){
+    var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
-      var num = $('.item-image').length + 1 + i
-      fileReader.readAsDataURL(file);
-      
-      if (num == 5){
-        $('#image-box__container').css('display', 'none')   
-      }
-      
-      fileReader.onloadend = () => {
-        var src = fileReader.result
-        var html= `<div class='item-image' data-image="${file.name}">
-                    <div class=' item-image__content'>
-                      <div class='item-image__content--icon'>
-                        <img src=${src} width="70" height="70" >
-                      </div>
-                    </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>削除</div>
-                    </div>
-                  </div>`
-        
-        $('#image-box__container').before(html);
-      };
-      
-      $('#image-box__container').attr('class', `item-num-${num}`)
-      $('.item-image').css({})
-      
+    // カスタムデータ属性を付与
+    img.data("image", index)
+
+    var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
+
+    // 画像に編集・削除ボタンをつける
+    img.append(btn_wrapper);
+
+    binary_data = gon.item_images_binary_datas[index]
+
+    // 表示するビューにバイナリーデータを付与
+    img.find("img").attr({
+      src: "data:image/jpeg;base64," + binary_data
     });
-  });
-    
-  $(document).on("click", '.item-image__operetion--delete', function(){
-    
-    var target_image = $(this).parent().parent()
-    
-    var target_name = $(target_image).data('image')
-    
-    if(file_field.files.length==1){
-      
-      $('input[type=file]').val(null)
-      dataBox.clearData();
-      console.log(dataBox)
-    }else{
-      
-      $.each(file_field.files, function(i,input){
-        
-        if(input.name==target_name){
-          dataBox.items.remove(i) 
-        }
-      })
-      
-      file_field.files = dataBox.files
-    }
-    
-    target_image.remove()
-    
-    var num = $('.item-image').length
-    $('#image-box__container').show()
-    $('#image-box__container').attr('class', `item-num-${num}`)
+
+    // 登録済画像のビューをimagesに格納
+    images.push(img)
+    registered_images_ids.push(image.id)
   })
-});
 
+  // 画像が４枚以下のとき
+  if (images.length <= 4) {
+    $('#preview').empty();
+    $.each(images, function(index, image) {
+      image.data('image', index);
+      preview.append(image);
+    })
+    dropzone.css({
+      'width': `calc(100% - (20% * ${images.length}))`
+    })
+  } 
 
-window.onload = (e) => {
-
-  var dropArea = document.getElementById("image-box");
-
-  dropArea.addEventListener("dragover", function(e) {
-    e.preventDefault();
-    $(this).children('#image-box__container').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
-  },false);
-
-  dropArea.addEventListener("dragleave", function(e) {
-    e.preventDefault();
-    $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'})      
-  },false);
-
-  dropArea.addEventListener("drop", function (e) {
-
-    e.preventDefault();
-    
-    $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'});
-    
-    var files = e.dataTransfer.files;
-
-    $.each(files, function(i,file){
-
-      var fileReader = new FileReader();
-
-      dataBox.items.add(file)
-      file_field.files = dataBox.files
-
-      var num = $('.item-image').length + i + 1
-
-      fileReader.readAsDataURL(file);
-
-      if (num==5){
-        $('#image-box__container').css('display', 'none')   
-      }
-
-      fileReader.onload = () => {
-
-        var src = fileReader.result
-        var html =`<div class='item-image' data-image="${file.name}">
-                    <div class=' item-image__content'>
-                      <div class='item-image__content--icon'>
-                        <img src=${src} width="70" height="70" >
-                      </div>
-                    </div>
-                    <div class='item-image__operetion'>
-                      <div class='item-image__operetion--delete'>削除</div>
-                    </div>
-                  </div>`
-
-        $('#image-box__container').before(html);
-        $('.item-image').css({
-          'display' : 'flex',
-          'flex-direction' : 'column',
-          'justify-content' : 'space-around',
-          'width' : '80px'
-        });
-        $('.item-image__content').css( 'margin', '5px auto 20px');
-        $('.item-image__operation').css({
-          'text-align' : 'center',
-          'font-size' : '20px',
-          'background-color' : '$mainColor',
-          'border' : '1px solid $mainColor',
-          'color' : '#fff',
-          'margin' : '0px 5px 5px 5px',
-          'line-height' : '30px'
-        });
-      };
-
-      $('#image-box__container').attr('class', `item-num-${num}`)
+  // 画像が5枚になったら枠を消す
+  if (images.length == 5) {
+    dropzone.css({
+      display: "none"
     });
+  }
+
+  var new_image = $(
+    `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
+  );
+  input_area.append(new_image);
+
+
+  // 画像を新しく追加する場合
+  $("#edit_item .item__img__dropzone").on("change", 'input[type= "file"].upload-image', function() {
+    var file = $(this).prop("files")[0];
+    new_image_files.push(file)
+    var reader = new FileReader();
+    var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+
+    reader.onload = function(e) {
+      var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
+
+      // 画像に編集・削除ボタンをつける
+      img.append(btn_wrapper);
+      img.find("img").attr({
+        src: e.target.result
+      });
+    };
+
+    reader.readAsDataURL(file);
+    images.push(img);
+
+    // 画像が４枚以下のとき
+    if (images.length <= 4) {
+      $('#preview').empty();
+      $.each(images, function(index, image) {
+        image.data('image', index);
+        preview.append(image);
+      })
+      dropzone.css({
+        'width': `calc(100% - (20% * ${images.length}))`
+      })
+    }
+    // 画像が5枚になったら枠を消す
+    if (images.length == 5) {
+      dropzone.css({
+        display: "none"
+      });
+    }
+
+    var new_image = $(
+      `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
+    );
+    input_area.append(new_image);
   });
-};
 
-$(document).on("click", '.item-image__edit--delete', function() {
 
-  
-  const targetData = $(this).parent().parent();
+  // 削除ボタン
+  $("#edit_item .item__img__dropzone").on('click', '.btn_delete', function() {
 
-  targetData.remove();
+    // 削除ボタンを押した画像を取得
+    var target_image = $(this).parent().parent();
 
-  var num = $('.item-image').length;
+    // 削除画像のdata-image番号を取得
+    var target_image_num = target_image.data('image');
 
-  $('#image-box__container').show()
-  $('#image-box__container').attr('class', `item-num-${num}`)
+    // 対象の画像をビュー上で削除
+    target_image.remove();
 
+    // 対象の画像を削除した新たな配列を生成
+    images.splice(target_image_num, 1);
+
+    // target_image_numが登録済画像の数以下の場合は登録済画像データの配列から削除、それより大きい場合は新たに追加した画像データの配列から削除
+    if (target_image_num < registered_images_ids.length) {
+      registered_images_ids.splice(target_image_num, 1);
+    } else {
+      new_image_files.splice((target_image_num - registered_images_ids.length), 1);
+    }
+
+    if(images.length == 0) {
+      $('input[type= "file"].upload-image').attr({
+        'data-image': 0
+      })
+    }
+
+    // 削除後の配列の中身の数で条件分岐
+    // 画像が４枚以下のとき
+    if (images.length <= 4) {
+      $('#preview').empty();
+      $.each(images, function(index, image) {
+        image.data('image', index);
+        preview.append(image);
+      })
+      dropzone.css({
+        'width': `calc(100% - (20% * ${images.length}))`,
+        'display': 'block'
+      })
+      appendzone.css({
+        'display': 'none'
+      })
+    }
+  });
+
+  $('.edit_item').on('submit', function(e){
+    // 通常のsubmitイベントを止める
+    e.preventDefault();
+    // images以外のform情報をformDataに追加
+    var formData = new FormData($(this).get(0));
+
+    // 登録済画像が残っていない場合は便宜的に0を入れる
+    if (registered_images_ids.length == 0) {
+      formData.append("registered_images_ids[ids][]", 0)
+    // 登録済画像で、まだ残っている画像があればidをformDataに追加していく
+    } else {
+      registered_images_ids.forEach(function(registered_image){
+        formData.append("registered_images_ids[ids][]", registered_image)
+      });
+    }
+
+    // 新しく追加したimagesがない場合は便宜的に空の文字列を入れる
+    if (new_image_files.length == 0) {
+      formData.append("new_images[images][]", " ")
+    // 新しく追加したimagesがある場合はformDataに追加する
+    } else {
+      new_image_files.forEach(function(file){
+        formData.append("new_images[images][]", file)
+      });
+    }
+
+    $.ajax({
+      url:         '/items/' + gon.item.id,
+      type:        "PATCH",
+      data:        formData,
+      contentType: false,
+      processData: false,
+    })
+  });
 });
