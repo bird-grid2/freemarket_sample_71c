@@ -12,7 +12,7 @@
         - @item.item_images.each do |image|
           .item-content__photo--bottom__pic
             -# = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
-            = image_tag 'product/product1.png'
+            = image_tag 'product/product1.png', class:"mini_image"
     %table.item-content__table
       %tr
         %th
