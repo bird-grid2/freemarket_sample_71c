@@ -28,14 +28,11 @@ a:hover {
     &__content {
       margin: 5px auto 20px;
     }
-    &__edit &__operation {
-      text-align: center;
-      font-size: 20px;
-      background-color: $mainColor;
-      border: 1px solid $mainColor;
-      color: #fff;
-      margin: 0px 5px 5px 5px;
-      line-height: 30px;
+    &__edit {
+      @include edit-btn;
+    }
+    &__operation {
+      @include edit-btn;
     }
   }
   #image-box__container {
