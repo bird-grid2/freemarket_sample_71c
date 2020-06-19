@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
 
     @item = Item.find(params[:id])
     @category = @item.category
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
 
   end
 
