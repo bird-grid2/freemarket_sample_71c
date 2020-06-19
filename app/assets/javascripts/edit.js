@@ -2,7 +2,7 @@ $(window).on("turbolinks:load", function() {
   var dropzone = $(".item__img__dropzone__input");
   var input_area = $(".input-area");
   var preview = $("#preview");
-  
+
   // 登録済画像と新規追加画像を全て格納する配列（ビュー用）
   var images = [];
   // 登録済画像データだけの配列（DB用）
@@ -45,14 +45,18 @@ $(window).on("turbolinks:load", function() {
     dropzone.css({
       'width': `calc(100% - (20% * ${images.length}))`
     })
-  } 
 
-  // 画像が5枚になったら枠を消す
-  if (images.length == 5) {
+    // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
+  } else if (images.length == 5) {
+    $("#preview").empty();
+    $.each(images, function(index, image) {
+      image.data("image", index);
+      preview.append(image);
+    });
     dropzone.css({
       display: "none"
     });
-  }
+  } 
 
   var new_image = $(
     `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
@@ -90,13 +94,18 @@ $(window).on("turbolinks:load", function() {
       dropzone.css({
         'width': `calc(100% - (20% * ${images.length}))`
       })
-    }
-    // 画像が5枚になったら枠を消す
-    if (images.length == 5) {
+
+      // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
+    } else if (images.length == 5) {
+      $("#preview").empty();
+      $.each(images, function(index, image) {
+        image.data("image", index);
+        preview.append(image);
+      });
       dropzone.css({
         display: "none"
       });
-    }
+    } 
 
     var new_image = $(
       `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
@@ -148,10 +157,22 @@ $(window).on("turbolinks:load", function() {
       appendzone.css({
         'display': 'none'
       })
-    }
-  });
 
-  $('.exhibit').on('submit', function(e){
+    // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
+    } else if (images.length == 5) {
+      $('#preview').empty();
+      $.each(images, function(index, image) {
+        image.data('image', index);
+        preview.append(image);
+      })
+      dropzone.css({
+        'display': 'none'
+      })
+    } 
+  })
+
+
+  $(' .exhibit').on('submit', function(e){
     // 通常のsubmitイベントを止める
     e.preventDefault();
     // images以外のform情報をformDataに追加

@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
       # 新規登録画像があればcreate
       unless new_image_params[:images][0] == " "
         new_image_params[:images].each do |image|
-          @item.item_images.create(image_url: image, item_id: @item.id)
+          @item.item_images.create(image: image, item_id: @item.id)
         end
       end
 
@@ -100,12 +100,12 @@ class ItemsController < ApplicationController
                              secret_access_key: Rails.application.credentials.aws[:secret_access_key],
                              )
       @item.item_images.each do |image|
-        binary_data = client.get_object(bucket: 'freemarket-sample-51a', key: image.image_url.file.path).body.read
+        binary_data = client.get_object(bucket: 'freemarket-sample-71c', key: image.image.file.path).body.read
         gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
       end
     else
       @item.item_images.each do |image|
-        binary_data = File.read(image.image_url.file.file)
+        binary_data = File.read(image.image.file.file)
         gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
       end
     end

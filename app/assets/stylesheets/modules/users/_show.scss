@@ -16,7 +16,7 @@ a:hover {
   @include gray-btn;
 }
 
-#image-box {
+.item__img__dropzone {
   display: flex;
   height: 150px;
   width: 400px;
