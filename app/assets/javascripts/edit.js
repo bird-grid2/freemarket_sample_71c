@@ -1,12 +1,12 @@
 $(window).on("turbolinks:load", function() {
-  var dropzone = $(".item__img__dropzone__input");
+  var dropzone = $(".upload-images-edit");
   var input_area = $(".input-area");
   var preview = $("#preview");
 
   // 登録済画像と新規追加画像を全て格納する配列（ビュー用）
   var images = [];
   // 登録済画像データだけの配列（DB用）
-  var registered_images_ids =[]
+  var registered_images_ids = [];
   // 新規追加画像データだけの配列（DB用）
   var new_image_files = [];
 
@@ -18,7 +18,7 @@ $(window).on("turbolinks:load", function() {
     // カスタムデータ属性を付与
     img.data("image", index)
 
-    var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
+    var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
     // 画像に編集・削除ボタンをつける
     img.append(btn_wrapper);
@@ -27,7 +27,8 @@ $(window).on("turbolinks:load", function() {
 
     // 表示するビューにバイナリーデータを付与
     img.find("img").attr({
-      src: "data:image/jpeg;base64," + binary_data
+      src: "data:image/jpeg;base64," + binary_data,
+      width: '70px', height: '70px'
     });
 
     // 登録済画像のビューをimagesに格納
@@ -65,19 +66,20 @@ $(window).on("turbolinks:load", function() {
 
 
   // 画像を新しく追加する場合
-  $("#edit_item .item__img__dropzone").on("change", 'input[type= "file"].upload-image', function() {
+  $("#edit_item .images__form__dropzone").on("change", 'input[type= "file"].upload-image', function() {
     var file = $(this).prop("files")[0];
     new_image_files.push(file)
     var reader = new FileReader();
     var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
     reader.onload = function(e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><a class="btn_edit">編集</a><a class="btn_delete">削除</a></div>');
+      var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
       // 画像に編集・削除ボタンをつける
       img.append(btn_wrapper);
       img.find("img").attr({
-        src: e.target.result
+        src: e.target.result,
+        width: '70px', height: '70px'
       });
     };
 
@@ -115,7 +117,7 @@ $(window).on("turbolinks:load", function() {
 
 
   // 削除ボタン
-  $("#edit_item .item__img__dropzone").on('click', '.btn_delete', function() {
+  $("#edit_item .images__form__dropzone").on('click', '.rounded-pill', function() {
 
     // 削除ボタンを押した画像を取得
     var target_image = $(this).parent().parent();
@@ -153,9 +155,6 @@ $(window).on("turbolinks:load", function() {
       dropzone.css({
         'width': `calc(100% - (20% * ${images.length}))`,
         'display': 'block'
-      })
-      appendzone.css({
-        'display': 'none'
       })
 
     // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
