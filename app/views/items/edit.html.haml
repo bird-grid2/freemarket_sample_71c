@@ -12,16 +12,16 @@
             出品画像<span>※</span>
             %p 最大5枚までアップロードできます
           .images__form
-            = form.fields_for :item_images, @item.item_images.first.image.to_s do |image|
+            = form.fields_for :item_images, @item.item_images do |image|
               .images__form__dropzone
                 #preview
                 .upload-images-edit
                   = image.label :image, for: "upload-image" do
                     = image_tag 'icon/icon_camera.png'
                     .input-area
-                      = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0, style: "display: none"
-                      
-                    .upload-images__description
+                = image.file_field :image, id: "upload-image", class: "upload-image"
+                    
+                .upload-images__description
                       
                      
                     
