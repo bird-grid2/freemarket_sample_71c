@@ -1,39 +1,71 @@
-= form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
-  %label カード番号
-  = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
-  %br
-  %label 有効期限
-  %select#exp_month{name: "exp_month", type: "text"}
-    %option{value: ""} --
-    %option{value: "1"}01
-    %option{value: "2"}02
-    %option{value: "3"}03
-    %option{value: "4"}04
-    %option{value: "5"}05
-    %option{value: "6"}06
-    %option{value: "7"}07
-    %option{value: "8"}08
-    %option{value: "9"}09
-    %option{value: "10"}10
-    %option{value: "11"}11
-    %option{value: "12"}12
-  %span 月/
-  %select#exp_year{name: "exp_year", type: "text"}
-    %option{value: ""} --
-    %option{value: "2019"}19
-    %option{value: "2020"}20
-    %option{value: "2021"}21
-    %option{value: "2022"}22
-    %option{value: "2023"}23
-    %option{value: "2024"}24
-    %option{value: "2025"}25
-    %option{value: "2026"}26
-    %option{value: "2027"}27
-    %option{value: "2028"}28
-    %option{value: "2029"}29
-  %span 年
-  %br
-  %label セキュリティコード
-  = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
-  #card_token
-  = submit_tag "追加する", id: "token_submit"
+.single-container
+  %header.single-header
+    %h1.single-header__logo
+      = link_to root_path do
+        =image_tag("logo/furima-logo.svg")
+    %nav.single-header__progress
+      %ol
+        %li.single-header__progress__text{ id: "first" }
+          会員情報
+          .single-header__progress__round--red
+        %li.single-header__progress__text
+          お届け先住所入力
+          .single-header__progress__round--red
+        %li.single-header__progress__text--active
+          支払い方法
+          .single-header__progress__round--red
+            .single-header__progress__round--red-long{ id: "long" }
+        %li.single-header__progress__text{ id: "end" }
+          完了
+          .single-header__progress__round
+  %main.single-main
+    %section.single-main__container
+      %h2.single-main__container__title
+        支払い方法
+
+.single-main__container__form
+  .single-main__container__form__frame
+    = form_with url: new_card_path do |f|
+      -#= render "devise/shared/error_messages", resource: @card
+      .form-group
+        = f.label :カード番号
+        %span.form-group__require 必須
+        = f.text_field :card_number, {placeholder: "半角数字のみ", class: "form-group__input",maxlength:"16"}
+      .form-group
+        = f.label :カード会社
+        %span.form-group__require 必須
+        -#= f.select :card_company, Creditcard.card_companies.keys, {}, {class: 'form-group__input'}
+        %ul.signup__card--list
+          %li.icon--visa
+            = image_tag("logo/visa.gif", id:"icon--visa")
+          %li.icon--master
+            = image_tag("logo/master.gif", id:"icon--master")
+          %li.icon--jcb
+            = image_tag("logo/jcb.gif", id:"icon--jcb")
+          %li.icon--americanexpress
+            = image_tag("logo/amex.gif", id:"icon--americanexpress")
+          %li.icon--diners
+            = image_tag("logo/diners.gif", id:"icon--diners")
+      .form-group
+        = f.label :有効期限
+        %span.form-group__require 必須
+        %br
+        = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
+        = f.label :月, class: "form-group__card--year-and-month"
+        -# = f.select :card_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
+        = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half"}
+        = f.label :年, class: "form-group__card--year-and-month"
+      .form-group
+        = f.label :セキュリティコード, class: "label"
+        %span.form-group__require 必須
+        = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番", class: "form-group__input"
+
+      .form-group__add
+        .form-group__add--question ?
+        %p.form-group__text--right--blue
+          カード裏面の番号とは？
+      .form-group
+        = f.submit "登録する", class: "btn-default btn-red", url: "creditcards_path",id:"charge-form",method: :post
+  -#= render "/registration/registration_footer"
+
+  f.submit "Sign up"

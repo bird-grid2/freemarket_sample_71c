@@ -3,8 +3,8 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    card = Card.where(user_id: 1)
-    redirect_to action: "show" if card.exists?
+    @card = Card.where(user_id: 1)
+    redirect_to action: "show" if @card.exists?
   end
 
   def pay #payjpとCardのデータベース作成を実施します。
@@ -26,16 +26,16 @@ class CardsController < ApplicationController
   end
 
   def delete #PayjpとCardデータベースを削除します
-    card = Card.where(user_id: current_user.id).first
+    card = Card.where(user_id: 1).first
     if card.blank?
+      redirect_to action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(card.customer_token)
       customer.delete
       card.delete
     end
 
-    redirect_to action: "new"
   end
 
   def show #Cardのデータpayjpに送り情報を取り出します
@@ -47,6 +47,24 @@ class CardsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_token)
       @default_card_information = customer.cards.retrieve(customer.default_card)
+
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
+        # (画像として登録されている)Visa.pngを返す
+        @card_src = "logo/visa.gif"
+      when "JCB"
+        @card_src = "logo/jcb.gif"
+      when "MasterCard"
+        @card_src = "master.png"
+      when "American Express"
+        @card_src = "amex.png"
+      when "Diners Club"
+        @card_src = "diners.png"
+      when "Discover"
+        @card_src = "discover.png"
+      end
     end
   end
 end

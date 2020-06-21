@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     post 'show', to: 'cards#show'	
     post 'pay', to: 'cards#pay'	
     post 'delete', to: 'cards#delete'	
+    post 'done', to: 'cards#done'
   end
  end
 

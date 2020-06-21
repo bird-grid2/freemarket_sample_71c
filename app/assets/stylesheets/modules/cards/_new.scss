@@ -1,0 +1,54 @@
+.single-container{
+  .single-header{
+    &__logo{
+    }
+    &__progress{
+      &__text{
+        &--active{
+        }
+      }
+      &__round--red{
+        &-long{
+        }
+      }
+    }
+  }
+}
+.single-main__container__form__frame{
+    .form-group{
+      .signup__card--list{
+        display: flex;
+        .icon{
+          &--visa{
+    
+          }
+          &--master{
+    
+          }
+          &--jcb{
+    
+          }
+          &--americanexpress{
+    
+          }
+          &--diners{
+    
+          }
+    
+        }
+    
+    
+      }
+      &__require{
+  
+      }
+      &__input{
+  
+      }
+      &__card{
+  
+      }
+
+  }
+
+}

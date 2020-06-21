@@ -16,7 +16,6 @@
 }
 
 @mixin bottom{
-  height: 10%;
   position: relative;
 }
 
@@ -38,12 +37,6 @@
   text-align: left;
   vertical-align: middle;
   margin-top: 10px;
-}
-
-@mixin index{
-  height: 90%;
-  text-align: center;
-  background-color: #11FFFF;
 }
 
 @mixin title{

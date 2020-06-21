@@ -1,8 +1,7 @@
 .wrapper-a{
   width: 100vw;
 }
-.index{
-  @include index;
+.index-s{
   &__container{
     margin-top: 10px;
     height: 100%;
@@ -10,10 +9,9 @@
     width: 50%;
     &__top{
       margin: 0 auto;
-      display: flex;
       align-items: center;
       justify-content: center;
-      height: 50px;
+      height: 80px;
       width: 60%;
       &__title{
         @include title;

@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
   end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,14 +38,12 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
     t.text "desctiption", null: false
     t.string "brand"
     t.integer "price", null: false
-    t.bigint "user_id", null: false
-    t.bigint "saler_id", null: false
+    t.bigint "seller_id", null: false
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["saler_id"], name: "index_items_on_saler_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_070042) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "items", "users"
+  add_foreign_key "item_images", "items"
   add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "saler_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "shipping_addresses", "users"
 end

@@ -1,7 +1,7 @@
 %head
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-.wrapper
+.wrapper-p
   = render "layouts/header"
 
   .index
@@ -12,43 +12,59 @@
       .index__container__payment-info
         .index__container__payment-info__item
           .index__container__payment-info__item__all
-            = image_tag( "pict/bag.jpg", class: "index__container__payment-info__item__all__img")
+            = image_tag( @image.image, class: "index__container__payment-info__item__all__img")
+            -# = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+
             .index__container__payment-info__item__all__right-content
               .index__container__payment-info__item__all__right-content__name
                 = @item.name
               .index__container__payment-info__item__all__right-content__price
                 ¥
                 = @item.price
-                （税込）送料込み
+                （税込)
+                -#= @item.postage(マージ後に実装予定)
         .index__container__payment-info__price
           .index__container__payment-info__price__all
             .index__container__payment-info__price__all__upper
-              .index__container__payment-info__price__all__upper--left
+              %span{"class"=>"index__container__payment-info__price__all__upper--left"}
                 支払金額
-              .index__container__payment-info__price__all__upper--right
+              %span{"class"=>"index__container__payment-info__price__all__upper--right"}
                 ¥
-                = @amount
+                = @item.price
             .index__container__payment-info__price__all--bottom
               ポイントを使用 (所持ポイント: P0)
         .index__container__payment-info__method
           .index__container__payment-info__method__all
             .index__container__payment-info__method__all--upper
-              支払方法
+              .index__container__payment-info__method__all--upper--left
+                支払方法
+              .index__container__payment-info__method__all--upper--right
+                - if @card.blank?
+                  = link_to "登録してください", new_card_path
+                  -#= form_with url: "new_card_path" do
+                    :plain
+                      <script
+                        type="text/javascript"
+                        src="https://checkout.pay.jp/"
+                        class="payjp-button"
+                        data-key="pk_test_0383a1b8f91e8a6e3ea0e2a9"
+                        data-submit-text="トークンを作成する"
+                        data-partial="true">
+                      </script>
+                - else
+                  = link_to "変更する", delete_cards_path
             .index__container__payment-info__method__all--lower
-              - if @card.blank?
-                = link_to "card", new_card_path
-                -#= form_with url: "https://checkout.pay.jp" do
-                  :plain
-                    <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="公開鍵"></script>
-              - else
+              - unless @card.blank?
+                %br
+                クレジットカード
                 %br
                 = "**** **** **** " + @default_card_information.last4
                 %br
-                -#- exp_month = @default_card_information.exp_month.to_s
-                -#- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-                -#= exp_month + " / " + exp_year
-                -#= form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
-                -#  %input{ type: "hidden", name: "card_id", value: "" }
+                有効期限
+                = @default_card_information.exp_month.to_s + "/"
+                = @default_card_information.exp_year.to_s
+                %br
+                =@default_card_information.brand
         .index__container__payment-info__address
           .index__container__payment-info__address__all
             .index__container__payment-info__address__all--upper
@@ -69,19 +85,21 @@
                   = @shipping_address.prefecture
                   = @shipping_address.city
                   = @shipping_address.block
-                %br
-                  = @shipping_address.building
+                - unless @shipping_address.building.blank?
+                  %br
+                    = @shipping_address.building
                 %br
                   = @shipping_address.user.family_name
                   = @shipping_address.user.first_name
 
-
-                -# binding.pry
-                -#= link_to "変更する", shipping_addresses_path
-                
       .index__container__bottom
         = link_to confirm_item_path do
           - if @condition
             %input{type: "submit", value: "購入する", class: "index__container__bottom__btn--disabled", disabled: "disabled"}
           - else 
             %input{type: "submit", value: "購入する", class: "index__container__bottom__btn"}
+
+    -#.item-buy-btn
+    -# unless user_signed_in? && current_user.id == @item.seller_id
+
+  = render "layouts/footer"

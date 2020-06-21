@@ -2,14 +2,14 @@
   box-sizing: border-box;
 }
 
-.wrapper{
+.wrapper-p{
   width: 100vw;
-  height: 100vh;
 }
 .index{
-  @include index;
+  text-align: center;
+  background-color: #f5f5f5f5;
   &__container{
-    height: 90%;
+    height: calc(#{$top-height} + #{$item-height} + #{$price-height} + #{$method-height} + #{$address-height} + #);
     margin: 0 auto;
     background-color: white;
     width: 50%;
@@ -18,38 +18,37 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 10%;
+      height: $top-height;
       width: 60%;
       &__title{
         @include title;
       }
     }
     &__payment-info{
-      height: 80%;
       margin: 0 auto;
-      font-weight: bold;
       &__item{
+        height: $item-height;
         @include border-top;
         display: flex;
         align-items: center;
-        justify-content: center;
         margin: 0 auto;
-        height: 40%;
         @include purchase-width;
         &__all{
           display: flex;
-          @include purchase-width;
-          margin: 0 auto;
+          margin: 0 0 0 30px;
           &__img{
-            width: 40%;
+            width: 30%;
           }
           &__right-content{
-
+            text-align: left;
             width: 70%;
             &__name{
+              margin-left: 10px;
               height: 50%;
             }
             &__price{
+              margin-left: 10px;
+              font-weight: bold;
               height: 50%;
             }
           }
@@ -58,20 +57,29 @@
       &__price{
         @include border-top;
         position: relative;
-        height: 20%;
+        height: $price-height;
         @include purchase-width;
         margin: 0 auto;
         &__all{
-          position: absolute;
+          height: $price-height;
+          margin: 0 auto;
           top: 20%;
-          height: 70%;
           width: 70%;
           left: 15%;
           &__upper{
+            text-align: center;
+            height: 100px;
+            display: table-cell;
+            vertical-align: center;
+            font-weight: bold;
             margin: 0 auto;
             display: flex;
+            &--left{
+              margin: 50px 0 0 0;
+            }
             &--right{
-              margin: 0 0 0 auto;
+              vertical-align: center;
+              margin: 50px 0 0 auto;
               font-size: x-large;
             }
           }
@@ -81,53 +89,48 @@
         }
       }
       &__method{
-        height: 20%;
+        height: $method-height;
         @include purchase-width;
         display: flex;
         margin: 0 auto;
         position: relative;
         @include border-top;
         &__all{
-          //display: flex;
-          position: absolute;
+          margin: 25px auto 0 auto;
           top: 20%;
-          height: 70%;
           width: 70%;
           left: 15%;
           &--upper{
-            text-align: left;
-            @include purchase-width;
+            display: flex;
+            justify-content: space-between;
           }
           &--lower{
-            margin: 0 0 0 auto;
+            text-align: left;
           }
         }
       }
       &__address{
         @include border-top;
-        height: 50%;
+        height: $address-height;
         @include purchase-width;
         margin: 0 auto;
         &__all{
           vertical-align: middle;
           margin: 0 auto;
           top: 20%;
-          height: 70%;
           width: 70%;
           &--upper{
             padding: 20px 0 0 0;
             vertical-align: middle;
-            //text-align: left;
             top: 20px;
-            height:40px;
             width: 100%;
             display: flex;
+            justify-content: space-between;
           }
           &--lower{
-            padding: 30px 0 0 0;
+            padding: 5px 0 0 0;
             text-align: left;
-            height:100px;
-            width: 70%;
+            line-height:10px;
             br{
               text-align: left;
             }
@@ -137,6 +140,7 @@
     }
     &__bottom{
       @include bottom;
+      height: $bottom-height;
       &__btn{
         @include btn;
         background-color: red;

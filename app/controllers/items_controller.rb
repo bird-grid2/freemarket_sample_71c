@@ -16,8 +16,7 @@ class ItemsController < ApplicationController
 
   def purchase
     @item = Item.find(1)
-    @amount = @item.price + 200
-    #binding.pry
+    @image = ItemImage.find(1)
     card = Card.where(user_id: 1).first
     @shipping_address = ShippingAddress.where(user_id: 1).first
     @condition = card.blank? || @shipping_address.blank?
