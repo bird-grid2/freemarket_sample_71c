@@ -61,9 +61,16 @@ $(window).on("turbolinks:load", function() {
     } 
 
     var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][id]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
+      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
     );
-    $('.images__form__dropzone').append(new_image);
+    input_area.append(new_image);
+
+    $("#edit_item .images__form__dropzone").append($('<input />', {
+      type: 'hidden',
+      name: "item[item_images_attributes][#{images.length}][id]",
+      value: $(this).data('id')
+    }));
+
 
 
     // 画像を新しく追加する場合
@@ -110,9 +117,16 @@ $(window).on("turbolinks:load", function() {
         });
       } 
       var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
+      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
       );
+      
       input_area.append(new_image);
+    
+      $("#edit_item .images__form__dropzone").append($('<input />', {
+        type: 'hidden',
+        name: "item[item_images_attributes][#{images.length}][id]",
+        value: $(this).data('id')
+      }));
     });
 
 
@@ -139,9 +153,7 @@ $(window).on("turbolinks:load", function() {
       }
 
       if(images.length == 0) {
-        $('input[type= "file"].upload-image').attr({
-          'data-image': 0
-        })
+        $('input[type= "file"].upload-image').attr({'data-image': (target_image_num - 1)})
       }
 
       // 削除後の配列の中身の数で条件分岐
@@ -156,26 +168,19 @@ $(window).on("turbolinks:load", function() {
           'width': `calc(100% - (20% * ${images.length}))`,
           'display': 'block'
         })
-
-      // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
-      } else if (images.length == 5) {
-        $('#preview').empty();
-        $.each(images, function(index, image) {
-          image.data('image', index);
-          preview.append(image);
-        })
-        dropzone.css({
-          'display': 'none'
-        })
       } 
       var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`
+      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
       );
+      
       input_area.append(new_image);
-    })
-
-    console.log(images)
-
+    
+      $("#edit_item .images__form__dropzone").append($('<input />', {
+        type: 'hidden',
+        name: "item[item_images_attributes][#{images.length}][id]",
+        value: $(this).data('id')
+      }));
+    });
 
     $(' .exhibit').on('submit', function(e){
       // 通常のsubmitイベントを止める
@@ -194,17 +199,16 @@ $(window).on("turbolinks:load", function() {
         });
       }
 
+
       // 新しく追加したimagesがない場合は便宜的に空の文字列を入れる
       if (new_image_files.length == 0) {
-        formData.append("new_images[images][]", " ")
+        formData.append("item_images_attributes[][image]", " ")
       // 新しく追加したimagesがある場合はformDataに追加する
       } else {
         new_image_files.forEach(function(file){
-          formData.append("new_images[images][]", file)
-          console.log(registered_images.ids)
+          formData.append("item_images_attributes[][image]", file)
         });
       }
-
       $.ajax({
         url:          url,
         type:        "PATCH",
