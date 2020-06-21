@@ -61,17 +61,15 @@ $(window).on("turbolinks:load", function() {
     } 
 
     var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
+      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none">`
     );
     input_area.append(new_image);
 
-    $("#edit_item .images__form__dropzone").append($('<input />', {
-      type: 'hidden',
-      name: "item[item_images_attributes][#{images.length}][id]",
-      value: $(this).data('id')
-    }));
+    var controll_name = `item[item_images_attributes][${images.length}][id]`;
 
-
+    var hidden_data = `<input type='hidden' name=${controll_name} value=${images.length} id= "item_item_images_attributes_${images.length}_id" >`
+    
+    $("#edit_item .images__form").append($(hidden_data));
 
     // 画像を新しく追加する場合
     $("#edit_item .images__form__dropzone").on("change", 'input[type= "file"].upload-image', function() {
@@ -116,17 +114,17 @@ $(window).on("turbolinks:load", function() {
           display: "none"
         });
       } 
+
       var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none">`
       );
-      
       input_area.append(new_image);
     
-      $("#edit_item .images__form__dropzone").append($('<input />', {
-        type: 'hidden',
-        name: "item[item_images_attributes][#{images.length}][id]",
-        value: $(this).data('id')
-      }));
+      var controll_name = `item[item_images_attributes][${images.length}][id]`;
+
+      var hidden_data = `<input type='hidden' name=${controll_name} value=${images.length} id= "item_item_images_attributes_${images.length}_id" >`
+    
+      $("#edit_item .images__form").append($(hidden_data));
     });
 
 
@@ -138,6 +136,8 @@ $(window).on("turbolinks:load", function() {
 
       // 削除画像のdata-image番号を取得
       var target_image_num = target_image.data('image');
+
+      console.log(target_image_num)
 
       // 対象の画像をビュー上で削除
       target_image.remove();
@@ -166,20 +166,12 @@ $(window).on("turbolinks:load", function() {
         })
         dropzone.css({
           'width': `calc(100% - (20% * ${images.length}))`,
-          'display': 'block'
         })
       } 
-      var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="upload-image"  style: "display: none">`
-      );
       
-      input_area.append(new_image);
-    
-      $("#edit_item .images__form__dropzone").append($('<input />', {
-        type: 'hidden',
-        name: "item[item_images_attributes][#{images.length}][id]",
-        value: $(this).data('id')
-      }));
+      $('input[type= "file"].upload-image').data('image', target_image_num).remove();
+
+      $("input[type= 'hidden']").eq(target_image_num).remove();
     });
 
     $(' .exhibit').on('submit', function(e){

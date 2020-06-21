@@ -16,17 +16,13 @@
               .images__form__dropzone
                 #preview
                 .upload-images-edit
-                  = image.label :image, for: "upload-image" do
+                  = image.label :image, for: "item_item_images_attributes_0_image" do
                     = image_tag 'icon/icon_camera.png'
                     .input-area
-                = image.file_field :image, id: "upload-image", class: "upload-image"
+                      = image.file_field :image, name: "item[item_images_attributes][0][image]", class: "upload-image", data: {image: 0 }, id: "item_item_images_attributes_0_image"
                     
-                .upload-images__description
                       
-                     
                     
-                        
-            
               
         .name
           .name__title
@@ -42,7 +38,7 @@
           .category__title
             カテゴリー<span>※</span>
             .category__form
-              -# = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+              -#= form.collection_select :parent_id, Parent.all, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
         .brand
           .brand__title
