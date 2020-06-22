@@ -147,6 +147,8 @@ $(window).on("turbolinks:load", function() {
       // 削除画像のdata-image番号を取得
       var target_image_num = target_image.data('image');
 
+      console.log(target_image_num);
+
 
       // 対象の画像をビュー上で削除
       target_image.remove();
@@ -178,11 +180,13 @@ $(window).on("turbolinks:load", function() {
         })
       } 
       
-      $('input[type= "file"].upload-image').data('image', target_image_num).remove();
+      $('input[type= "file"]:last').remove();
 
-      $("input[type= 'hidden']").eq(target_image_num).remove();
+      $("input[type= 'hidden']:last").remove();
 
-      delete_id = $('input[type= "file"].upload-image').eq(target_image_num - 1).prop(id);
+      delete_id = $('input[type= "file"]:last').prop('id');
+
+      console.log(delete_id)
       
       upload_image.attr( "for", delete_id );
 
