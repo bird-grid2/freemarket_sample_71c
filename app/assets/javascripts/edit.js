@@ -3,6 +3,7 @@ $(window).on("turbolinks:load", function() {
     var dropzone = $(".upload-images-edit");
     var input_area = $(".input-area");
     var preview = $("#preview");
+    var upload_image = $(".upload-images-edit label");
 
     // 登録済画像と新規追加画像を全て格納する配列（ビュー用）
     var images = [];
@@ -71,6 +72,10 @@ $(window).on("turbolinks:load", function() {
     
     $("#edit_item .images__form").append($(hidden_data));
 
+    id = new_image.prop('id');
+
+    upload_image.attr( "for", id );
+
     // 画像を新しく追加する場合
     $("#edit_item .images__form__dropzone").on("change", 'input[type= "file"].upload-image', function() {
       var file = $(this).prop("files")[0];
@@ -125,6 +130,11 @@ $(window).on("turbolinks:load", function() {
       var hidden_data = `<input type='hidden' name=${controll_name} value=${images.length} id= "item_item_images_attributes_${images.length}_id" >`
     
       $("#edit_item .images__form").append($(hidden_data));
+
+      create_id = new_image.prop('id');
+
+      upload_image.attr( "for", create_id );
+
     });
 
 
@@ -137,7 +147,6 @@ $(window).on("turbolinks:load", function() {
       // 削除画像のdata-image番号を取得
       var target_image_num = target_image.data('image');
 
-      console.log(target_image_num)
 
       // 対象の画像をビュー上で削除
       target_image.remove();
@@ -172,6 +181,11 @@ $(window).on("turbolinks:load", function() {
       $('input[type= "file"].upload-image').data('image', target_image_num).remove();
 
       $("input[type= 'hidden']").eq(target_image_num).remove();
+
+      delete_id = $('input[type= "file"].upload-image').eq(target_image_num - 1).prop(id);
+      
+      upload_image.attr( "for", delete_id );
+
     });
 
     $(' .exhibit').on('submit', function(e){

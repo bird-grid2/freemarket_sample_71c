@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
     end
 
     def registered_image_params
-      params.require(:item).permit(:name, :description, :category_id, :brand, :price, item_images_attributes: {})
+      params.require(:item).permit(:name, :description, :brand, :price, item_images_attributes: {})
     end
 
 
