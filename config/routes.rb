@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :likes, only: [ :create, :destroy]
   end
 
-  resources :users, only: [ :index, :edit, :update, :show] do
+  resources :users, except: [ :new, :create, :destroy] do
     resources :likes, only: :index
   end
 
