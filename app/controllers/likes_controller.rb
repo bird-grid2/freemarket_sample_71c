@@ -10,7 +10,7 @@ class LikesController < ApplicationController
 
     if @like.save
     else
-      flash.now[:alert] = 'いいね！できませんでした'
+      redirect_to item_path(@item.id)
     end
   end
 
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
 
     if like.destroy
     else
-      flash.now[:alert] = 'いいね！を削除できませんでした'
+      redirect_to item_path(@item.id)
     end
   end
 
