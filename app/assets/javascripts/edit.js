@@ -72,8 +72,10 @@ $(window).on("turbolinks:load", function() {
 
     // 画像を新しく追加する場合
     $("#edit_item .images__form__dropzone").on("change", 'input[type= "file"].upload-image', function() {
+
       var file = $(this).prop("files")[0];
-      new_image_files.push(file)
+      new_image_files.push(file);
+
       var reader = new FileReader();
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
@@ -176,15 +178,13 @@ $(window).on("turbolinks:load", function() {
       upload_image.attr( "for", delete_id );
 
     });
-
+    
     $(' .exhibit').on('submit', function(e){
       // 通常のsubmitイベントを止める
       e.preventDefault();
       // images以外のform情報をformDataに追加
       var formData = new FormData($(this).get(0));
       var url = $(this).attr('action')
-
-      $('label').id.hide();
 
       $.ajax({
         url:          url,
