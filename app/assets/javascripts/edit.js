@@ -9,6 +9,9 @@ $(window).on("turbolinks:load", function() {
     var images = [];
     // 登録済画像データだけの配列（DB用）
     var registered_images_ids = [];
+    // 新規追加画像データだけの配列（DB用)
+    var new_image_files = [];
+
 
     // 登録済画像のプレビュー表示
     gon.item_images.forEach(function(image, index){
@@ -180,6 +183,8 @@ $(window).on("turbolinks:load", function() {
       // images以外のform情報をformDataに追加
       var formData = new FormData($(this).get(0));
       var url = $(this).attr('action')
+
+      $('label').id.hide();
 
       $.ajax({
         url:          url,

@@ -2,7 +2,7 @@
   = render "layouts/header"
 
 .contents
-  = form_with model: @item, local:true do |form|
+  = form_with model: @item, local:true, format: multi-part/do |form|
     .contents__note
       <span>※</span>が付いたものは必須項目です。
     .item-infomation
@@ -17,7 +17,7 @@
               = form.fields_for :item_images do |f|
                 %label{for: "item_image", class:'upload-images', id: 'image-box'}
                   .js-file_group{ data: { index: "#{f.index}"}}
-                    = f.file_field :image, class: 'js-file'
+                    = f.file_field :image, class: 'js-file', id: 'image-box'
                     %br
                     %span.js-remove 削除
                   
