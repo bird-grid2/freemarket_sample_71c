@@ -70,7 +70,8 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    if @item.update(registered_image_params)
+    if (@item.update(item_params))
+
       flash[:notice] = '編集が完了しました'
       redirect_to item_path(@item), data: {turbolinks: false}
 
@@ -78,6 +79,7 @@ class ItemsController < ApplicationController
       flash[:alert] = '未入力項目があります'
       redirect_back(fallback_location: root_path)
     end
+ 
   end
 
   private
@@ -89,10 +91,5 @@ class ItemsController < ApplicationController
     def set_image
       @image = ItemImage.where(params[:Item_id])
     end
-
-    def registered_image_params
-      params.require(:item).permit(:name, :description, :brand, :price, item_images_attributes: {})
-    end
-
 
 end

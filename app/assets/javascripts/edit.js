@@ -62,15 +62,9 @@ $(window).on("turbolinks:load", function() {
     } 
 
     var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none">`
+      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
     );
     input_area.append(new_image);
-
-    var controll_name = `item[item_images_attributes][${images.length}][id]`;
-
-    var hidden_data = `<input type='hidden' name=${controll_name} value=${images.length} id= "item_item_images_attributes_${images.length}_id" >`
-    
-    $("#edit_item .images__form").append($(hidden_data));
 
     id = new_image.prop('id');
 
@@ -121,15 +115,9 @@ $(window).on("turbolinks:load", function() {
       } 
 
       var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none">`
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
       );
       input_area.append(new_image);
-    
-      var controll_name = `item[item_images_attributes][${images.length}][id]`;
-
-      var hidden_data = `<input type='hidden' name=${controll_name} value=${images.length} id= "item_item_images_attributes_${images.length}_id" >`
-    
-      $("#edit_item .images__form").append($(hidden_data));
 
       create_id = new_image.prop('id');
 
@@ -147,8 +135,9 @@ $(window).on("turbolinks:load", function() {
       // 削除画像のdata-image番号を取得
       var target_image_num = target_image.data('image');
 
-      console.log(target_image_num);
+      const hiddenCheck = $(`input[data-index="${target_image_num}"].hidden-destroy`);
 
+      if (hiddenCheck) hiddenCheck.prop('checked', true);
 
       // 対象の画像をビュー上で削除
       target_image.remove();
@@ -182,11 +171,7 @@ $(window).on("turbolinks:load", function() {
       
       $('input[type= "file"]:last').remove();
 
-      $("input[type= 'hidden']:last").remove();
-
       delete_id = $('input[type= "file"]:last').prop('id');
-
-      console.log(delete_id)
       
       upload_image.attr( "for", delete_id );
 
@@ -199,26 +184,6 @@ $(window).on("turbolinks:load", function() {
       var formData = new FormData($(this).get(0));
       var url = $(this).attr('action')
 
-      // 登録済画像が残っていない場合は便宜的に0を入れる
-      if (registered_images_ids.length == 0) {
-        formData.append("registered_images_ids[ids][]", 0)
-      // 登録済画像で、まだ残っている画像があればidをformDataに追加していく
-      } else {
-        registered_images_ids.forEach(function(registered_image){
-          formData.append("registered_images_ids[ids][]", registered_image)
-        });
-      }
-
-
-      // 新しく追加したimagesがない場合は便宜的に空の文字列を入れる
-      if (new_image_files.length == 0) {
-        formData.append("item_images_attributes[][image]", " ")
-      // 新しく追加したimagesがある場合はformDataに追加する
-      } else {
-        new_image_files.forEach(function(file){
-          formData.append("item_images_attributes[][image]", file)
-        });
-      }
       $.ajax({
         url:          url,
         type:        "PATCH",
