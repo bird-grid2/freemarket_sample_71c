@@ -9,9 +9,6 @@ $(window).on("turbolinks:load", function() {
     var images = [];
     // 登録済画像データだけの配列（DB用）
     var registered_images_ids = [];
-    // 新規追加画像データだけの配列（DB用)
-    var new_image_files = [];
-
 
     // 登録済画像のプレビュー表示
     gon.item_images.forEach(function(image, index){
