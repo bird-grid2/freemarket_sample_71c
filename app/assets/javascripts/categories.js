@@ -7,7 +7,7 @@ $(function() {
     var childSelectHtml = '';
     childSelectHtml = `<div id= 'children_options'>
                         <i class='fas fa-chevron-down'></i>
-                        <select class="category__form--child" id="child_category" name="item[child_id]">
+                        <select class="category__form--child" id="child_category">
                           <option value="---" data-category="">選択して下さい</option>
                           ${insertHTML}
                         <select>
@@ -27,7 +27,7 @@ $(function() {
   }
 
   $('.category__form--parent').on('change', function() {
-    var parent_category_id = document.getElementById('parent_id').value;
+    var parent_category_id = document.getElementById('item_parent_id').value;
     if (parent_category_id != ""){ 
       $.ajax({
         url: '/items/category/get_children_categories',
