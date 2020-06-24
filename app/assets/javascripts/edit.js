@@ -182,16 +182,16 @@ $(window).on("turbolinks:load", function() {
     $("#edit_item .images__form__dropzone").on("dragover", function(e) {
       e.stopPropagation();
       e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
     });
 
     $("#edit_item .images__form__dropzone").on("drop", function(e) {
       e.stopPropagation();
       e.preventDefault();
       var file = e.originalEvent.dataTransfer.files;
-      var set_data = e.dataTransfer.setData('image/*', file);
-      var reader = new FileReader();
-      console.log(set_data);
+      var reader = new FormData();
+      var new_image = $(
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+      );
   
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
@@ -206,7 +206,9 @@ $(window).on("turbolinks:load", function() {
         });
       };
 
-      reader.readAsDataURL(set_data);
+      create_name = new_image.prop('name');
+
+      reader.append(create_name, file);
       images.push(img);
 
       // 画像が４枚以下のとき
@@ -231,10 +233,6 @@ $(window).on("turbolinks:load", function() {
           display: "none"
         });
       };
-
-      var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
-      );
         
       input_area.append(new_image);
 
