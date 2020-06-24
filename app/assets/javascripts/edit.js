@@ -127,7 +127,6 @@ $(window).on("turbolinks:load", function() {
 
     });
 
-
     // 削除ボタン
     $("#edit_item .images__form__dropzone").on('click', '.rounded-pill', function() {
 
@@ -152,11 +151,11 @@ $(window).on("turbolinks:load", function() {
         registered_images_ids.splice(target_image_num, 1);
       } else {
         new_image_files.splice((target_image_num - registered_images_ids.length), 1);
-      }
+      };
 
       if(images.length == 0) {
         $('input[type= "file"].upload-image').attr({'data-image': (target_image_num - 1)})
-      }
+      };
 
       // 削除後の配列の中身の数で条件分岐
       // 画像が４枚以下のとき
@@ -165,11 +164,11 @@ $(window).on("turbolinks:load", function() {
         $.each(images, function(index, image) {
           image.data('image', index);
           preview.append(image);
-        })
+        });
         dropzone.css({
           'width': `calc(100% - (20% * ${images.length}))`,
-        })
-      } 
+        });
+      }; 
       
       $('input[type= "file"]:last').remove();
 
@@ -177,6 +176,71 @@ $(window).on("turbolinks:load", function() {
       
       upload_image.attr( "for", delete_id );
 
+    });
+
+    // ドラック&ドロップした場合の処理
+    $("#edit_item .images__form__dropzone").on("dragover", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+    });
+
+    $("#edit_item .images__form__dropzone").on("drop", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      var file = e.originalEvent.dataTransfer.files;
+      var set_data = e.dataTransfer.setData('image/*', file);
+      var reader = new FileReader();
+      console.log(set_data);
+  
+      var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+
+      reader.onload = function(e) {
+        var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
+
+        // 画像に削除ボタンをつける
+        img.append(btn_wrapper);
+        img.find("img").attr({
+          src: e.target.result,
+          width: '70px', height: '70px'
+        });
+      };
+
+      reader.readAsDataURL(set_data);
+      images.push(img);
+
+      // 画像が４枚以下のとき
+      if (images.length <= 4) {
+        $('#preview').empty();
+        $.each(images, function(index, image) {
+          image.data('image', index);
+          preview.append(image);
+        });
+        dropzone.css({
+          'width': `calc(100% - (20% * ${images.length}))`
+        });
+
+        // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
+      } else if (images.length == 5) {
+        $("#preview").empty();
+        $.each(images, function(index, image) {
+          image.data("image", index);
+          preview.append(image);
+        });
+        dropzone.css({
+          display: "none"
+        });
+      };
+
+      var new_image = $(
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+      );
+        
+      input_area.append(new_image);
+
+      create_id = new_image.prop('id');
+
+      upload_image.attr( "for", create_id );
     });
     
     $(' .exhibit').on('submit', function(e){
@@ -192,7 +256,7 @@ $(window).on("turbolinks:load", function() {
         data:        formData,
         contentType: false,
         processData: false,
-      })
+      });
     });
   };
 });
