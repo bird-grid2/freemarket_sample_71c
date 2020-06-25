@@ -11,6 +11,12 @@
   margin-top: 10px;
 }
 
+@mixin container{
+  margin: 0 auto;
+  background-color: white;
+  width: 50%;
+}
+
 @mixin border-top{
   border-top: 1px solid $border-color;
 }
@@ -37,6 +43,15 @@
   text-align: left;
   vertical-align: middle;
   margin-top: 10px;
+}
+
+@mixin top{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $top-height;
+  width: 60%;
 }
 
 @mixin title{

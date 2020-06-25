@@ -12,8 +12,7 @@
       .index__container__payment-info
         .index__container__payment-info__item
           .index__container__payment-info__item__all
-            = image_tag( @image.image, class: "index__container__payment-info__item__all__img")
-            -# = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+            = image_tag @images[0].image, class: "index__container__payment-info__item__all__img"
 
             .index__container__payment-info__item__all__right-content
               .index__container__payment-info__item__all__right-content__name
@@ -64,7 +63,7 @@
                 = @default_card_information.exp_month.to_s + "/"
                 = @default_card_information.exp_year.to_s
                 %br
-                =@default_card_information.brand
+                = image_tag "logo/#{@card_src}",alt: @card_brand, class: "index__container__payment-info__method__all--lower--logo"
         .index__container__payment-info__address
           .index__container__payment-info__address__all
             .index__container__payment-info__address__all--upper

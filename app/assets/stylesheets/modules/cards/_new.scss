@@ -1,54 +1,45 @@
-.single-container{
+.single{
   .single-header{
-    &__logo{
-    }
-    &__progress{
-      &__text{
-        &--active{
+  }
+}
+.container{
+  @include container;
+  &__top{
+    @include top;
+    @include title;
+  }
+  &__form__frame{
+  .form-group{
+    .signup__card--list{
+      display: flex;
+      .icon{
+        &--visa{
+          width: 50px;
+        }
+        &--master{
+          width: 50px;
+        }
+        &--jcb{
+          width: 50px;
+        }
+        &--amex{
+          width: 50px;
+        }
+        &--diners{
+          width: 50px;
         }
       }
-      &__round--red{
-        &-long{
-        }
+    }
+    &__require{
+      @include require;
+    }
+    &__input{
+      width: 200px;
+      height: 30px;
+    }
+    &__card{
       }
     }
   }
 }
-.single-main__container__form__frame{
-    .form-group{
-      .signup__card--list{
-        display: flex;
-        .icon{
-          &--visa{
-    
-          }
-          &--master{
-    
-          }
-          &--jcb{
-    
-          }
-          &--americanexpress{
-    
-          }
-          &--diners{
-    
-          }
-    
-        }
-    
-    
-      }
-      &__require{
-  
-      }
-      &__input{
-  
-      }
-      &__card{
-  
-      }
 
-  }
-
-}

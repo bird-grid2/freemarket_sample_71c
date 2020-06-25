@@ -57,13 +57,13 @@ class CardsController < ApplicationController
       when "JCB"
         @card_src = "logo/jcb.gif"
       when "MasterCard"
-        @card_src = "master.png"
+        @card_src = "logo/master.gif"
       when "American Express"
-        @card_src = "amex.png"
+        @card_src = "logo/amex.gif"
       when "Diners Club"
-        @card_src = "diners.png"
+        @card_src = "logo/diners.gif"
       when "Discover"
-        @card_src = "discover.png"
+        @card_src = "logo/discover.gif"
       end
     end
   end

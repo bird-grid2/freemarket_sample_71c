@@ -1,71 +1,48 @@
-.single-container
-  %header.single-header
-    %h1.single-header__logo
-      = link_to root_path do
-        =image_tag("logo/furima-logo.svg")
-    %nav.single-header__progress
-      %ol
-        %li.single-header__progress__text{ id: "first" }
-          会員情報
-          .single-header__progress__round--red
-        %li.single-header__progress__text
-          お届け先住所入力
-          .single-header__progress__round--red
-        %li.single-header__progress__text--active
-          支払い方法
-          .single-header__progress__round--red
-            .single-header__progress__round--red-long{ id: "long" }
-        %li.single-header__progress__text{ id: "end" }
-          完了
-          .single-header__progress__round
-  %main.single-main
-    %section.single-main__container
-      %h2.single-main__container__title
-        支払い方法
+= render "layouts/header"
 
-.single-main__container__form
-  .single-main__container__form__frame
-    = form_with url: new_card_path do |f|
-      -#= render "devise/shared/error_messages", resource: @card
-      .form-group
-        = f.label :カード番号
-        %span.form-group__require 必須
-        = f.text_field :card_number, {placeholder: "半角数字のみ", class: "form-group__input",maxlength:"16"}
-      .form-group
-        = f.label :カード会社
-        %span.form-group__require 必須
-        -#= f.select :card_company, Creditcard.card_companies.keys, {}, {class: 'form-group__input'}
-        %ul.signup__card--list
-          %li.icon--visa
-            = image_tag("logo/visa.gif", id:"icon--visa")
-          %li.icon--master
-            = image_tag("logo/master.gif", id:"icon--master")
-          %li.icon--jcb
-            = image_tag("logo/jcb.gif", id:"icon--jcb")
-          %li.icon--americanexpress
-            = image_tag("logo/amex.gif", id:"icon--americanexpress")
-          %li.icon--diners
-            = image_tag("logo/diners.gif", id:"icon--diners")
-      .form-group
-        = f.label :有効期限
-        %span.form-group__require 必須
-        %br
-        = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
-        = f.label :月, class: "form-group__card--year-and-month"
-        -# = f.select :card_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
-        = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half"}
-        = f.label :年, class: "form-group__card--year-and-month"
-      .form-group
-        = f.label :セキュリティコード, class: "label"
-        %span.form-group__require 必須
-        = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番", class: "form-group__input"
+.container
+  .container__top
+    カード情報入力画面
+  .container__form
+    .container__form__frame
+      = form_with model: @card, url: new_card_path do |f|
+        -#= render "devise/shared/error_messages", resource: @card
+        .form-group
+          = f.label :カード番号
+          %span.form-group__require 必須
+          = f.text_field :card_number, {id: "creditcard_card_number", placeholder: "半角数字のみ", class: "form-group__input",maxlength:"16"}
+        .form-group
+          -#= f.label up__require 必須
+          -#= f.text_field :card_brand, {class: 'form-group__input'}
+          %ul.signup__card--list
+            %li.icon--visa
+              = image_tag("logo/visa.gif", id:"icon--visa")
+            %li.icon--master
+              = image_tag("logo/master.gif", id:"icon--master")
+            %li.icon--jcb
+              = image_tag("logo/jcb.gif", id:"icon--jcb")
+            %li.icon--amex
+              = image_tag("logo/amex.gif", id:"icon--amex")
+            %li.icon--diners
+              = image_tag("logo/diners.gif", id:"icon--diners")
+        .form-group
+          = f.label :有効期限
+          %span.form-group__require 必須
+          %br
+          = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
+          = f.label :月, class: "form-group__card--year-and-month", id: "creditcard_card_month"
+          -# = f.select :card_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
+          = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half", id: "creditcard_card_month"}
+          = f.label :年, class: "form-group__card--year-and-month"
+        .form-group
+          = f.label :セキュリティコード, class: "label", id: "creditcard_card_pass"
+          %span.form-group__require 必須
+          = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番号", class: "form-group__input"
 
-      .form-group__add
-        .form-group__add--question ?
-        %p.form-group__text--right--blue
-          カード裏面の番号とは？
-      .form-group
-        = f.submit "登録する", class: "btn-default btn-red", url: "creditcards_path",id:"charge-form",method: :post
-  -#= render "/registration/registration_footer"
-
-  f.submit "Sign up"
+        .form-group__add
+          .form-group__add--question ?
+          %p.form-group__text--right--blue
+            カード裏面の番号とは？
+        .form-group
+          = f.submit "登録する", class: "btn-default btn-red", url: "new_card_path",id:"charge-form",method: :post
+= render "layouts/footer"

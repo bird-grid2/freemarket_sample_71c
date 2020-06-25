@@ -8,13 +8,13 @@
 @import "modules/layouts/footer";
 @import "modules/layouts/header";
 @import "modules/layouts/serch-box";
+@import "mixin/order";
 @import "modules/users/index";
 @import "modules/users/show";
 @import "modules/users/new";
 @import "modules/cards/new";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import "mixin/order";
 @import "modules/shipping_addresses/index";
 @import 'modules/items/purchase';
 

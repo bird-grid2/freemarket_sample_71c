@@ -4,7 +4,7 @@ class User < ApplicationRecord
   #has_many :sns_credentials, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :saler_items, class_name: 'Item', :foreign_key => 'saler_id'
+  has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id'
   has_many :buyer_items, class_name: 'Item', :foreign_key => 'buyer_id'
   #has_many :comments, dependent: :destroy
   #has_many :likes, dependent: :destroy

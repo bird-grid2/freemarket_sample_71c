@@ -16,14 +16,27 @@ class ItemsController < ApplicationController
 
   def purchase
     @item = Item.find(1)
-    @image = ItemImage.find(1)
-    card = Card.where(user_id: 1).first
+    @images = @item.item_images
+    card = Card.where(user_id: 2).first
     @shipping_address = ShippingAddress.where(user_id: 1).first
     @condition = card.blank? || @shipping_address.blank?
     unless card.blank?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                      #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(card.customer_token)  
       @default_card_information = customer.cards.retrieve(customer.default_card)
+      @card_brand = @default_card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.gif"
+      when "JCB"
+        @card_src = "jcb.gif"
+      when "MasterCard"
+        @card_src = "master.gif"
+      when "American Express"
+        @card_src = "amex.gif"
+      end
+    else
+      redirect_to new_card_path
     end
   end
 
@@ -38,6 +51,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def pay
+    card = Card.where(user_id: 1).first
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => 13500,                                               #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => card.customer_token,                                  #顧客ID
+    :currency => 'jpy',                                             #日本円
+    )
+    redirect_to done_item_path                                      #完了画面に移動
+  end
+
+
+  def done
+    tm = User.find(2)
+    @sold_item = Item.find(1)
+    @sold_item.update!(buyer_id: tm.id)
+  end
 
   private
 
