@@ -188,12 +188,9 @@ $(window).on("turbolinks:load", function() {
       e.stopPropagation();
       e.preventDefault();
       var file = e.originalEvent.dataTransfer.files[0];
+      new_image_files.push(file);
       var reader = new FileReader();
-      var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
-      );
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
-      var create_id = new_image.prop('id');
 
       reader.onload = function(e) {
         var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
@@ -231,7 +228,13 @@ $(window).on("turbolinks:load", function() {
           display: "none"
         });
       };
+
+      var new_image = $(
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+      );
+
       input_area.append(new_image);
+      var create_id = new_image.prop('id');
       upload_image.attr( "for", create_id );
     });
     
