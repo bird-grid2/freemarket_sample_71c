@@ -187,13 +187,13 @@ $(window).on("turbolinks:load", function() {
     $("#edit_item .images__form__dropzone").on("drop", function(e) {
       e.stopPropagation();
       e.preventDefault();
-      var file = e.originalEvent.dataTransfer.files;
-      var reader = new FormData();
+      var file = e.originalEvent.dataTransfer.files[0];
+      var reader = new FileReader();
       var new_image = $(
         `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
       );
-  
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+      var create_id = new_image.prop('id');
 
       reader.onload = function(e) {
         var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
@@ -206,9 +206,7 @@ $(window).on("turbolinks:load", function() {
         });
       };
 
-      create_name = new_image.prop('name');
-
-      reader.append(create_name, file);
+      reader.readAsDataURL(file);
       images.push(img);
 
       // 画像が４枚以下のとき
@@ -233,11 +231,7 @@ $(window).on("turbolinks:load", function() {
           display: "none"
         });
       };
-        
       input_area.append(new_image);
-
-      create_id = new_image.prop('id');
-
       upload_image.attr( "for", create_id );
     });
     
