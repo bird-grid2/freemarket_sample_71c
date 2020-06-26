@@ -87,12 +87,8 @@
   
   .item-buttons.clearfix
     .item-buttons--left
-      %button.item-btn
-        %i.far.fa-heart
-        %span
-          いいね!
-        %span
-          3
+      #item-btn
+        = render partial: 'likes/like', locals: {item: @item}
       %i.far.fa-flag
         %span 不適切な内容の報告
     .item-buttons--right
