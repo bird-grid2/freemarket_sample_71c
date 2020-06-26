@@ -151,24 +151,83 @@ tr {
     border-radius: 40px;
     width: 100%;
     &--left{
-      float: left;;
-      .item-btn{
-        display: inline-block;
-        padding: 8px 16px;
-        border-radius: 40px;
-        color: #333;
-        border: 1px solid $body_back;
-        background: $body_back;
-        cursor: pointer;
+      float: left;
+      display: flex;
+      #item-btn{
+        border: none;
+        background-color: white;
+        .liked{
+          border: #ea352d solid 1px;
+          text-decoration: none;
+          color: #ea352d;
+          padding: 8px 16px;
+          border-radius: 40px;
+          background-color: white;
+          &:hover{
+            cursor: pointer;
+          }
+          &:focus{
+            outline:0;
+          }
+          .fa-heart{
+            animation:jump 1s;
+          }
+          @keyframes jump{
+            0%{transform:translate(0,0px);}
+            30%{transform:translate(0,-20px);}
+            50%{transform:translate(0,0px);}
+            60%{transform:translate(0,-5px);}
+            70%{transform:translate(0,0px);}
+            100%{transform:translate(0,0px);}
+          }
+          .likes-count{
+            display: inline-block;
+            animation: from_the_bottom 1s;
+          }
+          @keyframes from_the_bottom{
+            0%{opacity:0.2; transform:translate(0,10px);}
+            30%{opacity:0.4; transform:translate(0,7px);}
+            50%{opacity:0.6; transform:translate(0,4px);}
+            60%{opacity:0.8; transform:translate(0,2px);}
+            70%{opacity:1; transform:translate(0,0px);}
+            100%{opacity:1; transform:translate(0,0px);}
+          }
+        }
+        .unliked{
+          padding: 8px 16px;
+          border-radius: 40px;
+          color: #333;
+          border: 1px solid #f5f5f5;
+          background: #f5f5f5;
+          &:hover{
+            cursor: pointer;
+          }
+          &:focus{
+            outline:0;
+          }
+          .likes-count{
+            display: inline-block;
+            animation: from_above 1s;
+          }
+          @keyframes from_above{
+            0%{opacity:0.2; transform:translate(0,-10px);}
+            30%{opacity:0.4; transform:translate(0,-7px);}
+            50%{opacity:0.6; transform:translate(0,-4px);}
+            60%{opacity:0.8; transform:translate(0,-2px);}
+            70%{opacity:1; transform:translate(0,0px);}
+            100%{opacity:1; transform:translate(0,0px);}
+          }
+        }
       }
       .far.fa-flag{
-        display: inline-block;
         padding: 8px 16px;
         border-radius: 40px;
         color: #333;
         border: 1px solid $body_back;
         background: $body_back;
         margin-left: 16px;
+        display: flex;
+        align-items: center;
         span{
           margin: 1px 0 0 8px;
           cursor: pointer;
