@@ -12,7 +12,6 @@ $(window).on("turbolinks:load", function() {
     // 新規追加画像データだけの配列（DB用)
     var new_image_files = [];
 
-
     // 登録済画像のプレビュー表示
     gon.item_images.forEach(function(image, index){
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
@@ -78,7 +77,6 @@ $(window).on("turbolinks:load", function() {
 
       var reader = new FileReader();
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
-
       reader.onload = function(e) {
         var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
@@ -122,9 +120,7 @@ $(window).on("turbolinks:load", function() {
       input_area.append(new_image);
 
       create_id = new_image.prop('id');
-
       upload_image.attr( "for", create_id );
-
     });
 
     // 削除ボタン
@@ -187,23 +183,31 @@ $(window).on("turbolinks:load", function() {
     $("#edit_item .images__form__dropzone").on("drop", function(e) {
       e.stopPropagation();
       e.preventDefault();
-      var file = e.originalEvent.dataTransfer.files[0];
-      new_image_files.push(file);
+
+      var file = e.originalEvent.dataTransfer.files;
+      console.log(file[0]);
+      var target_img = $("#item_item_images_attributes_" + images.length + "_image");
+      new_image_files.push(file[0]);
+
+      target_img.on('click', function (e) {
+        e.stopPropagation();
+      });
+
       var reader = new FileReader();
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
-
       reader.onload = function(e) {
         var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
         // 画像に削除ボタンをつける
         img.append(btn_wrapper);
         img.find("img").attr({
-          src: e.target.result,
+          src: reader.result,
           width: '70px', height: '70px'
         });
       };
-
-      reader.readAsDataURL(file);
+      target_img.files = file[0];
+      var checked_file = target_img.prop("files")[0];
+      reader.readAsDataURL(checked_file);
       images.push(img);
 
       // 画像が４枚以下のとき
@@ -232,10 +236,10 @@ $(window).on("turbolinks:load", function() {
       var new_image = $(
         `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
       );
-
       input_area.append(new_image);
-      var create_id = new_image.prop('id');
-      upload_image.attr( "for", create_id );
+
+      var drop_id = new_image.prop('id');
+      upload_image.attr( "for", drop_id );
     });
     
     $(' .exhibit').on('submit', function(e){
