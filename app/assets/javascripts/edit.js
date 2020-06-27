@@ -4,6 +4,41 @@ $(window).on("turbolinks:load", function() {
     var input_area = $(".input-area");
     var preview = $("#preview");
     var upload_image = $(".upload-images-edit label");
+    var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+    var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
+    var target_img = $("#item_item_images_attributes_" + images.length + "_image");
+    var reader = new FileReader();
+
+    var changed_label = () =>{
+       
+      // 画像が４枚以下のとき
+      if (images.length <= 4) {
+        $('#preview').empty();
+        $.each(images, function(index, image) {
+          image.data('image', index);
+          preview.append(image);
+        })
+        dropzone.css({
+          'width': `calc(100% - (20% * ${images.length}))`
+        })
+
+        // 画像が５枚のとき１段目の枠を消す
+      } else if (images.length == 5) {
+        $("#preview").empty();
+        $.each(images, function(index, image) {
+          image.data("image", index);
+          preview.append(image);
+        });
+        dropzone.css({
+          display: "none"
+        });
+      }
+      //inputタグの追加とラベル更新
+      var new_image = $(
+        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+      );
+      input_area.append(new_image);
+    };
 
     // 登録済画像と新規追加画像を全て格納する配列（ビュー用）
     var images = [];
@@ -14,12 +49,9 @@ $(window).on("turbolinks:load", function() {
 
     // 登録済画像のプレビュー表示
     gon.item_images.forEach(function(image, index){
-      var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
       // カスタムデータ属性を付与
       img.data("image", index)
-
-      var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
       // 画像に編集・削除ボタンをつける
       img.append(btn_wrapper);
@@ -37,37 +69,11 @@ $(window).on("turbolinks:load", function() {
       registered_images_ids.push(image.id)
     })
 
-    // 画像が４枚以下のとき
-    if (images.length <= 4) {
-      $('#preview').empty();
-      $.each(images, function(index, image) {
-        image.data('image', index);
-        preview.append(image);
-      })
-      dropzone.css({
-        'width': `calc(100% - (20% * ${images.length}))`
-      })
-
-      // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
-    } else if (images.length == 5) {
-      $("#preview").empty();
-      $.each(images, function(index, image) {
-        image.data("image", index);
-        preview.append(image);
-      });
-      dropzone.css({
-        display: "none"
-      });
-    } 
-
-    var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
-    );
-    input_area.append(new_image);
-
+    changed_label();
+    
     id = new_image.prop('id');
-
     upload_image.attr( "for", id );
+
 
     // 画像を新しく追加する場合
     $("#edit_item .images__form__dropzone").on("change", 'input[type= "file"].upload-image', function() {
@@ -75,10 +81,7 @@ $(window).on("turbolinks:load", function() {
       var file = $(this).prop("files")[0];
       new_image_files.push(file);
 
-      var reader = new FileReader();
-      var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
       reader.onload = function(e) {
-        var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
         // 画像に削除ボタンをつける
         img.append(btn_wrapper);
@@ -91,33 +94,7 @@ $(window).on("turbolinks:load", function() {
       reader.readAsDataURL(file);
       images.push(img);
 
-      // 画像が４枚以下のとき
-      if (images.length <= 4) {
-        $('#preview').empty();
-        $.each(images, function(index, image) {
-          image.data('image', index);
-          preview.append(image);
-        })
-        dropzone.css({
-          'width': `calc(100% - (20% * ${images.length}))`
-        })
-
-        // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
-      } else if (images.length == 5) {
-        $("#preview").empty();
-        $.each(images, function(index, image) {
-          image.data("image", index);
-          preview.append(image);
-        });
-        dropzone.css({
-          display: "none"
-        });
-      } 
-
-      var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
-      );
-      input_area.append(new_image);
+      changed_label();
 
       create_id = new_image.prop('id');
       upload_image.attr( "for", create_id );
@@ -186,18 +163,12 @@ $(window).on("turbolinks:load", function() {
 
       var file = e.originalEvent.dataTransfer.files;
       console.log(file[0]);
-      var target_img = $("#item_item_images_attributes_" + images.length + "_image");
       new_image_files.push(file[0]);
-
-      
-      var reader = new FileReader();
-      var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
 
       target_img.files = file[0];
       reader.readAsDataURL(target_img.files);
 
       reader.onload = function(e) {
-        var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
         // 画像に削除ボタンをつける
         img.append(btn_wrapper);
@@ -209,34 +180,6 @@ $(window).on("turbolinks:load", function() {
       
       images.push(img);
      
-      // 画像が４枚以下のとき
-      if (images.length <= 4) {
-        $('#preview').empty();
-        $.each(images, function(index, image) {
-          image.data('image', index);
-          preview.append(image);
-        });
-        dropzone.css({
-          'width': `calc(100% - (20% * ${images.length}))`
-        });
-
-        // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
-      } else if (images.length == 5) {
-        $("#preview").empty();
-        $.each(images, function(index, image) {
-          image.data("image", index);
-          preview.append(image);
-        });
-        dropzone.css({
-          display: "none"
-        });
-      };
-
-      var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
-      );
-      input_area.append(new_image);
-
       var drop_id = new_image.prop('id');
       upload_image.attr( "for", drop_id );
     });
