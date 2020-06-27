@@ -36,7 +36,7 @@ $(window).on("turbolinks:load", function() {
       // 登録済画像のビューをimagesに格納
       images.push(img)
       registered_images_ids.push(image.id)
-    })
+    });
 
     // 画像が４枚以下のとき
     if (images.length <= 4) {
@@ -59,11 +59,11 @@ $(window).on("turbolinks:load", function() {
       dropzone.css({
         display: "none"
       });
-    } 
+    };
 
     //inputタグの追加とラベル更新
     var new_image = $(
-      `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+      `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="item_images_image_${images.length}"  style: "display: none" accept='image/*'>`
     );
     input_area.append(new_image);
 
@@ -117,7 +117,7 @@ $(window).on("turbolinks:load", function() {
 
       //inputタグの追加とラベル更新
       var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+        `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="item_images_image_${images.length}"  style: "display: none" accept='image/*'>`
       );
       input_area.append(new_image);
 
@@ -164,10 +164,20 @@ $(window).on("turbolinks:load", function() {
           preview.append(image);
         });
         dropzone.css({
-          'width': `calc(100% - (20% * ${images.length}))`,
+          'width': `calc(100% - (20% * ${images.length}))`
         });
-      }; 
-      
+      // 画像が５枚のとき１段目の枠を消す
+      } else if (images.length == 5) {
+        $('#preview').empty();
+        $.each(images, function(index, image) {
+          image.data('image', index);
+          preview.append(image);
+        });
+        dropzone.css({
+          'display': 'none'
+        });
+      };
+
       $('input[type= "file"]:last').remove();
 
       delete_id = $('input[type= "file"]:last').prop('id');
@@ -188,7 +198,7 @@ $(window).on("turbolinks:load", function() {
 
       var drop_file = e.originalEvent.dataTransfer.files;
       console.log(drop_file[0]);
-      var target_img = $("#item_item_images_attributes_" + images.length + "_image");
+      var target_img = $("#item_images_image_" + images.length);
       new_image_files.push(drop_file[0]);
 
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
@@ -217,6 +227,7 @@ $(window).on("turbolinks:load", function() {
           image.data('image', index);
           preview.append(image);
         });
+        
         dropzone.css({
           'width': `calc(100% - (20% * ${images.length}))`
         });
@@ -235,7 +246,7 @@ $(window).on("turbolinks:load", function() {
 
       //inputタグの追加とラベル更新
       var new_image = $(
-        `<input multiple= "multiple" name="item[item_images_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="item_item_images_attributes_${images.length}_image"  style: "display: none" accept='image/*'>`
+        `<input multiple= "multiple" name="item_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="item_images_image_${images.length}"  style: "display: none" accept='image/*'>`
       );
       input_area.append(new_image);
 
@@ -244,24 +255,40 @@ $(window).on("turbolinks:load", function() {
       console.log(target_img)
     });
     
-    $('form').on('submit', function(e){
+    $('#edit_item').on('submit', function(e){
+      
+       // 通常のsubmitイベントを止める
+      e.preventDefault()
 
       // images以外のform情報をformDataに追加
       var formData = new FormData($(this).get(0));
-      var url = $(this).attr('action');
+      var url = $(this).attr("action");
 
-      console.log(formData);
-
+      // 登録済画像が残っていない場合は便宜的に0を入れる
+      if (registered_images_ids.length == 0) {
+        formData.append("registered_images_ids[ids][]", 0)
+      // 登録済画像で、まだ残っている画像があればidをformDataに追加していく
+      } else {
+        registered_images_ids.forEach(function(registered_image){
+          formData.append("registered_images_ids[ids][]", registered_image)
+        });
+      }
+  
+      // 新しく追加したimagesがない場合は便宜的に空の文字列を入れる
+      if (new_image_files.length == 0) {
+        formData.append("new_images[images][]", " ")
+      // 新しく追加したimagesがある場合はformDataに追加する
+      } else {
+        new_image_files.forEach(function(file){
+          formData.append("new_images[images][]", file)
+        });
+      };
       $.ajax({
         url:          url,
         type:        "PATCH",
         data:        formData,
-        datatype:    'json',
         contentType: false,
-        processData: false,
-      })
-      .done(function(){
-        
+        processData: false
       });
     });
   };
