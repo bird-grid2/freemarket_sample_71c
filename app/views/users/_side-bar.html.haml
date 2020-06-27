@@ -2,7 +2,7 @@
   %nav.mypage-side__nav
     %ul.mypage-side__nav__list
       %li
-        = link_to '#', class: 'mypage-side__nav__list--item active' do
+        = link_to user_path(current_user.id), class: 'mypage-side__nav__list--item' do
           マイメニュー
           = icon( "fas", "angle-right")
       %li
