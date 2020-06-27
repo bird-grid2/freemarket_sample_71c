@@ -5,13 +5,13 @@
     カード情報入力画面
   .container__form
     .container__form__frame
-      = form_with model: @card, url: new_card_path do |f|
+      = form_with model: @card, url: pay_cards_path, id: "form", local: true do |f|
         -#= render "devise/shared/error_messages", resource: @card
-        .form-group
+        .form-group__card-number
           = f.label :カード番号
           %span.form-group__require 必須
           = f.text_field :card_number, {id: "creditcard_card_number", placeholder: "半角数字のみ", class: "form-group__input",maxlength:"16"}
-        .form-group
+        .form-group__card-brand
           -#= f.label up__require 必須
           -#= f.text_field :card_brand, {class: 'form-group__input'}
           %ul.signup__card--list
@@ -29,20 +29,21 @@
           = f.label :有効期限
           %span.form-group__require 必須
           %br
-          = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-group__input--half"}
-          = f.label :月, class: "form-group__card--year-and-month", id: "creditcard_card_month"
+          = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {id: "creditcard_card_month", class: "form-group__input--half"}
+          = f.label :月, class: "form-group__card--year-and-month"
           -# = f.select :card_year, options_for_select(["20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]), {}, {class: "form-group__input--half"}
-          = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half", id: "creditcard_card_month"}
+          = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half", id: "creditcard_card_year"}
           = f.label :年, class: "form-group__card--year-and-month"
         .form-group
-          = f.label :セキュリティコード, class: "label", id: "creditcard_card_pass"
+          = f.label :セキュリティコード, class: "label"
           %span.form-group__require 必須
-          = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番号", class: "form-group__input"
-
+          = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番号", class: "form-group__input", id: "creditcard_card_pass"
+        #card_token
         .form-group__add
           .form-group__add--question ?
           %p.form-group__text--right--blue
             カード裏面の番号とは？
-        .form-group
-          = f.submit "登録する", class: "btn-default btn-red", url: "new_card_path",id:"charge-form",method: :post
+        .container__bottom
+          .container__bottom__btn
+            = f.submit "登録する", class: "container__bottom__btn", url: "new_card_path",id:"charge-form",method: :post
 = render "layouts/footer"

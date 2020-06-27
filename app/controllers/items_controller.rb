@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def purchase
     @item = Item.find(1)
     @images = @item.item_images
-    card = Card.where(user_id: 2).first
+    card = Card.where(user_id: 1).first
     @shipping_address = ShippingAddress.where(user_id: 1).first
     @condition = card.blank? || @shipping_address.blank?
     unless card.blank?
@@ -35,8 +35,6 @@ class ItemsController < ApplicationController
       when "American Express"
         @card_src = "amex.gif"
       end
-    else
-      redirect_to new_card_path
     end
   end
 
@@ -64,7 +62,7 @@ class ItemsController < ApplicationController
 
 
   def done
-    tm = User.find(2)
+    tm = User.find(1)
     @sold_item = Item.find(1)
     @sold_item.update!(buyer_id: tm.id)
   end

@@ -61,7 +61,7 @@
                 %br
                 有効期限
                 = @default_card_information.exp_month.to_s + "/"
-                = @default_card_information.exp_year.to_s
+                = @default_card_information.exp_year.to_s.slice(2,3)
                 %br
                 = image_tag "logo/#{@card_src}",alt: @card_brand, class: "index__container__payment-info__method__all--lower--logo"
         .index__container__payment-info__address

@@ -8,38 +8,56 @@
     @include top;
     @include title;
   }
-  &__form__frame{
-  .form-group{
-    .signup__card--list{
-      display: flex;
-      .icon{
-        &--visa{
-          width: 50px;
+  &__form{
+    &__frame{
+    .form-group{
+      &__card-number{
+
+      }
+      &__card-brand{
+        ul{
+          display: flex;
+          .icon{
+            &--visa{
+              width: 50px;
+            }
+            &--master{
+              width: 50px;
+            }
+            &--jcb{
+              width: 50px;
+            }
+            &--amex{
+              width: 50px;
+            }
+            &--diners{
+              width: 50px;
+            }
+          }
         }
-        &--master{
-          width: 50px;
-        }
-        &--jcb{
-          width: 50px;
-        }
-        &--amex{
-          width: 50px;
-        }
-        &--diners{
-          width: 50px;
+      }
+      &__require{
+        @include require;
+      }
+      &__input{
+        width: 200px;
+        height: 30px;
+      }
+      &__card{
         }
       }
     }
-    &__require{
-      @include require;
-    }
-    &__input{
-      width: 200px;
-      height: 30px;
-    }
-    &__card{
+  }
+  &__bottom{
+    @include bottom;
+    height: $bottom-height;
+    &__btn{
+      @include btn;
+      background-color: red;
+      &--disabled{
+        @include btn;
+        background-color: gray;
       }
     }
   }
 }
-

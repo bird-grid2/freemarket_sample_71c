@@ -10,6 +10,7 @@ class CardsController < ApplicationController
   def pay #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
+      #binding.pry
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
@@ -20,7 +21,7 @@ class CardsController < ApplicationController
       if @card.save
         redirect_to action: "show"
       else
-        redirect_to action: "pay"
+        redirect_to action: "new"
       end
     end
   end
@@ -28,10 +29,10 @@ class CardsController < ApplicationController
   def delete #PayjpとCardデータベースを削除します
     card = Card.where(user_id: 1).first
     if card.blank?
-      redirect_to action: "new"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_token)
+      #binding.pry
       customer.delete
       card.delete
     end
