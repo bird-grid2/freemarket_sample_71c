@@ -51,6 +51,7 @@ group :development, :test do
   gem 'jquery-rails'
   gem 'active_hash'
   gem 'carrierwave'
+  gem 'rspec-rails'
 
 end
 
