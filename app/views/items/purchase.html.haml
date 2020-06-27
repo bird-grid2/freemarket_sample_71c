@@ -19,7 +19,7 @@
                 = @item.name
               .index__container__payment-info__item__all__right-content__price
                 ¥
-                = @item.price
+                = @item.price.to_s(:delimited)
                 （税込)
                 -#= @item.postage(マージ後に実装予定)
         .index__container__payment-info__price
@@ -29,7 +29,7 @@
                 支払金額
               %span{"class"=>"index__container__payment-info__price__all__upper--right"}
                 ¥
-                = @item.price
+                = @item.price.to_s(:delimited)
             .index__container__payment-info__price__all--bottom
               ポイントを使用 (所持ポイント: P0)
         .index__container__payment-info__method
@@ -79,7 +79,7 @@
               - else
                 %br
                   〒
-                  = @shipping_address.post_code
+                  = @shipping_address.post_code.to_s.insert(3, "-")
                 %br
                   = @shipping_address.prefecture
                   = @shipping_address.city
