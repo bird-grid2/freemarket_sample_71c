@@ -1,7 +1,3 @@
-*{
-  box-sizing: border-box;
-}
-
 header{
   width: 100%;
   height: 100px;
@@ -58,6 +54,9 @@ header{
           font-size: 13px;
           text-decoration: none;
           padding-right: 46px;
+          &:hover{
+            color: $orangeColor;
+          }
         }
       }
       &__right-box{
@@ -66,9 +65,15 @@ header{
           color: #333;
           font-size: 13px;
           text-decoration: none;
-          padding-left: 16px;
+          padding: 0 14px;
+          &:hover{
+            color: $orangeColor;
+            .icon{
+              color: $orangeColor;
+            }
+          }
           .icon{
-            margin-right: 10px;
+            margin-right: 4px;
             color: #777;
           }
         }
