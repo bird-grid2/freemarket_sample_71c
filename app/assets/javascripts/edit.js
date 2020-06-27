@@ -189,27 +189,26 @@ $(window).on("turbolinks:load", function() {
       var target_img = $("#item_item_images_attributes_" + images.length + "_image");
       new_image_files.push(file[0]);
 
-      target_img.on('click', function (e) {
-        e.stopPropagation();
-      });
-
+      
       var reader = new FileReader();
       var img = $(`<div class= "add_img"><div class="img_area"><img class="image"></div></div>`);
+
+      target_img.files = file[0];
+      reader.readAsDataURL(target_img.files);
+
       reader.onload = function(e) {
         var btn_wrapper = $('<div class="btn_wrapper"><a class="rounded-pill">削除</a></div>');
 
         // 画像に削除ボタンをつける
         img.append(btn_wrapper);
         img.find("img").attr({
-          src: reader.result,
+          src: e.target.result,
           width: '70px', height: '70px'
         });
       };
-      target_img.files = file;
-      reader.readAsDataURL(target_img.files[0]);
+      
       images.push(img);
-      console.log(reader.result);
-
+     
       // 画像が４枚以下のとき
       if (images.length <= 4) {
         $('#preview').empty();
@@ -248,7 +247,7 @@ $(window).on("turbolinks:load", function() {
       // images以外のform情報をformDataに追加
       var formData = new FormData($(this).get(0));
       var url = $(this).attr('action')
-      
+      console.log(reader.result);
 
       $.ajax({
         url:          url,

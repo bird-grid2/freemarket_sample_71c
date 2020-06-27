@@ -69,6 +69,8 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+
+    binding.pry
   
 
     if (@item.update(item_params))
