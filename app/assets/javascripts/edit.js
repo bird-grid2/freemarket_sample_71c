@@ -205,10 +205,10 @@ $(window).on("turbolinks:load", function() {
           width: '70px', height: '70px'
         });
       };
-      target_img.files = file[0];
-      var checked_file = target_img.prop("files")[0];
-      reader.readAsDataURL(checked_file);
+      target_img.files = file;
+      reader.readAsDataURL(target_img.files[0]);
       images.push(img);
+      console.log(reader.result);
 
       // 画像が４枚以下のとき
       if (images.length <= 4) {
@@ -248,13 +248,18 @@ $(window).on("turbolinks:load", function() {
       // images以外のform情報をformDataに追加
       var formData = new FormData($(this).get(0));
       var url = $(this).attr('action')
+      
 
       $.ajax({
         url:          url,
         type:        "PATCH",
         data:        formData,
+        datatype:    'json',
         contentType: false,
         processData: false,
+      })
+      .done(function(){
+        formData.attr("item[item_images_attributes][" + (images.length - 1) + "][image]", reader.result);
       });
     });
   };
