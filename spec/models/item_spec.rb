@@ -6,11 +6,6 @@ RSpec.describe Item, type: :model do
   end
 
   describe "#edit" do
-    it "全項目入力したなら登録できる" do
-      user = @user
-      edit = build(:item)
-      expect(edit).to be_valid
-    end
     it "アイテム名が空なら登録できない" do
       user = @user
       edit = build(:item, name: nil)
@@ -53,6 +48,10 @@ RSpec.describe Item, type: :model do
       edit = build(:item, price: 1)
       expect(edit).to be_valid
     end
-    
+    it "全項目入力したなら登録できる" do
+      user = @user
+      edit = build(:item)
+      expect(edit).to be_valid
+    end
   end
 end
