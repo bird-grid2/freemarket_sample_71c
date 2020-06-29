@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
+      get 'search'
     end
     resources :likes, only: [ :create, :destroy]
   end
