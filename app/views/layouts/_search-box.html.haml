@@ -3,7 +3,7 @@
     = link_to root_path, class: 'home-btn' do
       = image_tag 'logo/logo.png'
     .search-section
-      = form_with url: root_path do |f|
+      = form_with url: search_items_path, method: :get, local: true do |f|
         = f.text_field :search, placeholder: 'キーワードから探す', class: 'search-section__input-box'
         %button{type: "submit", class:'search-section__submit-btn'}
           .serch-icon
