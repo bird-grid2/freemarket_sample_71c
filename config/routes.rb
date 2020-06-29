@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-
   root 'items#index'
 
   resources :orders, only: [ :index]
@@ -18,11 +17,8 @@ Rails.application.routes.draw do
     end
     resources :item_images, except: [ :show, :index]
   end
-    resources :likes, only: [ :create, :destroy]
-  end
 
-  resources :users, except: [ :new, :create, :destroy] do
-    resources :likes, only: :index
+  resources :users, only: [ :index, :edit, :update, :show ] do
     member do
       get :notification
       get :todo
@@ -34,4 +30,5 @@ Rails.application.routes.draw do
       get :log_out
     end
   end
+ 
 end

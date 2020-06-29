@@ -1,7 +1,5 @@
 %header
   = render 'layouts/search-box'
-- breadcrumb :mypage
-= render "layouts/breadcrumbs"
 .main_container
   %main.mypage-container
     = render 'side-bar'
@@ -9,7 +7,7 @@
       %section.mypage-user-icon
         = link_to '#' do
           %figure
-            = image_tag 'icon/member_photo_noimage_thumb.png', size: '60x60'
+            = image_tag 'member_photo_noimage_thumb.png' , size: '60x60'
           %h2.mypage-user-icon__name 
             = @user.nickname
           .mypage-user-icon__number
@@ -38,6 +36,7 @@
                     新機能実装しました。
                   %time
                     %i.far.fa-clock <span> 1日前</span>
+                = icon( "fas", "angle-right")
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
                 .tab-content__item-link__body
@@ -45,6 +44,7 @@
                     ページ更新しました。
                   %time
                     %i.far.fa-clock <span> 3日前</span>
+                = icon( "fas", "angle-right")
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
                 .tab-content__item-link__body
@@ -52,6 +52,7 @@
                     サービススタートしました。
                   %time
                     %i.far.fa-clock <span> 7日前</span>
+                = icon( "fas", "angle-right")
             %li.mypage-view-content
               =link_to '一覧を見る' , '#'
           %ul#tab-todo.tab-content__item-list.tab-pane

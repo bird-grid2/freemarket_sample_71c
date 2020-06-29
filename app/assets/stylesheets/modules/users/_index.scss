@@ -1,3 +1,12 @@
+body {
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
+
 .single-main{
   &_container{
     height: 100%;
@@ -20,6 +29,7 @@
     }
   }
 }
+
 .btn-def {
   display: block;
   width: 100%;
@@ -124,6 +134,7 @@
     background-color: #0099e8;
   }
 }
+
 .single-footer{
   position: absolute;
   height: 220px;
@@ -165,22 +176,27 @@
     font-size: 13px;
   }
 }
+
 .single-main-login{
   display: block;
 }
+
 .login-panel{
   width: 456px;
   margin: 0 auto;
   background: #fff;
 }
+
 .login-no-account{
   padding: 40px 64px;
   text-align: center;
 }
+
 .login-form-inner{
   padding: 32px 64px;
   border-top: 1px solid #eee;
 }
+
 .form-group{
   margin-top: 32px;
   & label{
@@ -188,6 +204,7 @@
     display: inline-block;
     touch-action: manipulation;
   }
+
   &__input{
     width: 100%;
     margin: 8px 0 0;
@@ -201,6 +218,7 @@
     box-sizing: border-box;
   }
 }
+
 .btn-default {
   display: block;
   width: 100%;
@@ -213,6 +231,7 @@
   text-align: center;
   border-radius: 4px;
 }
+
 .btn-red{
   margin-top: 24px;
   background: #ea352d;

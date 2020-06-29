@@ -1,3 +1,7 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
 .clearfix:after {
   content: ".";
   display: block;
@@ -5,26 +9,34 @@
   height: 0;
   visibility: hidden;
 }
+body{
+  font-family:  "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  color: rgb(51, 51, 51);
+  background-color: #f5f5f5;
+}
 tr {
   display: table-row;
   vertical-align: inherit;
   border-color: inherit; 
 }
+
+
 .item-container{
   width: 700px;
   padding: 24px 40px 40px;
   margin: 40px auto 0;
-  background-color: $whiteColor;
+  background-color: white;
   .item-content{
     margin: 16px 0 0;
     &__photo{
       float: left;
       width: 300px;
       height: 100%;
-      background-color: $body_back;
+      background-color: #f5f5f5;
       padding-bottom:20px;
       &--top{
         box-sizing: border-box;
+        position: relative;
         width: 300px;
         height: 300px;
       }
@@ -36,16 +48,7 @@ tr {
           width: 60px;
           height: 60px;
           display: inline-block;
-          background-color: $whiteColor;
-          .mini_image{
-            width:100%;
-            height:100%;
-            background-color:transparent;
-            opacity:0.6;
-          }
-          .mini_image:hover{
-            opacity:1;
-          }
+          background-color:#fff;
         }
       }
     }
@@ -53,18 +56,20 @@ tr {
       float: right;
       width: 300px;
       height: 420px;
+      
       tr{
         font-size: 14px;
         th{
           background-color: #eee;
           border-collapse: collapse;
-          border: 1px solid $body_back;
+          border: 1px solid #f5f5f5;
           padding: 8px;
+          
         }
         td{
-          background-color: $whiteColor;
+          background-color: #fff;
           border-collapse: collapse;
-          border: 1px solid $body_back;
+          border: 1px solid #f5f5f5;
           padding: 8px;
           .rating{
             display: flex;
@@ -118,11 +123,11 @@ tr {
     background: #ea352d;
     font-size: 24px;
     line-height: 60px;
-    color: $whiteColor;
+    color: #fff;
     text-align: center;
-    cursor: pointer;
   }
-  .item-description{
+
+  .item-detail{
     padding: 32px 0;
     line-height: 1.5;
     font-size: 18px;
@@ -137,86 +142,26 @@ tr {
     border-radius: 40px;
     width: 100%;
     &--left{
-      float: left;
-      display: flex;
-      #item-btn{
-        border: none;
-        background-color: $whiteColor;
-        .liked{
-          border: #ea352d solid 1px;
-          text-decoration: none;
-          color: #ea352d;
-          padding: 8px 16px;
-          border-radius: 40px;
-          background-color: $whiteColor;
-          &:hover{
-            cursor: pointer;
-          }
-          &:focus{
-            outline:0;
-          }
-          .fa-heart{
-            animation:jump 1s;
-          }
-          @keyframes jump{
-            0%{transform:translate(0,0px);}
-            30%{transform:translate(0,-20px);}
-            50%{transform:translate(0,0px);}
-            60%{transform:translate(0,-5px);}
-            70%{transform:translate(0,0px);}
-            100%{transform:translate(0,0px);}
-          }
-          .likes-count{
-            display: inline-block;
-            animation: from_the_bottom 1s;
-          }
-          @keyframes from_the_bottom{
-            0%{opacity:0.2; transform:translate(0,10px);}
-            30%{opacity:0.4; transform:translate(0,7px);}
-            50%{opacity:0.6; transform:translate(0,4px);}
-            60%{opacity:0.8; transform:translate(0,2px);}
-            70%{opacity:1; transform:translate(0,0px);}
-            100%{opacity:1; transform:translate(0,0px);}
-          }
-        }
-        .unliked{
-          padding: 8px 16px;
-          border-radius: 40px;
-          color: #333;
-          border: 1px solid #f5f5f5;
-          background: #f5f5f5;
-          &:hover{
-            cursor: pointer;
-          }
-          &:focus{
-            outline:0;
-          }
-          .likes-count{
-            display: inline-block;
-            animation: from_above 1s;
-          }
-          @keyframes from_above{
-            0%{opacity:0.2; transform:translate(0,-10px);}
-            30%{opacity:0.4; transform:translate(0,-7px);}
-            50%{opacity:0.6; transform:translate(0,-4px);}
-            60%{opacity:0.8; transform:translate(0,-2px);}
-            70%{opacity:1; transform:translate(0,0px);}
-            100%{opacity:1; transform:translate(0,0px);}
-          }
-        }
-      }
-      .far.fa-flag{
+      float: left;;
+      .item-btn{
+        display: inline-block;
         padding: 8px 16px;
         border-radius: 40px;
         color: #333;
-        border: 1px solid $body_back;
-        background: $body_back;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
+  
+      }
+      .far.fa-flag{
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 40px;
+        color: #333;
+        border: 1px solid #f5f5f5;
+        background: #f5f5f5;
         margin-left: 16px;
-        display: flex;
-        align-items: center;
         span{
           margin: 1px 0 0 8px;
-          cursor: pointer;
         }
       }     
     }
@@ -224,9 +169,9 @@ tr {
       margin: 8px 0 0;
       float: right;
       display: inline-block;
+     
       span{
         font-size: 14px;
-        cursor: pointer;
       }
     }
   }
@@ -236,54 +181,22 @@ tr {
   font-size: 24px;
   line-height: 1.4;
 }
-.items_line{
-  background-color: $body_back;
-  height: 10px;
-  margin-top: 30px;
-  width: 113%;
-  margin-left: -40px;
-}
-.items__box{
-  margin: 24px 0 24px 0;
-  background: $whiteColor;
-  padding: 8px 16px 8px 16px;
-  &--btn{
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    border: 1px solid transparent;
-    -webkit-transition: all ease-out .3s;
-    transition: all ease-out .3s;
-    cursor: pointer;
-    text-align: center;
-    .items__red{
-      background: #ea352d;
-      border: 1px solid #ea352d;
-      color: $whiteColor;
-      margin: 16px 0 16px 0;
-      line-height: 48px;
-    }
-    .items__gray{
-      line-height: 48px;
-      background: #aaa;
-      border: 1px solid #aaa;
-      margin: 16px 0 16px 0;
-      color: $whiteColor;
-    }
-  }
-}
 .item-comments{
   width: 700px;
   margin: 8px auto;
 }
 .item-comments__content{
   padding: 24px;
-  background: $whiteColor;
+  background: #fff;
+
+
   p{
     padding: 8px;
     font-size: 14px;
     background: #fff6de;
+
   }
+
   textarea{
     margin-top: 8px;
     display: block;
@@ -291,9 +204,10 @@ tr {
     max-width: 100%;
     min-height: 104px;
     border: 1px solid #ccc;
-    background: $whiteColor;
+    background: #fff;
     font-size: 16px;
     line-height: 1.5;
+
   }
   button{
     width: 100%;
@@ -306,13 +220,14 @@ tr {
     line-height: 48px;
     transition: all ease-out .3s;
     cursor: pointer;
-    color: $whiteColor;
+    color: #fff;
     span{
       font-size: 14px;
       vertical-align: middle;
     }
   }
 }
+
 .move-link{
   margin: 24px auto 0;
   width: 700px;
@@ -323,11 +238,12 @@ tr {
     float: right;
   }
 }
+
 .sns-list{
   margin: 24px auto;
   padding: 32px 0 24px;
   width: 700px;
-  background-color: $whiteColor;
+  background-color: white;
   &__boxes{
     margin: 16px 0 0;
     text-align: center;
@@ -336,6 +252,7 @@ tr {
       margin: 0 8px 8px 0;
       vertical-align: middle;
       text-align: center;
+
       i{
         width: 44px;
         height: 44px;
@@ -343,22 +260,23 @@ tr {
         font-size: 44px;
       }
       .fa-facebook-square{
-        color: $whiteColor;
+        color: #fff;
         background: #385185;
         font-size: 28px;
-      }    
+      }
+      
       .fa-twitter{
-        color: $whiteColor;
+        color: #fff;
         background: #5d9dc9;
         font-size: 26px;
       }
       .fa-line{
-        color: $whiteColor;
+        color: #fff;
         background: #00c137;
         font-size: 22px;
       }
       .fa-pinterest{
-        color: $whiteColor;
+        color: #fff;
         background: #aa262a;
         font-size: 18px;
       }

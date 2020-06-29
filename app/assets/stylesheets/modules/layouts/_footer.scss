@@ -1,8 +1,10 @@
+
 li{
   list-style: none;
 }
+
 .list--menu{
-  color: $whiteColor;
+  color: white;
   text-decoration: none;
   font-size: 12px;
   line-height: 32px;
@@ -10,9 +12,11 @@ li{
 .list--menu:hover {
   text-decoration: underline;
 }
+
+
 .footer{
   background-color: #272727;
-  color: $whiteColor;
+  color: white;
   padding: 60px 0;
   text-align: center;
   &__contents{
