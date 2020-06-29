@@ -76,8 +76,7 @@ class ItemsController < ApplicationController
     ids = @item.item_images.map{|image| image.id }
     # 登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
     exist_ids = registered_image_params[:ids].map(&:to_i)
-
-    binding.pry
+    
     # 登録済画像が残っていない場合(配列に０が格納されている)、配列を空にする
     exist_ids.clear if exist_ids[0] == 0
 
