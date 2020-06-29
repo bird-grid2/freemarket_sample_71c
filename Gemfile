@@ -87,4 +87,4 @@ gem 'pry-rails'
 gem 'bootstrap'
 gem 'gon'
 gem 'aws-sdk'
-gem 'rack'
+gem 'rack', ">= 2.2.3"
