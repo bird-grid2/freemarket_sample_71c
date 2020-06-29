@@ -12,5 +12,10 @@ class Item < ApplicationRecord
   def already_liked(user_id)
     likes.find_by(user_id: user_id)
   end
+
+  def self.search(keyword)
+    return Item.all unless keyword
+    Item.where('name LIKE ?', "%#{keyword}%")
+  end
 end
 
