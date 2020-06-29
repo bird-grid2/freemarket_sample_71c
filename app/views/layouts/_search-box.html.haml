@@ -10,8 +10,16 @@
             = image_tag 'icon/icon-search 1.png'
   .header-nav
     .header-nav__left-box
-      = link_to 'カテゴリー', '#', class: 'header-nav__left-box--category'
-      = link_to 'ブランド', '#', class: 'header-nav__left-box--brand'
+      = link_to '#', class: 'header-nav__left-box--category' do
+        %figure
+          .icon
+            = image_tag 'icon/icon_category.png'
+        %span カテゴリー
+      = link_to '#', class: 'header-nav__left-box--brand' do
+        %figure
+          .icon
+            = image_tag 'icon/icon_brand.png'
+        %span ブランド
     .header-nav__right-box
       -if user_signed_in?
         = link_to user_likes_path(current_user.id), class: 'header-nav__right-box--likes' do
