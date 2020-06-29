@@ -1262,6 +1262,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   pry-rails
   puma (~> 3.11)
+  rack
   rails (~> 5.2.4, >= 5.2.4.2)
   rspec-rails
   sass-rails (~> 5.0)
