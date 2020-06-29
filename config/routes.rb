@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
     end
     resources :item_images, except: [ :show, :index]
+  end
     resources :likes, only: [ :create, :destroy]
   end
 
@@ -33,5 +34,4 @@ Rails.application.routes.draw do
       get :log_out
     end
   end
-
 end
