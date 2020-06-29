@@ -59,8 +59,8 @@ header{
           }
           figure{
             margin-right: 8px;
-            .icon{
-              img{
+            .menu-icon{
+              &__img{
                 width: 20px;
                 vertical-align: text-bottom;
               }
