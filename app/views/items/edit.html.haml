@@ -39,7 +39,7 @@
         .category__title
           カテゴリー<span>※</span>
           .category__form
-            = form.collection_select :parent_id, Parent.all, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+            -#= form.collection_select :parent_id, Parent.all, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
       .brand
         .brand__title
