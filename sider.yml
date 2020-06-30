@@ -52,7 +52,7 @@
 #       - "slim"
 
 #   # https://help.sider.review/tools/css/stylelint
-#  stylelint:
+#   stylelint:
 #     npm_install: false
 #     config: my_stylelintrc.yaml
 #     syntax: sugarss
