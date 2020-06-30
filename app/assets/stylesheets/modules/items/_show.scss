@@ -289,7 +289,6 @@ tr {
   .button{
     width: 100%;
     margin: 8px 0 0;
-    font-size: 0;
     text-align: center;
     background: #aaa;
     border: 1px solid #aaa;
@@ -299,7 +298,6 @@ tr {
     cursor: pointer;
     color: $white ;
     font-size: 14px;
-    color: $white;
   }
 }
 .user_display{
