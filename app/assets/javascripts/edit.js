@@ -197,7 +197,7 @@ window.onload = function() {
       e.preventDefault();
 
       var drop_file = e.originalEvent.dataTransfer.files;
-      console.log(drop_file[0]);
+      
       var target_img = $("#item_images_image_" + images.length);
       new_image_files.push(drop_file[0]);
 
@@ -252,7 +252,6 @@ window.onload = function() {
 
       var drop_id = new_image.prop('id');
       upload_image.attr( "for", drop_id );
-      console.log(target_img)
     });
     
     $('#edit_item').on('submit', function(e){
