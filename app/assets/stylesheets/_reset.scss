@@ -35,8 +35,11 @@ html {
 
 body {
 	line-height: 1;
-	/* 付け足した */
 	font-size: 1.4rem;
+	font-family:  "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+	background-color: #f8f8f8;
+	color: #333;
+	min-height: 100%;
 }
 ol, ul {
 	list-style: none;
@@ -52,4 +55,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+*{
+	box-sizing: border-box;
+	list-style: none;
+  text-decoration: none;
+  vertical-align: bottom;
 }

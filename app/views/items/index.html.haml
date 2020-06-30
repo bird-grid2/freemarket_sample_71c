@@ -58,44 +58,67 @@
   %section.pickup
     %h2.pickup__headline ピックアップカテゴリー
     .pickup__contaner
-      = link_to '#', class: 'topic' do
-        %h3 新規投稿商品
-      .products
-        - @items.each do |item|
-          .product
-            = link_to item_path(item.id), method: :get do
-              -# = image_tag item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
-              = image_tag 'product/product1.png' 
-              .product__info
-                %h3.product__info__name
-                  = item.name
-                .product__info__details
-                  %ul
-                    %li
-                      = item.price
-                    %li.likes 0
-                  %p (税込)
+      .pickup__contaner--head
+        = link_to '#', class: 'topic' do
+          %h3 新規投稿商品
+      .pickup__contaner--location
+        %ul
+          %li
+            = link_to 'レディース', '#ladies'
+          %li
+            = link_to 'メンズ', '#mens'
+          %li
+            = link_to '家電・スマホ・カメラ', '#appliances'
+          %li
+            = link_to 'おもちゃ・ホビー・グッズ', '#toys'
+      .pickup__contaner--list#ladies
+        %p レディースの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @ladies
+      .pickup__contaner--list#mens
+        %p メンズの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @mens
+      .pickup__contaner--list#appliances
+        %p 家電・スマホ・カメラの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @appliances
+      .pickup__contaner--list#toys
+        %p おもちゃ・ホビー・グッズの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @toys
   %section.pickup
     %h2.pickup__headline ピックアップブランド
     .pickup__contaner
-      = link_to '#', class: 'topic' do
-        %h3 アーカイバ
-      .products
-        - @items.each do |item|
-          .product
-            = link_to item_path(item.id), method: :get do
-              -# = image_tag item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
-              = image_tag 'product/product2.png' 
-              .product__info
-                %h3.product__info__name
-                  = item.name
-                .product__info__details
-                  %ul
-                    %li
-                      = item.price
-                    %li.likes 0
-                  %p (税込)
-        
+      .pickup__contaner--head
+        = link_to '#', class: 'topic' do
+          %h3 アーカイバ
+      .pickup__contaner--location
+        %ul
+          %li
+            = link_to 'シャネル', '#chanel'
+          %li
+            = link_to 'ルイヴィトン', '#vuitton'
+          %li
+            = link_to 'シュプリーム', '#supreme'
+          %li
+            = link_to 'ナイキ', '#nike'
+      .pickup__contaner--list#chanel
+        %p シャネルの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @chanel
+      .pickup__contaner--list#vuitton
+        %p ルイヴィトンの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @vuitton
+      .pickup__contaner--list#supreme
+        %p シュプリームの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @supreme
+      .pickup__contaner--list#nike
+        %p ナイキの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @nike
 = render 'layouts/app-banner'
 = render 'layouts/footer'
 = render 'layouts/publish-btn'
