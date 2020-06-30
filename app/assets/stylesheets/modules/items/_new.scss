@@ -1,13 +1,7 @@
-body {
-  background-color: #eeffff;
-}
-
 .header{
-  background-color: white;
-
+  background-color: $whiteColor;
   img {
     padding: 20px;
-
   }
 }
 .contents {
@@ -17,21 +11,17 @@ body {
   padding: 20px;
   color: darkblue;
   margin-top: 20px;
-
   span{
     color: red;
     font-size: small;
   }
-
   .item-infomation{
     width: 400px;
     margin: auto;
     padding-top: 30px;
-
     .images{
       padding-top: 20px;
       height: 230px;
- 
       &__title {
         p{
           font-size: 12px;
@@ -42,7 +32,6 @@ body {
         font-size: 10px;
         padding: 5px;
         display: block;
-
         .upload-images{
           display: block;
           width: 400px;
@@ -61,15 +50,12 @@ body {
         }
       }
     }
-
     .name{
       height: 100px;
       padding-top: 10px;
-
       &__title {
         margin-bottom: 10px;
       }
-
       &__form {
         height: 30px;
         width: 400px;
@@ -77,10 +63,8 @@ body {
         padding: 5px;
       }
     }
-
     .description{
-      height: 270px;
-      
+      height: 270px;     
       &__title {
         margin-bottom: 10px;
       }
@@ -91,10 +75,8 @@ body {
         padding: 5px;
       }
     }
-
     .category{
       margin-bottom: 40px;
-      
       &__title {
         margin-bottom: 10px;
       }
@@ -119,10 +101,8 @@ body {
         }
       }
     }
-
     .brand{
       height: 100px;
-
       &__title {
         margin-bottom: 10px;
       }
@@ -133,10 +113,8 @@ body {
         padding: 5px;
       }
     }
-
     .condition{
       height: 100px;
-
       &__title {
         margin-bottom: 10px;
       }
@@ -151,10 +129,8 @@ body {
   .delivery{
     width: 400px;
     margin: auto;
-
     .postage {
       height: 100px;
-
       &__title {
         margin-bottom: 10px;
       }
@@ -165,13 +141,10 @@ body {
         padding: 5px;
       }
     }
-
     .prefectures{
       height: 100px;
-
       &__title {
-        margin-bottom: 10px;
-        
+        margin-bottom: 10px;      
       }
       &__form {
         height: 30px;
@@ -180,13 +153,10 @@ body {
         padding: 5px;
       }
     }
-
     .shipping_days{
       height: 100px;
-
       &__title {
         margin-bottom: 10px;
-        
       }
       &__form {
         height: 30px;
@@ -199,10 +169,8 @@ body {
   .selling{
     width: 400px;
     margin: auto;
-
     .price{
       height: 100px;
-
       &__title {
         margin-bottom: 10px;
       }
@@ -213,25 +181,21 @@ body {
         padding: 5px;
       }
     }
-
     .commission{
       height: 50px;
       font-size: 15px;
       color: gray;
       margin: 30px;
-
       ul {
         display: flex;
         justify-content: space-between;
       }
     }
-
     .profits{
       height: 50px;
       font-size: 15px;
       color: gray;
       margin: 30px;
-
       ul {
         display: flex;
         justify-content: space-between;
@@ -242,7 +206,6 @@ body {
     width: 500px;
     margin: auto;
     padding: 20px;
-
     .btn {
       width: 100%;
       height: 60px;
@@ -253,7 +216,7 @@ body {
       cursor        : pointer;
       padding       : 10px 10px; 
       background    : #00ccff;
-      color         : white;
+      color         : $whiteColor;
       font-style: normal;
       font-weight: bold;
       line-height   : 1em;
