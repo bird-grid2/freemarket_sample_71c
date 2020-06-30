@@ -2,6 +2,15 @@ class ItemsController < ApplicationController
   before_action :set_image
 
   def index
+    @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
+    @ladies = @items.where(category_id: 1..199).limit(3)
+    @mens = @items.where(category_id: 200..345).limit(3)
+    @appliances = @items.where(category_id: 898..983).limit(3)
+    @toys =  @items.where(category_id: 685..797).limit(3)
+    @chanel = @items.where(brand: 'シャネル').limit(3)
+    @vuitton = @items.where(brand: 'ルイヴィトン').limit(3)
+    @supreme = @items.where(brand: 'シュプリーム').limit(3)
+    @nike = @items.where(brand: 'ナイキ').limit(3)
   end
   
   def show
@@ -76,7 +85,7 @@ class ItemsController < ApplicationController
     ids = @item.item_images.map{|image| image.id }
     # 登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
     exist_ids = registered_image_params[:ids].map(&:to_i)
-    
+
     # 登録済画像が残っていない場合(配列に０が格納されている)、配列を空にする
     exist_ids.clear if exist_ids[0] == 0
 

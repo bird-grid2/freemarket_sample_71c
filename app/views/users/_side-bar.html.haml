@@ -2,7 +2,7 @@
   %nav.mypage-side__nav
     %ul.mypage-side__nav__list
       %li
-        = link_to user_path, class: 'mypage-side__nav__list--item active' do
+        = link_to user_path(current_user.id), class: 'mypage-side__nav__list--item active' do
           マイメニュー
           = icon( "fas", "angle-right")
       %li
@@ -10,8 +10,8 @@
           お知らせ
           = icon( "fas", "angle-right")
       %li
-        = link_to like_user_url, class: 'mypage-side__nav__list--item' do
-          いいね一覧
+        = link_to user_likes_path(current_user.id), class: 'mypage-side__nav__list--item' do
+          いいね！一覧
           = icon( "fas", "angle-right")
       %li
         = link_to new_item_path, class: 'mypage-side__nav__list--item' do

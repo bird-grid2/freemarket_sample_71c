@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def notification
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def purchase
   end
 
-  def parchased
+  def purchased
   end
 
   def log_out
