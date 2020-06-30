@@ -116,22 +116,23 @@
       - @comments.each do |comment|
         %ul.item-comments__content__form__boxs
           %li.item-comments__content__form__box
-            .item-comments__content__form__box__image
-              = image_tag 'member_photo_noimage_thumb.png', size: "40x40"
             .item-comments__content__form__box__name
-              = comment.user.nickname
+              = link_to comment.user.nickname, user_path(comment.user.id)
+              - if comment.user.id ==  comment.item.user.id
+                .user_display
+                  出品者
             .item-comments__content__form__box__message
               = simple_format(comment.comment, {}, wrapper_tag: "div")
               .item-comments__content__form__box__message__time
                 %i.far.fa-clock
-                = "#{time_ago_in_words(comment.created_at)}前"
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
 
     .item-comments__content__form__text
       %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = form_with model: [@item,@comment], local: true do |form|
-        = form.text_area :comment
+    - if current_user
+      = form_with model: [@item,@comment], local: true, id: "new_comment" do |form|
+        = form.text_area :comment, class: "textbox"
         = form.submit "コメントする", class: "button"
-
 
 .move-link.clearfix
   .move-link--prev
