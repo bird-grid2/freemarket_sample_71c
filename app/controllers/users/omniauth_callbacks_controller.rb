@@ -25,7 +25,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
     else
+      # binding.pry
       @sns_id = sns_info[:sns].id
+      session["sns_id"] = @sns_id
       render template: 'devise/registrations/new'
     end
   end
