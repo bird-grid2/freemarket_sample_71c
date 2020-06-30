@@ -1,4 +1,4 @@
-$(window).on("turbolinks:load", function() {
+$(window).onload = function() {
   if (document.URL.match(/edit/)) {
     var dropzone = $(".upload-images-edit");
     var input_area = $(".input-area");
@@ -292,4 +292,4 @@ $(window).on("turbolinks:load", function() {
       });
     });
   };
-});
+};
