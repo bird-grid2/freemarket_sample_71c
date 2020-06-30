@@ -2,7 +2,7 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    = @item.name
+    = # @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
@@ -18,7 +18,7 @@
         %th
           出品者
         %td
-          = @user.nickname
+          -# = @user.nickname
           .rating
             .item-user-ratings
               %i.fas.fa-smile
@@ -35,20 +35,19 @@
         %td
           .item_category
             = link_to '#' do
-              -#= @category.root.name
+              = # @category.root.name
           .item_category
             = link_to '#' do
               &gt;
-              -#= @category.parent.name
+              = # @category.parent.name
           .item_category
             = link_to '#' do
               &gt;
-              -#= @category.name
+              = # @category.name
       %tr
         %th
           ブランド
         %td
-          = @item.brand
        
       %tr
         %th
@@ -101,18 +100,12 @@
   .items__box
     .items__box--btn
       -# if user_signed_in? && current_user.id == @item.seller_id
-        .items__red
-          = link_to "編集", "#"
-        .items__gray
-          = link_to "削除", "#"
-
-- if @item.user_id == @user.id
-  %section.item-container-edit
-    .listing-item-buttons
-      = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
-      %p.center or
-      = form_with model: @item do |form|
-        = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
+        %section.item-container-edit
+          .listing-item-buttons
+            = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
+            %p.center or
+            = form_with model: @item do |form|
+              = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
 
 .item-comments
   .item-comments__content
