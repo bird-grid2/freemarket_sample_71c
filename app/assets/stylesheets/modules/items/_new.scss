@@ -1,3 +1,16 @@
+.notifications {
+  color: $white;
+  text-align: center;  
+
+  .notice {
+    background-color: lightBlue;
+  }
+
+  .alert {
+    background-color: alert_orange;
+  }
+}
+
 .contents {
   width: 700px;
   background-color: #ffffff;
@@ -135,21 +148,21 @@
     &__form {
       &--parent{
         height: 40px;
-        width: 600px;
+        width: 400px;
         font-size: 15px;
         padding: 5px;
         margin-bottom: 20px;
       }
       &--child{
         height: 40px;
-        width: 600px;
+        width: 400px;
         font-size: 15px;
         padding: 5px;
         margin-bottom: 20px;
       }
       &--grandchild{
         height: 40px;
-        width: 600px;
+        width: 400px;
         font-size: 15px;
         padding: 5px;
         margin-left: 10px;
@@ -188,7 +201,7 @@
         border: 1px solid gray;
         font-size: 15px;
         padding: 5px;
-        width: 600px;
+        width: 400px;
         height: 40px;
       }
     }
@@ -209,7 +222,7 @@
         border: 1px solid gray;
         font-size: 15px;
         padding: 5px;
-        width: 600px;
+        width: 400px;
         height: 40px;
       }
     }
@@ -230,7 +243,7 @@
         border: 1px solid gray;
         font-size: 15px;
         padding: 5px;
-        width: 600px;
+        width: 400px;
         height: 40px;
       }
     }
@@ -252,7 +265,7 @@
         border: 1px solid gray;
         font-size: 15px;
         padding: 5px;
-        width: 600px;
+        width: 400px;
         height: 40px;
       }
     }
@@ -274,50 +287,26 @@
         border: 1px solid gray;
         font-size: 15px;
         padding: 5px;
-        width: 600px;
+        width: 400px;
         height: 40px;
       }
     }
   }
 
   .price{
+    margin-bottom: 100px;
     &__title {
       margin: 10px;
     }
     &__form {
       height: 40px;
-      width: 250px;
+      width: 400px;
       font-size: 15px;
       padding: 5px;
       margin: 10px;
     }
   }
 
-  .commission{
-    height: 50px;
-    width: 200px;
-    font-size: 15px;
-    color: silver;
-    margin: 30px;
-
-    ul {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  .profits{
-    height: 80px;
-    width: 200px;
-    font-size: 15px;
-    color: silver;
-    margin: 30px;
-
-    ul {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
   .exhibit{
     width: 600px;
     margin: auto;

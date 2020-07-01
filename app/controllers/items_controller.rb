@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories]
+  # before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories]
 
   def index
 
@@ -50,6 +50,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to user_path(current_user.id), notice: '出品が完了しました！'
     else
+      flash.now[:alert] = '入力内容に誤りがあります'
       render :new
     end
   end

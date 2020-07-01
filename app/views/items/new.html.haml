@@ -1,3 +1,7 @@
+.notifications
+  - flash.each do |key, value|
+    = content_tag(:div, value, class: key)
+
 .header
   = render "layouts/header"
 
@@ -78,20 +82,6 @@
         .price__title
           販売価格（円）<span>※</span>
         = form.text_field :price, :placeholder => '数字で入力（半角記号なし）', :class => 'price__form' 
-
-
-      .commission
-        %ul
-          %li
-            販売手数料（10％）
-          %li
-            ¥200
-      .profits
-        %ul
-          %li
-            販売利益
-          %li
-            ¥1800
 
       .exhibit
         = form.submit "出品する", :class => 'btn'
