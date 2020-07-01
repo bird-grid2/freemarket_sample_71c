@@ -16,4 +16,12 @@ class Item < ApplicationRecord
   validates :name, :brand, length: {maximum: 15 }
   validates :description, length: {maximum: 200 }
   validates :price, numericality: true
+
+  has_many :users, through: :likes
+
+  def already_liked(user_id)
+    likes.find_by(user_id: user_id)
+  end
+
 end
+

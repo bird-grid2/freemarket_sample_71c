@@ -1,0 +1,28 @@
+%header
+  = render 'layouts/search-box'
+- breadcrumb :likes
+= render "layouts/breadcrumbs"
+.main_container
+  %main.mypage-container
+    = render 'users/side-bar'
+    .mypage-likes_list
+      %section.likes_list
+        %h2.likes_list__title いいね！一覧
+        %ul.likes_list__items
+          - @likes.each do |like|
+            %li.likes_item
+              = link_to item_path(like.item_id), class: 'likes_item__link' do
+                %figure
+                  - like.item.item_images.each_with_index do |item_image, i|
+                    - if i == 0
+                      = image_tag item_image.image.url
+                .item-info
+                  .item-info__text 
+                    = like.item.name
+                  .item-info__text
+                    &yen;
+                    = like.item.price
+                  = icon( "fas", "angle-right")
+= render 'layouts/app-banner'
+= render 'layouts/footer'
+= render 'layouts/publish-btn'

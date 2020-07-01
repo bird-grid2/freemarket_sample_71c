@@ -14,7 +14,18 @@
       = link_to 'ブランド', '#', class: 'header-nav__left-box--brand'
     .header-nav__right-box
       -if user_signed_in?
-        = link_to 'マイページ', '/users/show', class: 'header-nav__right-box--login'
+        = link_to user_likes_path(current_user.id), class: 'header-nav__right-box--likes' do
+          %i.far.fa-heart.icon
+          %span いいね！一覧
+        = link_to '#', class: 'header-nav__right-box--notice' do
+          %i.far.fa-bell.icon
+          %span お知らせ
+        = link_to '#', class: 'header-nav__right-box--todo' do
+          %i.fas.fa-check.icon
+          %span やることリスト
+        = link_to user_path(current_user.id), class: 'header-nav__right-box--login' do
+          %i.far.fa-smile.icon
+          %span マイページ
       - else
         = link_to 'ログイン', new_user_session_path, class: 'header-nav__right-box--login'
         = link_to '新規会員登録', users_path, class: 'header-nav__right-box--signup'
