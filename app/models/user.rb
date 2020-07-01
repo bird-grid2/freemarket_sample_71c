@@ -16,9 +16,4 @@ class User < ApplicationRecord
   format: { with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/, message: "全角カタカナのみで入力して下さい"}
   
   has_one :shipping_address
-
-  has_many :likes, dependent: :destroy
-  has_many :items, through: :likes
 end
-
-

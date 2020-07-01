@@ -15,14 +15,9 @@ Rails.application.routes.draw do
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
       get 'get_shipping_method'
     end
-    resources :likes, only: [ :create, :destroy]
-  end
-
-  resources :users, except: [ :new, :create, :destroy] do
-    resources :likes, only: :index
   end
   
+  resources :users, only: [ :index, :edit, :update, :show]
   resources :shipping_addresses, only: [ :index]
-
 
 end

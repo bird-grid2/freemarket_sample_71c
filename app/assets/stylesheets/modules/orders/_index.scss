@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .wrapper-o{
   width: 100vw;
   height: 100vh;
@@ -7,7 +11,7 @@
   &__container{
     height: 100%;
     margin: 0 auto;
-    background-color: $whiteColor;
+    background-color: white;
     width: 50%;
     &__top{
       margin: 0 auto;
