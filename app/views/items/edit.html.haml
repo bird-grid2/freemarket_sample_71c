@@ -39,19 +39,7 @@
         .category__title
           カテゴリー<span>※</span>
         .category__form
-          = form.label :category_id , class: 'wrapper__label category-wrapper-label', id: "wrapper__label--category" do
-          カテゴリー：
-          %span.required ※必須
-          .category-wrapper-box
-            .category-wrapper-select
-              .category-wrapper-select__box
-                = form.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: 'category-wrapper__category form-control', id: 'parent_category'}
-            .category-wrapper-select#children_wrapper
-              .category-wrapper-select__box
-                = form.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: 'category-wrapper__category form-control', id: 'child_category'}
-            .category-wrapper-select#grandchildren_wrapper
-              .category-wrapper-select__box
-                = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: 'category-wrapper__category form-control', id: 'grandchild_category'}
+          = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
       .brand
         .brand__title
           ブランド
