@@ -1,0 +1,29 @@
+- if user_signed_in?
+  -# if item.seller_id == current_user.id
+    = button_to user_path, {method: :get, class: 'unliked'} do
+      %i.fas.fa-hand-holding-heart
+      %span
+        いいね！
+      %span.likes-count
+        = item.likes.length
+  - elsif item.already_liked(current_user.id).nil?
+    = button_to item_likes_path(item.id), {method: :post, class: 'unliked', remote: true} do
+      %i.far.fa-heart
+      %span
+        いいね！
+      %span.likes-count
+        = item.likes.length
+  - else
+    = button_to item_like_path(item_id: item.id ,id: item.likes[0].id), {method: :delete, class: 'liked', remote: true} do
+      %i.fas.fa-heart
+      %span
+        いいね！
+      %span.likes-count
+        = item.likes.length
+- else
+  = button_to new_user_session_path, {class: 'unliked'} do
+    %i.far.fa-heart
+    %span.likes-count
+      いいね！
+    %span
+      = item.likes.length
