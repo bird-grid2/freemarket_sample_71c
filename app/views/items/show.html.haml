@@ -99,7 +99,7 @@
 
   .items__box
     .items__box--btn
-      -# if user_signed_in? && current_user.id == @item.seller_id
+      - if user_signed_in? && current_user.id == @item.seller_id
         %section.item-container-edit
           .listing-item-buttons
             = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'

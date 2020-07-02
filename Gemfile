@@ -85,7 +85,6 @@ gem 'carrierwave'
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'gretel'
-gem 'bootstrap'
 gem 'gon'
 gem 'aws-sdk'
 gem 'rack', ">= 2.2.3"

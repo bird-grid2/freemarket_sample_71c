@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     end
 
     def set_items
-      @item = Item.where(user_id: current_user)
+      @item = Item.where(seller_id: current_user)
     end
 
 end
