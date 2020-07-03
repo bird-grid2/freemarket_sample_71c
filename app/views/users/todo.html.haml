@@ -6,10 +6,10 @@
     .mypage-content
       %section.mypage-tab-container
         %ul.mypage-tabs
-          %li
+          %li.tab
             %h3
               = link_to 'お知らせ', notification_user_url
-          %li.active
+          %li.tab.active
             %h3
               = link_to 'やることリスト', todo_user_url
         .tab-content
@@ -39,7 +39,7 @@
                     %i.far.fa-clock <span> 7日前</span>
                 = icon( "fas", "angle-right")
                 
-          %ul#tab-todo.tab-content__item-list.tab-pane.active
+          %ul#tab-todo.tab-content__item-list.tab-pane.show
             %li.tab-content__not-found
               現在、やることリストはありません
 

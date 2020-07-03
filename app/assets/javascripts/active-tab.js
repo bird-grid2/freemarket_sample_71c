@@ -9,15 +9,21 @@ if (document.URL.match(/users/)) {
     let contents_goods = $(".mypage-tab-container__goods").find("tab-content").find("ul");
 
     let tab_content = $('.tab-content').find('ul');
+    let tab_content_goods = $('.tab-content_goods').find('ul');
 
+    // タブの操作(お知らせとやる事リスト)
     tabs.click(function(){
       tab_content.removeClass('show');
-          // クリックしたタブからインデックス番号を取得
       const index = $(this).index();
-      console.log($('.tab-content').find('tab-pane'))
-          // クリックしたタブと同じインデックス番号をもつコンテンツを表示
       $('.tab-pane').eq(index).addClass('show');
     });
+
+     // タブの操作(取引中と過去の取引)
+    tabs_goods.click(function(){
+      tab_content_goods.removeClass('show');
+      const index = $(this).index();
+      $('.tab-pane_goods').eq(index).addClass('show');
+    }); 
 
 
     function tabSwitch() {

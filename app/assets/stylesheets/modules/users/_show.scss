@@ -232,7 +232,10 @@
       .mypage-tab-goods {
        @include tab-default;
       }
-      .tab-content {
+      .tab-content_goods {
+        ul { display: none; }
+        li { border-bottom: 1px solid #eee; }
+        .show { display: block; }
         &__not-found {
           padding: 160px 0 60px;
           text-align: center;

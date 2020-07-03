@@ -28,7 +28,7 @@
           %li.tab
             %h3 やることリスト
         .tab-content
-          %ul#tab-notification.tab-content__item-list.tab-pane.active.show
+          %ul#tab-notification.tab-content__item-list.tab-pane.show
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
                 .tab-content__item-link__body
@@ -60,18 +60,16 @@
         %h2.mypage-tab-head
           購入した商品
         %ul.mypage-tab-goods
-          %li.active
-            %h3
-              = link_to '取引中', '#tab-trade', data: {toggle: 'tab'} 
-          %li
-            %h3
-              = link_to '過去の取引', '#tab-log', data: {toggle: 'tab'}  
-        .tab-content
-          %ul#tab-trade.tab-content__item.tab-pane.active
-            %li.tab-content__not-found
+          %li.tabs_goods.active
+            %h3 取引中 
+          %li.tabs_goods
+            %h3 過去の取引  
+        .tab-content_goods
+          %ul#tab-trade.tab-content_goods__item.tab-pane_goods.show
+            %li.tab-content_goods__not-found
               取引中の商品がありません
-          %ul#tab-log.tab-content__item.tab-pane
-            %li.tab-content__not-found
+          %ul#tab-log.tab-content_goods__item.tab-pane_goods
+            %li.tab-content_goods__not-found
               過去に取引した商品がありません
 = render 'layouts/app-banner'
 = render 'layouts/footer'

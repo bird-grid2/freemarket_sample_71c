@@ -8,14 +8,14 @@
         %h2.mypage-tab-head
           購入した商品
         %ul.mypage-tabs
-          %li.active
+          %li.tab.active
             %h3
               = link_to '取引中', purchase_user_url
-          %li
+          %li.tab
             %h3
               = link_to '購入済み', purchased_user_url
         .tab-content
-          %ul.tab-content__item-list.tab-pane.active
+          %ul.tab-content__item-list.tab-pane.show
             %li.tab-content__not-found
               取引中の商品がありません
                 

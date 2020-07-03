@@ -8,17 +8,17 @@
         %h2.mypage-tab-head
           出品した商品
         %ul.mypage-tabs
-          %li.active
+          %li.tab.active
             %h3
-              = link_to '出品中', '#tab-progress'
-          %li
+              = link_to '出品中', in_progress_user_url
+          %li.tab
             %h3
-              = link_to '売却済み', '#tab-completed'
+              = link_to '売却済み', completed_user_url
         .tab-content
-          %ul#tab-progress.tab-content__item-list.tab-pane.active
+          %ul.tab-content__item-list.tab-pane.show
             %li
               - if @item ==  false
-                %ul#tab-completed.tab-content__item-list.tab-pane.active
+                %ul#tab-completed.tab-content__item-list.tab-pane.show
                   %li.tab-content__not-found
                     取引中の商品がありません
               - else
@@ -38,7 +38,7 @@
                           %span 0
 
 
-          %ul#tab-completed.tab-content__item-list.tab-pane
+          %ul.tab-content__item-list.tab-pane
             %li.tab-content__not-found
               過去に取引した商品がありません
       %ul.mypage-pager 
@@ -48,6 +48,5 @@
         %li.pager-next.pager
           = link_to '#' do
             = icon('fas', 'angle-right')
-          
-
+            
 = render 'layouts/footer'

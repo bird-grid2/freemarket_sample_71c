@@ -6,14 +6,14 @@
     .mypage-content
       %section.mypage-tab-container
         %ul.mypage-tabs
-          %li.active
+          %li.tab.active
             %h3
               = link_to 'お知らせ', notification_user_url
-          %li
+          %li.tab
             %h3
               = link_to 'やることリスト', todo_user_url
         .tab-content
-          %ul#tab-notification.tab-content__item-list.tab-pane.active
+          %ul#tab-notification.tab-content__item-list.tab-pane.show
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
                 .tab-content__item-link__body
