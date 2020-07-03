@@ -8,6 +8,17 @@ if (document.URL.match(/users/)) {
     let links_goods = tabs_goods.find("a")
     let contents_goods = $(".mypage-tab-container__goods").find("tab-content").find("ul");
 
+    let tab_content = $('.tab-content').find('ul');
+
+    tabs.click(function(){
+      tab_content.removeClass('show');
+          // クリックしたタブからインデックス番号を取得
+      const index = $(this).index();
+      console.log($('.tab-content').find('tab-pane'))
+          // クリックしたタブと同じインデックス番号をもつコンテンツを表示
+      $('.tab-pane').eq(index).addClass('show');
+    });
+
 
     function tabSwitch() {
 

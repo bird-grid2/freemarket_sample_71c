@@ -114,7 +114,11 @@
         @include tab-default;
       }
       .tab-content {
+        ul { display: none; }
         li { border-bottom: 1px solid #eee; }
+        .show {
+          display: block;
+        }
         figure {
           position: relative;
           overflow: hidden;

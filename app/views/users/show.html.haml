@@ -23,14 +23,12 @@
                 = @item.count
       %section.mypage-tab-container
         %ul.mypage-tabs
-          %li.active
-            %h3
-              = link_to 'お知らせ', '#tab-notification', data: {toggle: 'tab'}
-          %li
-            %h3
-              = link_to 'やることリスト', '#tab-todo', data: {toggle: 'tab'}
+          %li.tab.active
+            %h3 お知らせ
+          %li.tab
+            %h3 やることリスト
         .tab-content
-          %ul#tab-notification.tab-content__item-list.tab-pane.active
+          %ul#tab-notification.tab-content__item-list.tab-pane.active.show
             %li
               =link_to '#', data: { open: 'modal', modal: 'banner' }, class: 'tab-content__item-link' do
                 .tab-content__item-link__body
