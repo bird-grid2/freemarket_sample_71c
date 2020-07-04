@@ -52,6 +52,7 @@ group :development, :test do
   gem 'active_hash'
   gem 'carrierwave'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 
 end
 

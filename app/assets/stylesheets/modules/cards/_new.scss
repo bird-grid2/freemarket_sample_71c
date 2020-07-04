@@ -10,54 +10,91 @@
   }
   &__form{
     &__frame{
-    .form-group{
-      &__card-number{
-
-      }
-      &__card-brand{
-        ul{
-          display: flex;
-          .icon{
-            &--visa{
-              width: 50px;
+      margin: 0 auto;
+      width: 60%;
+      .form-group{
+        &__card-number{
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
             }
-            &--master{
-              width: 50px;
-            }
-            &--jcb{
-              width: 50px;
-            }
-            &--amex{
-              width: 50px;
-            }
-            &--diners{
-              width: 50px;
+          }
+          &__input{
+            width: 200px;
+            height: 30px;
+          }
+        }
+        &__card-brand{
+          ul{
+            display: flex;
+            .icon{
+              &--visa{
+                width: 50px;
+              }
+              &--master{
+                width: 50px;
+              }
+              &--jcb{
+                width: 50px;
+              }
+              &--amex{
+                width: 50px;
+              }
+              &--diners{
+                width: 50px;
+              }
             }
           }
         }
-      }
-      &__require{
-        @include require;
-      }
-      &__input{
-        width: 200px;
-        height: 30px;
-      }
-      &__card{
+        &__card-validity{
+          height: 60px;
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
+            }
+          }
+        }
+        &__security-code{
+          height: 50px;
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
+            }
+          }
+        }
+        &__add{
+          height: 40px;
         }
       }
     }
-  }
+    &__card{
+    }
+    }
   &__bottom{
     @include bottom;
     height: $bottom-height;
     &__btn{
       @include btn;
+      display: block;
+      margin: 0 auto;
+      vertical-align: middle;
       background-color: red;
-      &--disabled{
-        @include btn;
-        background-color: gray;
-      }
     }
   }
+}
+#creditcard_card_number{
+  width: 200px;
+}
+
+
+#creditcard_card_pass{
+  width: 250px;
+}
+
+
+.require{
+  @include require;
 }

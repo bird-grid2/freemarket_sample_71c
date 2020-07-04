@@ -1,0 +1,32 @@
+.single{
+  .single-header{
+  }
+}
+.container{
+  @include container;
+  &__top{
+    @include top;
+    @include title;
+  }
+  &__middle{
+    height: 100px;
+    font-size: medium;
+    &__all{
+      margin: 0 auto;
+      width: 60%;
+      &--number{
+        height: 30px;
+      }
+      &--validity{
+        height: 30px;
+      }
+    }
+  }
+  &__bottom{
+    height: $bottom-height;
+    &__all{
+    margin: 0 auto;
+    width: 60%;
+    }
+  }
+}

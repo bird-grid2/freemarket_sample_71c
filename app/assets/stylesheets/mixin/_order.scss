@@ -72,17 +72,21 @@
 }
 
 @mixin require{
-  margin: 0 0 0 8px;
-  width: 40px;
+  margin: 0 0 8px 8px;
+  width: 37px;
   padding: 2px 4px;
   border-radius: 2px;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
   background-color: red;
-  margin-top: 10px;
 }
 
 @mixin purchase-width{
   width: 60%;
+}
+
+@mixin index{
+  font-weight: bold;
+  height: 20px;
 }

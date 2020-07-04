@@ -4,11 +4,9 @@ class ItemsController < ApplicationController
   before_action :set_card, :set_item
 
   def index
-
   end
   
   def show
-    
   end
 
   def new
@@ -50,11 +48,12 @@ class ItemsController < ApplicationController
   end
 
   def pay
+    @item = Item.find(1)
     card = Card.where(user_id: 1).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-    :amount => 13500,                                               #支払金額を入力（itemテーブル等に紐づけても良い）
-    :customer => card.customer_token,                                  #顧客ID
+    :amount => @item.price,                                               #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => card.customer_token,                               #顧客ID
     :currency => 'jpy',                                             #日本円
     )
     redirect_to done_item_path                                      #完了画面に移動
@@ -62,9 +61,9 @@ class ItemsController < ApplicationController
 
 
   def done
-    tm = User.find(1)
+    current_user = User.find(1)
     @sold_item = Item.find(1)
-    @sold_item.update!(buyer_id: tm.id)
+    @sold_item.update!(buyer_id: current_user.id)
   end
 
   private

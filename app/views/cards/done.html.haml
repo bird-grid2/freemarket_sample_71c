@@ -1,0 +1,15 @@
+%label 登録が完了しました
+%br
+= "**** **** **** " + @default_card_information.last4
+%br
+- exp_month = @default_card_information.exp_month.to_s
+- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+= exp_month + " / " + exp_year
+-#= form_with model: @card, url: delete_cards_path do |f|
+  -#= f.button :削除する
+  -#binding.pry
+= link_to delete_cards_path do
+  %button 削除する
+  %input{ type: "hidden", name: "card_id", value: "" }
+= link_to purchase_item_path(@item), class: "btn btn-default" do
+  %button 戻る

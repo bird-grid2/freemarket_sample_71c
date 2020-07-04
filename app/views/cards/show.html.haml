@@ -1,15 +1,26 @@
-%label 登録クレジットカード情報
-%br
-= "**** **** **** " + @default_card_information.last4
-%br
-- exp_month = @default_card_information.exp_month.to_s
-- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-= exp_month + " / " + exp_year
--#= form_with model: @card, url: delete_cards_path do |f|
-  -#= f.button :削除する
-  -#binding.pry
-= link_to delete_cards_path do
-  %button 削除する
-  %input{ type: "hidden", name: "card_id", value: "" }
-= link_to  purchase_item_path, class: "btn btn-default" do
-  %button 戻る
+= render "layouts/header"
+
+.container
+  .container__top
+    登録クレジットカード情報
+  .container__middle
+    .container__middle__all
+      .container__middle__all--number
+        カード番号：
+        = "**** **** **** " + @default_card_information.last4
+      .container__middle__all--validity
+        有効期限：
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+      -#= form_with model: @card, url: delete_cards_path do |f|
+        -#= f.button :削除する
+  .container__bottom
+    .container__bottom__all
+      = link_to delete_cards_path, class: "container__bottom__all--delete" do
+        %button 削除する
+        %input{ type: "hidden", name: "card_id", value: "" }
+      = link_to root_path, class: "container__bottom__all--root" do
+        %button 戻る
+
+= render "layouts/footer"

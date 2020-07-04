@@ -40,16 +40,6 @@
               .index__container__payment-info__method__all--upper--right
                 - if @card.blank?
                   = link_to "登録してください", new_card_path
-                  -#= form_with url: "new_card_path" do
-                    :plain
-                      <script
-                        type="text/javascript"
-                        src="https://checkout.pay.jp/"
-                        class="payjp-button"
-                        data-key="pk_test_0383a1b8f91e8a6e3ea0e2a9"
-                        data-submit-text="トークンを作成する"
-                        data-partial="true">
-                      </script>
                 - else
                   = link_to "変更する", card_path
             .index__container__payment-info__method__all--lower
