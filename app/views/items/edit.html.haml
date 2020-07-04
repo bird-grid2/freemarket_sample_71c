@@ -39,7 +39,13 @@
         .category__title
           カテゴリー<span>※</span>
         .category__form
-          = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
+          = form.select :parent_name, @category_parent_array, {selected: @item.category.name}, { class: 'category__form--parent', id: 'parent_category'}
+          #children_options
+            %i.fas.fa-chevron-down
+            = form.select :child_id, @category_children_array, {selected: @item.category.name}, {class: 'category__form--child', id: 'child_category'}
+          #grandchildren_options
+            %i.fas.fa-chevron-down
+            = form.select :category_id, @category_grandchildren_array, {selected: @item.category.name}, {class: 'category__form--grandchild', id: 'grandchild_category'}
       .brand
         .brand__title
           ブランド
