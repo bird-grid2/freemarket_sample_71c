@@ -32,19 +32,21 @@
 .images__form__dropzone {
   display: flex;
   height: 150px;
-  width: 400px;
-  max-width: 400px;
+  width: 100%;
+  max-width: 620px;
   .upload-image{
     display: none;
   }
   #preview {
     display: flex;
     .add_img {
-      width: 80px;
+      width: 124px;
       height: 150px;
       margin: 0;
       .img_area {
-        margin: 5px 5px 20px 5px;
+        margin: 5px 5px 10px 5px;
+        display: flex;
+        justify-content: center;
         image {
           display: block;
         }
@@ -66,7 +68,7 @@
   .upload-images-edit {
     width: inherit;
     height: inherit;
-    max-width: 400px;
+    max-width: 620px;
     max-height: 150px;
     background-color: #BBBBBB;
     background-image: radial-gradient(black 30%, transparent 30%);

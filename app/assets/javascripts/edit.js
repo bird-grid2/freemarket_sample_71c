@@ -30,7 +30,7 @@ $(window).on("turbolinks:load", function() {
       // 表示するビューにバイナリーデータを付与
       img.find("img").attr({
         src: "data:image/jpeg;base64," + binary_data,
-        width: '70px', height: '70px'
+        width: '100px', height: '100px'
       });
 
       // 登録済画像のビューをimagesに格納
