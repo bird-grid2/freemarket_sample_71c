@@ -3,15 +3,23 @@
     = link_to root_path, class: 'home-btn' do
       = image_tag 'logo/logo.png'
     .search-section
-      = form_with url: root_path do |f|
+      = form_with url: search_items_path, method: :get, local: true do |f|
         = f.text_field :search, placeholder: 'キーワードから探す', class: 'search-section__input-box'
         %button{type: "submit", class:'search-section__submit-btn'}
           .serch-icon
             = image_tag 'icon/icon-search 1.png'
   .header-nav
     .header-nav__left-box
-      = link_to 'カテゴリー', '#', class: 'header-nav__left-box--category'
-      = link_to 'ブランド', '#', class: 'header-nav__left-box--brand'
+      = link_to '#', class: 'header-nav__left-box--category' do
+        %figure
+          .menu-icon
+            = image_tag 'icon/icon_category.png', class: 'menu-icon__img'
+        %span カテゴリー
+      = link_to '#', class: 'header-nav__left-box--brand' do
+        %figure
+          .menu-icon
+            = image_tag 'icon/icon_brand.png', class: 'menu-icon__img'
+        %span ブランド
     .header-nav__right-box
       -if user_signed_in?
         = link_to user_likes_path(current_user.id), class: 'header-nav__right-box--likes' do

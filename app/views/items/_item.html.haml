@@ -5,11 +5,12 @@
         = image_tag item_image.image.url
     .item__info
       %h3.item__info__name
-        = item.name
+        = item.name.truncate(14)
       .item__info__details
         %ul
           %li.price
             = item.price
             円
-          %li.likes 0
+          %li.likes
+            = item.likes.count
         %p （税込）
