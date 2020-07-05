@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe ItemImage, type: :model, do: true do
-  let(:image_path) { Rails.root.join('spec/images/test.jpeg') }
-  let(:photo) { Rack::Test::UploadedFile.new(image_path) }
 
   describe '#create' do
     it '画像が空のままで登録されないこと' do
