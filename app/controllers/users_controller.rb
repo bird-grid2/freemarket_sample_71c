@@ -14,9 +14,6 @@ class UsersController < ApplicationController
   def todo
   end
 
-  def like
-  end
-
   def in_progress
     @image = ItemImage.find_by(params[:item_id])
   end

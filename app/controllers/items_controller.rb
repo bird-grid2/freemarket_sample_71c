@@ -37,15 +37,19 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to root_path, notice: '出品が完了しました！'
+      redirect_to user_path(current_user.id), notice: '出品が完了しました！'
     else
       render :new
     end
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    @item = Item.find(params[:id])
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def edit
@@ -142,7 +146,7 @@ class ItemsController < ApplicationController
     end
 
     def set_image
-      @image = ItemImage.where(params[:Item_id])
+      @image = Item.includes(:item_image).where(params[:Item_id])
     end
 
     def registered_image_params
