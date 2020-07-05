@@ -1,10 +1,16 @@
-%h2 購入が完了しました！
-%p
-  = @item.name
-%p
-  ¥
-  = @item.price
+= render "layouts/header"
 
-%h2
-  = link_to root_path do
-    %button 戻る
+.container
+  .container__top
+    購入が完了しました！
+  .container__top
+    .container__top--left
+      = @item.name
+    .container__top--right
+      ¥
+      = @item.price
+  .container__bottom
+    = link_to root_path, class: "container__bottom__all" do
+      %button 戻る
+
+= render "layouts/footer"

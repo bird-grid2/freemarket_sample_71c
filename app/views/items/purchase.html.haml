@@ -21,7 +21,7 @@
                 ¥
                 = @item.price.to_s(:delimited)
                 （税込)
-                -#= @item.postage(マージ後に実装予定)
+                = @item.postage.name
         .index__container__payment-info__price
           .index__container__payment-info__price__all
             .index__container__payment-info__price__all__upper
