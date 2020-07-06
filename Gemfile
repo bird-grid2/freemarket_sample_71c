@@ -53,7 +53,6 @@ group :development, :test do
   gem 'carrierwave'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'active_hash'
   gem 'turbolinks'
 
 end
