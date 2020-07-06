@@ -279,7 +279,7 @@ tr {
 }
 .item-comments__content{
   padding: 24px;
-  background: $white ;
+  background: $whiteColor;
 
   ul{
     .item-comments__content__form__box {
@@ -334,7 +334,7 @@ tr {
     line-height: 48px;
     transition: all ease-out .3s;
     cursor: pointer;
-    color: $white ;
+    color: $whiteColor ;
     font-size: 14px;
   }
 }
