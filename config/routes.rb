@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   root 'items#index'
 
-  resources :items, only: [ :show , :new, :create] do
+  resources :items, only: [ :show , :new] do
     member do
       get :purchase
       get :confirm
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
- resources :users, only: [ :index, :edit, :update, :show]
+ resources :users, only: [ :index, :edit, :show]
  resources :shipping_addresses, only: [ :index]
  resources :cards, only: [ :show , :new, :delete ] do	
   collection do
