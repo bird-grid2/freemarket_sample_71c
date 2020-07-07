@@ -56,7 +56,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.item-comments__content__form.clearfix').append(html);
-      $('.textbox').val('');
+      $("#new_comment")[0].reset();
       $('.button').prop('disabled', false);
     })
     .fail(function(){
