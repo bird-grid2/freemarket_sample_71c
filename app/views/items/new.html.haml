@@ -18,7 +18,7 @@
             = form.fields_for :images do |f|
               %label{for: "item_image", class:'upload-images'}
                 = f.file_field :image, class: "hidden-field", id: 'item_image', style:'display:none'
-                %img{alt:'', height: '25', src: "/assets/icon_camera.png"}
+                = image_tag 'icon/icon_camera.png'
                 
     .name
       .name__title
@@ -36,7 +36,8 @@
       .category__title
         カテゴリー<span>※</span>
       = form_with model: @item do |form|
-        = form.text_field :category, :placeholder => '10文字以内で入力してください', :class => 'category__form', :size => '60'
+        .category__form
+          = form.collection_select :parent_id, @parent_categories, :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
     .brand
       .brand__title

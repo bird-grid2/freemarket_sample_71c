@@ -4,7 +4,7 @@
   %section.top-visual
     .top-visual__container
       %h2.top-visual__container__headline <br>人生を変えるフリマアプリ
-      %p.top-visual__container__text FURIMAは誰でも簡単に出品・購入できる<br>フリマアプリです
+      %p.top-visual__container__text FURIMAはだれでもかんたんに出品・購入できる<br>フリマアプリです
       .downloard-app
         = link_to '#', class: 'downloard-app__btn' do
           = image_tag 'download/app-store.svg'
@@ -15,17 +15,17 @@
     %ul.reasons
       %li.reason
         = image_tag 'pict/pict-reason-01.jpg', class: 'reason__image'
-        %span.index 1
+        %span.number 1
         %h3.reason__headline <span>3分</span> ですぐに出品
         %p.reason__text スマホで入力するだけで簡単に出品できる！
       %li.reason
         = image_tag 'pict/pict-reason-02.jpg', class: 'reason__image'
-        %span.index 2
+        %span.number 2
         %h3.reason__headline <span>シンプル</span> で使いやすい
         %p.reason__text めんどくさい入力は必要なく、検索も購入もスムーズ！
       %li.reason.cheap
         = image_tag 'pict/pict-reason-03.jpg', class: 'reason__image'
-        %span.index 3
+        %span.number 3
         %h3.reason__headline 手数料 <span>業界最安</span>
         %p.reason__text 最大3%でお得に出品&購入！
   %section.middle-visual
@@ -58,75 +58,67 @@
   %section.pickup
     %h2.pickup__headline ピックアップカテゴリー
     .pickup__contaner
-      = link_to '#', class: 'topic' do
-        %h3 新規投稿商品
-      .products
-        .product
-          = link_to '#' do
-            = image_tag 'product/product3.png'
-            .product__info
-              %h3.product__info__name puroduct3
-              .product__info__details
-                %ul
-                  %li 3000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to '#' do
-            = image_tag 'product/product2.png'
-            .product__info
-              %h3.product__info__name puroduct2
-              .product__info__details
-                %ul
-                  %li 2000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to '#' do
-            = image_tag 'product/product1.png'
-            .product__info
-              %h3.product__info__name puroduct1
-              .product__info__details
-                %ul
-                  %li 1000円
-                  %li.likes 0
-                %p （税込）
+      .pickup__contaner--head
+        = link_to '#', class: 'topic' do
+          %h3 新規投稿商品
+      .pickup__contaner--location
+        %ul
+          %li
+            = link_to 'レディース', '#ladies'
+          %li
+            = link_to 'メンズ', '#mens'
+          %li
+            = link_to '家電・スマホ・カメラ', '#appliances'
+          %li
+            = link_to 'おもちゃ・ホビー・グッズ', '#toys'
+      .pickup__contaner--list#ladies
+        %p レディースの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @ladies
+      .pickup__contaner--list#mens
+        %p メンズの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @mens
+      .pickup__contaner--list#appliances
+        %p 家電・スマホ・カメラの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @appliances
+      .pickup__contaner--list#toys
+        %p おもちゃ・ホビー・グッズの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @toys
   %section.pickup
     %h2.pickup__headline ピックアップブランド
     .pickup__contaner
-      = link_to '#', class: 'topic' do
-        %h3 アーカイバ
-      .products
-        .product
-          = link_to '#' do
-            = image_tag 'product/product3.png'
-            .product__info
-              %h3.product__info__name puroduct3
-              .product__info__details
-                %ul
-                  %li 3000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to '#' do
-            = image_tag 'product/product2.png'
-            .product__info
-              %h3.product__info__name puroduct2
-              .product__info__details
-                %ul
-                  %li 2000円
-                  %li.likes 0
-                %p （税込）
-        .product
-          = link_to '#' do
-            = image_tag 'product/product1.png'
-            .product__info
-              %h3.product__info__name puroduct1
-              .product__info__details
-                %ul
-                  %li 1000円
-                  %li.likes 0
-                %p （税込）
+      .pickup__contaner--head
+        = link_to '#', class: 'topic' do
+          %h3 アーカイバ
+      .pickup__contaner--location
+        %ul
+          %li
+            = link_to 'シャネル', '#chanel'
+          %li
+            = link_to 'ルイヴィトン', '#vuitton'
+          %li
+            = link_to 'シュプリーム', '#supreme'
+          %li
+            = link_to 'ナイキ', '#nike'
+      .pickup__contaner--list#chanel
+        %p シャネルの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @chanel
+      .pickup__contaner--list#vuitton
+        %p ルイヴィトンの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @vuitton
+      .pickup__contaner--list#supreme
+        %p シュプリームの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @supreme
+      .pickup__contaner--list#nike
+        %p ナイキの新規投稿商品
+        .items
+          = # render partial: 'item', collection: @nike
 = render 'layouts/app-banner'
 = render 'layouts/footer'
 = render 'layouts/publish-btn'

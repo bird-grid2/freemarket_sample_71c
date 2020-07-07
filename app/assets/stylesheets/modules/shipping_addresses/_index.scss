@@ -4,8 +4,9 @@
 .index-s{
   &__container{
     margin-top: 10px;
+    padding: 20px 0;
     height: 100%;
-    background-color: white;
+    background-color: $whiteColor;
     width: 50%;
     &__top{
       margin: 0 auto;

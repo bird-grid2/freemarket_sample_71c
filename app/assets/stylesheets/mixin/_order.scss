@@ -52,6 +52,10 @@
   justify-content: center;
   height: $top-height;
   width: 60%;
+@mixin index{
+  height: 90%;
+  text-align: center;
+  background-color: #f5f5f5;
 }
 
 @mixin title{
