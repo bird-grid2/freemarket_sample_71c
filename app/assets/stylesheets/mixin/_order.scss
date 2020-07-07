@@ -52,10 +52,13 @@
   justify-content: center;
   height: $top-height;
   width: 60%;
+}
+
 @mixin index{
-  height: 90%;
   text-align: center;
   background-color: #f5f5f5;
+  font-weight: bold;
+  height: 20px;
 }
 
 @mixin title{
@@ -90,7 +93,3 @@
   width: 60%;
 }
 
-@mixin index{
-  font-weight: bold;
-  height: 20px;
-}

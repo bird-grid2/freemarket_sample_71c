@@ -4,10 +4,6 @@ class ItemsController < ApplicationController
   before_action :set_card, :set_item
 
   def index
-  end
-  
-  def show
-  def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
     @ladies = @items.where(category_id: 1..199).limit(3)
     @mens = @items.where(category_id: 200..345).limit(3)
@@ -51,16 +47,12 @@ class ItemsController < ApplicationController
     @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
   end
 
-  private
-  
-  def item_params
-    params.require(:item).premit(:name, :description, :brand, :price, :category_id,item_images_attributes: [:image]).merge(user_id: current_user.id)
-  end
 
   def purchase
     @item = Item.find(1)
     @images = @item.item_images
-    card = Card.where(user_id: 1).first
+    
+    card = Card.where(user_id: current_user.id).first
     @shipping_address = ShippingAddress.where(user_id: 1).first
     @condition = card.blank? || @shipping_address.blank?
     unless card.blank?
@@ -112,10 +104,15 @@ class ItemsController < ApplicationController
   end
 
   private
+  
+  def item_params
+    params.require(:item).premit(:name, :description, :brand, :price, :category_id,item_images_attributes: [:image]).merge(user_id: current_user.id)
+  end
 
   def set_card
     @card = Card.where(user_id: 1).first
   end
+
   def set_item
     @item = Item.find(1)
   end

@@ -7,7 +7,7 @@
 }
 .index{
   text-align: center;
-  background-color: #f5f5f5f5;
+  background-color: #f5f5f5;
   &__container{
     height: calc(#{$top-height} + #{$item-height} + #{$price-height} + #{$method-height} + #{$address-height} + );
     @include container;
