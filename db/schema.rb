@@ -47,11 +47,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_015759) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name", null: false
     t.string "first_name", null: false

@@ -85,49 +85,40 @@ describe User do
 end
 
 describe User do
-  before do
-    # @sns = FactoryBot.build(:User)
-  end
   describe 'from_omniauth' do
-    it "facebookの情報確認" do
-      # auth = { provider: "facebook", uid: "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }}
-      #インスタンスのデータ構造にしないUser.from_omniauth(request)にデータを渡した際にrequest.inf.nameのようにデータへアクセスすることができないため
-      # 下記データもダミーデータを作成してましてます。binding.pry で帰ってくるauthのデータを参考にしていただきたいです。
-      # こちらのテストはUserモデルのテストのため,uses.rbに記載を推奨します。
-                          request = OmniAuth::AuthHash.new({
-                            "provider" => "facebookr",
-                            "uid" => "123456",
-                            "info" => {
-                              "name" => "Mock User",
-                              "image" => "http://mock_image_url.com",
-                              "location" => "",
-                              "email" => "mock@example.com",
-                              "urls" => {
-                                "Twitter" => "https://twitter.com/MockUser1234",
-                                "Website" => ""
-                              }
-                            },
-                            "credentials" => {
-                              "token" => "mock_credentails_token",
-                              "secret" => "mock_credentails_secret"
-                            },
-                            "extra" => {
-                              "raw_info" => {
-                                "name" => "Mock User",
-                                "id" => "123456",
-                                "followers_count" => 0,
-                                "friends_count" => 0,
-                                "statuses_count" => 0
-                              }
-                            }
-                          })
-      user = create(:user) # userを作成
-      # sns = create(:sns_credential)
-      test = {sns: @sns}
-      expect(User.from_omniauth(request)).to eq test
-      # 実際にfrom_omniauth(にデータを渡したら、どのような値が返ってくるのかを確かめなくてはいけません。
-      # 
-      # {user: user, sns: @sns}
+    it "SNS de-ta sonnzai shinai" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      expect{User.from_omniauth(auth)}.to change {SnsCredential.count}.by(1)
+    end
+
+    it "SNS de-ta sonnzai shinai" do
+      sns = create(:sns_credential)
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      expect{User.from_omniauth(auth)}.not_to change {SnsCredential.count}
+    end
+
+    it "kaerichi user e-mail" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:user].email).to eq auth.info.email
+    end
+
+    it "kaerichi user e-mail" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:user].nickname).to eq auth.info.name
+    end
+
+    it "SNS provider kaerichi" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:sns].provider).to eq auth.provider
+    end
+
+    it "SNS provider kaerichi" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:sns].uid).to eq auth.uid
     end
   end
 end
