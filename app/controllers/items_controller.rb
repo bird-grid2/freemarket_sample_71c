@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     @item = Item.find(1)
     @images = @item.item_images
     
-    card = Card.where(user_id: current_user.id).first
+    card = Card.where(user_id: 1).first
     @shipping_address = ShippingAddress.where(user_id: 1).first
     @condition = card.blank? || @shipping_address.blank?
     unless card.blank?
