@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   root 'items#index'
 
-  resources :items, only: [ :show , :new] do
+  resources :items do
     member do
       get :purchase
       get :confirm

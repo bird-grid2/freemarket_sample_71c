@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   #has_many :sns_credentials, dependent: :destroy
   has_many :items, dependent: :destroy
-  has_many :orders, dependent: :destroy
   has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id'
   has_many :buyer_items, class_name: 'Item', :foreign_key => 'buyer_id'
   #has_many :comments, dependent: :destroy

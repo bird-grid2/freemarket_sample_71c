@@ -17,11 +17,5 @@ describe Card do
       card = build(:card)
       expect(card).to be_valid
     end
-
-    it "user_idがあれば登録できること" do
-      card = build(:card)
-      expect(card).to be_valid
-    end
-
   end
 end
