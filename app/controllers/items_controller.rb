@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_image
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
@@ -66,12 +65,12 @@ class ItemsController < ApplicationController
 
     @category_children_array = []
     Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children.name
+      @category_children_array << children
     end
 
     @category_grandchildren_array = []
     Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren.name
+      @category_grandchildren_array << grandchildren
     end
     
     
@@ -143,10 +142,6 @@ class ItemsController < ApplicationController
     
     def item_params
       params.require(:item).permit(:name, :description, :brand, :category_id, :condition_id, :postage_id, :prefecture_id, :preparation_period_id, :price, :shipping_method_id, item_images_attributes: [:image, :_destroy, :id])
-    end
-
-    def set_image
-      @image = Item.includes(:item_image).where(params[:Item_id])
     end
 
     def registered_image_params

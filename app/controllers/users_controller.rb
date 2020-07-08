@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_items
+  before_action :set_items, only: [:show, :in_progress, :completed, :purchace, :purchased]
   
   def index
   end
