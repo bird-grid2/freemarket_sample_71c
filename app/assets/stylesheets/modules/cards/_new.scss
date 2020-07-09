@@ -70,7 +70,7 @@
   }
   &__bottom{
     @include bottom;
-    height: $bottom-height;
+    height: 80px;
     &__btn{
       @include btn;
       display: block;
