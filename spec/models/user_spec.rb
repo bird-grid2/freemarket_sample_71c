@@ -86,36 +86,36 @@ end
 
 describe User do
   describe 'from_omniauth' do
-    it "SNS de-ta sonnzai shinai" do
+    it "authにデータが保存されていない場合" do
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       expect{User.from_omniauth(auth)}.to change {SnsCredential.count}.by(1)
     end
 
-    it "SNS de-ta sonnzai shinai" do
+    it "authにデータが保存されている場合" do
       sns = create(:sns_credential)
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       expect{User.from_omniauth(auth)}.not_to change {SnsCredential.count}
     end
 
-    it "kaerichi user e-mail" do
+    it "メールアドレスの返り値を確認" do
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       data = User.from_omniauth(auth)
       expect(data[:user].email).to eq auth.info.email
     end
 
-    it "kaerichi user e-mail" do
+    it "ニックネームの返り値を確認" do
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       data = User.from_omniauth(auth)
       expect(data[:user].nickname).to eq auth.info.name
     end
 
-    it "SNS provider kaerichi" do
+    it "プロバイダーの返り値を確認" do
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       data = User.from_omniauth(auth)
       expect(data[:sns].provider).to eq auth.provider
     end
 
-    it "SNS provider kaerichi" do
+    it "uidの返り値を確認" do
       auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
       data = User.from_omniauth(auth)
       expect(data[:sns].uid).to eq auth.uid
