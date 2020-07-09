@@ -57,10 +57,11 @@ class ItemsController < ApplicationController
     gon.item_images = @item.item_images
     grandchild_category = @item.category
     child_category = grandchild_category.parent
+    parent_category = grandchild_category.parent.parent
 
     @category_parent_array = []
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
+    Category.where(ancestry: parent_category.ancestry).each do |parent|
+      @category_parent_array << parent
     end
 
     @category_children_array = []
@@ -145,11 +146,11 @@ class ItemsController < ApplicationController
     end
 
     def registered_image_params
-      params.require(:registered_images_ids).permit(ids: [])
+      params.require(:registered_images_ids).permit({ids: []})
     end
   
     def new_image_params
-      params.require(:new_images).permit(images: [])
+      params.require(:new_images).permit({images: []})
     end
 
 end

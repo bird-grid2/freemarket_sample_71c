@@ -27,7 +27,7 @@ $(function() {
   }
 
   $('.category__form--parent').on('change', function() {
-    var parent_category_id = document.getElementById('item_parent_id').value;
+    var parent_category_id = document.getElementById('parent_id').value;
     if (parent_category_id != ""){ 
       $.ajax({
         url: '/items/category/get_children_categories',
