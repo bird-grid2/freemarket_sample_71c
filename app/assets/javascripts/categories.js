@@ -63,7 +63,7 @@ document.addEventListener("turbolinks:load", function() {
           dataType: 'json'
         })
         .done(function(grandchildren){
-          if (grandchildren.length != 0) {
+          if (grandchildren.length !== 0) {
             $('#grandchildren_options').remove();
             var insertHTML = '';
             grandchildren.forEach(function(grandchild){

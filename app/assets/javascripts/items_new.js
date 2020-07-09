@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function(){
         }
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
-        if (count == 5) { 
+        if (count === 5) { 
           $('.label-content').hide();
         }
 
