@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    @card = Card.where(user_id: 1)
+    @card = Card.where(user_id: current_user.id)
     redirect_to action: "show" if @card.exists?
   end
 
@@ -16,7 +16,7 @@ class CardsController < ApplicationController
       description: '登録テスト',
       card: params['payjp-token']
       )
-      @card = Card.new(user_id: 1, customer_token: customer.id)
+      @card = Card.new(user_id: current_user.id, customer_token: customer.id)
       if @card.save
         redirect_to action: "show"
       else
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
   end
 
   def delete                                                #PayjpとCardデータベースを削除
-    card = Card.where(user_id: 1).first
+    card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   end
 
   def show                                                   #Cardのデータpayjpに送り情報を取り出す
-    card = Card.where(user_id: 1).first
+    card = Card.where(user_id: current_user.id).first
     #@card = Card.get_card(current_user.card&.customer_token) #ログイン機能マージ後に実装
     if card.blank?
       redirect_to action: "new" 
@@ -46,7 +46,6 @@ class CardsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_token)
       @default_card_information = customer.cards.retrieve(customer.default_card)
-
       @card_brand = @default_card_information.brand
       case @card_brand
       when "Visa"

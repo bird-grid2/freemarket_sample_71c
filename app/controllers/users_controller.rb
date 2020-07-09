@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @card = Card.where(user_id: current_user.id).first
   end
 
   private
