@@ -5,10 +5,12 @@
   = form_with model: @item, local:true do |form|
     .contents
       .contents__note
-        <span>※</span>が付いたものは必須項目です。
+        %span ※
+        が付いたものは必須項目です。
       .images
         .images__title
-          出品画像<span>※</span>
+          出品画像
+          %span ※
         .images__form
           .prev-content
           .label-content
@@ -24,17 +26,20 @@
                   
       .name
         .name__title
-          商品名<span>※</span>
+          商品名
+          %span ※
         = form.text_field :name, :placeholder => '15文字以内で入力してください', :class => 'name__form', :size => '60'
 
       .description
         .description__title
-          商品の説明<span>※</span>
+          商品の説明
+          %span ※
         = form.text_area :description, :placeholder => '商品の詳細について200文字以内で入力してください                                                         （色、素材、重さ、定価、注意点など）', :class => 'description__form', :size => '60×40'
 
       .category
         .category__title
-          カテゴリー<span>※</span>
+          カテゴリー
+          %span ※
         .category__form
           = form.collection_select :parent_id, Category.where(ancestry: nil), :id, :name, {prompt: '選択してください'}, {class: "category__form--parent"}
 
@@ -45,38 +50,44 @@
 
       .condition
         .condition__title
-          商品の状態<span>※</span>
+          商品の状態
+          %span ※
         .condition__form
           = form.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class: 'input'
 
       .delivery
         .postage
           .postage__title
-            配送料の負担<span>※</span>
+            配送料の負担
+            %span ※
           .postage__form
             = form.collection_select :postage_id, Postage.all, :id, :name, prompt: "選択してください", class: 'input'
 
         .shipping_method
           .shipping_method__title
-            配送方法<span>※</span>
+            配送方法
+            %span ※
           .shipping_method__form
             = form.collection_select :shipping_method_id, ShippingMethod.all, :id, :name, prompt: "選択してください", class: 'input'
 
       .prefectures
         .prefectures__title
-          発送元の地域<span>※</span>
+          発送元の地域
+          %span ※
         .prefectures__form
           = form.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください", class: 'input'
 
       .preparation_period
         .preparation_period__title
-          発送までの日数<span>※</span>
+          発送までの日数
+          %span ※
         .preparation_period__form
           = form.collection_select :preparation_period_id, PreparationPeriod.all, :id, :name, prompt: "選択してください", class: 'input'
 
       .price
         .price__title
-          販売価格（円）<span>※</span>
+          販売価格（円）
+          %span ※
         = form.text_field :price, :placeholder => '数字で入力（半角記号なし）', :class => 'price__form' 
 
       .exhibit
