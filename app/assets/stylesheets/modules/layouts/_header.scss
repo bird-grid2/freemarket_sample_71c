@@ -1,3 +1,22 @@
+.notifications {
+  color: white;
+  text-align: center;
+
+  .notice {
+    background-color: #5d9dc9;
+    height: 25px;
+    font-size: 17px;
+    padding-top: 5px;
+  }
+
+  .alert {
+    background-color: gray;
+    height: 25px;
+    font-size: 17px;
+    padding-top: 5px;
+  }
+}
+
 .single-container{
   padding: 0 0 100px;
 }

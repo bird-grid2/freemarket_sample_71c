@@ -51,11 +51,20 @@ header{
         display: flex;
         a{
           color: #333;
-          font-size: 13px;
           text-decoration: none;
           padding-right: 46px;
+          display: flex;
           &:hover{
             color: $orangeColor;
+          }
+          figure{
+            margin-right: 8px;
+            .menu-icon{
+              &__img{
+                width: 20px;
+                vertical-align: text-bottom;
+              }
+            }
           }
         }
       }

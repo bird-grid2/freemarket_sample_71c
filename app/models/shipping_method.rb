@@ -5,4 +5,4 @@ class ShippingMethod < ActiveHash::Base
     {id: 3, name: 'クロネコヤマト便'},
     {id: 4, name: '普通郵便'}
   ]
-end 
+end

@@ -231,6 +231,7 @@ tr {
     }
   }
 }
+
 .item-container .item-name {
   text-align: center;
   font-size: 24px;
@@ -279,10 +280,37 @@ tr {
 .item-comments__content{
   padding: 24px;
   background: $whiteColor;
-  p{
+
+  ul{
+    .item-comments__content__form__box {
+      margin-top: 20px;
+
+      &__name{
+        padding: 8px;
+        display: flex;
+      }                 
+      &__message {
+        position: relative;
+        padding: 20px;
+        background-color: #eef0f4;
+        border-radius: 15px;
+        word-break: break-all;
+        &__time {
+          color: #aaa;
+          margin:10px 0 0;
+        }
+      }
+      
+    }
+  }
+
+
+  p {
     padding: 8px;
     font-size: 14px;
     background: #fff6de;
+    margin-top: 20px;
+
   }
   textarea{
     margin-top: 8px;
@@ -294,11 +322,11 @@ tr {
     background: $whiteColor;
     font-size: 16px;
     line-height: 1.5;
+    padding: 10px;
   }
-  button{
+  .button{
     width: 100%;
     margin: 8px 0 0;
-    font-size: 0;
     text-align: center;
     background: #aaa;
     border: 1px solid #aaa;
@@ -306,13 +334,17 @@ tr {
     line-height: 48px;
     transition: all ease-out .3s;
     cursor: pointer;
-    color: $whiteColor;
-    span{
-      font-size: 14px;
-      vertical-align: middle;
-    }
+    color: $whiteColor ;
+    font-size: 14px;
   }
 }
+.user_display{
+  margin-left: 5px;
+  padding: 4px;
+  background-color: #eef0f4;
+  color: #000;
+}
+
 .move-link{
   margin: 24px auto 0;
   width: 700px;

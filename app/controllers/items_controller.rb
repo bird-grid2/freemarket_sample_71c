@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories]
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
@@ -12,16 +13,30 @@ class ItemsController < ApplicationController
     @nike = @items.where(brand: 'ナイキ').limit(3)
   end
   
+  def update
+
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+
+  end
+
   def show
     @item = Item.find(params[:id])
     @category = @item.category
     @user = User.find(@item.seller_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def new
     @item = Item.new
     @item.item_images.new
     @parent_categories = Category.where(ancestry: nil)
+    @item = Item.new
+    @item.item_images.new
   end
 
   def get_children_categories
@@ -32,12 +47,21 @@ class ItemsController < ApplicationController
     @grandchildren_categories = Category.find(params[:child_id]).children
   end
 
+  def get_shipping_method
+    @get_shipping_methods = ShippingMethod.all
+  end
+
   def create
+
     @item = Item.new(item_params)
+    @item.seller_id = current_user.id
 
     if @item.save
-      redirect_to user_path(current_user.id), notice: '出品が完了しました！'
+      redirect_to user_path(current_user.id)
+      flash[:notice] = '出品が完了しました！'
     else
+      @item.item_images.new
+      flash.now[:alert] = '入力内容に誤りがあります。ご確認ください。'
       render :new
     end
   end

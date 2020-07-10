@@ -127,3 +127,9 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+11
+12
+13
+14
+15
