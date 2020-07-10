@@ -29,8 +29,7 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
-end
-
+  
   has_many :likes, dependent: :destroy
   has_many :items, through: :likes
 end

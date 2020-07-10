@@ -28,10 +28,6 @@ class ItemsController < ApplicationController
     @category = @item.category
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
-
-    # @item = Item.find(params[:id])
-    # @category = @item.category
-
   end
 
   def new

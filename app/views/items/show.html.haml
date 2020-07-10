@@ -2,16 +2,16 @@
   = render 'layouts/search-box'
 %section.item-container
   .item-name
-    = # @item.name
+    =  @item.name
   .item-content.clearfix
     .item-content__photo
       .item-content__photo--top
-        -# = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+        = image_tag @item.item_images[0].image.url (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
         = image_tag 'product/product1.png' , size: "300x300"
       .item-content__photo--bottom
-        -# @item.item_images.each do |image|
+        - @item.item_images.each do |image|
           .item-content__photo--bottom__pic
-            -# = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
+            = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
             = image_tag 'product/product1.png', class:"mini_image"
     %table.item-content__table
       %tr
@@ -35,15 +35,15 @@
         %td
           .item_category
             = link_to '#' do
-              = # @category.root.name
+              =  @category.root.name
           .item_category
             = link_to '#' do
               &gt;
-              = # @category.parent.name
+              =  @category.parent.name
           .item_category
             = link_to '#' do
               &gt;
-              = # @category.name
+              =  @category.name
       %tr
         %th
           ブランド
@@ -71,19 +71,19 @@
 
   .item-price 
     %span.item-price--yen
-      = # "¥#{@item.price}"
+      =  "¥#{@item.price}"
     %span.item-price--tax 
       (税込)
     %span.item-price--fee 
       送料込み
 
   .item-buy-btn
-    -# unless user_signed_in? && current_user.id == @item.seller_id
+    - unless user_signed_in? && current_user.id == @item.seller_id
       = link_to "購入画面に進む", "#", class: "buy-btn"
 
   .item-description
     %p.item-description__inner
-      = # @item.description
+      =  @item.description
   
   .item-buttons.clearfix
     .item-buttons--left
@@ -99,7 +99,7 @@
 
   .items__box
     .items__box--btn
-      -# if user_signed_in? && current_user.id == @item.seller_id
+      - if user_signed_in? && current_user.id == @item.seller_id
         .items__red
           = link_to "編集", "#"
         .items__gray
