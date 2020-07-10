@@ -75,6 +75,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @keyword = params[:search]
+    @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
+  end
+
   def edit
     @item = Item.find(params[:id])
     gon.item = @item
