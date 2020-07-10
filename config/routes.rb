@@ -10,13 +10,15 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    resources :comments, only: :create
+    resources :likes, only: [ :create, :destroy]
+
     collection do
       get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }
       get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
       get 'get_shipping_method'
       get 'search'
     end
-    resources :likes, only: [ :create, :destroy]
   end
 
   resources :users, except: [ :new, :create, :destroy] do
