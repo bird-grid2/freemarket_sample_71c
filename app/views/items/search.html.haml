@@ -1,0 +1,27 @@
+%header
+  = render 'layouts/search-box'
+.search-container
+  .narrow-search-results
+  .show-search-results
+    %section.search-results
+      - if @keyword.present? && @items.present?
+        %h2 
+          = @keyword
+          %span の検索結果
+        .search-results__number
+          = "1 - #{@items.count} 件表示"
+      - elsif @keyword.present? && @items.empty?
+        %h2
+          = @keyword
+          %span に該当する商品は見つかりませんでした
+        .search-results__empty
+          = "検索条件を変えて、再度お試しください"
+      - else
+        %h2 検索結果
+        .search-results__number
+          = "1 - #{@items.count} 件表示"
+      .search-results__items
+        = render partial: 'item', collection: @items
+= render 'layouts/app-banner'
+= render 'layouts/footer'
+= render 'layouts/publish-btn'

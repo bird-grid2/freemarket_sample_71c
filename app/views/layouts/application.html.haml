@@ -1,9 +1,6 @@
 !!!
 %html
   %head
-
-  
-
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}
     %title FreemarketSample71c
@@ -12,4 +9,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .notifications
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
     = yield

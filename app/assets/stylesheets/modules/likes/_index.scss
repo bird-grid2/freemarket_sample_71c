@@ -1,0 +1,55 @@
+.mypage-likes_list{
+  width: 100%;
+  .likes_list{
+    background-color: #fff;
+    &__title{
+      border-bottom: 1px solid #f5f5f5;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+      padding: 8px 24px;
+    }
+    &__items{
+      list-style: none;
+      .likes_item{
+        &__link{
+          display: block;
+          min-height: 80px;
+          padding: 16px;
+          color: #333;
+          border-bottom: 1px solid #f5f5f5;
+          figure{
+            float: left;
+            overflow: hidden;
+            width: 48px;
+            height: 48px;
+            position: relative;
+            img{
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 1;
+              width: 100%;
+            }
+          }
+          .item-info{
+            margin-left: 68px;
+            position: relative;
+            &__text{
+              line-height: 1.5;
+            }
+            .fa-angle-right {
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
