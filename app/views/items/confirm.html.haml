@@ -25,8 +25,6 @@
       = form_with model: @item do |f|
         = f.button '購入する', type: "submit", class: "container__bottom__all__left-btn", action: :pay, method: :post
 
-      -#= form_tag(action: :pay, method: :post, class: "container__bottom__all__left-btn") do
-        -#%button 購入する
       = link_to purchase_item_path do
         %button{type: "submit"}戻る
 

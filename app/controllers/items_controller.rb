@@ -50,10 +50,7 @@ class ItemsController < ApplicationController
 
   def purchase
     if user_signed_in?
-      #@item = Item.find(params[:id])
       @images = @item.item_images
-      
-      #card = Card.where(user_id: current_user.id).first
       @shipping_address = ShippingAddress.where(user_id: current_user.id).first
       @condition = @card.blank? || @shipping_address.blank? || user_signed_in? && current_user.id == @item.seller_id || @item.buyer_id.present?
       #購入ボタンが押せない条件
@@ -91,7 +88,6 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    #@item = Item.find(params[:id])
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
