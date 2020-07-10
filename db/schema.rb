@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_015759) do
+
+ActiveRecord::Schema.define(version: 2020_06_18_015746) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_token", null: false
@@ -28,9 +29,19 @@ ActiveRecord::Schema.define(version: 2020_06_16_015759) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "image", null: false
-    t.bigint "item_id", null: false
+    t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_item_images_on_item_id"
@@ -41,10 +52,35 @@ ActiveRecord::Schema.define(version: 2020_06_16_015759) do
     t.text "description", null: false
     t.string "brand"
     t.integer "price", null: false
-    t.bigint "user_id", null: false
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
+    t.bigint "condition_id", null: false
+    t.bigint "postage_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.bigint "preparation_period_id", null: false
+    t.bigint "shipping_method_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["condition_id"], name: "index_items_on_condition_id"
+    t.index ["postage_id"], name: "index_items_on_postage_id"
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
+    t.index ["preparation_period_id"], name: "index_items_on_preparation_period_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
+    t.index ["shipping_method_id"], name: "index_items_on_shipping_method_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,8 +128,14 @@ ActiveRecord::Schema.define(version: 2020_06_16_015759) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
   add_foreign_key "shipping_addresses", "users"
   add_foreign_key "sns_credentials", "users"
 end

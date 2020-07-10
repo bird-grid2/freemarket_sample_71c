@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   has_many :items, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :birthday, presence: true
   validates :nickname, presence: true, uniqueness: true
@@ -28,4 +29,8 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+end
+
+  has_many :likes, dependent: :destroy
+  has_many :items, through: :likes
 end
