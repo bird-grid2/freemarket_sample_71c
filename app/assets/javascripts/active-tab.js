@@ -1,5 +1,5 @@
-if (document.URL.match(/users/)) { 
-  $(function()  {
+$(window).on('turbolinks:load', function() {
+  if (document.URL.match(/users/)) { 
     let tabs = $(".mypage-tabs").find("li");
     let links = tabs.find("a")
     let contents = $(".mypage-tab-container").find("tab-content").find("ul");
@@ -18,7 +18,7 @@ if (document.URL.match(/users/)) {
       $('.tab-pane').eq(index).addClass('show');
     });
 
-     // タブの操作(取引中と過去の取引)
+    // タブの操作(取引中と過去の取引)
     tabs_goods.click(function(){
       tab_content_goods.removeClass('show');
       const index = $(this).index();
@@ -46,6 +46,7 @@ if (document.URL.match(/users/)) {
 
     tabs.click(tabSwitch);
 
-    tabs_goods.click(tabSwitch_goods);  
-  });
-};
+    tabs_goods.click(tabSwitch_goods);
+
+  };
+});

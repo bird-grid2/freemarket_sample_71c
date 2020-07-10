@@ -17,15 +17,9 @@ $(window).on('turbolinks:load', function() {
 
     //pathnameが一致したところにactiveクラスを追加
     a_list.forEach(function(val, index){
-
       if(location.pathname == a_list[index]) {
         side_tabs.eq(index).addClass("active");
       };
-
-      if(side_tabs[index].href == "#"){
-        side_tabs[index].removeClass("active")
-      };
-
     });
   };
 });
