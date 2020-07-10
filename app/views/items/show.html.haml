@@ -78,9 +78,6 @@
       送料込み
 
   .item-buy-btn
-    = link_to purchase_item_path do
-      %input{type: "submit", value: "購入画面に進む", class: "item-buy-btn"}
-
       -# unless user_signed_in? && current_user.id == @item.seller_id
       -#= link_to "購入画面に進む", "#", class: "buy-btn"
 
