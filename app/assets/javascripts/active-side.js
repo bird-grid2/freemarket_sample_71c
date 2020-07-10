@@ -22,6 +22,10 @@ $(window).on('turbolinks:load', function() {
         side_tabs.eq(index).addClass("active");
       };
 
-    })
+      if(side_tabs[index].href == "#"){
+        side_tabs[index].removeClass("active")
+      };
+
+    });
   };
 });

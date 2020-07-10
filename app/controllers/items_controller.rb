@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+
     if @item.destroy
       redirect_to root_path
     else
@@ -71,7 +71,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     gon.item = @item
     gon.item_images = @item.item_images
     grandchild_category = @item.category
@@ -118,10 +117,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-
-    
-
     # 登録済画像のidの配列を生成
     ids = @item.item_images.map{|image| image.id }
     # 登録済画像のうち、編集後もまだ残っている画像のidの配列を生成(文字列から数値に変換)
@@ -170,6 +165,10 @@ class ItemsController < ApplicationController
   
     def new_image_params
       params.require(:new_images).permit({images: []})
+    end
+
+    def set_item
+      @item = Item.find(params[:id])
     end
 
 end
