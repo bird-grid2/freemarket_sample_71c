@@ -12,16 +12,6 @@ class ItemsController < ApplicationController
     @supreme = @items.where(brand: 'シュプリーム').limit(3)
     @nike = @items.where(brand: 'ナイキ').limit(3)
   end
-  
-  def update
-
-    if @item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-
-  end
 
   def show
     @item = Item.find(params[:id])
