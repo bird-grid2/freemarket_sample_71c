@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe User do
+ 
   describe '#create' do
     it "nicknameが空ならNG" do
       user = build(:user, nickname: nil)
@@ -79,6 +80,45 @@ describe User do
     it "全て入力されていればOK" do
       user = build(:user)
       expect(user).to be_valid
+    end
+  end
+end
+
+describe User do
+  describe 'from_omniauth' do
+    it "authにデータが保存されていない場合" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      expect{User.from_omniauth(auth)}.to change {SnsCredential.count}.by(1)
+    end
+
+    it "authにデータが保存されている場合" do
+      sns = create(:sns_credential)
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      expect{User.from_omniauth(auth)}.not_to change {SnsCredential.count}
+    end
+
+    it "メールアドレスの返り値を確認" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:user].email).to eq auth.info.email
+    end
+
+    it "ニックネームの返り値を確認" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:user].nickname).to eq auth.info.name
+    end
+
+    it "プロバイダーの返り値を確認" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:sns].provider).to eq auth.provider
+    end
+
+    it "uidの返り値を確認" do
+      auth = OmniAuth::AuthHash.new({ "provider" => "facebook", "uid" => "12345678", info: { name: "Tanaka", email: "hoge@hoge.com" }})
+      data = User.from_omniauth(auth)
+      expect(data[:sns].uid).to eq auth.uid
     end
   end
 end
