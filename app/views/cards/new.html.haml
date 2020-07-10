@@ -15,7 +15,7 @@
               カード番号
             %span.require 必須
           .form-group__card-number__input
-            = f.text_field :card_number, {id: "creditcard_card_number", placeholder: "半角数字のみ", class: "form-group__input",maxlength:"16"}
+            = f.text_field :card_number, {id: "creditcard_card_number", placeholder: "半角数字のみ", class: "form-group__card-number__input",maxlength:"16"}
         .form-group__card-brand
           %ul.signup__card--list
             %li.icon--visa

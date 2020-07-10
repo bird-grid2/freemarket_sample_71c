@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+.index{
+  text-align: center;
+  background-color: #f5f5f5;
+  &__container{
+    height: 800px;
+    @include container;
+    &__top{
+      @include top;
+      &__title{
+        @include title;
+      }
+    }
+  }
+}
