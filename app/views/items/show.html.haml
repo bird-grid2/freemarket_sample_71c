@@ -78,7 +78,7 @@
       送料込み
 
   .item-buy-btn
-      -# unless user_signed_in? && current_user.id == @item.seller_id
+    -# unless user_signed_in? && current_user.id == @item.seller_id
       -#= link_to "購入画面に進む", "#", class: "buy-btn"
 
   .item-description
