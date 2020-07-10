@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
       reader.readAsDataURL(file);
       reader.onload = function() {
         var image = this.result;
-        if ($(`#preview-box__${id}`).length == 0) {
+        if ($(`#preview-box__${id}`).length === 0) {
           var count = $('.preview-box').length;
           var html = buildHTML(id);
           var prevContent = $('.label-content').prev();
@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function(){
       $(`#item_images_${id}`).val("");
 
       var count = $('.preview-box').length;
-      if (count == 4) {
+      if (count === 4) {
         $('.label-content').show();
       }
       setLabel(count);
