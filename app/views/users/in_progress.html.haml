@@ -15,7 +15,7 @@
             %h3
               = link_to '売却済み', completed_user_url
         .tab-content
-          - if @item ==  false
+          - if @item ==  ""
             %ul#tab-completed.tab-content__item-list.tab-pane.show
               %li.tab-content__not-found
                 取引中の商品がありません

@@ -39,7 +39,7 @@
         .category__title
           カテゴリー<span>※</span>
         .category__form
-          = form.select :category_id, options_for_select(@category_parent_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.parent.id}), {}, { class: 'category__form--parent', id: 'parent_id'}
+          = form.select :category_id, options_for_select(@category_parent_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.parent.id}), {}, { class: 'category__form--parent', id: 'item_parent_id'}
           #children_options
             %i.fas.fa-chevron-down
             = form.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {selected: @item.category.parent.id}), {}, {class: 'category__form--child', id: 'child_category'}
