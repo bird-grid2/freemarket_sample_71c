@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
- 
-  require 'payjp'
   before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
-  before_action :set_card, except: [:index, :show]
+
+  require 'payjp'
+  before_action :set_card, :set_item, except: [:index, :show]
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
