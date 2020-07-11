@@ -7,6 +7,23 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
+  root 'items#index'
+
+  resources :items do
+    member do
+      get :purchase
+      get :confirm
+      post :pay
+      get :done
+    end
+
+    collection do
+      get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }
+      get 'category/get_grandchildren_categories', to: 'items#get_grandchildren_categories', defaults: { format: 'json' }
+    end
+  end
+
+ resources :users, only: [ :index, :edit, :show]
 
   root 'items#index'
 
@@ -35,5 +52,12 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :shipping_addresses, only: [ :index]
+ resources :shipping_addresses, only: [ :index]
+ resources :cards, only: [ :show , :new, :delete ] do	
+  collection do
+    post 'show', to: 'cards#show'	
+    post 'pay', to: 'cards#pay'	
+    get 'delete', to: 'cards#delete'
+  end
+ end
 end

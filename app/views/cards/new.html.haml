@@ -1,0 +1,55 @@
+
+
+= render "layouts/header"
+
+.container
+  .container__top
+    カード情報入力画面
+  .container__form
+    .container__form__frame
+      = form_with model: @card, url: pay_cards_path, id: "form", local: true do |f|
+        -#= render "devise/shared/error_messages", resource: @card
+        .form-group__card-number
+          .form-group__card-number__top
+            .form-group__card-number__top--index
+              カード番号
+            %span.require 必須
+          .form-group__card-number__input
+            = f.text_field :card_number, {id: "creditcard_card_number", placeholder: "半角数字のみ", class: "form-group__card-number__input",maxlength:"16"}
+        .form-group__card-brand
+          %ul.signup__card--list
+            %li.icon--visa
+              = image_tag("logo/visa.gif", id:"icon--visa")
+            %li.icon--master
+              = image_tag("logo/master.gif", id:"icon--master")
+            %li.icon--jcb
+              = image_tag("logo/jcb.gif", id:"icon--jcb")
+            %li.icon--amex
+              = image_tag("logo/amex.gif", id:"icon--amex")
+            %li.icon--diners
+              = image_tag("logo/diners.gif", id:"icon--diners")
+        .form-group__card-validity
+          .form-group__card-validity__top
+            .form-group__card-validity__top--index
+              有効期限
+            %span.require 必須
+          .form-group__card-validity__input
+            = f.select :card_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {id: "creditcard_card_month", class: "form-group__input--half"}
+            = f.label :月, class: "form-group__card--year-and-month"
+            = f.select :card_year, options_for_select((2020..2030)), {}, {class: "form-group__input--half", id: "creditcard_card_year"}
+            = f.label :年, class: "form-group__card--year-and-month"
+        .form-group__security-code
+          .form-group__security-code__top
+            .form-group__security-code__top--index
+              = f.label :セキュリティコード, class: "label"
+            %span.require 必須
+          = f.text_field :card_pass, placeholder: "カード背面4桁もしくは3桁の番号", class: "form-group__security-code__input", id: "creditcard_card_pass"
+        #card_token
+        .form-group__add
+          .form-group__add--question
+          %p.form-group__text--right--blue
+            = link_to "カード裏面の番号とは？"
+        .container__bottom
+          = f.submit "登録する", class: "container__bottom__btn", url: "new_card_path",id:"charge-form",method: :post, "data-turbolinks": "false"
+
+= render "layouts/footer"
