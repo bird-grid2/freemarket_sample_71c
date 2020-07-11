@@ -58,6 +58,7 @@ $(function(){
       $('.item-comments__content__form.clearfix').append(html);
       $("#new_comment")[0].reset();
       $('.button').prop('disabled', false);
+      $('.item-comments__content__form.clearfix').animate({ scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('error');
