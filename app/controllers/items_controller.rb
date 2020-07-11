@@ -126,8 +126,6 @@ class ItemsController < ApplicationController
     @sold_item = Item.find(params[:id])
     @sold_item.update_attribute(:buyer_id, current_user.id)
   end
-
-  private
   
   def edit
     gon.item = @item
