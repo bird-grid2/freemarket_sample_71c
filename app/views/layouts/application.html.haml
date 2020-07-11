@@ -4,12 +4,15 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}
     %title FreemarketSample71c
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'load'
     = include_gon 
   %body
+    - if content_for?(:body_attributes)
+      = yield(:body_attributes)
     .notifications
       - flash.each do |key, value|
         = content_tag(:div, value, class: key)

@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def edit
+    @card = Card.where(user_id: current_user.id).first
+  end
+  
   def notification
   end
 

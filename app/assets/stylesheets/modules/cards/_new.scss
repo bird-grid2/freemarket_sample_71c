@@ -1,0 +1,95 @@
+
+.container{
+  @include container;
+  &__top{
+    @include top;
+    @include title;
+  }
+  &__form{
+    &__frame{
+      margin: 0 auto;
+      width: 60%;
+      .form-group{
+        &__card-number{
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
+            }
+          }
+          &__input{
+            width: 250px;
+            height: 30px;
+          }
+        }
+        &__card-brand{
+          ul{
+            display: flex;
+            #icon{
+              &--visa{
+                width: 50px;
+              }
+              &--master{
+                width: 50px;
+              }
+              &--jcb{
+                width: 50px;
+              }
+              &--amex{
+                width: 50px;
+              }
+              &--diners{
+                width: 50px;
+              }
+            }
+          }
+        }
+        &__card-validity{
+          height: 60px;
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
+            }
+          }
+        }
+        &__security-code{
+          height: 50px;
+          &__top{
+            display: flex;
+            &--index{
+              @include index;
+            }
+          }
+        }
+        &__add{
+          height: 40px;
+        }
+      }
+    }
+  }
+  &__bottom{
+    @include bottom;
+    height: 80px;
+    &__btn{
+      @include btn;
+      display: block;
+      margin: 0 auto;
+      vertical-align: middle;
+      background-color: red;
+    }
+  }
+}
+#creditcard_card_number{
+  width: 200px;
+}
+
+
+#creditcard_card_pass{
+  width: 250px;
+}
+
+
+.require{
+  @include require;
+}

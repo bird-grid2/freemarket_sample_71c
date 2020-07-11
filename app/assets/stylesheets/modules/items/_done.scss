@@ -1,0 +1,40 @@
+
+.container{
+  @include container;
+  &__top{
+    @include top;
+    @include title;
+  }
+  &__middle{
+    height: 100px;
+    font-size: medium;
+    &__all{
+      margin: 0 auto;
+      width: 60%;
+      &--number{
+        height: 30px;
+      }
+      &--validity{
+        height: 30px;
+      }
+    }
+  }
+  &__bottom{
+    height: 80px;
+    &__all{
+      margin: 0 auto;
+      width: 60%;
+      button{
+        background-color: blue;
+        font-weight: bold;
+        font-size: large;
+        color: white;
+        height: 50px;
+        width: 100px;
+        margin: 0 auto;
+        line-height: 50px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

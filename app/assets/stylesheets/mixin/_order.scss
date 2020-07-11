@@ -11,12 +11,17 @@
   margin-top: 10px;
 }
 
+@mixin container{
+  margin: 0 auto;
+  background-color: white;
+  width: 50%;
+}
+
 @mixin border-top{
   border-top: 1px solid $border-color;
 }
 
 @mixin bottom{
-  height: 10%;
   position: relative;
 }
 
@@ -24,7 +29,6 @@
   font-weight: bold;
   font-size: large;
   color: white;
-  background-color: gray;
   height: 50px;
   width: 200px;
   margin: 0 auto;
@@ -41,10 +45,20 @@
   margin-top: 10px;
 }
 
+@mixin top{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 60%;
+}
+
 @mixin index{
-  height: 90%;
   text-align: center;
   background-color: #f5f5f5;
+  font-weight: bold;
+  height: 20px;
 }
 
 @mixin title{
@@ -65,17 +79,17 @@
 }
 
 @mixin require{
-  margin: 0 0 0 8px;
-  width: 40px;
+  margin: 0 0 8px 8px;
+  width: 37px;
   padding: 2px 4px;
   border-radius: 2px;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
   background-color: red;
-  margin-top: 10px;
 }
 
 @mixin purchase-width{
   width: 60%;
 }
+

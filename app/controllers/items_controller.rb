@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
 
+  require 'payjp'
+  before_action :set_card, :set_item, except: [:index, :show]
+
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
     @ladies = @items.where(category_id: 1..199).limit(3)
@@ -68,6 +71,64 @@ class ItemsController < ApplicationController
     @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
   end
 
+  def purchase
+    if user_signed_in?
+      @images = @item.item_images
+      @shipping_address = ShippingAddress.find_by(user_id: current_user.id)
+      @condition = @card.blank? || @shipping_address.blank? || user_signed_in? && current_user.id == @item.seller_id || @item.buyer_id.present?
+      #購入ボタンが押せない条件
+
+      unless @card.blank?
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                      #保管した顧客IDでpayjpから情報取得
+        customer = Payjp::Customer.retrieve(@card.customer_token)  
+        @default_card_information = customer.cards.retrieve(customer.default_card)
+        @card_brand = @default_card_information.brand
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.gif"
+        when "JCB"
+          @card_src = "jcb.gif"
+        when "MasterCard"
+          @card_src = "master.gif"
+        when "American Express"
+          @card_src = "amex.gif"
+        end
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def confirm
+    @card = Card.find_by(user_id: current_user.id)                             #テーブルからpayjpの顧客IDを検索
+    if @card.blank?                                                  #登録された情報がない場合にカード登録画面に移動
+      redirect_to controller: "card", action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                      #保管した顧客IDでpayjpから情報取得
+      customer = Payjp::Customer.retrieve(@card.customer_token)      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
+      @default_card_information = customer.cards.retrieve(customer.default_card)
+    end
+  end
+
+  def pay
+    @card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => @item.price,                                         #支払金額を入力
+    :customer => @card.customer_token,
+    :currency => 'jpy',                                             #日本円
+    )
+    redirect_to done_item_path                                      #完了画面に移動
+  end
+
+
+  def done
+    @sold_item = Item.find(params[:id])
+    @sold_item.update_attribute(:buyer_id, current_user.id)
+  end
+
+  private
+  
   def edit
     gon.item = @item
     gon.item_images = @item.item_images
@@ -169,4 +230,8 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
     end
 
+    def set_card
+      @card = Card.find_by(user_id: current_user.id)
+    end
+    
 end
