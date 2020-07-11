@@ -1,0 +1,80 @@
+@mixin tab-default {
+  border: 0;
+  background: #eee;
+  font-size: 0;
+  font-weight: 600;
+  cursor: pointer;
+  li {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+  h3 {
+    font-size: 22px;
+    color: #333;
+    font-size: 16px;
+    line-height: 72px;
+  }
+  .active {
+    background-color: #fff;
+    border-top: 2px solid #ea352d;
+  }
+}
+
+@mixin red-btn {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  background-color: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff
+}
+
+@mixin gray-btn {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+  background-color: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  margin: 16px 0;
+}
+
+@mixin label {
+  height: 150px;
+  background-color: #BBBBBB;
+  background-image: radial-gradient(black 30%, transparent 30%);
+  background-size: 3px 3px;
+  margin: auto auto;
+  img {
+    display: block;
+    margin: 60px auto;
+    height: 30px;
+  }
+  label {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+  }
+}
+
+@mixin edit-btn {
+  text-align: center;
+  font-size: 20px;
+  background-color: $mainColor;
+  border: 1px solid $mainColor;
+  color: #fff;
+  margin: 0px 5px 5px 5px;
+  line-height: 30px;
+}

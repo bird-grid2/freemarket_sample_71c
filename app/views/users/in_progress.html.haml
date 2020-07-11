@@ -1,0 +1,51 @@
+%header
+  = render 'layouts/search-box'
+.main_container
+  %main.mypage-container
+    = render 'side-bar'
+    .mypage-content
+      %section.mypage-tab-container
+        %h2.mypage-tab-head
+          出品した商品
+        %ul.mypage-tabs
+          %li.tab.active
+            %h3
+              = link_to '出品中', in_progress_user_url
+          %li.tab
+            %h3
+              = link_to '売却済み', completed_user_url
+        .tab-content
+          - if @item ==  false
+            %ul#tab-completed.tab-content__item-list.tab-pane.show
+              %li.tab-content__not-found
+                取引中の商品がありません
+          - else
+            - @item.each do |item|
+              %ul.tab-content__item-list.tab-pane.show
+                =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
+                  %figure
+                    = image_tag @image.image.url, size: '48x48', class: 'tab-content__item-link--image'
+                  .tab-content__item-link__body
+                    .tab-content__item-link__body--text
+                      = item.name
+                    %div
+                      %span.listing-item-count
+                        %i.far.fa-heart 
+                        %span 0
+                      %span.listing-item-count
+                        %i.far.fa-comment-alt 
+                        %span 0
+
+
+          %ul.tab-content__item-list.tab-pane
+            %li.tab-content__not-found
+              過去に取引した商品がありません
+      %ul.mypage-pager 
+        %li.pager-prev.pager
+          = link_to '#' do
+            = icon('fas', 'angle-left')
+        %li.pager-next.pager
+          = link_to '#' do
+            = icon('fas', 'angle-right')
+            
+= render 'layouts/footer'
