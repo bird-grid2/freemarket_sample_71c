@@ -2,11 +2,14 @@
 @import "variable";
 @import "mixin/items-index";
 @import "mixin/order";
+@import 'modules/items/purchase';
+@import 'modules/items/confirm';
 @import "mixin/user-show";
 @import 'modules/items/index';
 @import "modules/items/new";
 @import "modules/items/search";
 @import "modules/items/show";
+@import 'modules/items/done';
 @import "modules/items/edit";
 @import "modules/layouts/app-banner";
 @import "modules/layouts/breadcrumbs";
@@ -14,11 +17,12 @@
 @import "modules/layouts/header";
 @import "modules/layouts/serch-box";
 @import "modules/likes/index";
-@import 'modules/orders/index';
-@import "modules/shipping_addresses/index";
 @import "modules/users/index";
 @import "modules/users/show";
 @import "modules/users/new";
+@import "modules/cards/new";
+@import "modules/cards/show";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
 
