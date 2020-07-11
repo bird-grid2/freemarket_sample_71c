@@ -124,7 +124,7 @@
     .item-comments__content__form__text
       %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
     - if current_user
-      = form_with model: [@item,@comment], local: true, id: "new_comment" do |form|
+      = form_with model: [@item,@comment], id: "new_comment" do |form|
         = form.text_area :comment, class: "textbox"
         = form.submit "コメントする", class: "button"
 
