@@ -12,7 +12,7 @@
   }
   
   #modalWindow {
-  // モーダルウィンドウの画面を設定(高さ・幅は調整ください)
+  // モーダルウィンドウの画面を設定
     width: 500px;
     height: 200px;
     position: absolute;
@@ -26,6 +26,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
   
     .modal-message-box {
       width: 100%;
@@ -37,19 +38,20 @@
       flex-direction: column;
       justify-content: space-around;
     }
-  
-    #modal-close-btn {
+    button {
+      cursor: pointer;
+      border: none;
       width: 50%;
       height: 60px;
-      background-color: $mainColor;
       color: white;
     }
   
+    #modal-close-btn {
+      background-color: #aaa;
+    }
+  
     #delete-comformation-btn {
-      width: 50%;
-      height: 60px;
       background-color: $redColor;
-      color: white;
     }
   }
   
