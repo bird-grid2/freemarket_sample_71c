@@ -145,8 +145,5 @@ class ItemsController < ApplicationController
   def set_card
     @card = Card.where(user_id: current_user.id).first
   end
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  
 end
