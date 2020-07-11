@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, except: [:edit, :destroy] do
+  resources :items do
     resources :comments, only: :create
     resources :likes, only: [ :create, :destroy]
     
