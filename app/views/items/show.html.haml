@@ -112,7 +112,7 @@
           %li.item-comments__content__form__box
             .item-comments__content__form__box__name
               = link_to comment.user.nickname, user_path(comment.user.id)
-              - if comment.user.id ==  comment.item.user.id
+              - if comment.user.id ==  comment.item.seller.id
                 .user_display
                   出品者
             .item-comments__content__form__box__message
