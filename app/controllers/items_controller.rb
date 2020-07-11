@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @category = @item.category
     @user = User.find(@item.seller_id)
     @comment = Comment.new
@@ -42,7 +41,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-
     @item = Item.new(item_params)
     @item.seller_id = current_user.id
 
