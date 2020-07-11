@@ -22,22 +22,24 @@
           %br
           = form.email_field :email, placeholder: "PC・携帯どちらでも可", class: "signup-main__field"
         .add_email.add-all
-
-        .signup-main__form-group
-          = form.label :password,"パスワード", class: "signup-main__label"
-          %span.signup-main__require
-            必須
-          %br
-          = form.password_field :password, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
-          .add_password.add-all
-
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
           .signup-main__form-group
-          = form.label :password_confirmation,"パスワード確認", class: "signup-main__label"
-          %span.signup-main__require
-            必須
-          %br
-          = form.password_field :password_confirmation, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
-          .add_password-confirmation.add-all
+            = form.label :password,"パスワード", class: "signup-main__label"
+            %span.signup-main__require
+              必須
+            %br
+            = form.password_field :password, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
+            .add_password.add-all
+
+            .signup-main__form-group
+            = form.label :password_confirmation,"パスワード確認", class: "signup-main__label"
+            %span.signup-main__require
+              必須
+            %br
+            = form.password_field :password_confirmation, placeholder: "8文字以上入力して下さい", class: "signup-main__field"
+            .add_password-confirmation.add-all
 
         .signup-main__form-group
           %h3.signup-main__identification

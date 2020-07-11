@@ -1,4 +1,3 @@
-  
 FactoryBot.define do
   factory :shipping_address do
     post_code      {"111-1111"}

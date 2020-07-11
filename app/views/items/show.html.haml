@@ -12,7 +12,7 @@
         -# @item.item_images.each do |image|
           .item-content__photo--bottom__pic
             -# = image_tag image.image.url, class:"mini_image" (商品出品機能実装後に左記のコメントアウトに変更。メンターに相談済み)
-            = image_tag 'product/product1.png'
+            = image_tag 'product/product1.png', class:"mini_image"
     %table.item-content__table
       %tr
         %th
@@ -108,12 +108,26 @@
 .item-comments
   .item-comments__content
     .item-comments__content__form.clearfix
-    .item-comments__content__form
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea.item-comments__content__form--box
-      %button.submit
-        %span コメントする
+      - @comments.each do |comment|
+        %ul.item-comments__content__form__boxs
+          %li.item-comments__content__form__box
+            .item-comments__content__form__box__name
+              = link_to comment.user.nickname, user_path(comment.user.id)
+              - if comment.user.id ==  comment.item.user.id
+                .user_display
+                  出品者
+            .item-comments__content__form__box__message
+              = simple_format(comment.comment, {}, wrapper_tag: "div")
+              .item-comments__content__form__box__message__time
+                %i.far.fa-clock
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
 
+    .item-comments__content__form__text
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    - if current_user
+      = form_with model: [@item,@comment], local: true, id: "new_comment" do |form|
+        = form.text_area :comment, class: "textbox"
+        = form.submit "コメントする", class: "button"
 
 .move-link.clearfix
   .move-link--prev
