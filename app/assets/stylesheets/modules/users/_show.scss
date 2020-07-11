@@ -9,7 +9,7 @@
       width: 280px;
       margin: 0 40px 0 0;
       &__nav__head {
-        margin: 40px 0 8px;
+        margin: 40px 0 0;
         padding: 0 8px 8px;
         font-size: 16px;
         font-weight: bold;
@@ -56,27 +56,12 @@
       background-color: #fff;
       border-top: 1px solid #f5f5f5;
       padding: 40px;
-      .logout-btn {
-        display: block;
-        width: 100%;
-        line-height: 48px;
-        font-size: 14px;
-        border: 1px solid transparent;
-        transition: all ease-out .3s;
-        cursor: pointer;
-        text-align: center;
-        background: #ea352d;
-        border: 1px solid #ea352d;
-        color: #fff
-      }
     }
     .mypage-user-icon {
       position: relative;
       height: 160px;
       padding: 20px;
-      background-image: url('icon_image.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
+      background-color: #f3f3f3;
       a {
         display: block;
         position: absolute;
@@ -119,30 +104,28 @@
     .mypage-tab-container {
       margin: 0;
       background: #fff;
-      .mypage-tabs {
-        border: 0;
-        background: #eee;
-        font-size: 0;
-        li {
-          width: 50%;
-          display: inline-block;
-          text-align: center;
-          vertical-align: top;
-        }
-        h3 {
-          position: relative;
-          display: block;
-          color: #333;
-          font-size: 16px;
-          line-height: 72px;
-        }
-        .active {
-          background-color: #fff;
-          border-top: 2px solid #ea352d;
-        }
+      .mypage-tab-head {
+        padding: 0 16px;
+        background-color: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
       }
-      .mypage-tab-content {
+      .mypage-tabs {
+        @include tab-default;
+      }
+      .tab-content {
+        ul { display: none; }
         li { border-bottom: 1px solid #eee; }
+        .show {
+          display: block;
+        }
+        figure {
+          position: relative;
+          overflow: hidden;
+          float: left;
+          width: 48px;
+          height: 48px;
+        }
         &__item-link {
           position: relative;
           display: block;
@@ -152,7 +135,6 @@
           &__body{
             margin: 0 40px 0 68px;
             &--text {        
-              overflow: hidden;
               display: block;
               max-height: 4.4em;
               text-overflow: ellipsis;
@@ -160,13 +142,27 @@
               time {
                 display: inline-block;
                 color: #888;
-                .fa-clock {
-                  font-size: 16px;
+                .far {
                   vertical-align: middle;
-                  span {
-                  vertical-align: middle;
-                  }
+                  margin: 0 8px 0 0;
                 }
+                span {
+                  vertical-align: middle;
+                }
+              }  
+            }
+            .listing-item-count {
+              vertical-align: 2px;
+              margin: 0 6px 0 0;
+              i {
+                vertical-align: middle;
+                color: #ccc;
+              }
+              span {
+                vertical-align: middle;
+                margin: 0 0 0 2px;
+                font-size: 16px;
+                color: #888;
               }
             }
           }
@@ -194,8 +190,34 @@
           text-align: center;
           font-size: 16px;
           color: #ccc;
-          display: none;
         }
+      }
+    }
+    .mypage-pager {
+      display: block;
+      position: relative;
+      font-size: 0;
+      text-align: center;
+      margin-top: 40px;
+      .pager {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        line-height: 42px;
+      }
+      .pager-prev {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .pager-next{
+        position: absolute;
+        right: 0;
+        top: 0;
       }
     }
     .mypage-tab-container__goods {
@@ -207,45 +229,18 @@
         font-size: 16px;
         line-height: 72px;
       }
-      .mypage-tabs {
-        border: 0;
-        background: #eee;
-        font-size: 0;
-        li {
-          width: 50%;
-          display: inline-block;
-          text-align: center;
-          vertical-align: top;
-        }
-        h3 {
-          position: relative;
-          display: block;
-          color: #333;
-          font-size: 16px;
-          line-height: 72px;
-        }
-        .active {
-          background-color: #fff;
-          border-top: 2px solid #ea352d;
-        }
+      .mypage-tab-goods {
+       @include tab-default;
       }
-      .mypage-tab-content {
-        &__item-left {
-          &__not-found {
-            padding: 160px 0 60px;
-            text-align: center;
-            font-size: 16px;
-            color: #ccc;
-          }
-        }
-        &__item-right {
-          display: none;
-          &__not-found {
-            padding: 160px 0 60px;
-            text-align: center;
-            font-size: 16px;
-            color: #ccc;
-          }
+      .tab-content_goods {
+        ul { display: none; }
+        li { border-bottom: 1px solid #eee; }
+        .show { display: block; }
+        &__not-found {
+          padding: 160px 0 60px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
         }
       }
     }

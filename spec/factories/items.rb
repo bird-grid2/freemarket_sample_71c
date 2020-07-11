@@ -1,4 +1,5 @@
 FactoryBot.define do
+  
   factory :item do
     name                  {"picture"}
     description           {"morinoe"}
@@ -10,6 +11,8 @@ FactoryBot.define do
       item.category_id = grand_child.id
     end
 
+    seller_id             {1}
+    buyer_id              {2}
     brand                 {"france"}
     condition_id          {1}
     postage_id            {2}

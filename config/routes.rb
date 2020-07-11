@@ -24,9 +24,16 @@ Rails.application.routes.draw do
 
   resources :users, except: [ :new, :create, :destroy] do
     resources :likes, only: :index
+    member do
+      get :notification
+      get :todo
+      get :in_progress
+      get :completed
+      get :purchase
+      get :purchased
+      get :log_out
+    end
   end
   
   resources :shipping_addresses, only: [ :index]
-
-
 end
