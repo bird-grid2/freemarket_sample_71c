@@ -57,8 +57,8 @@ $(function(){
       var html = buildHTML(data);
       $('.item-comments__content__form.clearfix').append(html);
       $("#new_comment")[0].reset();
+      $('.item-comments__content__form.clearfix').animate({ scrollTop: $('.item-comments__content__form.clearfix')[0].scrollHeight});
       $('.button').prop('disabled', false);
-      $('.item-comments__content__form.clearfix').animate({ scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('error');
