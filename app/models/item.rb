@@ -4,8 +4,6 @@ class Item < ApplicationRecord
   has_many   :item_images, dependent: :destroy
   accepts_nested_attributes_for :item_images
 
-  #belongs_to :category
-  #validates :category_id, presence: true
   belongs_to_active_hash :postage
 
   belongs_to :seller, class_name: "User", :foreign_key => 'seller_id'
@@ -16,7 +14,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many   :item_images, dependent: :destroy, inverse_of: :item
   accepts_nested_attributes_for :item_images, allow_destroy: true
-  #has_many :comments, dependent: :destroy
 
   has_many :likes, dependent: :destroy
   belongs_to_active_hash :condition

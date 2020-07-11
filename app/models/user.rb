@@ -5,9 +5,6 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id'
   has_many :buyer_items, class_name: 'Item', :foreign_key => 'buyer_id'
-  #has_many :comments, dependent: :destroy
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
