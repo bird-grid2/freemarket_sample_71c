@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_items, only: [:show, :in_progress, :completed, :purchace, :purchased]
+  
   def index
   end
 
@@ -9,10 +11,37 @@ class UsersController < ApplicationController
   def edit
     @card = Card.where(user_id: current_user.id).first
   end
+  
+  def notification
+  end
+
+  def todo
+  end
+
+  def in_progress
+    @image = ItemImage.find_by(params[:item_id])
+  end
+
+  def completed
+  end
+
+  def purchase
+  end
+
+  def purchased
+  end
+
+  def log_out
+  end
 
   private
 
     def user_params
       params.require(:user).permit(:nickname, :email)
     end
+
+    def set_items
+      @item = Item.where(seller_id: current_user)
+    end
+
 end

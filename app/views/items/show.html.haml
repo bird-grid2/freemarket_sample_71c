@@ -16,7 +16,7 @@
         %th
           出品者
         %td
-          hoge
+          = @user.nickname
           .rating
             .item-user-ratings
               %i.fas.fa-smile
@@ -94,14 +94,15 @@
         %span あんしん・あんぜんへの取り組み
 
   .items_line
-
-  .items__box
-    .items__box--btn
-      - if user_signed_in? && current_user.id == @item.seller_id
-        .items__red
-          = link_to "編集", "#"
-        .items__gray
-          = link_to "削除", "#"
+  - if user_signed_in? && current_user.id == @item.seller_id
+    .items__box
+      .items__box--btn
+        %section.item-container-edit
+          .listing-item-buttons
+            = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
+            %p.center or
+            = form_with model: @item do |form|
+              = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
 
 .item-comments
   .item-comments__content

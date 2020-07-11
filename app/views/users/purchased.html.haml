@@ -1,0 +1,26 @@
+%header
+  = render 'layouts/search-box'
+.main_container
+  %main.mypage-container
+    = render 'side-bar'
+    .mypage-content
+      %section.mypage-tab-container
+        %h2.mypage-tab-head
+          購入した商品
+        %ul.mypage-tabs
+          %li.tab
+            %h3
+              = link_to '取引中', purchase_user_url
+          %li.tab.active
+            %h3
+              = link_to '購入済み', purchased_user_url
+        .tab-content
+          %ul.tab-content__item-list.tab-pane
+            %li.tab-content__not-found
+              取引中の商品がありません
+                
+          %ul.tab-content__item-list.tab-pane.show
+            %li.tab-content__not-found
+              過去に取引した商品がありません
+
+= render 'layouts/footer'

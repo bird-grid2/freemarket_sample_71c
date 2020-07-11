@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :category do
-    name     {nil}
-    parent_id {nil}
+    id        {1}
+    name      {"レディース"}
+    ancestry  {nil}
   end
 end
