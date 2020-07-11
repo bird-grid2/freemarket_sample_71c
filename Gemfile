@@ -39,6 +39,7 @@ gem 'mini_magick', '~> 4.8'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'payjp'
+gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -91,11 +92,9 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'jquery-rails'
 gem 'gretel'
-gem 'gon'
 gem 'aws-sdk'
 gem 'rack', ">= 2.2.3"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
-gem 'mini_magick'
-gem 'gretel'
+
