@@ -13,7 +13,4 @@
   %body
     - if content_for?(:body_attributes)
       = yield(:body_attributes)
-    .notifications
-      - flash.each do |key, value|
-        = content_tag(:div, value, class: key)
     = yield
