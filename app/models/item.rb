@@ -15,9 +15,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :preparation_period
   belongs_to_active_hash :shipping_method
-  belongs_to_active_hash :postage
 
-  validates :postage_id, :price, :item_images, presence: true
   validates :category_id, :name, :description, :condition_id, :postage_id, :prefecture_id, :preparation_period_id, :price, :shipping_method_id, :item_images,  presence: true
   validates :name, :brand, length: {maximum: 15 }
   validates :description, length: {maximum: 200 }
