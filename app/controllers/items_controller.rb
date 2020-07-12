@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   def destroy
 
     if @item.destroy
-      flash[:nortice] = '商品を削除しました。'
+      flash[:notice] = '商品を削除しました'
       redirect_to root_path
     else
       render :show
