@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
 
     if @item.destroy
       flash[:notice] = '商品を削除しました'
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else
       render :show
     end
