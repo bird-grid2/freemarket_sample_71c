@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
       redirect_to user_path(current_user.id), notice: '商品の削除に成功しました'
     else
       flash.now[:alert] = '商品の削除に失敗しました'
-      render :show, alert: 
+      render :show
     end
   end
 
