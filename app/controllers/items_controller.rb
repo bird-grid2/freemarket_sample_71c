@@ -60,11 +60,10 @@ class ItemsController < ApplicationController
 
   def destroy
 
-    if @item.destroy
-      flash[:notice] = '商品を削除しました'
-      redirect_to user_path(current_user.id)
+    if @item.destroy 
+      redirect_to user_path(current_user.id), notice: '商品の削除に成功しました'
     else
-      render :show
+      render :show, alert: '商品の削除に失敗しました'
     end
   end
 
