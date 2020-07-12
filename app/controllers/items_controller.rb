@@ -75,7 +75,6 @@ class ItemsController < ApplicationController
   def purchase
     if user_signed_in?
       @images = @item.item_images
-      #binding.pry
       @shipping_address = ShippingAddress.find_by(user_id: current_user.id)
       @condition = @card.blank? || @shipping_address.blank? || user_signed_in? && current_user.id == @item.seller_id || @item.buyer_id.present?
       #購入ボタンが押せない条件
