@@ -61,15 +61,15 @@
                 配送先
               .index__container__payment-info__address__all--upper--right
                 - if @shipping_address.blank?
-                  = link_to "+登録してください", root_path #マージ後に配送先登録画面へのリンクへ変更
+                  = link_to "+登録してください", addresses_path #マージ後に配送先登録画面へのリンクへ変更
                 - else
-                  -#= link_to "変更する", root_path 追加機能として登録
+                  = link_to "変更する", addresses_path #マージ後に配送先編集画面へのリンクへ変更
             .index__container__payment-info__addresses__all--lower
               - if @shipping_address.blank?
               - else
                 %br
                   〒
-                  = @shipping_address.post_code
+                  = @shipping_address.post_code.to_s.insert(3, "-")
                 %br
                   = @shipping_address.prefecture
                   = @shipping_address.city

@@ -60,10 +60,9 @@ class ItemsController < ApplicationController
 
   def destroy
 
-    if @item.destroy 
-      redirect_to user_path(current_user.id), notice: '商品の削除に成功しました'
+    if @item.destroy
+      redirect_to root_path
     else
-      flash.now[:alert] = '商品の削除に失敗しました'
       render :show
     end
   end
@@ -76,6 +75,7 @@ class ItemsController < ApplicationController
   def purchase
     if user_signed_in?
       @images = @item.item_images
+      #binding.pry
       @shipping_address = ShippingAddress.find_by(user_id: current_user.id)
       @condition = @card.blank? || @shipping_address.blank? || user_signed_in? && current_user.id == @item.seller_id || @item.buyer_id.present?
       #購入ボタンが押せない条件
@@ -227,6 +227,7 @@ class ItemsController < ApplicationController
     end
 
     def set_item
+
       @item = Item.find(params[:id])
     end
 
