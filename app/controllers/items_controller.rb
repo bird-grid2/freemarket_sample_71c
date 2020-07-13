@@ -60,9 +60,10 @@ class ItemsController < ApplicationController
 
   def destroy
 
-    if @item.destroy
-      redirect_to root_path
+    if @item.destroy 
+      redirect_to user_path(current_user.id), notice: '商品の削除に成功しました'
     else
+      flash.now[:alert] = '商品の削除に失敗しました'
       render :show
     end
   end
@@ -226,7 +227,6 @@ class ItemsController < ApplicationController
     end
 
     def set_item
-
       @item = Item.find(params[:id])
     end
 
