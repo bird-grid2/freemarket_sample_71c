@@ -20,11 +20,11 @@
               %li.tab-content__not-found
                 取引中の商品がありません
           - else
-            - @item.each do |item|
+            - @item.each_with_index do |item, i|
               %ul.tab-content__item-list.tab-pane.show
                 =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
                   %figure
-                    = image_tag @image.image.url, size: '48x48', class: 'tab-content__item-link--image'
+                    = image_tag @image[i].image.url, size: '48x48', class: 'tab-content__item-link--image'
                   .tab-content__item-link__body
                     .tab-content__item-link__body--text
                       = item.name
