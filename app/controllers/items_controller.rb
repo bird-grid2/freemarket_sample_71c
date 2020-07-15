@@ -60,9 +60,10 @@ class ItemsController < ApplicationController
 
   def destroy
 
-    if @item.destroy
-      redirect_to root_path
+    if @item.destroy 
+      redirect_to user_path(current_user.id), notice: '商品の削除に成功しました'
     else
+      flash.now[:alert] = '商品の削除に失敗しました'
       render :show
     end
   end
@@ -163,7 +164,7 @@ class ItemsController < ApplicationController
                              secret_access_key: Rails.application.credentials.aws[:secret_access_key],
                              )
       @item.item_images.each do |image|
-        binary_data = client.get_object(bucket: 'freemarket-sample-71c', key: image.image.file.path).body.read
+        binary_data = client.get_object(bucket: 'freemarketsample71c', key: image.image.file.path).body.read
         gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
       end
     else
@@ -226,7 +227,6 @@ class ItemsController < ApplicationController
     end
 
     def set_item
-
       @item = Item.find(params[:id])
     end
 

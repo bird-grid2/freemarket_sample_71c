@@ -101,8 +101,15 @@
           .listing-item-buttons
             = link_to '商品情報の編集', edit_item_path, class: 'item-btn-red'
             %p.center or
-            = form_with model: @item do |form|
-              = form.submit 'この出品を削除する', method: :destroy, class: 'item-btn-gray'
+            %button#modal-open-btn.item-btn-gray この出品を削除する
+            = link_to "", item_path(@item), method: :DELETE, id: 'item-delete-btn'
+            #overlay
+              #modalWindow
+                .modal-message-box
+                  %div 確認
+                  %div 本当に削除しますか？
+                %button#modal-close-btn キャンセル
+                %button#delete-comformation-btn 削除する
 
 .item-comments
   .item-comments__content
