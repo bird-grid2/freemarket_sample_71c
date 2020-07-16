@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    @card = Card.find_by(user_id: current_user.id)                             #テーブルからpayjpの顧客IDを検索
+    @card = Card.find_by(user_id: current_user.id)                            #テーブルからpayjpの顧客IDを検索
     if @card.blank?                                                  #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
     else
@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def pay
+  def done
     @card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     Payjp::Charge.create(
@@ -120,11 +120,6 @@ class ItemsController < ApplicationController
     :customer => @card.customer_token,
     :currency => 'jpy',                                             #日本円
     )
-    redirect_to done_item_path                                      #完了画面に移動
-  end
-
-
-  def done
     @sold_item = Item.find(params[:id])
     @sold_item.update_attribute(:buyer_id, current_user.id)
   end
