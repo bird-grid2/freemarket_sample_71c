@@ -70,8 +70,6 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @keyword = params[:search]
-    @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
   end
 
   def purchase
