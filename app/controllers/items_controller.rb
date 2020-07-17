@@ -70,6 +70,11 @@ class ItemsController < ApplicationController
   end
 
   def search
+    @keyword = params[:q][:name_has_every_term]
+    @price_range = PriceRange.all
+    @condition = Condition.all
+    @postage = Postage.all
+
   end
 
   def purchase
