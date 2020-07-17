@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function(){
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $(`#preview-box__${id}`).remove();
-      console.log("new")
+      
       $(`#item_images_${id}`).val("");
 
       var count = $('.preview-box').length;
