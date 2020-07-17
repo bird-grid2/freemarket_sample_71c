@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item_search_query, only: [:index, :search, :show]
 
   require 'payjp'
   
