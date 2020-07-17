@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(comment){
     var content = comment.comment.replace(/\n|\r\n|\r/g, '<br>');
-    if (comment.user_id ==  comment.item_id){
+    if (comment.user_id == comment.item_id){
       var html = 
         `<ul class= "item-comments__content__form__boxs">
           <li class= "item-comments__content__form__box">
@@ -43,6 +43,7 @@ $(function(){
 
   $('#new_comment').on('submit', function(e){
     e.preventDefault();
+    console.log("test");
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
@@ -56,9 +57,9 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.item-comments__content__form.clearfix').append(html);
+      // $('.item-comments__content__form.clearfix').animate({ scrollTop: $('.item-comments__content__form.clearfix')[0].scrollHeight});
       $("#new_comment")[0].reset();
       $('.button').prop('disabled', false);
-      $('.item-comments__content__form.clearfix').animate({ scrollTop: $('.messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('error');

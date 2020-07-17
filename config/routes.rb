@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
-    resources :comments, only: :create
+    resources :comments, only: :create, defaults: {format: 'json'}
     resources :likes, only: [ :create, :destroy]
     member do
       get :purchase
