@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-    @parent_categories = Category.where(ancestry: nil)
     @item = Item.new
     @item.item_images.new
   end
