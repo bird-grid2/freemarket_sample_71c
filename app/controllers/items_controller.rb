@@ -75,6 +75,11 @@ class ItemsController < ApplicationController
     @condition = Condition.all
     @postage = Postage.all
 
+    if params[:q][:buyer_id_null] == params[:q][:buyer_id_not_null]
+      @q = Item.search(get_all_sales_status)
+      @items = @q.result(distinct: true).includes(:item_images).limit(132)
+    end
+
   end
 
   def purchase
@@ -244,4 +249,7 @@ class ItemsController < ApplicationController
       @parent_categories = Category.where(ancestry: nil)
     end
 
+    def get_all_sales_status
+      params.require(:q).permit(:sorts, :name_has_every_term, :category_id, :brand_cont, :price_gteq, :price_lteq, condition_id_in:[], postage_id_in:[], category_id_in:[])
+    end
 end
