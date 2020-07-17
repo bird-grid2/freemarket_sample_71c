@@ -94,12 +94,16 @@
           %span に該当する商品は見つかりませんでした
         .search-results__empty
           = "検索条件を変えて、再度お試しください"
+      - elsif @items.empty?
+        %h2 該当する商品は見つかりませんでした
+        .search-results__empty
+          = "検索条件を変えて、再度お試しください"
       - else
         %h2 検索結果
         .search-results__number
           = "1 - #{@items.count} 件表示"
-      .search-results__items
-        = render partial: 'item', collection: @items
+    .search-results__items
+      = render partial: 'item', collection: @items
 = render 'layouts/app-banner'
 = render 'layouts/footer'
 = render 'layouts/publish-btn'
