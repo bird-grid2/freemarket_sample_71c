@@ -96,4 +96,5 @@ gem 'aws-sdk'
 gem 'rack', ">= 2.2.3"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
-gem "omniauth-rails_csrf_protection"
+gem 'omniauth-rails_csrf_protection'
+gem 'ransack'
