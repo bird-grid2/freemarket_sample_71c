@@ -80,6 +80,27 @@ class ItemsController < ApplicationController
       @items = @q.result(distinct: true).includes(:item_images).limit(132)
     end
 
+    def find_category_item(grandchildren_id)
+      category_items = []
+      grandchildren_id.each do |grandchild_id|
+        category_items += Item.includes(:item_images).where(category_id: grandchild_id)
+      end
+      @items = @items & category_items
+    end 
+    
+    if params[:q][:category_id].present? && params[:q][:category_id_in].blank?
+      if params[:q][:category_id] != '---'
+        selected_category = Category.find(params[:q][:category_id])
+        if selected_category.ancestry.nil?
+          granchildren_ids = selected_category.indirect_ids
+          find_category_item(granchildren_ids)
+        elsif selected_category.ancestry.exclude?("/")
+          granchildren_ids = selected_category.child_ids
+          find_category_item(granchildren_ids)
+        end 
+      end
+    end
+
   end
 
   def purchase
