@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   
   before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
   before_action :set_card, except: [:index, :show, :new, :search]
+  before_action :get_parent_categories, only: [:new, :search]
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
@@ -236,4 +237,8 @@ class ItemsController < ApplicationController
       @card = Card.find_by(user_id: current_user.id)
     end
     
+    def get_parent_categories
+      @parent_categories = Category.where(ancestry: nil)
+    end
+
 end
