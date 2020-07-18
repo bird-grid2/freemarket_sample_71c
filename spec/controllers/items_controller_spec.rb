@@ -10,9 +10,6 @@ describe ItemsController do
 
   describe 'GET #search' do
     context "search.html.erbに遷移すること" do
-      before do
-        item = build(:item)
-      end
       specify do
         @params = Hash.new
         @params[:q] = Hash.new
