@@ -16,8 +16,7 @@ Rails.application.routes.draw do
     member do
       get :purchase
       get :confirm
-      post :pay
-      get :done
+      post :done
     end
     collection do
       get 'category/get_children_categories', to: 'items#get_children_categories', defaults: { format: 'json' }

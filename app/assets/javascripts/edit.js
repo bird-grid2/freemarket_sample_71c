@@ -85,7 +85,7 @@ $(window).on("turbolinks:load", function() {
         img.append(btn_wrapper);
         img.find("img").attr({
           src: e.target.result,
-          width: '70px', height: '70px'
+          width: '100px', height: '100px'
         });
       };
 
@@ -155,28 +155,15 @@ $(window).on("turbolinks:load", function() {
         $('input[type= "file"].upload-image').attr({'data-image': (target_image_num - 1)})
       };
 
-      // 削除後の配列の中身の数で条件分岐
-      // 画像が４枚以下のとき
-      if (images.length <= 4) {
-        $('#preview').empty();
-        $.each(images, function(index, image) {
-          image.data('image', index);
-          preview.append(image);
-        });
-        dropzone.css({
-          'width': `calc(100% - (20% * ${images.length}))`
-        });
-      // 画像が５枚のとき１段目の枠を消す
-      } else if (images.length == 5) {
-        $('#preview').empty();
-        $.each(images, function(index, image) {
-          image.data('image', index);
-          preview.append(image);
-        });
-        dropzone.css({
-          'display': 'none'
-        });
-      };
+      $('#preview').empty();
+      $.each(images, function(index, image) {
+        image.data('image', index);
+        preview.append(image);
+      });
+      dropzone.css({
+        'display': 'block',
+        'width': `calc(100% - (20% * ${images.length}))`          
+      });
 
       $('input[type= "file"]:last').remove();
 
@@ -214,7 +201,7 @@ $(window).on("turbolinks:load", function() {
         img.append(btn_wrapper);
         img.find("img").attr({
           src: e.target.result,
-          width: '70px', height: '70px'
+          width: '100px', height: '100px'
         });
       };
       

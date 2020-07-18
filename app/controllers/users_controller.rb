@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def in_progress
-    @image = ItemImage.find_by(params[:item_id])
+    @image = ItemImage.where(item_id: @item.ids)
   end
 
   def completed
