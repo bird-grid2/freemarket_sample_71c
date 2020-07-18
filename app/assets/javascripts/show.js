@@ -6,5 +6,5 @@ $(document).on("turbolinks:load", function() {
         $('.item-content__photo--top').append(target)
         $('.item-content__photo--top img').removeClass('mini_image')
     });
-  };
+  }
 });
