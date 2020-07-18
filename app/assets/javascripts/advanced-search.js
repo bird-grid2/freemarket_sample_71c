@@ -2,7 +2,6 @@ document.addEventListener("turbolinks:load", function() {
   /* ソート パラメーター取得 */
   function getSortParam(name,url){
     if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
@@ -26,8 +25,8 @@ document.addEventListener("turbolinks:load", function() {
       document.querySelector('option[value="updated_at desc"]').selected=true;
     }else if(sort_order == 'likes_count desc'){
       document.querySelector('option[value="likes_count desc"]').selected=true;
-    };
-  };
+    }
+  }
   /* カテゴリー 子カテゴリーのビュー */
   function appendOption(category){
     var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -122,9 +121,9 @@ document.addEventListener("turbolinks:load", function() {
       var param = params[i]
       if (param.indexOf(`category_id`) > -1)
         params_array.push(param);
-    };
+    }
     return params_array;
-  };
+  }
   /* カテゴリー 検索結果のページに選択された項目を表示する */
   if (location['href'].match(/&q%5Bcategory_id%5D/)!= null) {
     var category_ids = getCategoryParam();
@@ -173,12 +172,12 @@ document.addEventListener("turbolinks:load", function() {
                   var granchild_value = selected_granchild[1];
                   $("#q_condition_id_in_"+granchild_value).prop('checked', true);
                 });
-              };
-            };
+              }
+            }
           });
-        };
+        }
       });
-    };
+    }
   }
   /* カテゴリー 親カテゴリーのみ選ばれている場合は子カテゴリーの空文字を削除 */
   $('.submit-query').click(function() {
@@ -207,7 +206,7 @@ document.addEventListener("turbolinks:load", function() {
     } else {
       $("#q_price_gteq").val("");
       $("#q_price_lteq").val("");
-    };
+    }
   });
   /* 商品の状態 */
   $('#conditions_all').on('click', function() {
