@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :set_item_search_query, only: [:index, :search, :show]
 
   require 'payjp'
   
   before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
   before_action :set_card, except: [:index, :show, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
+  before_action :get_parent_categories, only: [:new, :search]
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
@@ -66,8 +68,36 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @keyword = params[:search]
-    @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
+    @keyword = params[:q][:name_has_every_term]
+    @price_ranges = PriceRange.all
+    @conditions = Condition.all
+    @postages = Postage.all
+
+    if params[:q][:buyer_id_null] == params[:q][:buyer_id_not_null]
+      @q = Item.search(get_all_sales_status)
+      @items = @q.result(distinct: true).includes(:item_images).limit(132)
+    end
+    
+    if params[:q][:category_id].present? && params[:q][:category_id_in].blank?
+      if params[:q][:category_id] != '---'
+        selected_category = Category.find(params[:q][:category_id])
+        category_items = []
+        if selected_category.ancestry.nil?
+          grandchildren_ids = selected_category.indirect_ids
+          grandchildren_ids.each do |grandchild_id|
+            category_items += Item.includes(:item_images).where(category_id: grandchild_id)
+          end
+          @items = @items & category_items
+        elsif selected_category.ancestry.exclude?("/")
+          grandchildren_ids = selected_category.child_ids
+          grandchildren_ids.each do |grandchild_id|
+            category_items += Item.includes(:item_images).where(category_id: grandchild_id)
+          end
+          @items = @items & category_items
+        end 
+      end
+    end
+
   end
 
   def purchase
@@ -226,4 +256,11 @@ class ItemsController < ApplicationController
       @card = Card.find_by(user_id: current_user.id)
     end
     
+    def get_parent_categories
+      @parent_categories = Category.where(ancestry: nil)
+    end
+
+    def get_all_sales_status
+      params.require(:q).permit(:sorts, :name_has_every_term, :category_id, :brand_cont, :price_gteq, :price_lteq, condition_id_in:[], postage_id_in:[], category_id_in:[])
+    end
 end

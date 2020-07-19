@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_items, only: [:show, :in_progress, :completed, :purchace, :purchased]
+  before_action :set_item_search_query, except: :index
   
   def index
   end

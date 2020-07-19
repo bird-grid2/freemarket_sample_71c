@@ -10,7 +10,8 @@ FactoryBot.define do
       grand_child = create(:category, name: "孫", parent_id: child.id)
       item.category_id = grand_child.id
     end
-
+    
+    category_id           {3}
     seller_id             {1}
     buyer_id              {2}
     brand                 {"france"}

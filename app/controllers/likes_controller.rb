@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_item, except: :index
+  before_action :set_item_search_query, only: :index
 
   def index
     @likes = Like.where(user_id: current_user.id)
