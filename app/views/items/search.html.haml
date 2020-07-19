@@ -30,7 +30,7 @@
             %i.fas.fa-coins.method-icon
             %span.method-title 価格
           .form_group__input
-            = select_tag :price_range, options_from_collection_for_select(@price_range, :id, :name), { prompt: "選択してください"}
+            = select_tag :price_range, options_from_collection_for_select(@price_ranges, :id, :name), { prompt: "選択してください"}
           .form_group__input
             .price-range
               = f.search_field :price_gteq, placeholder: "¥ Min"
@@ -45,7 +45,7 @@
               .check-box
                 %input{type: 'checkbox', id: 'conditions_all', class: 'js-checkbox-all'}
                 = label_tag :conditions_all, 'すべて'
-              = f.collection_check_boxes :condition_id_in, @condition, :id, :name do |b|
+              = f.collection_check_boxes :condition_id_in, @conditions, :id, :name do |b|
                 .check-box.options-list#conditions-option
                   = b.check_box
                   = b.label { b.text }
@@ -58,7 +58,7 @@
               .check-box
                 %input{type: 'checkbox', id: 'postage_all', class: 'js-checkbox-all'}
                 = label_tag :postage_all, 'すべて'
-              = f.collection_check_boxes :postage_id_in, @postage, :id, :name do |b|
+              = f.collection_check_boxes :postage_id_in, @postages, :id, :name do |b|
                 .check-box.options-list#postage-option
                   = b.check_box
                   = b.label { b.text }

@@ -69,9 +69,9 @@ class ItemsController < ApplicationController
 
   def search
     @keyword = params[:q][:name_has_every_term]
-    @price_range = PriceRange.all
-    @condition = Condition.all
-    @postage = Postage.all
+    @price_ranges = PriceRange.all
+    @conditions = Condition.all
+    @postages = Postage.all
 
     if params[:q][:buyer_id_null] == params[:q][:buyer_id_not_null]
       @q = Item.search(get_all_sales_status)
