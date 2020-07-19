@@ -1,7 +1,85 @@
 %header
   = render 'layouts/search-box'
 .search-container
-  .narrow-search-results
+  .advanced-search
+    = search_form_for(@q, url:search_items_path) do |f|
+      .advanced-search__sort
+        = f.select(:sorts, {'並び替え': 'id asc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の新しい順': 'updated_at desc', 'いいね！の多い順': 'likes_count desc'})
+      .advanced-search__queries
+        %h3 詳細検索
+        .form_group
+          .form_group__title
+            %i.fas.fa-plus.method-icon
+            %span.method-title キーワードを追加する
+          .form_group__input
+            = f.search_field :name_has_every_term, placeholder: "例）値下げ"
+        #category_form.form_group
+          .form_group__title
+            %i.fas.fa-list.method-icon
+            %span.method-title カテゴリーを選択する
+          .form_group__input
+            = f.collection_select :category_id, @parent_categories, :id, :name, {prompt: 'すべて'}
+        .form_group
+          .form_group__title
+            %i.fas.fa-tag.method-icon
+            %span.method-title ブランド名から探す
+          .form_group__input
+            = f.search_field :brand_cont, placeholder: "例）シャネル"
+        .form_group
+          .form_group__title
+            %i.fas.fa-coins.method-icon
+            %span.method-title 価格
+          .form_group__input
+            = select_tag :price_range, options_from_collection_for_select(@price_ranges, :id, :name), { prompt: "選択してください"}
+          .form_group__input
+            .price-range
+              = f.search_field :price_gteq, placeholder: "¥ Min"
+              %span 〜
+              = f.search_field :price_lteq, placeholder: "¥ Max"
+        .form_group
+          .form_group__title
+            %i.fas.fa-star.method-icon
+            %span.method-title 商品の状態
+          .form_group__input
+            .check-boxes
+              .check-box
+                %input{type: 'checkbox', id: 'conditions_all', class: 'js-checkbox-all'}
+                = label_tag :conditions_all, 'すべて'
+              = f.collection_check_boxes :condition_id_in, @conditions, :id, :name do |b|
+                .check-box.options-list#conditions-option
+                  = b.check_box
+                  = b.label { b.text }
+        .form_group
+          .form_group__title
+            %i.fas.fa-truck.method-icon
+            %span.method-title 配送料の負担
+          .form_group__input
+            .check-boxes
+              .check-box
+                %input{type: 'checkbox', id: 'postage_all', class: 'js-checkbox-all'}
+                = label_tag :postage_all, 'すべて'
+              = f.collection_check_boxes :postage_id_in, @postages, :id, :name do |b|
+                .check-box.options-list#postage-option
+                  = b.check_box
+                  = b.label { b.text }
+        .form_group
+          .form_group__title
+            %i.fas.fa-shopping-cart.method-icon
+            %span.method-title 販売状況
+          .form_group__input
+            .check-boxes
+              .check-box
+                %input{type: 'checkbox', id: 'status_all', class: 'js-checkbox-all'}
+                = label_tag :status_all, 'すべて'
+              .check-box.options-list.status-option
+                = f.check_box :buyer_id_null, id: 'on_sale'
+                = label_tag :on_sale, '販売中'
+              .check-box.options-list.status-option
+                = f.check_box :buyer_id_not_null, id: 'sold_out'
+                = label_tag :sold_out, '売り切れ'
+        .advanced-search__btn
+          = f.button 'クリア', class: 'reset-query'
+          = f.submit '完了', class: 'submit-query'
   .show-search-results
     %section.search-results
       - if @keyword.present? && @items.present?
@@ -16,12 +94,16 @@
           %span に該当する商品は見つかりませんでした
         .search-results__empty
           = "検索条件を変えて、再度お試しください"
+      - elsif @items.empty?
+        %h2 該当する商品は見つかりませんでした
+        .search-results__empty
+          = "検索条件を変えて、再度お試しください"
       - else
         %h2 検索結果
         .search-results__number
           = "1 - #{@items.count} 件表示"
-      .search-results__items
-        = render partial: 'item', collection: @items
+    .search-results__items
+      = render partial: 'item', collection: @items
 = render 'layouts/app-banner'
 = render 'layouts/footer'
 = render 'layouts/publish-btn'

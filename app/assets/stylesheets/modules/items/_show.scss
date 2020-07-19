@@ -12,7 +12,7 @@ tr {
 }
 .item-container{
   width: 700px;
-  padding: 24px 40px 40px;
+  padding: 24px 40px 0px 40px;
   margin: 40px auto 0;
   background-color: $whiteColor;
   .item-content{
@@ -24,9 +24,11 @@ tr {
       background-color: $body_back;
       padding-bottom:20px;
       &--top{
-        box-sizing: border-box;
-        width: 300px;
-        height: 300px;
+        img {
+          display: block;
+          width: 300px;
+          height: 300px;
+        }
       }
       &--bottom{
         min-height: 60px;

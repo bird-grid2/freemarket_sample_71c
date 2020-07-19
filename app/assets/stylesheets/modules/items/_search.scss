@@ -2,12 +2,113 @@
   overflow: hidden;
   margin: 40px auto 0;
   width: 1020px;
-  .narrow-search-results{
+  .advanced-search{
     float: left;
     width: 280px;
-    margin: 0 40px 0 0;
-    background-color: #aaa;
-    height: 100vh;
+    margin-right: 40px;
+    &__sort{
+      select{
+        height: 48px;
+        width: 100%;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+    &__queries{
+      margin: 40px 0;
+      padding: 16px;
+      background-color: $whiteColor;
+      h3{
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .form_group{
+        margin-top: 40px;
+        &:first-child{
+          margin-top: 24px;
+        }
+        &__title{
+          .method-icon{
+            margin-right: 4px;
+            color: #888;
+            font-size: 16px;
+          }
+          .method-title{
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+        &__input{
+          overflow: hidden;
+          input,select{
+            margin-top: 8px;
+            padding: 10px 16px 8px;
+            width: 100%;
+            height: 48px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .price-range{
+            float: left;
+            input{
+              width: 45%;
+            }
+            span{
+              line-height: 48px;
+            }
+          }
+          .check-boxes{
+            overflow: hidden;
+            width: 100%;
+            .check-box{
+              overflow: hidden;
+              margin-top: 16px;
+              width: 48%;
+              float: left;
+              input{
+                width: 20px;
+                height: 20px;
+                margin: 0 8px 0 0;
+                float: left;
+                cursor: pointer;
+              }
+              label{
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__btn{
+      overflow: hidden;
+      height: 90px;
+      padding-top: 40px;
+      .reset-query{
+        float: left;
+        width: 45%;
+        line-height: 48px;
+        border-radius: 4px;
+        border: none;
+        color: $whiteColor;
+        background-color: #aaa;
+      }
+      .submit-query{
+        float: right;
+        width: 45%;
+        line-height: 48px;
+        border-radius: 4px;
+        border: none;
+        color: $whiteColor;
+        background-color: $redColor;
+      }
+    }
   }
   .show-search-results{
     float: right;

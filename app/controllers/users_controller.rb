@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_items, only: [:show, :in_progress, :completed, :purchace, :purchased]
+  before_action :set_item_search_query, except: :index
   
   def index
   end
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def in_progress
-    @image = ItemImage.find_by(params[:item_id])
+    @image = ItemImage.where(item_id: @item.ids)
   end
 
   def completed

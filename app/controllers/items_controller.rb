@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :set_item_search_query, only: [:index, :search, :show]
 
   require 'payjp'
   
   before_action :set_item, except: [:index, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
-  before_action :set_card, except: [:index, :show, :new, :search]
+  before_action :set_card, except: [:index, :show, :new, :create, :get_children_categories, :get_grandchildren_categories, :search]
+  before_action :get_parent_categories, only: [:new, :search]
 
   def index
     @items = Item.includes([:item_images, :category]).where(buyer_id: nil).order('created_at DESC')
@@ -25,9 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @item.item_images.new
-    @parent_categories = Category.where(ancestry: nil)
     @item = Item.new
     @item.item_images.new
   end
@@ -69,8 +68,36 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @keyword = params[:search]
-    @items = Item.includes(:item_images).search(@keyword).order('created_at DESC').limit(132)
+    @keyword = params[:q][:name_has_every_term]
+    @price_ranges = PriceRange.all
+    @conditions = Condition.all
+    @postages = Postage.all
+
+    if params[:q][:buyer_id_null] == params[:q][:buyer_id_not_null]
+      @q = Item.search(get_all_sales_status)
+      @items = @q.result(distinct: true).includes(:item_images).limit(132)
+    end
+    
+    if params[:q][:category_id].present? && params[:q][:category_id_in].blank?
+      if params[:q][:category_id] != '---'
+        selected_category = Category.find(params[:q][:category_id])
+        category_items = []
+        if selected_category.ancestry.nil?
+          grandchildren_ids = selected_category.indirect_ids
+          grandchildren_ids.each do |grandchild_id|
+            category_items += Item.includes(:item_images).where(category_id: grandchild_id)
+          end
+          @items = @items & category_items
+        elsif selected_category.ancestry.exclude?("/")
+          grandchildren_ids = selected_category.child_ids
+          grandchildren_ids.each do |grandchild_id|
+            category_items += Item.includes(:item_images).where(category_id: grandchild_id)
+          end
+          @items = @items & category_items
+        end 
+      end
+    end
+
   end
 
   def purchase
@@ -81,7 +108,7 @@ class ItemsController < ApplicationController
       #購入ボタンが押せない条件
 
       unless @card.blank?
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                      #保管した顧客IDでpayjpから情報取得
+        Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]                      #payjpから情報取得
         customer = Payjp::Customer.retrieve(@card.customer_token)  
         @default_card_information = customer.cards.retrieve(customer.default_card)
         @card_brand = @default_card_information.brand
@@ -102,29 +129,24 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    @card = Card.find_by(user_id: current_user.id)                             #テーブルからpayjpの顧客IDを検索
+    @card = Card.find_by(user_id: current_user.id)                            #テーブルからpayjpの顧客IDを検索
     if @card.blank?                                                  #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]                      #保管した顧客IDでpayjpから情報取得
+      Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]                      #保管した顧客IDでpayjpから情報取得
       customer = Payjp::Customer.retrieve(@card.customer_token)      #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(customer.default_card)
     end
   end
 
-  def pay
+  def done
     @card = Card.find_by(user_id: current_user.id)
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     Payjp::Charge.create(
     :amount => @item.price,                                         #支払金額を入力
     :customer => @card.customer_token,
     :currency => 'jpy',                                             #日本円
     )
-    redirect_to done_item_path                                      #完了画面に移動
-  end
-
-
-  def done
     @sold_item = Item.find(params[:id])
     @sold_item.update_attribute(:buyer_id, current_user.id)
   end
@@ -234,4 +256,11 @@ class ItemsController < ApplicationController
       @card = Card.find_by(user_id: current_user.id)
     end
     
+    def get_parent_categories
+      @parent_categories = Category.where(ancestry: nil)
+    end
+
+    def get_all_sales_status
+      params.require(:q).permit(:sorts, :name_has_every_term, :category_id, :brand_cont, :price_gteq, :price_lteq, condition_id_in:[], postage_id_in:[], category_id_in:[])
+    end
 end

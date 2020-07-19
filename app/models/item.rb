@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: "User", :foreign_key => 'seller_id'
   belongs_to :buyer, class_name: "User", :foreign_key => 'buyer_id', optional: true
 
-  has_many   :item_images, dependent: :destroy, inverse_of: :item
+  has_many   :item_images
   accepts_nested_attributes_for :item_images, allow_destroy: true
   has_many :comments, dependent: :destroy
 
@@ -28,10 +28,9 @@ class Item < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
-  def self.search(keyword)
-    return Item.all unless keyword
-    Item.where('name LIKE ?', "%#{keyword}%")
+  ransacker :likes_count do
+    query = '(SELECT COUNT(likes.item_id) FROM likes where likes.item_id = items.id GROUP BY likes.item_id)'
+    Arel.sql(query)
   end
-
 end
 

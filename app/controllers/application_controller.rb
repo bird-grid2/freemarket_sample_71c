@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     user_path(current_user)
   end
   
-  
   private
 
     def production?
@@ -18,6 +17,11 @@ class ApplicationController < ActionController::Base
       authenticate_or_request_with_http_basic do |username, password|
         username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
       end
+    end
+
+    def set_item_search_query
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct: true).includes(:item_images).limit(132)
     end
 
   protected

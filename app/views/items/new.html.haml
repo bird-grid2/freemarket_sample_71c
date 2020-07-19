@@ -22,10 +22,10 @@
           .hidden-content
             = form.fields_for :item_images do |f|
               = f.file_field :image, class: "hidden-field", id: 'item_images_0'
-              %input{class:"hidden-field", type: "file", name: "item[1][image]", id: "item_images_1" }
-              %input{class:"hidden-field", type: "file", name: "item[2][image]", id: "item_images_2" }
-              %input{class:"hidden-field", type: "file", name: "item[3][image]", id: "item_images_3" }
-              %input{class:"hidden-field", type: "file", name: "item[4][image]", id: "item_images_4" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_1" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_2" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_3" }
+              %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_4" }
                   
       .name
         .name__title
