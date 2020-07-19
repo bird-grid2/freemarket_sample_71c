@@ -47,6 +47,7 @@
           ブランド
         %td
           = @item.brand
+
       %tr
         %th
           商品の状態
@@ -135,7 +136,7 @@
     - if current_user
       = form_with model: [@item,@comment], id: "new_comment" do |form|
         = form.text_area :comment, class: "textbox"
-        = form.submit "コメントする", class: "button"
+        = form.button "コメントする", class: "button", id: "comment_button"
 
 .move-link.clearfix
   .move-link--prev
