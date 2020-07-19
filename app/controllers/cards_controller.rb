@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def new
     @card = Card.where(user_id: current_user.id)
-    redirect_to action: "show" if @card.exists?
+    redirect_to action: "show", item_id: params[:item_id] if @card.exists?
   end
 
   def pay                                                  #payjpとCardのデータベース作成を実施。
@@ -18,7 +18,7 @@ class CardsController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_token: customer.id)
       if @card.save
-        redirect_to action: "show"
+        redirect_to action: "show", item_id: params[:item_id]
       else
         redirect_to action: "new"
       end
@@ -28,11 +28,13 @@ class CardsController < ApplicationController
   def delete                                                #PayjpとCardデータベースを削除
     card = Card.where(user_id: current_user.id).first
     if card.blank?
+      redirect_to action: "new"
     else
       Payjp.api_key =  Rails.application.credentials.payjp[:payjp_private_key]
       customer = Payjp::Customer.retrieve(card.customer_token)
       customer.delete
       card.delete
+      @id = params[:item_id]
     end
 
   end
@@ -46,6 +48,7 @@ class CardsController < ApplicationController
       Payjp.api_key =  Rails.application.credentials.payjp[:payjp_private_key]
       customer = Payjp::Customer.retrieve(card.customer_token)
       @default_card_information = customer.cards.retrieve(customer.default_card)
+      @id = params[:item_id]
       @card_brand = @default_card_information.brand
       case @card_brand
       when "Visa"

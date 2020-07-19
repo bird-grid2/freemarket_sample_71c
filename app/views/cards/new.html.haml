@@ -7,7 +7,8 @@
     カード情報入力画面
   .container__form
     .container__form__frame
-      = form_with model: @card, url: pay_cards_path, id: "form", local: true do |f|
+      = form_with model: @card, url: pay_cards_path(params[:item_id]), id: "form", local: true do |f|
+        = f.hidden_field :item_id, value: params[:item_id], name: 'item_id'
         -#= render "devise/shared/error_messages", resource: @card
         .form-group__card-number
           .form-group__card-number__top
@@ -50,6 +51,9 @@
           %p.form-group__text--right--blue
             = link_to "カード裏面の番号とは？"
         .container__bottom
-          = f.submit "登録する", class: "container__bottom__btn", url: "new_card_path",id:"charge-form",method: :post, "data-turbolinks": "false"
+          - if params[:item_id]
+            = f.submit "登録する", class: "container__bottom__btn", url: "cards_path(params[:item_id])",id:"charge-form",method: :post, "data-turbolinks": "false"
+          - else
+            = f.submit "登録する", class: "container__bottom__btn", url: "cards_path",id:"charge-form",method: :post, "data-turbolinks": "false"
 
 = render "layouts/footer"

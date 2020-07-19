@@ -15,9 +15,13 @@
         = exp_month + " / " + exp_year
   .container__bottom
     .container__bottom__all
-      = link_to delete_cards_path, class: "container__bottom__all--delete" do
+      = link_to delete_cards_path(params[:item_id]), class: "container__bottom__all--delete" do
         %button 削除する
         %input{ type: "hidden", name: "card_id", value: "" }
-      = link_to :back, class: "container__bottom__all--root" do
-        %button 戻る
+      - if params[:item_id]
+        = link_to purchase_item_path(params[:item_id]), class: "container__bottom__all--root" do
+          %button 戻る
+      - else
+        = link_to users_path, class: "container__bottom__all--root" do
+          %button 戻る
 = render "layouts/footer"

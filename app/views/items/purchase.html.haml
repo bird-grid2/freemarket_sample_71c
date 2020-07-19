@@ -39,9 +39,9 @@
                 支払方法
               .index__container__payment-info__method__all--upper--right
                 - if @card.blank?
-                  = link_to "登録してください", new_card_path
+                  = link_to "登録してください", new_card_path(item_id: @item.id)
                 - else
-                  = link_to "変更する", card_path
+                  = link_to "変更する", card_path(item_id: @item.id)
             .index__container__payment-info__method__all--lower
               - unless @card.blank?
                 %br
