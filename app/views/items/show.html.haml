@@ -8,9 +8,9 @@
       .item-content__photo--top
         = image_tag @item.item_images[0].image.url
       .item-content__photo--bottom
-        - @item.item_images.each do |image|
+        - @item.item_images.each_with_index do |image, i|
           .item-content__photo--bottom__pic
-            = image_tag image.image.url, class:"mini_image"
+            = image_tag image.image.url, class:"mini_image", index: "#{i}"
     %table.item-content__table
       %tr
         %th
@@ -46,26 +46,28 @@
         %th
           ブランド
         %td
-       
+          = @item.brand
       %tr
         %th
           商品の状態
         %td
-
+          = @item.condition.name
       %tr
         %th
           配送料の負担
         %td
-
+          = @item.postage.name
       %tr
         %th
           発送元地域
         %td
+          = @item.prefecture.name
 
       %tr
         %th
           発送日の目安
         %td
+          = @item.preparation_period.name
 
   .item-price 
     %span.item-price--yen
