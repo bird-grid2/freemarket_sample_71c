@@ -5,6 +5,9 @@
     =  @item.name
   .item-content.clearfix
     .item-content__photo
+      -if @item.buyer_id.present? 
+        .sold-out-bnr
+          %p.sold-out-bnr__inner SOLD
       .item-content__photo--top
         = image_tag @item.item_images[0].image.url
       .item-content__photo--bottom
