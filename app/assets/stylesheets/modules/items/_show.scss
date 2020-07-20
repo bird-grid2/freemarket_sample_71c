@@ -23,6 +23,27 @@ tr {
       height: 100%;
       background-color: $body_back;
       padding-bottom:20px;
+      position: relative;
+      .sold-out-bnr{
+        width: 0;
+        height: 0;
+        border-width: 120px 120px 0 0;
+        border-color: #ea352d transparent;
+        border-style: solid;
+        position: absolute;
+        top: 0;
+        left: 0;
+        &__inner{
+          top: -90px;
+          font-size: 30px;
+          position: absolute;
+          left: 0;
+          color: #fff;
+          transform: rotate(-45deg);
+          letter-spacing: 2px;
+          font-weight: 600;
+        }
+      }
       &--top{
         img {
           display: block;
