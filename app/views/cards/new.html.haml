@@ -9,7 +9,6 @@
     .container__form__frame
       = form_with model: @card, url: pay_cards_path(params[:item_id]), id: "form", local: true do |f|
         = f.hidden_field :item_id, value: params[:item_id], name: 'item_id'
-        -#= render "devise/shared/error_messages", resource: @card
         .form-group__card-number
           .form-group__card-number__top
             .form-group__card-number__top--index
