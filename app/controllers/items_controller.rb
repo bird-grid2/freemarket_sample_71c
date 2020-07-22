@@ -222,11 +222,19 @@ class ItemsController < ApplicationController
     end
 
     def set_item
-      @item = Item.find(params[:id])
+      if params
+        @item = Item.find(params[:id])
+      else
+        redirect_to root_path
+      end
     end
 
     def set_card
-      @card = Card.find_by(user_id: current_user.id)
+      if user_signed_in?
+        @card = Card.find_by(user_id: current_user.id)
+      else
+        redirect_to new_user_session_path
+      end
     end
     
 end
