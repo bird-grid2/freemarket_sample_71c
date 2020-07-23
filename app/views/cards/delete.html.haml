@@ -1,3 +1,7 @@
 削除しました
-= link_to root_path do
-  %button 戻る
+- if params[:format]
+  = link_to purchase_item_path(params[:format]) do
+    %button 戻る
+- else
+  = link_to user_path do
+    %button 戻る
