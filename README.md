@@ -79,20 +79,9 @@
 |buyer|references|foreign_key: {to_table: :users}|
 
 ### Association
-
-  validates :category_id, :name, :description, :condition_id, :postage_id, :prefecture_id, :preparation_period_id, :price, :shipping_method_id, :item_images,  presence: true
-  validates :name, :brand, length: {maximum: 15 }
-  validates :description, length: {maximum: 200 }
-  validates :price, numericality:  { only_integer: true }
-
-  has_many :users, through: :likes
- 
-
-
-
+- has_many :users, through: :likes
 - belongs_to :seller, class_name: "User", :foreign_key => 'seller_id'
 - belongs_to :buyer, class_name: "User", :foreign_key => 'buyer_id', optional: true
-- has_one :order
 - belongs_to :category
 - has_many :item_images
 - has_many :comments dependent: :destroy
@@ -102,7 +91,6 @@
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :preparation_period
 - belongs_to_active_hash :shipping_method
-- accepts_nested_attributes_for :item_images, allow_destroy: true
 ### remarks
 - condition,postage,prefecture,shipping_area,shipping_days は ActiveHash を使って選択可能なデータを管理
 
