@@ -12,7 +12,7 @@
       .item__info__details
         %ul
           %li.price
-            = item.price
+            = item.price.to_s(:delimited)
             円
           %li.likes
             = item.likes.count
