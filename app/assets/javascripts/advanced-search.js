@@ -45,8 +45,8 @@ document.addEventListener("turbolinks:load", function() {
   /* カテゴリー 孫カテゴリーのビュー */
   function appendCheckbox(category){
     var html = `<div id="grandchildren_options" class="check-box">
-                  <input type="checkbox" value="${category.id}" name="q[category_id_in][]" id="q_condition_id_in_${category.id}" class="granchild_input_box">
-                  <label for="q_condition_id_in_${category.id}">${category.name}
+                  <input type="checkbox" value="${category.id}" name="q[category_id_in][]" id="q_category_id_in_${category.id}" class="granchild_input_box">
+                  <label for="q_category_id_in_${category.id}">${category.name}
                 </div>`;
     return html;
   }
@@ -170,7 +170,7 @@ document.addEventListener("turbolinks:load", function() {
                 $.each(granchild_id, function(index, value){
                   var selected_granchild = value.split('=');
                   var granchild_value = selected_granchild[1];
-                  $("#q_condition_id_in_"+granchild_value).prop('checked', true);
+                  $("#q_category_id_in_"+granchild_value).prop('checked', true);
                 });
               }
             }
