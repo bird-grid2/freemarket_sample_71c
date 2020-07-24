@@ -1,7 +1,8 @@
 # Discription
 Freemarket_sample_71c
-TechCamp 71期夜間・休日コース group C 最終課題のアウトプットです。
-本アプリは、フリーマーケット用のECサイトサンプルです。
+
+TechCamp 71期夜間・休日コース groupCの最終課題になります。
+メルカリ等を参考にして、フリマアプリのクローンサイトを作成しました。
 
 # Features
 ・ログイン機能

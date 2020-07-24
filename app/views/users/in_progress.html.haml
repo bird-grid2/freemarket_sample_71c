@@ -34,10 +34,13 @@
                       %div
                         %span.listing-item-count
                           %i.far.fa-heart 
-                          %span 0
+                          %span 
+                          = item.likes.length
                         %span.listing-item-count
                           %i.far.fa-comment-alt 
-                          %span 0
+                          %span
+                          = item.comments.length
+
 
 
           %ul.tab-content__item-list.tab-pane

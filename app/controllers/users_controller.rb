@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
     def set_items
       @item = Item.where(seller_id: current_user)
+      @buy = Item.where(buyer_id: current_user)
     end
 
 end

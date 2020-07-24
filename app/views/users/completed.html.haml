@@ -21,7 +21,7 @@
             %li.tab-content__not-found
               取引中の商品がありません
                 
-          - if @item.blank?
+          - unless @item.where.not(buyer_id: nil)
             %ul.tab-content__item-list.tab-pane.show
               %li.tab-content__not-found
                 過去に取引した商品がありません
@@ -38,10 +38,12 @@
                       %div
                         %span.listing-item-count
                           %i.far.fa-heart 
-                          %span 0
+                          %span 
+                          = item.likes.length
                         %span.listing-item-count
                           %i.far.fa-comment-alt 
-                          %span 0
+                          %span
+                          = item.comments.length
 
       %ul.mypage-pager 
         %li.pager-prev.pager
@@ -53,11 +55,3 @@
           
 
 = render 'layouts/footer'
-
-
--#.tab-content__item-link__body
-  -#.tab-content__item-link__body--text
-    -#新機能実装しました。
-  -#%time
-    -#%i.far.fa-clock <span> 1日前</span>
-  -#= icon( "fas", "angle-right")
