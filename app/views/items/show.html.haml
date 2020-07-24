@@ -82,7 +82,7 @@
       送料込み
 
   .item-buy-btn
-    - unless user_signed_in? && current_user.id == @item.seller_id
+    - unless user_signed_in? && current_user.id == @item.seller_id && @item.buyer_id = nil
       = link_to "購入画面に進む", purchase_item_url(@item), class: "buy-btn"
 
   .item-description
@@ -100,7 +100,7 @@
         %span あんしん・あんぜんへの取り組み
 
   .items_line
-  - if user_signed_in? && current_user.id == @item.seller_id
+  - if user_signed_in? && current_user.id == @item.seller_id && @item.buyer_id = nil
     .items__box
       .items__box--btn
         %section.item-container-edit
