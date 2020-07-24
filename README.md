@@ -1,5 +1,5 @@
 * Database creation
-## usersテーブル      
+## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|default: ""|
@@ -17,9 +17,6 @@
 - has_many :items, dependent: :destroy
 - has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id'
 - has_many :buyer_items, class_name: 'Item', :foreign_key => 'buyer_id'
-- devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-
 - has_many :items, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
