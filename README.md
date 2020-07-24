@@ -18,8 +18,6 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 ・売り切れ表示機能
 ・マイページ機能
 
-
-
 * Database creation
 ## usersテーブル
 |Column|Type|Options|
