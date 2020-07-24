@@ -26,7 +26,7 @@
               %ul.tab-content__item-list.tab-pane.show
                 =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
                   %figure
-                    = image_tag @image[i].image.url, size: '48x48', class: 'tab-content__item-link--image'
+                    = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content__item-link--image'
                   .tab-content__item-link__body
                     .tab-content__item-link__body--text
                       = item.name
