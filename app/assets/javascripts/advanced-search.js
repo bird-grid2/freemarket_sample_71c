@@ -236,7 +236,7 @@ document.addEventListener("turbolinks:load", function() {
     $("input[name='q[buyer_id_not_null]']").prop('checked', this.checked);
   });
   $("input[name='q[buyer_id_null]']").on('click', function() {
-    if ($('#status-option :checked').length == 2) {
+    if ($('.status-option :checked').length == 2) {
       $('#status_all').prop('checked', true);
     } else {
       $('#status_all').prop('checked', false);
