@@ -118,7 +118,7 @@
                 %button#modal-close-btn キャンセル
                 %button#delete-comformation-btn 削除する
 
-- if current_user && @item.buyer_id.nil? 
+
   .item-comments
     .item-comments__content
       .item-comments__content__form.clearfix
@@ -136,12 +136,12 @@
                   %i.far.fa-clock
                   = comment.created_at.strftime("%Y/%m/%d %H:%M")
 
-      .item-comments__content__form__text
-        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      
-        = form_with model: [@item,@comment], id: "new_comment" do |form|
-          = form.text_area :comment, class: "textbox"
-          = form.button "コメントする", class: "button", id: "comment_button"
+      - if current_user && @item.buyer_id.nil? 
+        .item-comments__content__form__text
+          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = form_with model: [@item,@comment], id: "new_comment" do |form|
+            = form.text_area :comment, class: "textbox"
+            = form.button "コメントする", class: "button", id: "comment_button"
 
 .move-link.clearfix
   .move-link--prev
