@@ -1,8 +1,15 @@
-# Discription
+# Title
 Freemarket_sample_71c
 
+# Discription
 TechCamp 71期夜間・休日コース groupCの最終課題になります。
 メルカリ等を参考にして、フリマアプリのクローンサイトを作成しました。
+
+[本番環境](http://54.250.23.227/)
+
+- Basic Authentication
+  - id: admin
+  - password: 2222
 
 # Features
 ・ログイン機能
@@ -18,7 +25,10 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 ・売り切れ表示機能
 ・マイページ機能
 
-* Database creation
+# Demo
+
+# Database creation
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -41,9 +51,6 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :items, through: :likes
-### remarks
-- password は bcrypt gem を使って暗号化する
-- birthday は date_select を使ってフォーム作成するため date型のカラムを作成
 
 ## shipping_addressesテーブル
 |Column|Type|Options|
@@ -108,8 +115,6 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :preparation_period
 - belongs_to_active_hash :shipping_method
-### remarks
-- condition,postage,prefecture,shipping_area,shipping_days は ActiveHash を使って選択可能なデータを管理
 
 ## item_imagesテーブル
 |Column|Type|Options|
@@ -146,9 +151,3 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 ### Association
 - belongs_to :user
 - belongs_to :item
-
-11
-12
-13
-14
-15
