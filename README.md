@@ -26,13 +26,12 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 - マイページ機能
 
 # Demo
-- TOPページ
 
-![c77d16e6c31d78fb5ade1d7e6feb9a9f](https://user-images.githubusercontent.com/63528317/88456482-14b68900-ceb9-11ea-9f88-53def61425d7.jpg)
+- TOPページ
+  <img width="600px" alt="c77d16e6c31d78fb5ade1d7e6feb9a9f" src="https://user-images.githubusercontent.com/63528317/88456482-14b68900-ceb9-11ea-9f88-53def61425d7.jpg">
 
 
 - マイページ
-
   <img width="600px" alt="3f3a416ba4ce56c458a283ff20ca08fb" src="https://user-images.githubusercontent.com/63528317/88456451-d3be7480-ceb8-11ea-9202-41c6cb6978bd.png">
 
 
@@ -57,7 +56,6 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 
 
 - 気に入った商品に「いいね」とコメントをする
-
 ![e12fa65d356ff18534bb458fe52a2ccd](https://user-images.githubusercontent.com/63528317/88456696-c3a79480-ceba-11ea-8621-cdae0953b5b2.gif)
 
 
