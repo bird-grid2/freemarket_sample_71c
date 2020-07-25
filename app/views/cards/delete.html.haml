@@ -1,7 +1,15 @@
-削除しました
-- if params[:format].blank?
-  = link_to user_path(current_user) do
-    %button 戻る
-- else
-  = link_to purchase_item_path do
-    %button 戻る
+= render "layouts/header"
+
+.container
+  .container__top
+    削除しました
+  .container__bottom
+    .container__bottom__back
+      - if params[:format].blank?
+        = link_to user_path(current_user) do
+          %button 戻る
+      - else
+        = link_to purchase_item_path do
+          %button 戻る
+
+= render "layouts/footer"

@@ -1,4 +1,3 @@
-
 .container{
   @include container;
   &__top{
@@ -20,12 +19,12 @@
     }
   }
   &__bottom{
-    height: 80px;
-    &__all{
+    height: 80px;    
+    &__back{
       display: flex;
       margin: 0 auto;
       width: 60%;
-      justify-content: space-between;
+      justify-content: center;
       button{
         background-color: blue;
         font-weight: bold;
