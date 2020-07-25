@@ -1,7 +1,7 @@
 # Title
 Freemarket_sample_71c
 
-# Discription
+# Description
 TechCamp 71期夜間・休日コース groupCの最終課題になります。
 メルカリ等を参考にして、フリマアプリのクローンサイトを作成しました。
 
