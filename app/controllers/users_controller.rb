@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @card = Card.where(user_id: current_user.id).first
   end
 
   def edit
@@ -44,6 +43,7 @@ class UsersController < ApplicationController
     def set_items
       @item = Item.where(seller_id: current_user)
       @buy = Item.where(buyer_id: current_user)
+      @card = Card.where(user_id: current_user.id).first
     end
 
 end

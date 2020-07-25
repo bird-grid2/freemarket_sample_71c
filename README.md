@@ -100,7 +100,7 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 - belongs_to :seller, class_name: "User", :foreign_key => 'seller_id'
 - belongs_to :buyer, class_name: "User", :foreign_key => 'buyer_id', optional: true
 - belongs_to :category
-- has_many :item_images
+- has_many :item_images dependent: :destroy
 - has_many :comments dependent: :destroy
 - has_many :likes dependent: :destroy
 - belongs_to_active_hash :condition
