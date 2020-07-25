@@ -21,9 +21,30 @@
             %li.tab-content__not-found
               取引中の商品がありません
                 
-          %ul.tab-content__item-list.tab-pane.show
-            %li.tab-content__not-found
-              過去に取引した商品がありません
+          - unless @item.where.not(buyer_id: nil)
+            %ul.tab-content__item-list.tab-pane.show
+              %li.tab-content__not-found
+                過去に取引した商品がありません
+          - else
+            - @item.each_with_index do |item, i|
+              -if item.buyer_id.present?
+                %ul.tab-content__item-list.tab-pane.show
+                  =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
+                    %figure
+                      = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content__item-link--image'
+                    .tab-content__item-link__body
+                      .tab-content__item-link__body--text
+                        = item.name
+                      %div
+                        %span.listing-item-count
+                          %i.far.fa-heart 
+                          %span 
+                          = item.likes.length
+                        %span.listing-item-count
+                          %i.far.fa-comment-alt 
+                          %span
+                          = item.comments.length
+
       %ul.mypage-pager 
         %li.pager-prev.pager
           = link_to '#' do
@@ -34,11 +55,3 @@
           
 
 = render 'layouts/footer'
-
-
--#.tab-content__item-link__body
-  -#.tab-content__item-link__body--text
-    -#新機能実装しました。
-  -#%time
-    -#%i.far.fa-clock <span> 1日前</span>
-  -#= icon( "fas", "angle-right")

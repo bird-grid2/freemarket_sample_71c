@@ -17,26 +17,30 @@
             %h3
               = link_to '売却済み', completed_user_url
         .tab-content
-          - if @item ==  ""
+          - if @item.blank? || @item.where(buyer_id: nil).blank?
             %ul#tab-completed.tab-content__item-list.tab-pane.show
               %li.tab-content__not-found
                 取引中の商品がありません
           - else
             - @item.each_with_index do |item, i|
-              %ul.tab-content__item-list.tab-pane.show
-                =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
-                  %figure
-                    = image_tag @image[i].image.url, size: '48x48', class: 'tab-content__item-link--image'
-                  .tab-content__item-link__body
-                    .tab-content__item-link__body--text
-                      = item.name
-                    %div
-                      %span.listing-item-count
-                        %i.far.fa-heart 
-                        %span 0
-                      %span.listing-item-count
-                        %i.far.fa-comment-alt 
-                        %span 0
+              -if item.buyer_id.nil?
+                %ul.tab-content__item-list.tab-pane.show
+                  =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
+                    %figure
+                      = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content__item-link--image'
+                    .tab-content__item-link__body
+                      .tab-content__item-link__body--text
+                        = item.name
+                      %div
+                        %span.listing-item-count
+                          %i.far.fa-heart 
+                          %span 
+                          = item.likes.length
+                        %span.listing-item-count
+                          %i.far.fa-comment-alt 
+                          %span
+                          = item.comments.length
+
 
 
           %ul.tab-content__item-list.tab-pane

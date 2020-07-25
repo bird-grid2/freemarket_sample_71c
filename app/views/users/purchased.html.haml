@@ -21,8 +21,27 @@
             %li.tab-content__not-found
               取引中の商品がありません
                 
-          %ul.tab-content__item-list.tab-pane.show
-            %li.tab-content__not-found
-              過去に取引した商品がありません
+          - if @buy.blank?
+            %ul.tab-content__item-list.tab-pane.show
+              %li.tab-content__not-found
+                過去に取引した商品がありません
+          - else
+            - @buy.each_with_index do |item, i|
+              %ul.tab-content__item-list.tab-pane.show
+                =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
+                  %figure
+                    = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content__item-link--image'
+                  .tab-content__item-link__body
+                    .tab-content__item-link__body--text
+                      = item.name
+                    %div
+                      %span.listing-item-count
+                        %i.far.fa-heart 
+                        %span 
+                        = item.likes.length
+                      %span.listing-item-count
+                        %i.far.fa-comment-alt 
+                        %span
+                        = item.comments.length
 
 = render 'layouts/footer'
