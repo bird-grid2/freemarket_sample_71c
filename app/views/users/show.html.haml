@@ -77,12 +77,12 @@
                 過去に取引した商品がありません
           - else
             - @buy.each_with_index do |item, i|
-              %ul#tab-log.tab-content_goods__item.tab-pane_goods.show
-                =link_to "/items/#{item.id}", class: 'tab-content__item-link' do
+              %ul#tab-log.tab-content_goods__item.tab-pane_goods
+                =link_to "/items/#{item.id}", class: 'tab-content_goods__item-link' do
                   %figure
-                    = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content__item-link--image'
-                  .tab-content__item-link__body
-                    .tab-content__item-link__body--text
+                    = image_tag item.item_images[0].image.url, size: '48x48', class: 'tab-content_goods__item-link--image'
+                  .tab-content_goods__item-link__body
+                    .tab-content_goods__item-link__body--text
                       = item.name
                     %div
                       %span.listing-item-count

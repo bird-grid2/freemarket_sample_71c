@@ -78,3 +78,72 @@
   margin: 0px 5px 5px 5px;
   line-height: 30px;
 }
+
+@mixin item-list {
+  figure {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    width: 48px;
+    height: 48px;
+  }
+  &__item-link {
+    position: relative;
+    display: block;
+    min-height: 80px;
+    padding: 16px;
+    color: #333;
+    &__body{
+      margin: 0 40px 0 68px;
+      &--text {        
+        display: block;
+        max-height: 4.4em;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        time {
+          display: inline-block;
+          color: #888;
+          .far {
+            vertical-align: middle;
+            margin: 0 8px 0 0;
+          }
+          span {
+            vertical-align: middle;
+          }
+        }  
+      }
+      .listing-item-count {
+        vertical-align: 2px;
+        margin: 0 6px 0 0;
+        i {
+          vertical-align: middle;
+          color: #ccc;
+        }
+        span {
+          vertical-align: middle;
+          margin: 0 0 0 2px;
+          font-size: 16px;
+          color: #888;
+        }
+      }
+    }
+    .fa-angle-right {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      transform: translate(0, -50%);
+    }
+  }
+  .mypage-view-content {
+    padding: 16px;
+    a {
+      display: block;
+      height: 56px;
+      margin: 0 auto;
+      background-color: #eee;
+      color: #333;
+      line-height: 56px;
+      text-align: center;
+    }
+  }
+}
