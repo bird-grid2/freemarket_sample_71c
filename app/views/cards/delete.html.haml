@@ -1,7 +1,7 @@
 削除しました
-- if params[:format]
-  = link_to purchase_item_path(params[:format]) do
+- if params[:format].blank?
+  = link_to user_path(current_user) do
     %button 戻る
 - else
-  = link_to user_path do
+  = link_to purchase_item_path do
     %button 戻る

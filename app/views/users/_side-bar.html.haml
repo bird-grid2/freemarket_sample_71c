@@ -60,9 +60,14 @@
           発送元・お届け先住所変更
           = icon( "fas", "angle-right")
       %li
-        = link_to 'unconectted', class: 'mypage-side__nav__list--item' do
-          支払い方法
-          = icon( "fas", "angle-right")
+        - if @card.blank?
+          = link_to new_card_path, class: 'mypage-side__nav__list--item' do
+            支払方法登録
+            = icon( "fas", "angle-right")
+        - else
+          = link_to card_path, class: 'mypage-side__nav__list--item' do
+            支払方法変更
+            = icon( "fas", "angle-right")
       %li
         = link_to 'unconectted', class: 'mypage-side__nav__list--item' do
           メール/パスワード

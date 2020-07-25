@@ -18,10 +18,10 @@
       = link_to delete_cards_path(params[:item_id]), class: "container__bottom__all--delete" do
         %button 削除する
         %input{ type: "hidden", name: "card_id", value: "" }
-      - if params[:item_id]
-        = link_to purchase_item_path(params[:item_id]), class: "container__bottom__all--root" do
+      - if params[:item_id].blank?
+        = link_to user_path, class: "container__bottom__all--root" do
           %button 戻る
       - else
-        = link_to user_path, class: "container__bottom__all--root" do
+        = link_to purchase_item_path(params[:item_id]), class: "container__bottom__all--root" do
           %button 戻る
 = render "layouts/footer"
