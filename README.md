@@ -1,8 +1,7 @@
-# Title
-Freemarket_sample_71c
-
 <img width="600px" alt="c77d16e6c31d78fb5ade1d7e6feb9a9f" src="https://user-images.githubusercontent.com/63528317/88456482-14b68900-ceb9-11ea-9f88-53def61425d7.jpg">
 
+# Title
+Freemarket_sample_71c
 
 # Description
 TechCamp 71期夜間・休日コース groupCの最終課題になります。  
@@ -10,9 +9,11 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 
 実際にご覧になる場合は[こちら](http://54.250.23.227/)
 
+
 - Basic Authentication
   - id: admin
   - password: 2222
+
 
 - 注意点
   - セキュリティーの観点から、個人情報は登録しないでください。  
