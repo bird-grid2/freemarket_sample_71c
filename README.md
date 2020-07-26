@@ -2,7 +2,7 @@
 Freemarket_sample_71c
 
 # Description
-TechCamp 71期夜間・休日コース groupCの最終課題になります。
+TechCamp 71期夜間・休日コース groupCの最終課題になります。  
 メルカリ等を参考にして、フリマアプリのクローンサイトを作成しました。
 
 [本番環境](http://54.250.23.227/)
@@ -10,6 +10,12 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 - Basic Authentication
   - id: admin
   - password: 2222
+
+## Note
+* セキュリティーの観点から、個人情報は登録しないでください。  
+  (架空のメールアドレス、名前、住所で登録できます)
+* クレジットカードは、[テストカード](https://pay.jp/docs/testcard)を使用して下さい。  
+  (有効期限は３ヶ月先以上　cvcは任意に記述)
 
 # Features
 - ログイン機能
