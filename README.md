@@ -35,21 +35,21 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 
 # Demo
 
-### 出品機能
+#### 出品機能
 <img width="500px" alt="c4bf7c14cd6af0a02f7d7f8bcdb28986" src="https://user-images.githubusercontent.com/63528317/88456529-58a98e00-ceb9-11ea-91ef-8d11e23d4113.gif">
 
-### 検索機能
+#### 検索機能
 <img width="500px" alt="ce5dcfd87bc3017af9d132317b73a00b" src="https://user-images.githubusercontent.com/63528317/88456585-90183a80-ceb9-11ea-82ab-25707334d907.gif">
 
 
-### 商品詳細ページ
+#### 商品詳細ページ
 <img width="500px" alt="211003fb53c6b3109521145af05b38a0" src="https://user-images.githubusercontent.com/63528317/88456636-1cc2f880-ceba-11ea-8ad8-57cb59ffb841.gif">
 
-### 購入機能
+#### 購入機能
 <img width="500px" alt="ddb1a0e04c1e2a00a5c14544127610ba (2)" src="https://user-images.githubusercontent.com/63528317/88456682-8ba05180-ceba-11ea-8f0a-5a2972c27c03.gif">
 
 
-### 「いいね」機能・コメント機能
+#### 「いいね」機能・コメント機能
 <img width="500px" alt="e12fa65d356ff18534bb458fe52a2ccd" src="https://user-images.githubusercontent.com/63528317/88456696-c3a79480-ceba-11ea-8621-cdae0953b5b2.gif">
 
 
