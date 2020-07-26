@@ -9,13 +9,11 @@ TechCamp 71期夜間・休日コース groupCの最終課題になります。
 
 実際にご覧になる場合は[こちら](http://54.250.23.227/)
 
-
-- Basic Authentication
+### Basic Authentication
   - id: admin
   - password: 2222
 
-
-- 注意点
+### 注意点
   - セキュリティーの観点から、個人情報は登録しないでください。  
   (架空のメールアドレス、名前、住所で登録できます)
   - クレジットカードは、[テストカード](https://pay.jp/docs/testcard)を使用して下さい。  
