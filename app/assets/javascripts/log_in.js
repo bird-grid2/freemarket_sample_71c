@@ -10,5 +10,5 @@ $(window).on('turbolinks:load', ()=>{
       $('#password').val('12345678')
       $('input[type="submit"]').click()
     });
-  };
+  }
 });
