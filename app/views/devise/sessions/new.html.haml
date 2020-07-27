@@ -15,8 +15,8 @@
         %i.fab.fa-google
         %span<>
         Googleでログイン
-      %button#seller.btn_default 簡単ログイン(出品者)
-      %button#buyer.btn_default 簡単ログイン(購入者)
+      %button#seller.btn-default.btn-red 簡単ログイン(出品者)
+      %button#buyer.btn-default.btn-red 簡単ログイン(購入者)
     .login-form-inner
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-group
